@@ -452,18 +452,14 @@ if ( ! function_exists( 'universal_gallery_defaults' ) ) {
  */
 if ( !function_exists('wpx_comments_popup_link') ) {
     function wpx_comments_popup_link() {
-        $class = is_single() ? 'single-post-meta-divider' : '';
+        $class = is_single() ? ' class="single-post-meta-divider"' : '';
 
         // Check if comments are closed and the post type supports comments
-        if (wpex_post_type_supports('comments')) {
-            if (comments_open() || (!comments_open() && '0' != get_comments_number())) {
-                if (!post_password_required()) {
-                    echo '<li ' . ('class="u-count ' . esc_attr($class) . '"') . '>';
-                    echo '<strong>' . __('With', 'tetris') . ': </strong>';
-                    comments_popup_link();
-                    echo '</li>';
-                }
-            }
+        if (wpex_post_type_supports('comments') && !post_password_required()) {
+            echo '<li' . esc_attr($class) . '>';
+            echo '<strong>' . esc_html__('With', 'tetris') . ': </strong>';
+            comments_popup_link();
+            echo '</li>';
         }
     }
 }
