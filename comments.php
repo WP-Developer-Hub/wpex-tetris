@@ -17,14 +17,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /* If a post password is required or no comments are given and comments/pings are closed, return. */
-if ( post_password_required() || ( ! have_comments() && ! comments_open() && !pings_open() ) ) {
+if ( post_password_required() && !wpex_post_type_supports('comments') ) {
 	return;
 }
+
 ?>
 <div id="commentsbox" class="boxframe">
 	<section id="comments" class="comments-area clearfix">
 		<?php if ( have_comments() ) : ?>
-			<h3 class="comments-title widget-title"><?php comments_popup_link(__('Leave a comment', 'tetris'), __('1 Comment', 'tetris'), __('% Comments', 'tetris'), 'comments-link', __('Comments closed', 'tetris')); ?></h3>
+			<h3 class="comments-title widget-title"><?php comments_number(); ?></h3>
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
                 /* coment-nav-above */
                 echo universal_custom_paginate_comments_links('above');
@@ -34,7 +35,8 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && !pi
 			</ol><!-- /commentlist -->
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
                 /* coment-nav-below */
-                echo universal_custom_paginate_comments_links('below') . '<br>';
+                echo universal_custom_paginate_comments_links('below');
+                echo comments_open() ? '<br>' : '';
 			endif; ?>
 		<?php endif; ?>
 		<?php comment_form( array(
