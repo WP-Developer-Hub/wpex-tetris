@@ -32,12 +32,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 $dir = get_template_directory();
 
-require_once $dir .'/inc/social-links.php' ;
 require_once $dir .'/inc/theme-customizer.php' ;
 require_once $dir .'/inc/classes/gallery-metabox/gallery-metabox.php' ;
 require_once $dir .'/inc/scripts.php' ;
 require_once $dir .'/inc/widget-areas.php' ;
-require_once $dir .'/inc/widget-social.php' ;
 if ( is_admin() ) {
 	require_once $dir .'/inc/updates.php' ;
 	require_once $dir .'/inc/cmb2-init.php' ;

@@ -22,21 +22,6 @@ function wpex_customizer_general($wp_customize) {
 		'priority'	=> 200,
 	) );
 
-	// Enable/Disable Social
-	$wp_customize->add_setting( 'wpex_header_aside', array(
-		'type'		=> 'theme_mod',
-		'default'	=> '1',
-		'sanitize_callback' => 'esc_html'
-	) );
-
-	$wp_customize->add_control( 'wpex_header_aside', array(
-		'label'		=> __('Social Links','tetris'),
-		'section'	=> 'wpex_general',
-		'settings'	=> 'wpex_header_aside',
-		'type'		=> 'checkbox',
-		'priority'	=> '4',
-	) );
-
 	// Copyright
 	$wp_customize->add_setting( 'wpex_copyright', array(
 		'type'		=> 'theme_mod',
@@ -51,34 +36,6 @@ function wpex_customizer_general($wp_customize) {
 		'type'		=> 'textarea',
 		'priority'	=> '8',
 	) );
-
-	// Theme Settings Section
-	$wp_customize->add_section( 'wpex_social' , array(
-		'title'		=> __( 'Social Options', 'tetris' ),
-		'priority'	=> 201,
-	) );
-
-	// Social Options
-	$social_options = wpex_social_links();
-	$count=0;
-	foreach ( $social_options as $social_option ) {
-		$count++;
-		$name = $social_option = str_replace('_', ' ', $social_option);
-		$name = ucfirst( $name );
-		$wp_customize->add_setting( 'wpex_social_'. $social_option, array(
-			'type'		        => 'theme_mod',
-			'default'	        => '',
-			'sanitize_callback' => 'esc_url'
-		) );
-		$wp_customize->add_control( 'wpex_social_'. $social_option, array(
-			'label'		=> $name,
-			'section'	=> 'wpex_social',
-			'settings'	=> 'wpex_social_'. $social_option,
-			'type'		=> 'text',
-			'priority'	=> $count,
-		) );
-	}
-		
 }
 
 add_action( 'customize_register', 'wpex_customizer_general' );
