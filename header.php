@@ -26,14 +26,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div id="wrap" class="clearfix">
 
 	<div id="header-wrap" class="clearfix">
-		<div id="pre-header" class="clearfix">
-			<ul id="header-social" class="clearfix">
-				<?php
-				// Show social icons if enabled
-				wpex_display_social(); ?>
-			</ul><!-- #header-social -->
-		</div><!-- #pre-header -->
-
 		<header id="header" class="clearfix">
             <div id="logo" class="clearfix">
                 <?php
