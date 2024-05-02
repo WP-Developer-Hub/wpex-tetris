@@ -22,19 +22,6 @@ function wpex_customizer_general($wp_customize) {
 		'priority'	=> 200,
 	) );
 
-	// Logo Image
-	$wp_customize->add_setting( 'wpex_logo', array(
-		'type'	=> 'theme_mod',
-		'sanitize_callback' => 'esc_url'
-	) );
-
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'wpex_logo', array(
-		'label'		=> __('Image Logo','tetris'),
-		'section'	=> 'wpex_general',
-		'settings'	=> 'wpex_logo',
-		'priority'	=> '1',
-	) ) );
-
 	// Enable/Disable Social
 	$wp_customize->add_setting( 'wpex_header_aside', array(
 		'type'		=> 'theme_mod',

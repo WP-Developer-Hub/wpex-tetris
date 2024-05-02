@@ -59,6 +59,13 @@ function wpex_setup() {
 	$content_width = 970;
 	
 	//theme support
+    add_theme_support('custom-logo', array(
+        'height'      => false,
+        'width'       => false,
+        'flex-height' => true,
+        'flex-width'  => true,
+        'header-text' => array('site-title', 'site-description'),
+    ));
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'custom-background' );
 	add_theme_support( 'post-thumbnails' );
