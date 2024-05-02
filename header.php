@@ -35,17 +35,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div><!-- #pre-header -->
 
 		<header id="header" class="clearfix">
-			<div id="logo" class="clearfix">
-				<?php
-				// Image Logo
-				if ( $logo = get_theme_mod( 'wpex_logo' ) ) : ?>
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" rel="home"><img src="<?php echo esc_url( $logo ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" /></a>
-				<?php
-				// Text Logo
-				else : ?>
-					<div id="text-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" rel="home"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></a></div>
-				<?php endif; ?>
-			</div><!-- /logo -->
+            <div id="logo" class="clearfix">
+                <?php
+                    // Show custom image logo if defined in the admin
+                    if (has_custom_logo()) {
+                        the_custom_logo();
+                    ?>
+                <?php }
+                    // No custom img logo - show text logo
+                    else { ?>
+                    <h2><a href="<?php echo home_url(); ?>/" title="<?php echo get_bloginfo( 'name' ); ?>" rel="home"><?php echo get_bloginfo( 'name' ); ?></a></h2>
+                <?php } ?>
+            </div><!-- /logo -->
 			<nav id="navigation" class="clearfix">
 				<?php wp_nav_menu( array(
 					'theme_location' => 'main_menu',
