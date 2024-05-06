@@ -12,10 +12,13 @@ Tags: custom-background, threaded-comments, custom-menu, featured-images, full-w
 Text Domain: wpex
 ----------------------------------------------------------- */
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}table{border-collapse:collapse;border-spacing:0;}
+*,
+*::after,
+*::before {box-sizing: border-box;}
 
 /* Main
 ----------------------------------------------------------- */
-body { background-color: #ddd; background-image: url(images/bg.png); background-repeat: repeat; font: 14px/1.8 'Open Sans',Helvetica,Arial,sans-serif; color: #666; -webkit-text-size-adjust: 100%; }
+body { background-color: #ddd; font: 14px/1.8 'Open Sans',Helvetica,Arial,sans-serif; color: #666; -webkit-text-size-adjust: 100%; }
 body a { color: #e73420 }
 body a:hover { text-decoration: underline; color: #e73420; }
 img { max-width: 100%; height: auto; }
@@ -33,7 +36,7 @@ img { max-width: 100%; height: auto; }
 blockquote { position: relative; margin: 30px 20px; padding-left: 25px; font-style: italic; font-weight: bold; color: #000; quotes: "\201C""\201D""\2018""\2019"; }
 blockquote:before { color: #000; content: open-quote; font-size: 3em; line-height: .1em; position: absolute; top: 20px; left: -10px; }
 blockquote p:last-child { margin: 0 }
-pre { background: #fff url("images/pre-bg.png") repeat; margin: 40px 0px; padding: 25px 20px; line-height: 25px; border: 1px solid #ddd; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; }
+pre { background: #fff; margin: 40px 0px; padding: 25px 20px; line-height: 25px; border: 1px solid #ddd; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; }
 address { letter-spacing: 1px; margin: 20px 0; }
 #page-featured-img { position: relative; margin-bottom: 30px; }
 #page-featured-img img { display: block; width: 100%; }
@@ -91,19 +94,13 @@ p a,
 p a:visited { line-height: inherit }
 a:link { text-decoration: none }
 a:focus { outline: 0 }
-#page-heading { padding: 20px; background: #fff; margin-bottom: 30px; font-weight: 300; text-align: center; }
+#page-heading { padding: 20px; background: #fff; margin-bottom: 10px; font-weight: 300; text-align: center; }
 #page-heading h1,
 #page-heading h2 { margin: 0; font-size: 2.000em; line-height: 1.2em; font-weight: 300; }
-#pre-header { margin: 20px 0 15px }
 
 /* Header
 ----------------------------------------------------------- */
-#header-social { float: right }
-#header-social li { float: left; display: block; margin-left: 5px; margin-bottom: 5px; }
-#header-social a,
-#header-social img { display: block }
-#header-social img:hover { opacity: 0.6 }
-#header { position: relative; background: #111 url("images/vintage.png"); margin-bottom: 30px; }
+#header { position: relative; background: #111; margin-bottom: 10px; padding: 40px;}
 
 #logo { float: left; max-width: 50% }
 #logo h1 a, #text-logo a { display: block; float: left; font-weight: 700; padding: 0px; margin: 0px; text-decoration: none; color: #fff; padding: 40px; text-transform: uppercase; letter-spacing: 1px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
@@ -218,7 +215,7 @@ html[xmlns] .slides { display: block }
 .blog-entry img:hover { opacity: 0.9 }
 .blog-entry .entry-meta { margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; font-size: 0.857em; }
 .blog-entry .entry-meta strong { font-weight: 600; color: #000; margin-right: 2px; }
-.blog-entry.format-quote { display: block; background: #000 url("images/vintage.png"); color: #fff; font-size: 2.000em; font-weight: 300; }
+.blog-entry.format-quote { display: block; background: #000 color: #fff; font-size: 2.000em; font-weight: 300; }
 .blog-entry.format-quote .quote-content { position: relative; display: block; color: #fff; }
 .quote-author { margin-top: 20px; color: #aaa; font-style: italic; }
 .blog-entry-thumbnail img,
@@ -239,7 +236,7 @@ html[xmlns] .slides { display: block }
 #post-thumbnail img { display: block; width: 100%; }
 #single-post-audio-wrap { margin: 0 0 30px }
 #single-post-audio-wrap img { display: block; width: 100%; }
-.single-post .format-quote { display: block; background: #000 url("images/vintage.png"); color: #fff; font-size: 1.286em; font-weight: 300; margin: -30px -30px 30px; padding: 40px; }
+.single-post .format-quote { display: block; background: #000; color: #fff; font-size: 1.286em; font-weight: 300; margin: -30px -30px 30px; padding: 40px; }
 .single-post .format-quote .inner-post { position: relative; display: block; color: #fff; }
 #post-tags { margin-top: 30px }
 #post-tags a { background: #e73420; display: block; float: left; margin-right: 5px; margin-bottom: 5px; border-radius: 2px; color: #fff; font-size: 0.929em; padding: 2px 12px; }
@@ -313,7 +310,7 @@ html[xmlns] .slides { display: block }
 #wp-calendar tfoot td { padding-top: 5px }
 /* Footer
 ----------------------------------------------------------- */
-#footer { background: #111 url("images/vintage.png"); padding: 40px 40px 0; font-size: 0.929em; position: relative; }
+#footer { background: #111; padding: 40px 40px 0; font-size: 0.929em; position: relative;}
 #footer a { color: #aaa }
 #footer a:hover { color: #e73420; text-decoration: none; }
 .footer-box { float: left; width: 260px; margin-right: 50px; }
