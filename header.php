@@ -32,16 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <header id="header" class="u-grid clearfix">
             <div id="header-upper" class="u-flex u-ai-c u-jc-sb clearfix">
                 <div id="logo" class="u-flex u-ai-c u-block-100 clearfix">
-                    <?php
-                        // Show custom image logo if defined in the admin
-                        if (has_custom_logo()) {
-                            the_custom_logo();
-                        ?>
-                    <?php }
-                        // No custom img logo - show text logo
-                        else { ?>
-                        <h2><a href="<?php echo home_url(); ?>/" title="<?php echo get_bloginfo( 'name' ); ?>" rel="home"><?php echo get_bloginfo( 'name' ); ?></a></h2>
-                    <?php } ?>
+                    <?php universal_theme_custom_logo(); ?>
                 </div><!-- /logo -->
                 <?php get_search_form(); ?>
             </div>

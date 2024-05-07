@@ -102,15 +102,15 @@ a:focus { outline: 0 }
 /* Header
 ----------------------------------------------------------- */
 #header { position: relative; background: #111; padding: 10px;}
-#header-upper { padding: 5px 10px }
+#header-upper { padding: 5px 15px }
 #header-upper input { width: 500px; }
-#logo h1 a, #text-logo a { display: block; float: left; font-weight: 700; padding: 0px; margin: 0px; text-decoration: none; color: #fff; padding: 40px; text-transform: uppercase; letter-spacing: 1px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
-#logo img { width: 100%; max-height: 69px; }
+#logo a h1 { font-weight: 700; padding: 0px; margin: 0px; text-decoration: none; color: #fff; padding: 40px; text-transform: uppercase; letter-spacing: 1px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+#logo img { max-width: 100%; min-height: 69px; max-height: 138px;}
 #logo h1, #text-logo { font-size: 2.286em; line-height: 1em; margin: 0; }
 
 /* Navigation
 ----------------------------------------------------------- */
-#navigation { max-width: 100%; padding: 10px; border-top: 1px solid #555; font-size: 18px }
+#navigation { max-width: 100%; padding: 15px 10px 10px 10px; border-top: 1px solid #555; margin-top: 10px; font-size: 18px }
 #navigation ul { display: flex; justify-content: center; align-items: center; list-style: none; width: max-content; padding: 0 border-radius: 20px;}
 #navigation ul li { margin: 0 4px; border-radius: 2px; transition: all 250ms linear 0s }
 #navigation ul li { display: block; position: relative; min-width: 100px }

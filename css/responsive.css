@@ -1,11 +1,11 @@
 @media only screen and (max-width:959px) { 
-	#logo { display: flex; align-items: center; justify-content: center }
+	#logo { display: flex; align-items: center; justify-content: center; margin-bottom: 10px }
 	#logo h1 a,
 	#logo h2 a { display: block; float: none; }
     #navigation { display: none; }
-    #header-upper { flex-direction: column; }
+    #header-upper { flex-direction: column; padding: 0 }
     #header-upper #searchbar,
-    #header-upper input { width: 100% }
+    #header-upper input { width: 100%;}
     #mobile-navigation { display: block;}
 }
 @media only screen and (min-width:480px) and (max-width:959px) {
