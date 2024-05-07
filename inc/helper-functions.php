@@ -262,18 +262,16 @@ function universal_is_light_color($color) {
  * @return string The generated CSS string.
  */
 function universal_dynamic_css() {
-    // Get background color, accent color, accent color text color, and sticky post border color from theme customizer
+    // Get background color, accent color & accent color text color from theme customizer
     $universal_accent_color = get_theme_mod('universal_accent_color', '#0073e6');
     $universal_accent_color_alt = universal_hex2rgba($universal_accent_color, 0.75);
     $universal_accent_color_text_color = universal_is_light_color($universal_accent_color);
-    $universal_sticky_post_border_color = get_theme_mod('universal_sticky_post_border_color', '#e60000');
 
     // Generate dynamic CSS with root variables
     $css = ":root {
-        --universal-accent-color: $universal_accent_color;
-        --universal-accent-color-alt: $universal_accent_color_alt;
-        --universal-accent-color-text-color: $universal_accent_color_text_color;
-        --universal-stick-post-border-color: $universal_sticky_post_border_color;
+        --universal-accent-color: {$universal_accent_color};
+        --universal-accent-color-alt: {$universal_accent_color_alt};
+        --universal-accent-color-text-color: {$universal_accent_color_text_color};
     }";
 
     // Return generated CSS string
