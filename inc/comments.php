@@ -28,7 +28,7 @@ function wpex_comments_output($comment, $args, $depth) {
                         <span class="reply"><?php comment_reply_link(array_merge( $args, array('reply_text' => __('Reply','tetris') ,'depth' => $depth, 'max_depth' => $args['max_depth']))) ?></span>
                     </section><!-- /comment-meta -->
                     <section class="comment-content">
-    	                <div class="comment-text">
+    	                <div class="comment-text u-wrap-text">
     	                    <?php comment_text() ?>
     	                </div><!-- /comment-text -->
                     </section><!-- /comment-content -->

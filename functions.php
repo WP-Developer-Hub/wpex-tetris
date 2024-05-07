@@ -33,16 +33,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 $dir = get_template_directory();
 
 require_once $dir .'/inc/theme-customizer.php' ;
-require_once $dir .'/inc/classes/gallery-metabox/gallery-metabox.php' ;
+require_once $dir .'/inc/universal-meta-box.php' ;
 require_once $dir .'/inc/scripts.php' ;
 require_once $dir .'/inc/widget-areas.php' ;
+require_once $dir .'/inc/helper-functions.php' ;
 if ( is_admin() ) {
-	require_once $dir .'/inc/updates.php' ;
-	require_once $dir .'/inc/cmb2-init.php' ;
 	require_once $dir .'/inc/welcome.php' ;
-	require_once $dir .'/inc/dashboard-feed.php' ;
 } else {
 	require_once $dir .'/inc/comments.php' ;
+	require_once $dir .'/inc/universal-menu-walker-2-0.php' ;
 }
 
 /**

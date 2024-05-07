@@ -25,20 +25,24 @@ get_header(); ?>
 
 	<?php if ( ! is_home() ) : ?>
 		<header id="page-heading" class="clearfix">
-			<h1><?php if ( is_category() ) {
-					single_cat_title();
-				} else {
-					the_archive_title();
-			} ?></h1>
+            <?php if ( is_search() ) : ?>
+                <h1 id="archive-title"><?php _e( 'Search Results For', 'tetris' ); ?>: &quot;<?php the_search_query(); ?>&quot;</h1>
+            <?php else : ?>
+                <h1><?php if ( is_category() ) {
+                        single_cat_title();
+                    } else {
+                        the_archive_title();
+                } ?></h1>
+            <?php endif; ?>
 		</header>
 	<?php endif; ?>
 
 <?php if ( have_posts() ) : ?>
 
-	<div id="blog-wrap" class="blog-isotope clearfix">
+	<div id="blog-wrap" class="u-grid u-grid-col-auto u-grid-gap-10">
 		<?php while ( have_posts() ) : the_post();
-			get_template_part( 'content', get_post_format() );   
-		endwhile; ?>           
+			get_template_part( 'content' );
+		endwhile; ?>
 	</div><!-- #blog-wrap -->
 
 	<?php wpex_pagination(); ?>

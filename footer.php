@@ -20,14 +20,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div id="footer-wrap">
 		<footer id="footer">
-			<div id="footer-widgets" class="clearfix">
-				<div class="footer-box">
+			<div id="footer-widgets" class="u-flex u-flex-wrap u-grid-gap" style="--u-post-item-min-width: 300px; --grid-gap: 40px;">
+				<div class="footer-box u-col-1">
 					<?php dynamic_sidebar('footer-one'); ?>
 				</div><!-- /footer-box -->
-				<div class="footer-box">
+				<div class="footer-box u-col-2">
 					<?php dynamic_sidebar('footer-two'); ?>
 				</div><!-- /footer-box -->
-				<div class="footer-box remove-margin">
+				<div class="footer-box u-col-3">
 					<?php dynamic_sidebar('footer-three'); ?>
 				</div><!-- /footer-box -->
 			</div><!-- /footer-widgets -->
@@ -35,12 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div><!-- /footer-wrap -->
 
 	<div id="copyright">
-		<?php
-		if ( $copy = get_theme_mod( 'wpex_copyright' ) ) {
-			echo wp_kses_post( $copy );
-		} else {
-			printf( esc_html__( 'Theme by %1$s Powered by %2$s', 'tetris' ), '<a href="http://www.wpexplorer.com/" target="_blank" title="WPExplorer">WPExplorer</a>', '<a href="http://wordpress.org/" target="_blank" title="WordPress.org">WordPress</a>' );
-		} ?>
+		<?php echo universal_get_copyright_info(); ?>
 	</div>
 
 </div><!-- /wrap -->

@@ -1,0 +1,42 @@
+.wp-playlist {
+  margin: 0;
+  border-radius: 4px;
+}
+
+/* Track progress bar background (amount of track fully loaded)
+  We prefer to style these with the main accent color of our theme */
+.universal-mejs-container .mejs-controls .mejs-time-rail .mejs-time-loaded {
+  background-color: var(--universal-accent-color);
+}
+
+/* Current track progress and active audio volume level bar */
+.universal-mejs-container .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current,
+.universal-mejs-container .mejs-controls .mejs-time-rail .mejs-time-current {
+  background: var(--universal-accent-color);
+}
+
+/* Playlist items */
+.wp-playlist-tracks .wp-playlist-item {
+  padding: 10px;
+  display: flex;
+  background: #212121;
+  vertical-align: bottom;
+  border-bottom-color: #555;
+}
+
+.wp-playlist-tracks .wp-playlist-item:hover {
+  background: var(--universal-accent-color);
+}
+
+.wp-playlist-tracks .wp-playlist-item:hover * {
+  color: var(--universal-accent-color-text-color);
+}
+
+.wp-playlist-tracks .wp-playlist-item-length {
+  top: unset;
+}
+
+.wp-playlist-tracks .wp-playlist-playing {
+  font-weight: normal;
+  border-bottom-color: var(--universal-accent-color) !important;
+}

@@ -21,16 +21,24 @@ if ( is_singular() ) { ?>
 <?php } else { ?>
 
 	<article <?php post_class('blog-entry clearfix'); ?>>
-		<?php if ( has_post_thumbnail() ) : ?>
-			<div class="blog-entry-thumbnail">
-				<a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>"><?php the_post_thumbnail( 'wpex-entry' ); ?></a>
-			</div><!-- /blog-entry-thumbnail -->
-		<?php endif; ?>
-		<div class="entry-text clearfix">
-			<header>
-				<h2><a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>"><?php the_title(); ?></a></h2>
-			</header>
-			<?php wpex_excerpt(); ?>
+            <?php if (universal_is_displaying_media_gl()) : ?>
+                <?php get_template_part('formats/format', get_post_format()); ?>
+            <?php else: ?>
+                <?php get_template_part('formats/format'); ?>
+            <?php endif; ?>
+            <div class="entry-text clearfix">
+                <header class="u-wrap-text">
+                    <h2>
+                    <?php if (universal_is_displaying_media_gl()) : ?>
+                        <?php the_title(); ?>
+                    <?php else: ?>
+                        <a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>"><?php the_title(); ?></a>
+                    <?php endif; ?>
+                    </h2>
+                </header>
+            <div class="u-wrap-text u-trim" style="--u-line-clamp: 6">
+                <?php wpex_excerpt(); ?>
+            </div>
 			<ul class="entry-meta">
 				<li><strong>Posted on:</strong> <?php echo get_the_date(); ?></li>
 				<li><strong>By:</strong> <?php the_author_posts_link(); ?></li>   
