@@ -1,19 +1,21 @@
 @media only screen and (max-width:959px) { 
-	#navigation ul { display: none }
-	#toplink { display: none !important }
-	#logo { text-align: center; float: none; }
+	#logo { text-align: center; float: none; margin: auto;}
 	#logo img { display: inline-block }
 	#logo h1 a,
 	#logo h2 a { display: block; float: none; }
-	#navigation { display: none; }
-	.slicknav_menu { display: block; }
+    #navigation { display: none; }
+    #header-upper { flex-direction: column; }
+    #header-upper #searchbar,
+    #header-upper input { width: 100% }
+    #mobile-navigation { display: block;}
 }
-@media only screen and (min-width:768px) and (max-width:959px) { 
-	#wrap { width: 690px }
-	#post { width: 380px }
+@media only screen and (min-width:480px) and (max-width:959px) {
+    #wrap { width: 100% }
+}
+@media only screen and (min-width:768px) and (max-width:959px) {
+    #post { width: calc(100% - 250px) }
 	#sidebar { width: 190px }
 	.sidebar-bg { background-image: url("../images/sidebar-bg-tablet.png") }
-	.blog-isotope .blog-entry { width: 330px }
 	#author-bio { width: 300px }
 	.single-post .meta li { display: block }
 	.children li.depth-2,
@@ -26,22 +28,17 @@
 	.children li.depth-9,
 	.children li.depth-10 { margin: 0 }
 	.search-entry-text { width: 240px }
-	.footer-box { float: left; width: 190px; margin-right: 20px; }
 }
 @media only screen and (max-width:767px) { 
 	#header-social { display: none }
-	#wrap { width: 280px }
-	#post { width: 100% }
-	#sidebar { width: 100% }
+	#post { float: none; width: 100% }
+    #sidebar { float: none; width: 100% }
+    #footer-widgets { display: block }
 	.footer-box { width: 100% }
 	.entry blockquote { margin-left: 0; margin-right: 0; }
 	.sidebar-bg { background-image: none; margin-bottom: 0; }
 	#sidebar { width: 100%; background: #f9f9f9; margin: 30px -30px -30px; padding: 30px; border-top: 1px solid #ddd; }
 	#error-page-text { font-size: 14px }
-	.search-entry-image { float: none; margin-bottom: 25px; }
-	.search-entry-text { float: none; width: 100%; }
-	.blog-isotope { margin-right: 0 }
-	.blog-isotope .blog-entry { width: 280px; margin-right: 0; }
 	.single-post .meta li { display: block }
 	#author-image { margin-bottom: 20px }
 	#author-bio { width: 100% }
@@ -80,6 +77,5 @@
 	.symple-box.right { float: none; width: 100% !important; }
 }
 @media only screen and (min-width:480px) and (max-width:767px) { 
-	#wrap,
-	.blog-isotope .blog-entry { width: 370px }
+
 }

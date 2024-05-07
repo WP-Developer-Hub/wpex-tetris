@@ -1,0 +1,142 @@
+/*--------------------------*
+/*  jetpack Styles
+/*--------------------------*/
+
+.jetpack_widget_social_icons ul.size-medium a {
+    display: inline-bock !important;
+    height: 40px !important;
+    width: 40px !important;
+    background: var(--universal-accent-color); !important;
+    color: var(--universal-accent-color-text-color) !important;
+    border-radius:2px !important;
+    padding: 5px !important;
+    margin-left: 2px !important;
+}
+.jetpack_widget_social_icons ul.size-medium a:hover {
+    background: #111 !important;
+}
+
+.jetpack-slideshow-window {
+    border-radius: 0px !important;
+    border: none !important;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.jetpack-slideshow-window .jetpack-slideshow-controls a,
+.jetpack-slideshow-window .jetpack-slideshow-controls a:hover {
+    transform: scale(1.5);
+    margin: 0 30px !important;
+    transition: all 200ms linear 0s;
+}
+
+/*--------------------------*
+/*  CookieYes Styles
+/*--------------------------*/
+
+#cookie-law-info-again {box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 0px 0px !important}
+.wt-cli-ccpa-checkbox {display: inline-flex;}
+
+/*--------------------------*
+/*  Tinymce Styles
+/*--------------------------*/
+
+#qt_comment_toolbar {
+    margin-bottom: -25px !important;
+    padding-bottom: 0px !important;
+    background: #111 !important;
+    -moz-box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    border-bottom: 1px solid #555 !important;
+    position: relative !important;
+    z-index: 999999 !important;
+    border-radius: 0px !important;
+    bottom: -2px !important;
+    min-height:29px;
+}
+#qt_comment_toolbar input[type="button"] {
+    background:none transparent;
+    color: #aaa;
+    border: 0px none;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+#qt_comment_toolbar input[type="button"]:hover, #qt_comment_toolbar input[type="button"]:active {
+    background: none transparent;
+    border: 0px none;
+    color: var(--universal-accent-color);
+}
+
+#wp-comment-editor-container {
+    margin-bottom: 10px;
+}
+#wp-comment-editor-container .quicktags-toolbar {
+    display: flex;
+    background: #111;
+    border:none;
+    border-radius:2px 2px 0px 0px;
+}
+#qt_comment_toolbar input[type="button"] {
+    background:transparent;
+    font-size: 18px;
+    color: #aaa;
+    border: none;
+    cursor: pointer;
+    appearance: none;
+}
+#qt_comment_toolbar input[type="button"]:hover ,#qt_comment_toolbar input[type="button"]:active {
+    background: transparent;
+    color: var(--universal-accent-color);
+}
+
+.wp-editor-area {appearance: none !important; -moz-box-sizing: border-box !important; -webkit-box-sizing: border-box !important; box-sizing: border-box !important; max-width: 100% !important; padding: 10px !important; border: 1px solid #eee !important; border-radius: 2px !important; background-color: #fff !important; transition: border-color 0.3s ease-in-out !important}
+.wp-editor-area:focus {border-color: var(--universal-accent-color) !important; outline: none !important}
+
+/*--------------------------*
+/*  Github Widget Styles
+/*--------------------------*/
+
+.github-widget .github-widget-header,
+.github-widget input[type="checkbox"] {
+    display:none !important;
+    visibility:collapse !important;
+}
+.dark {
+    background: #111 !important;
+    color: #FFF !important;
+    padding: 10px;
+    border-radius: 0px !important;
+}
+.dark * {
+    color: #FFF !important;
+    border-radius: 0px !important;
+}
+
+/*--------------------------*
+/* Simple Basic Author Box
+/*--------------------------*/
+
+/*.page .sb-author-box,*/
+/*#footer .sb-author-box,*/
+/*#secondary .sb-author-box {padding: 0; margin: 0;}*/
+
+/*--------------------------*
+/* Universal Meta oEmbed
+/*--------------------------*/
+
+.instagram-media,
+.instagram-media-rendered {
+    background: transparent !important;
+    border-radius: 0px !important;
+    border: none !important;
+    box-shadow: none !important;
+    display: block !important;
+    margin: 0px !important;
+    min-width: auto !important;
+    min-height: 710px !important;
+    padding: 0px !important;
+}

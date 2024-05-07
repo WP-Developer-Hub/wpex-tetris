@@ -28,8 +28,7 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && !pi
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 			<nav role="navigation" id="comment-nav-above" class="site-navigation comment-navigation">
 				<h1 class="assistive-text"><?php echo __('Comment Navigation','tetris'); ?></h1>
-				<div class="nav-previous"><?php previous_comments_link( '&larr;'. __('Older Comments','tetris') ); ?></div>
-				<div class="nav-next"><?php next_comments_link(__('Newer Comments','tetris') .'&rarr;'); ?></div>
+                <?php echo universal_custom_paginate_comments_links(); ?>
 			</nav><!-- /coment-nav-above -->
 			<?php endif; ?>
 			<ol class="commentlist">
@@ -38,8 +37,7 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && !pi
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 			<nav role="navigation" id="comment-nav-below" class="site-navigation comment-navigation">
 				<h1 class="assistive-text"><?php echo __('Comment Navigation','tetris'); ?></h1>
-				<div class="nav-previous"><?php previous_comments_link( '&larr;'. __('Older Comments','tetris') ); ?></div>
-				<div class="nav-next"><?php next_comments_link(__('Newer Comments','tetris') .'&rarr;'); ?></div>
+                <?php echo universal_custom_paginate_comments_links(); ?>
 			</nav><!-- /coment-nav-below -->
 			<?php endif; ?>
 		<?php endif; ?>
