@@ -495,7 +495,8 @@ input[type="search"]{
   background-repeat: no-repeat;
   background-size: 1.6em 1.2em;
   background-position: right center;
-  padding-right: 1.2em;
+  background-position: calc(100% - 0.5em) center;
+  padding-right: 2.5em;
 }
 
 select:not([multiple]) {
@@ -503,8 +504,8 @@ select:not([multiple]) {
   background-image: var(--co-select-arrow);
   background-repeat: no-repeat;
   background-size: 1.5EM 1EM;
-  background-position: right center;
-  padding-right: 0em;
+  background-position: calc(100% - 0.25em) center;
+  padding-right: 0.5em;
 }
 
 fieldset {width: 100%; max-width: var(--width-inputs);}

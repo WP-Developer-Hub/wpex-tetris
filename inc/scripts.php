@@ -61,3 +61,23 @@ if ( ! function_exists( 'wp_load_player_scripts' ) ) {
     }
 }
 add_action('wp_footer', 'wp_load_player_scripts');
+
+function universal_mejs_add_container_class() {
+    if ( ! wp_script_is( 'mediaelement', 'done' ) ) {
+        return;
+    }
+    ?>
+    <script>
+    (function() {
+        var settings = window._wpmejsSettings || {};
+        settings.features = settings.features || mejs.MepDefaults.features;
+        settings.features.push( 'exampleclass' );
+        MediaElementPlayer.prototype.buildexampleclass = function( player ) {
+            player.container.addClass( 'universal-mejs-container' );
+        };
+    })();
+    </script>
+    <?php
+}
+
+add_action('wp_print_footer_scripts', 'universal_mejs_add_container_class');

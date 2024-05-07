@@ -139,10 +139,13 @@ a:focus { outline: 0 }
 #mobile-navigation ul { margin: 0; padding: 0; list-style: none }
 #mobile-navigation li { font-size: 24px; border-bottom: 1px solid #555 }
 #mobile-navigation .menu-toggle summary { border-bottom: 1px solid #555 }
-#mobile-navigation li a { display: flex; margin: 0; padding: 25px; color: #fff }
+#mobile-navigation li a { display: flex; margin: 0; padding: 25px; color: #fff; text-decoration: none}
 #mobile-navigation details details { display: flex; background-color: #212121 }
 #mobile-navigation details[open] > summary .toggle-icon {transform: rotate(90deg); }
-#mobile-navigation .current-menu-item { border-bottom: 5px solid  color: var(--universal-accent-color); }
+#mobile-navigation li:not(.current-menu-item):hover,
+#mobile-navigation li:not(.current-menu-item):active,
+#mobile-navigation .current-menu-item { border-bottom: 1px solid var(--universal-accent-color); }
+#mobile-navigation .current-menu-item { border-bottom-width: 5px; }
 #mobile-navigation summary a { max-width: 100%; text-decoration: none; padding: 5px; color: #ffffff }
 
 /* Homepage
@@ -206,14 +209,26 @@ a:focus { outline: 0 }
 .page-pagination a:hover,
 .page-pagination span.current { color: var(--universal-accent-color-text-color); background: var(--universal-accent-color); text-decoration: none; }
 
+/* Pages & sidebar widget-title
+----------------------------------------------------------- */
+.so-panel .widget-title { margin-top: 20px;}
+.so-panel:first-child .widget-title { margin-top: 0; }
+h1.widget-title,
+h2.widget-title,
+h3.widget-title,
+h4.widget-title,
+h5.widget-title {font-weight: bold;}
+.widget-title { gap: 0px; display: flex; font-size: 18px; margin-bottom: 20px; flex-direction: row; align-items: center; justify-content: flex-start; }
+.widget-title::after { content: ""; height: 1px; flex-grow: 1; margin-top: 5px; margin-left: 5px; background: #C9C9C9; }
+.widget-title span { padding-right: 5px; }
+
 /* Sidebar
 ----------------------------------------------------------- */
 .sidebar-bg { background: #fff url(images/sidebar-bg.png) right repeat-y }
-#sidebar .widget-title { font-weight: bold; background: url(images/heading-bg.png) center repeat-x; margin-bottom: 20px; }
-#sidebar .widget-title span { background: #f9f9f9; padding-right: 15px; }
-.sidebar-box { margin-bottom: 30px }
+.sidebar-box { margin-bottom: 30px; font-size: 14px;}
 .sidebar-box .heading { margin-top: 0 }
 #sidebar a { color: #666 }
+#sidebar .wp-calendar-table { background: #fff }
 #sidebar a:hover { color: var(--universal-accent-color); text-decoration: none; }
 
 /* Widgets
@@ -233,48 +248,46 @@ a:focus { outline: 0 }
 #footer .widget_pages li,
 #footer .widget_links li { margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #333; }
 #wp-calendar { font-size: 0.786em }
-#wp-calendar caption { background: #292b2f; color: #fff; padding: 10px; text-align: center; font-weight: bold; }
+.wp-calendar-nav-prev,
+#wp-calendar caption { background: #111214; color: #fff; padding: 10px; text-align: center; font-weight: bold; }
+.wp-calendar-nav-prev {font-weight: unset; display: block;}
+.wp-calendar-nav-prev a {display: block; max-width: 50px; border-radius: 2px; background: var(--universal-accent-color); color: var(--universal-accent-color-text-color) !important }
+.wp-calendar-nav-prev a:hover {background: #000; color: #fff !important }
 #wp-calendar,
 #footer #wp-calendar tr { width: 100% }
-#wp-calendar th { text-align: center; border: 1px solid #ddd; border-top: none; padding: 5px 0; background: #f5f5f5; }
-#wp-calendar tbody td { padding: 4px 0; text-align: center; border: 1px solid #eee; }
-#wp-calendar tbody td:hover { background: #f5f5f5; color: #000; }
+#wp-calendar th { text-align: center; border: 1px solid #ccc; border-top: none; padding: 5px 0; background: #f5f5f5; }
+#wp-calendar tbody td { padding: 4px 0; text-align: center; border: 1px solid #ccc; background: #f0f0f0; color: #000; }
 #wp-calendar tbody a { display: block }
-#footer caption { background: #111214 }
+#wp-calendar tbody #today a,
+#wp-calendar tbody #today { background: var(--universal-accent-color) !important; color: var(--universal-accent-color-text-color) !important; }
+
+#footer .wp-calendar-nav-prev,
+#footer #wp-calendar caption { background: #292b2f }
 #footer #wp-calendar th,
 #footer #wp-calendar tbody td { border-color: #212326 }
 #footer #wp-calendar th { background: #212326 }
-#footer #wp-calendar td:hover { background: #292b2f; color: #fff; }
+#footer #wp-calendar tbody td { background: #34363a; color: #fff; }
+#footer #wp-calendar tbody td:not(.pad):hover { background: #292b2f; }
 #footer #wp-calendar caption { color: #fff }
-#wp-calendar tbody td { padding: 4px 0; text-align: center; border: 1px solid #eee; }
-#wp-calendar tbody td:hover { background: #fff; color: #000; }
+#wp-calendar tbody td { padding: 4px 0; text-align: center; border: 1px solid #ccc; }
+#wp-calendar tbody td:not(.pad):hover { background: #f5f5f5; }
 #wp-calendar tfoot td { padding-top: 5px }
 /* Footer
 ----------------------------------------------------------- */
 #footer { background: #111; padding: 40px 40px 0; font-size: 0.929em; position: relative; }
 #footer a { color: #aaa }
 #footer a:hover { color: var(--universal-accent-color); text-decoration: none; }
-.footer-widget { margin-bottom: 40px margin: auto;}
+.footer-widget { margin: auto; margin-bottom: 40px; font-size: 14px;}
 #footer ul { margin: 0 }
-.footer-widget h4 { color: #fff; font-size: 1.143em; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 10px; }
+.footer-widget .widget-title { color: #ccc; font-size: 1.143em; margin-bottom: 10px; }
+.footer-widget .widget-title::after { background: #9C9C9C; }
 #copyright { margin: 15px 0; text-align: center; font-size: 1.2em; }
-
-/* Search Entry
------------------------------------------------------------ */
-.search-entry { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid #eee; }
-.search-entry h2 { margin: -8px 0 5px; font-size: 1.143em; }
-.search-entry-image { float: left }
-.search-entry-image a { display: inline-block; border: 5px solid #eee; }
-.search-entry-image a:hover { border-color: var(--universal-accent-color) }
-.search-entry-image img { display: block }
-.search-entry-text { float: right; width: 450px; }
-.search-entry-text p:last-child { margin: 0 }
 
 /* Comments
 ----------------------------------------------------------- */
 #commentsbox input[type="submit"]:active { top: 1px }
 #commentsbox { padding-top: 40px }
-h3.comments-title { font-size: 1.143em; background: url("images/heading-bg.png") center repeat-x; margin-bottom: 20px; }
+h3.comments-title { font-size: 1.143em; }
 h3.comments-title span { background: #fff; padding-right: 15px; }
 .comment-details ul { margin: 0 }
 .comment-details ul li { border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 8px; padding-top: 8px; }
@@ -316,7 +329,7 @@ h3.comments-title span { background: #fff; padding-right: 15px; }
 #comments-logged-in { margin-bottom: 30px; margin-top: 10px; font-size: 0.929em; }
 #log-out { float: right; margin-top: -56px; }
 .form-submit { margin-bottom: 0; height: 55px; }
-h3#reply-title { font-size: 1em; background: url("images/heading-bg.png") center repeat-x; margin-bottom: 20px; }
+h3#reply-title { font-size: 1em; }
 h3#reply-title span { background: #fff; padding-right: 15px; }
 .children #commentform textarea { width: 95.6% }
 #commentform label { font-size: 13px; font-weight: normal; }
