@@ -280,4 +280,54 @@ function universal_dynamic_css() {
     return $css;
 }
 
+function universal_get_title_tagline() {
+    // Get the theme modification for title and tagline visibility
+    $visibility = get_theme_mod('universal_title_tagline_visibility', 'title_only');
+
+    // Define default output for title and tagline
+    $title = get_bloginfo('name');
+    $tagline = get_bloginfo('description');
+
+    // Define HTML start and end tags for the title and tagline
+    $title_start_tag = '<h1 class="u-fs-50">';
+    $tagline_start_tag = '<h1 class="u-fs-40">';
+    $end_tag = '</h1>';
+
+    // Initialize title and tagline output variables
+    $tt_output = '';
+
+    // Use a switch statement to adjust output based on visibility setting
+    switch ($visibility) {
+        case 'none':
+            return '';
+            break;
+        case 'tagline_only':
+            // Display tagline only
+            return $tagline_start_tag . $tagline . $end_tag;
+            break;
+        default:
+            // Display title only (default behavior)
+            return $title_start_tag . $title . $end_tag;
+            break;
+    }
+
+    // Return the combined HTML output
+    return $tt_output;
+}
+
+/**
+ * Display the custom logo of the theme.
+ */
+function universal_theme_custom_logo() {
+    $custom_logo_id = get_theme_mod('custom_logo');
+    $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
+
+    if (has_custom_logo()) {
+        echo '<a href="' . esc_url(home_url('/')) . '" rel="home" class="u-flex u-flex-row u-ai-c"><img src="' . esc_url($logo[0]) . '" alt="' . get_bloginfo('name') . '" title="' . get_bloginfo('name') . '">';
+        echo universal_get_title_tagline() . '</a>';
+    } else {
+        echo '<a href="' . esc_url(home_url('/')) . '">' . universal_get_title_tagline() . '</a>';
+    }
+}
+
 ?>

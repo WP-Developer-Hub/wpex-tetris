@@ -25,6 +25,24 @@ function universal_customizer_settings($wp_customize) {
         'mode' => 'full',
     )));
 
+    // Title & Tagline Visibility
+    $wp_customize->add_setting('universal_title_tagline_visibility', array(
+        'default' => "title_only",
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field'
+    ) );
+    $wp_customize->add_control('universal_title_tagline_visibility', array(
+        'type' => 'select',
+        'label' => __('Site Title & Tagline Visibility', 'universal-theme' ),
+        'description' => __('Choose whether the site title and tagline should be displayed.', 'universal-theme'),
+        'section' => 'title_tagline',
+        'choices' => array(
+            'none' => __('None', 'universal-theme'),
+            'title_only' => __('Site Title Only', 'universal-theme'),
+            'tagline_only' => __('Tagline Only', 'universal-theme'),
+        ),
+     ));
+
     // Theme Settings Panel
     $wp_customize->add_panel('universal_theme_settings_panel', array(
         'title' => __('Theme Settings', 'universal-theme'),
@@ -35,7 +53,7 @@ function universal_customizer_settings($wp_customize) {
     // General Settings Section
     $wp_customize->add_section('universal_general_settings_section', array(
         'title' => __('General Settings', 'universal-theme'),
-        'description' => __('This section contains general settings for the theme.', 'universal-theme'), // Added description
+        'description' => __('This section contains general settings for the theme.', 'universal-theme'),
         'priority' => 30,
         'panel' => 'universal_theme_settings_panel',
     ));
