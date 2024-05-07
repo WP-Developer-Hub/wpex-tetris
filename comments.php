@@ -24,7 +24,7 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && !pi
 	<div id="comments" class="comments-area clearfix">
 		<?php // You can start editing here -- including this comment! ?>
 		<?php if ( have_comments() ) : ?>
-			<h3 class="comments-title"><span><?php comments_popup_link(__('Leave a comment', 'tetris'), __('1 Comment', 'tetris'), __('% Comments', 'tetris'), 'comments-link', __('Comments closed', 'tetris')); ?></span></h3>
+			<h3 class="comments-title widget-title"><span><?php comments_popup_link(__('Leave a comment', 'tetris'), __('1 Comment', 'tetris'), __('% Comments', 'tetris'), 'comments-link', __('Comments closed', 'tetris')); ?></span></h3>
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 			<nav role="navigation" id="comment-nav-above" class="site-navigation comment-navigation">
 				<h1 class="assistive-text"><?php echo __('Comment Navigation','tetris'); ?></h1>
@@ -45,7 +45,7 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && !pi
 			<?php /* <p class="nocomments"><?php _e( 'Comments are closed.', 'tetris' ); ?></p> */ ?>
 		<?php endif; ?>
 		<?php comment_form( array(
-			'title_reply' => '<span>'. __( 'Leave a Reply', 'tetris' ) .'</span>'
+			'title_reply' => '<span class="widget-title">'. __( 'Leave a Reply', 'tetris' ) .'</span>'
 		) ); ?>
 	</div><!-- #comments -->
 </div><!-- #commentsbox -->

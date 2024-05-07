@@ -37,7 +37,7 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
 			// Show author bio on all post formats except quotes
 			if ( get_post_format() !== 'quote' ) : ?>
 				<div id="single-author" >
-					<h4 class="heading"><span><?php the_author_posts_link(); ?></span></h4>
+					<h4 class="heading widget-title"><span><?php the_author_posts_link(); ?></span></h4>
                     <div class="u-flex u-flex-gap-10">
                         <div id="author-image">
                            <a href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' )); ?>"><?php echo get_avatar( get_the_author_meta('user_email'), '150', '' ); ?></a>

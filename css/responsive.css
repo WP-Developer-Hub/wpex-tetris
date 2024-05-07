@@ -1,6 +1,5 @@
 @media only screen and (max-width:959px) { 
-	#logo { text-align: center; float: none; margin: auto;}
-	#logo img { display: inline-block }
+	#logo { display: flex; align-items: center; justify-content: center }
 	#logo h1 a,
 	#logo h2 a { display: block; float: none; }
     #navigation { display: none; }
@@ -30,7 +29,6 @@
 	.search-entry-text { width: 240px }
 }
 @media only screen and (max-width:767px) { 
-	#header-social { display: none }
 	#post { float: none; width: 100% }
     #sidebar { float: none; width: 100% }
     #footer-widgets { display: block }

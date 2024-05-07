@@ -40,14 +40,14 @@ function universal_customizer_settings($wp_customize) {
         'panel' => 'universal_theme_settings_panel',
     ));
 
-    // Display Media Post Grid/List
+    // Display Media Post Grid
     $wp_customize->add_setting('universal_disable_media_on_lg', array(
         'default' => false,
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_key',
     ));
     $wp_customize->add_control('universal_disable_media_on_lg', array(
-        'label' => __('Display Media Post Grid/List', 'universal-theme'),
+        'label' => __('Display Media Post Grid', 'universal-theme'),
         'description' => __('Enable this option to display the media posts in the grid or list layout based on the selected format.', 'universal-theme'),
         'section' => 'universal_general_settings_section',
         'type' => 'checkbox',
@@ -70,19 +70,6 @@ function universal_customizer_settings($wp_customize) {
     $wp_customize->add_control('universal_show_post_thumbnail', array(
         'label' => __('Show Post Thumbnail', 'universal-theme'),
         'description'        => __('Enable this option to display the post thumbnail on single post pages.', 'universal-theme'),
-        'section' => 'universal_post_page_settings_section',
-        'type' => 'checkbox',
-    ));
-
-    // Show Author Box
-    $wp_customize->add_setting('universal_show_author_box', array(
-        'default' => true,
-        'transport' => 'refresh',
-        'sanitize_callback' => 'sanitize_text_field'
-    ));
-    $wp_customize->add_control('universal_show_author_box', array(
-        'label' => __('Show Author Box', 'universal-theme'),
-        'description' => __('Enable this option to display the author box below single posts.', 'universal-theme'),
         'section' => 'universal_post_page_settings_section',
         'type' => 'checkbox',
     ));
@@ -117,7 +104,7 @@ function universal_customizer_settings($wp_customize) {
     $wp_customize->add_control('universal_copyright_layout', array(
         'label' => __('Copyright Message', 'universal-theme'),
         'description' => __('You can use placeholders like [site_name] [started_date], [current_date], [copyright_symbol], and [dash] to dynamically layout the copyright. P.S placeholders like [started_date], [current_date] will only show the year.', 'universal-theme'),
-        'section' => 'universal_footer_settings_section', // Assuming this is the correct section
+        'section' => 'universal_footer_settings_section',
         'type' => 'textarea',
     ));
 
