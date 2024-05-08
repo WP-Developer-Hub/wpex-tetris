@@ -13,7 +13,8 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Tags: custom-background, threaded-comments, custom-menu, featured-images, full-width-template, theme-options, translation-ready
 Text Domain: wpex
 ----------------------------------------------------------- */
-:root {--u-post-item-min-width: 300px;}
+:root {--u-post-item-min-width: 300px; --u-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2)}
+
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}table{border-collapse:collapse;border-spacing:0;}
 *,
 *::after,
@@ -26,7 +27,7 @@ body a { color: var(--universal-accent-color) }
 body a:hover { text-decoration: underline; color: var(--universal-accent-color); }
 img { max-width: 100%; height: auto; }
 #wrap { width: 100%; margin: 0 auto; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
-.container { background: #fff; padding: 30px; margin-top: 10px; }
+.container { background: #fff; padding: 30px; margin-top: 10px; margin-bottom: 10px; box-shadow: var(--u-box-shadow)}
 #post { float: left; width: calc(100% - 300px); }
 #sidebar { float: right; width: 250px; font-size: 0.929em; }
 
@@ -96,13 +97,13 @@ p a,
 p a:visited { line-height: inherit }
 a:link { text-decoration: none }
 a:focus { outline: 0 }
-#page-heading { padding: 20px; background: #fff; margin-bottom: 10px; font-weight: 300; text-align: center; margin-top: 10px;}
+#page-heading { padding: 20px; background: #fff; margin-bottom: 10px; font-weight: 300; text-align: center; margin-top: 10px; box-shadow: var(--u-box-shadow)}
 #page-heading h1,
 #page-heading h2 { margin: 0; font-size: 2.000em; line-height: 1.2em; font-weight: 300; }
 
 /* Header
 ----------------------------------------------------------- */
-#header { position: relative; background: #111; padding: 10px;}
+#header { position: relative; background: #111; padding: 10px; box-shadow: var(--u-box-shadow)}
 #header-upper { padding: 5px 15px }
 #header-upper input { width: 500px; }
 #logo a h1 { font-weight: 700; padding: 0px; margin: 0px; text-decoration: none; color: #fff; padding: 40px; text-transform: uppercase; letter-spacing: 1px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
@@ -149,13 +150,9 @@ a:focus { outline: 0 }
 #mobile-navigation .current-menu-item { border-bottom-width: 5px; }
 #mobile-navigation summary a { max-width: 100%; text-decoration: none; padding: 5px; color: #ffffff }
 
-/* Homepage
------------------------------------------------------------ */
-#homepage-title { padding: 20px; background: #fff; margin-bottom: 10px; font-weight: 300; text-align: center; font-size: 1.857em; }
-
 /* Entries
 ----------------------------------------------------------- */
-.blog-entry { background: #fff; font-size: 1em; }
+.blog-entry { background: #fff; font-size: 1em; box-shadow: var(--u-box-shadow)}
 .blog-entry .entry-text { padding: 20px; font-size: 13px; }
 .blog-entry p { font-size: 1em }
 .blog-entry p:last-child { margin: 0 }
@@ -276,7 +273,7 @@ h5.widget-title {font-weight: bold;}
 #wp-calendar tfoot td { padding-top: 5px }
 /* Footer
 ----------------------------------------------------------- */
-#footer { background: #111; padding: 40px 40px 0; font-size: 0.929em; position: relative; }
+#footer { background: #111; padding: 40px 40px 0; font-size: 0.929em; position: relative; box-shadow: var(--u-box-shadow) }
 #footer a { color: #aaa }
 #footer a:hover { color: var(--universal-accent-color); text-decoration: none; }
 .footer-widget { margin: auto; margin-bottom: 40px; font-size: 14px;}
