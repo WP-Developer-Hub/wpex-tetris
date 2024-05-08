@@ -20,6 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <style>
         <?php echo universal_dynamic_css();?>
     </style>
+    <meta name='theme-color' content='#212121' />
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
