@@ -29,6 +29,12 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                 </ul><!-- .meta -->
             </header><!-- #post-header -->
 
+            <article <?php post_class('entry clearfix'); ?>>
+                <div class="inner-post">
+                    <?php the_content(); // This is your main post content output ?>
+                </div><!-- .inner-post -->
+            </article><!-- .entry -->
+
 			<?php wp_link_pages();?>
 
 			<?php the_tags( '<div id="post-tags" class="u-flex u-flex-wrap u-flex-gap-5">', '', '</div>' ); ?>
