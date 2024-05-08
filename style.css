@@ -6,6 +6,8 @@ Author: WPExplorer
 Author URI: http://www.wpexplorer.com/
 Designed & Developed by WPExplorer
 Theme URI: http://www.wpexplorer.com/tetris-wordpress-theme/
+Tested up to: 6.X
+Requires PHP: 7.x
 License: GNU General Public License version 3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Tags: custom-background, threaded-comments, custom-menu, featured-images, full-width-template, theme-options, translation-ready
@@ -24,7 +26,6 @@ body a { color: var(--universal-accent-color) }
 body a:hover { text-decoration: underline; color: var(--universal-accent-color); }
 img { max-width: 100%; height: auto; }
 #wrap { width: 100%; margin: 0 auto; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
-#main-content { margin: 0 0 10px; }
 .container { background: #fff; padding: 30px; margin-top: 10px; }
 #post { float: left; width: calc(100% - 300px); }
 #sidebar { float: right; width: 250px; font-size: 0.929em; }
@@ -200,11 +201,11 @@ a:focus { outline: 0 }
 
 /* Pagination
 ----------------------------------------------------------- */
-.page-pagination { clear: both; margin: 10px 0; overflow: hidden; }
+.page-pagination { clear: both; margin: 10px 0 5px 0; overflow: hidden; }
 .page-of-page span.inner { padding: 0 10px }
 .page-of-page,
 .page-pagination a,
-.page-pagination span.outer { font-size: 0.857em; font-weight: normal; line-height: 50px; height: 50px; text-align: center; margin-right: 5px; margin-bottom: 5px; display: block; float: left; color: #000; background: #f0f0f0; -moz-box-sizing: border-box; border-radius: 2px; }
+.page-pagination span.outer { font-size: 0.857em; font-weight: normal; line-height: 50px; height: 50px; text-align: center; margin-right: 5px; margin-bottom: 5px; display: block; float: left; color: #fff; background: #000; -moz-box-sizing: border-box; border-radius: 2px; }
 .page-pagination a,
 .page-pagination span.outer { width: 50px }
 .page-pagination a:hover,
@@ -293,7 +294,7 @@ h3.comments-title span { background: #fff; padding-right: 15px; }
 .comment-details ul { margin: 0 }
 .comment-details ul li { border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 8px; padding-top: 8px; }
 .comment-details ul li:first-child { border-top: 1px solid rgba(0,0,0,0.1) }
-.commentlist { margin: 0 }
+.commentlist { margin: 30px 0 0 0 }
 .commentlist li { list-style: none; margin: 0; }
 .children li.depth-2 { margin: 0 0 0px 65px }
 .children li.depth-3 { margin: 0 0 0px 65px }
@@ -347,16 +348,6 @@ h3#reply-title span { background: #fff; padding-right: 15px; }
 #error-page-title { font-size: 5.714em; text-align: center; font-weight: bold; background: none; line-height: 1em; border: none; margin: 0 0 10px; color: #000; }
 #error-page-title span { margin-right: 7px }
 #error-page-text { text-align: center; font-size: 1.143em; }
-
-/* Isotope
------------------------------------------------------------ */
-.isotope,
-.isotope .isotope-item { -webkit-transition-duration: 0.8s; -moz-transition-duration: 0.8s; -ms-transition-duration: 0.8s; -o-transition-duration: 0.8s; transition-duration: 0.8s; }
-.isotope { -webkit-transition-property: height,width; -moz-transition-property: height,width; -ms-transition-property: height,width; -o-transition-property: height,width; transition-property: height,width; }
-.isotope .isotope-item { -webkit-transition-property: -webkit-transform,opacity; -moz-transition-property: -moz-transform,opacity; -ms-transition-property: -ms-transform,opacity; -o-transition-property: top,left,opacity; transition-property: transform,opacity; }
-.isotope.no-transition,
-.isotope.no-transition .isotope-item,
-.isotope .isotope-item.no-transition { -webkit-transition-duration: 0s; -moz-transition-duration: 0s; -ms-transition-duration: 0s; -o-transition-duration: 0s; transition-duration: 0s; }
 
 /* WordPress
 ----------------------------------------------------------- */

@@ -28,7 +28,7 @@ class Universal_Meta_Box {
     public function add_meta_box() {
         add_meta_box(
             'universal_meta_box', // Metabox ID.
-            __('Universal Media', 'universal-theme'), // Metabox title.
+            __('Universal Media', 'tetris'), // Metabox title.
             array($this, 'render_meta_box_content'), // Callback function to render the metabox content.
             'post', // Post type to display the metabox.
             'normal', // Metabox position (e.g., 'normal', 'side', 'advanced').
@@ -67,37 +67,37 @@ class Universal_Meta_Box {
             <tbody>
                 <tr>
                     <td>
-                        <label for="universal_oembed_url" class="screen-reader-text"><?php _e('Embed Media URL:', 'universal-theme'); ?></label>
-                        <input type="text" id="universal_oembed_url" name="universal_oembed_url" class="widefat" value="<?php echo esc_attr($oembed_url); ?>" placeholder="<?php _e('Enter embed media URL', 'universal-theme'); ?>">
+                        <label for="universal_oembed_url" class="screen-reader-text"><?php _e('Embed Media URL:', 'tetris'); ?></label>
+                        <input type="text" id="universal_oembed_url" name="universal_oembed_url" class="widefat" value="<?php echo esc_attr($oembed_url); ?>" placeholder="<?php _e('Enter embed media URL', 'tetris'); ?>">
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <span class="dashicons dashicons-admin-links" class="screen-reader-text"></span>
-                        <?php _e('Use the link format to display embedded media above the theme.', 'universal-theme'); ?>
+                        <?php _e('Use the link format to display embedded media above the theme.', 'tetris'); ?>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="universal_local_media_upload_video" class="screen-reader-text"><?php _e('Add Video:', 'universal-theme'); ?></label>
+                        <label for="universal_local_media_upload_video" class="screen-reader-text"><?php _e('Add Video:', 'tetris'); ?></label>
                         <button id="universal_local_media_upload_video" class="button universal_media_button widefat" data-editor="content">
-                            <span class="dashicons dashicons-format-video"></span> <?php _e('Add Video', 'universal-theme'); ?>
+                            <span class="dashicons dashicons-format-video"></span> <?php _e('Add Video', 'tetris'); ?>
                         </button>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="universal_local_media_upload_audio" class="screen-reader-text"><?php _e('Add Audio:', 'universal-theme'); ?></label>
+                        <label for="universal_local_media_upload_audio" class="screen-reader-text"><?php _e('Add Audio:', 'tetris'); ?></label>
                         <button id="universal_local_media_upload_audio" class="button universal_media_button widefat" data-editor="content">
-                            <span class="dashicons dashicons-format-audio"></span> <?php _e('Add Audio', 'universal-theme'); ?>
+                            <span class="dashicons dashicons-format-audio"></span> <?php _e('Add Audio', 'tetris'); ?>
                         </button>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="universal_local_media_upload_image" class="screen-reader-text"><?php _e('Add Images:', 'universal-theme'); ?></label>
+                        <label for="universal_local_media_upload_image" class="screen-reader-text"><?php _e('Add Images:', 'tetris'); ?></label>
                         <button id="universal_local_media_upload_image" class="button universal_media_button widefat" data-editor="content">
-                            <span class="dashicons dashicons-format-image"></span> <?php _e('Add Images', 'universal-theme'); ?>
+                            <span class="dashicons dashicons-format-image"></span> <?php _e('Add Images', 'tetris'); ?>
                         </button>
                     </td>
                 </tr>
@@ -106,7 +106,7 @@ class Universal_Meta_Box {
                         <span class="dashicons dashicons-format-audio"></span>
                         <span class="dashicons dashicons-format-video"></span>
                         <span class="dashicons dashicons-format-gallery"></span>
-                        <?php _e('Use the Audio, Video, or Gallery formats to embed media above the theme. Choose the appropriate dashicon based on how media is displayed (list or grid layout).', 'universal-theme'); ?>
+                        <?php _e('Use the Audio, Video, or Gallery formats to embed media above the theme. Choose the appropriate dashicon based on how media is displayed (list or grid layout).', 'tetris'); ?>
                     </td>
                 </tr>
             </tbody>
