@@ -22,9 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     </style>
     <?php wp_head(); ?>
 </head>
-<?php wp_body_open(); ?>
 <body <?php body_class(); ?>>
- 
+<?php wp_body_open(); ?>
 <div id="wrap" class="clearfix">
  
     <div id="header-wrap" class="clearfix">
