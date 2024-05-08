@@ -39,6 +39,7 @@
 	.single-post .meta li { display: block }
 	#author-image { margin-bottom: 20px }
 	#author-bio { width: 100% }
+    .author-inner { flex-direction: column }
 	.comment-details { margin-left: 0 }
 	.comment-details:after { display: none }
 	.comment-avatar { display: inline-block; margin-bottom: 10px; position: inherit; top: auto; left: auto; }
