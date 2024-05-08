@@ -249,7 +249,7 @@ function wpex_setup() {
     // Example for register_block_style
     register_block_style(
         'your-custom-block-style', array(
-            'name' => __('Your Custom Block Style', 'tetris'),
+            'name' => __('custom_block_style', 'tetris'),
             'label' => __('Custom Block Style', 'tetris'),
             'style_handle' => 'your-custom-block-style-css',
         )
@@ -282,7 +282,7 @@ function wpex_setup() {
     ) );
 
     // Add Post Formats Support
-    add_theme_support( 'post-formats', array( 'video', 'quote', 'link', 'audio', 'image', 'gallery' ) );
+    add_theme_support( 'post-formats', array( 'video', 'link', 'audio', 'image', 'gallery' ) );
 
     //Localization support
     load_theme_textdomain( 'tetris', get_template_directory() .'/languages' );
