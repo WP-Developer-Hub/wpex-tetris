@@ -15,7 +15,6 @@
     #post { width: calc(100% - 250px) }
 	#sidebar { width: 190px }
 	.sidebar-bg { background-image: url("../images/sidebar-bg-tablet.png") }
-	#author-bio { width: 300px }
 	.single-post .meta li { display: block }
 	.children li.depth-2,
 	.children li.depth-3,

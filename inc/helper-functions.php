@@ -33,7 +33,7 @@ function universal_display_media($post_id) {
                 'type' => 'carousel',
                 'columns' => is_single() ? '3' : '6',
                 'link' => is_single() ? 'file' : 'attachment',
-                'size' => is_single() ? 'medium' : 'universal-small',
+                'size' => is_single() ? 'wpex-post' : 'wpex-entry',
             );
 
             $container .= gallery_shortcode($gallery_attr);

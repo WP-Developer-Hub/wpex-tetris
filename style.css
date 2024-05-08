@@ -178,7 +178,7 @@ a:focus { outline: 0 }
 #post-thumbnail,
 #post-media { padding: 0; }
 #post-thumbnail img,
-#post-media img { max-height: 550px; width: 100%; object-fit: contain; object-position: top center;}
+#post-media img { height: 512px; width: 100%; object-fit: contain; object-position: center center;}
 #post-thumbnail img { -webkit-backdrop-filter: blur(50px); backdrop-filter: blur(50px); background: rgba(0, 0, 0, 0.5); }
 .wp-video,
 .wp-video video,
