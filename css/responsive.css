@@ -1,7 +1,8 @@
 @media only screen and (max-width:959px) { 
 	#logo { display: flex; align-items: center; justify-content: center; margin-bottom: 10px }
-	#logo h1 a,
-	#logo h2 a { display: block; float: none; }
+    #logo a { flex-direction: column; gap: 0; padding: 0 }
+	#logo a h1 { padding: 5px 0 }
+    #nav-spacer,
     #navigation { display: none; }
     #header-upper { flex-direction: column; padding: 0 }
     #header-upper #searchbar,
@@ -27,7 +28,7 @@
 	.children li.depth-10 { margin: 0 }
 	.search-entry-text { width: 240px }
 }
-@media only screen and (max-width:767px) { 
+@media only screen and (max-width:767px) {
 	#post { float: none; width: 100% }
     #sidebar { float: none; width: 100% }
     #footer-widgets { display: block }
@@ -74,6 +75,6 @@
 	.symple-box.left,
 	.symple-box.right { float: none; width: 100% !important; }
 }
-@media only screen and (min-width:480px) and (max-width:767px) { 
+@media only screen and (min-width:480px) and (max-width:767px) {
 
 }

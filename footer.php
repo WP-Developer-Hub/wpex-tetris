@@ -31,13 +31,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php dynamic_sidebar('footer-three'); ?>
 				</div><!-- /footer-box -->
 			</div><!-- /footer-widgets -->
+            <span class="u-block u-spacer-h u-spacer-light" style="background: #222; margin: 20px 0;"></span>
+            <div id="copyright">
+                <?php echo universal_get_copyright_info(); ?>
+            </div>
 		</footer><!-- /footer -->
 	</div><!-- /footer-wrap -->
-
-	<div id="copyright">
-		<?php echo universal_get_copyright_info(); ?>
-	</div>
-
 </div><!-- /wrap -->
 
 <?php wp_footer(); // Footer hook, do not delete, ever ?>
