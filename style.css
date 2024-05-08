@@ -112,7 +112,7 @@ a:focus { outline: 0 }
 
 /* Navigation
 ----------------------------------------------------------- */
-#navigation { max-width: 100%; padding: 15px 10px 10px 10px; border-top: 1px solid #555; margin-top: 10px; font-size: 18px }
+#navigation { max-width: 100%; padding: 15px 10px 10px 10px; font-size: 18px }
 #navigation ul { display: flex; justify-content: center; align-items: center; list-style: none; width: max-content; padding: 0 border-radius: 20px;}
 #navigation ul li { margin: 0 4px; border-radius: 2px; transition: all 250ms linear 0s }
 #navigation ul li { display: block; position: relative; min-width: 100px }
@@ -217,14 +217,15 @@ h2.widget-title,
 h3.widget-title,
 h4.widget-title,
 h5.widget-title {font-weight: bold;}
-.widget-title { gap: 0px; display: flex; font-size: 18px; margin-bottom: 20px; flex-direction: row; align-items: center; justify-content: flex-start; }
+.widget-title { gap: 0px; display: flex; font-size: 18px; margin-bottom: 5px; flex-direction: row; align-items: center; justify-content: flex-start; }
 .widget-title::after { content: ""; height: 1px; flex-grow: 1; margin-top: 5px; margin-left: 5px; background: #C9C9C9; }
 .widget-title span { padding-right: 5px; }
 
 /* Sidebar
 ----------------------------------------------------------- */
 .sidebar-bg { background: #fff url(images/sidebar-bg.png) right repeat-y }
-.sidebar-box { margin-bottom: 30px; font-size: 14px;}
+.taglist li a,
+.sidebar-box { margin-bottom: 30px; font-size: 14px !important;}
 .sidebar-box .heading { margin-top: 0 }
 #sidebar a { color: #666 }
 #sidebar .wp-calendar-table { background: #fff }
@@ -233,10 +234,9 @@ h5.widget-title {font-weight: bold;}
 /* Widgets
 ----------------------------------------------------------- */
 .tagcloud a { float: left; display: block; font-size: 1.2em !important; line-height: 1.2em !important; margin-bottom: 7px; margin-right: 7px; padding: 7px 15px; margin-right: 5px; margin-bottom: 5px; border-radius: 2px; }
-#sidebar .tagcloud a,
-#footer .tagcloud a { word-break: break-all; background: var(--universal-accent-color); color: var(--universal-accent-color-text-color); }
-#sidebar .tagcloud a:hover,
-#footer .tagcloud a:hover { background: #111; color: #fff; }
+.tagcloud a { word-break: break-all; background: var(--universal-accent-color); color: var(--universal-accent-color-text-color); }
+.tagcloud a:hover { background: #111; color: #fff; }
+
 #footer .widget_nav_menu li,
 #footer .widget_recent_entries li,
 #footer .widget_categories li,
@@ -273,14 +273,15 @@ h5.widget-title {font-weight: bold;}
 #wp-calendar tfoot td { padding-top: 5px }
 /* Footer
 ----------------------------------------------------------- */
-#footer { background: #111; padding: 40px 40px 0; font-size: 0.929em; position: relative; box-shadow: var(--u-box-shadow) }
+#footer-wrap { margin: 0; }
+#footer { background: #111; padding: 40px 40px 20px 40px; font-size: 0.929em; position: relative; box-shadow: var(--u-box-shadow) }
 #footer a { color: #aaa }
 #footer a:hover { color: var(--universal-accent-color); text-decoration: none; }
 .footer-widget { margin: auto; margin-bottom: 40px; font-size: 14px;}
 #footer ul { margin: 0 }
 .footer-widget .widget-title { color: #ccc; font-size: 1.143em; margin-bottom: 10px; }
 .footer-widget .widget-title::after { background: #9C9C9C; }
-#copyright { margin: 15px 0; text-align: center; font-size: 1.2em; }
+#copyright { margin: 0; text-align: center; font-size: 1.5em; color: #999;}
 
 /* Comments
 ----------------------------------------------------------- */
