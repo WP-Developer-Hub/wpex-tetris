@@ -20,7 +20,7 @@ function universal_customizer_settings($wp_customize) {
         'sanitize_callback' => 'sanitize_hex_color'
     ));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'universal_accent_color', array(
-        'label' => __('Accent Color', 'universal-theme'),
+        'label' => __('Accent Color', 'tetris'),
         'section' => 'colors',
         'mode' => 'full',
     )));
@@ -33,27 +33,27 @@ function universal_customizer_settings($wp_customize) {
     ) );
     $wp_customize->add_control('universal_title_tagline_visibility', array(
         'type' => 'select',
-        'label' => __('Site Title & Tagline Visibility', 'universal-theme' ),
-        'description' => __('Choose whether the site title and tagline should be displayed.', 'universal-theme'),
+        'label' => __('Site Title & Tagline Visibility', 'tetris' ),
+        'description' => __('Choose whether the site title and tagline should be displayed.', 'tetris'),
         'section' => 'title_tagline',
         'choices' => array(
-            'none' => __('None', 'universal-theme'),
-            'title_only' => __('Site Title Only', 'universal-theme'),
-            'tagline_only' => __('Tagline Only', 'universal-theme'),
+            'none' => __('None', 'tetris'),
+            'title_only' => __('Site Title Only', 'tetris'),
+            'tagline_only' => __('Tagline Only', 'tetris'),
         ),
      ));
 
     // Theme Settings Panel
     $wp_customize->add_panel('universal_theme_settings_panel', array(
-        'title' => __('Theme Settings', 'universal-theme'),
+        'title' => __('Theme Settings', 'tetris'),
         'priority' => 30,
-        'description' => __('This panel contains various settings for customizing the theme.', 'universal-theme'), // Added description
+        'description' => __('This panel contains various settings for customizing the theme.', 'tetris'), // Added description
     ));
 
     // General Settings Section
     $wp_customize->add_section('universal_general_settings_section', array(
-        'title' => __('General Settings', 'universal-theme'),
-        'description' => __('This section contains general settings for the theme.', 'universal-theme'),
+        'title' => __('General Settings', 'tetris'),
+        'description' => __('This section contains general settings for the theme.', 'tetris'),
         'priority' => 30,
         'panel' => 'universal_theme_settings_panel',
     ));
@@ -65,18 +65,18 @@ function universal_customizer_settings($wp_customize) {
         'sanitize_callback' => 'sanitize_key',
     ));
     $wp_customize->add_control('universal_disable_media_on_lg', array(
-        'label' => __('Display Media Post Grid', 'universal-theme'),
-        'description' => __('Enable this option to display the media posts in the grid or list layout based on the selected format.', 'universal-theme'),
+        'label' => __('Display Media Post Grid', 'tetris'),
+        'description' => __('Enable this option to display the media posts in the grid or list layout based on the selected format.', 'tetris'),
         'section' => 'universal_general_settings_section',
         'type' => 'checkbox',
     ));
 
     // Post Page Settings Section
     $wp_customize->add_section('universal_post_page_settings_section', array(
-        'title' => __('Post Page Settings', 'universal-theme'),
+        'title' => __('Post Page Settings', 'tetris'),
         'priority' => 30,
         'panel' => 'universal_theme_settings_panel',
-        'description' => __('This section contains settings related to single post pages.', 'universal-theme'), // Added description
+        'description' => __('This section contains settings related to single post pages.', 'tetris'), // Added description
     ));
 
     // Show Post Thumbnail
@@ -86,18 +86,18 @@ function universal_customizer_settings($wp_customize) {
         'sanitize_callback' => 'sanitize_text_field'
     ));
     $wp_customize->add_control('universal_show_post_thumbnail', array(
-        'label' => __('Show Post Thumbnail', 'universal-theme'),
-        'description'        => __('Enable this option to display the post thumbnail on single post pages.', 'universal-theme'),
+        'label' => __('Show Post Thumbnail', 'tetris'),
+        'description'        => __('Enable this option to display the post thumbnail on single post pages.', 'tetris'),
         'section' => 'universal_post_page_settings_section',
         'type' => 'checkbox',
     ));
 
     // Footer Settings Section
     $wp_customize->add_section('universal_footer_settings_section', array(
-        'title' => __('Footer Settings', 'universal-theme'),
+        'title' => __('Footer Settings', 'tetris'),
         'priority' => 30,
         'panel' => 'universal_theme_settings_panel',
-        'description' => __('This section contains settings for customizing the footer.', 'universal-theme'),
+        'description' => __('This section contains settings for customizing the footer.', 'tetris'),
     ));
 
     // Started Date
@@ -107,8 +107,8 @@ function universal_customizer_settings($wp_customize) {
         'sanitize_callback' => 'sanitize_text_field',
     ));
     $wp_customize->add_control('universal_footer_started_date', array(
-        'label' => __('Started Date', 'universal-theme'),
-        'description' => __('Select the date you started.', 'universal-theme'),
+        'label' => __('Started Date', 'tetris'),
+        'description' => __('Select the date you started.', 'tetris'),
         'section' => 'universal_footer_settings_section',
         'type' => 'date',
     ));
@@ -120,8 +120,8 @@ function universal_customizer_settings($wp_customize) {
         'sanitize_callback' => 'sanitize_textarea_field'
     ));
     $wp_customize->add_control('universal_copyright_layout', array(
-        'label' => __('Copyright Message', 'universal-theme'),
-        'description' => __('You can use placeholders like [site_name] [started_date], [current_date], [copyright_symbol], and [dash] to dynamically layout the copyright. P.S placeholders like [started_date], [current_date] will only show the year.', 'universal-theme'),
+        'label' => __('Copyright Message', 'tetris'),
+        'description' => __('You can use placeholders like [site_name] [started_date], [current_date], [copyright_symbol], and [dash] to dynamically layout the copyright. P.S placeholders like [started_date], [current_date] will only show the year.', 'tetris'),
         'section' => 'universal_footer_settings_section',
         'type' => 'textarea',
     ));

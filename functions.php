@@ -37,9 +37,7 @@ require_once $dir .'/inc/universal-meta-box.php' ;
 require_once $dir .'/inc/scripts.php' ;
 require_once $dir .'/inc/widget-areas.php' ;
 require_once $dir .'/inc/helper-functions.php' ;
-if ( is_admin() ) {
-    require_once $dir .'/inc/welcome.php' ;
-} else {
+if ( !is_admin() ) {
     require_once $dir .'/inc/comments.php' ;
     require_once $dir .'/inc/universal-menu-walker-2-0.php' ;
 }
@@ -58,47 +56,47 @@ function wpex_setup() {
     // Define an array of universal colors with names and corresponding colors
     $universal_colors = array(
         array(
-            'name'  => __('Primary Color', 'universal-theme'),
+            'name'  => __('Primary Color', 'tetris'),
             'slug'  => 'primary_color',
             'color' => get_theme_mod('bgcolor', '#d3d3d3'), // Use theme mod or default color
         ),
         array(
-            'name'  => __('Accent Color', 'universal-theme'),
+            'name'  => __('Accent Color', 'tetris'),
             'slug'  => 'accent_color',
             'color' => get_theme_mod('universal_accent_color', '#0073e6'), // Use theme mod or default color
         ),
         array(
-            'name'  => __('Black', 'universal-theme'),
+            'name'  => __('Black', 'tetris'),
             'slug'  => 'black',
             'color' => '#000000',
         ),
         array(
-            'name'  => __('White', 'universal-theme'),
+            'name'  => __('White', 'tetris'),
             'slug'  => 'white',
             'color' => '#FFFFFF',
         ),
         array(
-            'name'  => __('Off White', 'universal-theme'),
+            'name'  => __('Off White', 'tetris'),
             'slug'  => 'off_white',
             'color' => '#F9F9F9', // Off-white color
         ),
         array(
-            'name'  => __('Dark Gray', 'universal-theme'),
+            'name'  => __('Dark Gray', 'tetris'),
             'slug'  => 'dark_gray',
             'color' => '#212121', // 13% gray
         ),
         array(
-            'name'  => __('60% Gray', 'universal-theme'),
+            'name'  => __('60% Gray', 'tetris'),
             'slug'  => '60_gray',
             'color' => '#999999', // 60% gray
         ),
         array(
-            'name'  => __('40% Gray', 'universal-theme'),
+            'name'  => __('40% Gray', 'tetris'),
             'slug'  => '40_gray',
             'color' => '#666666', // 40% gray
         ),
         array(
-            'name'  => __('20% Gray', 'universal-theme'),
+            'name'  => __('20% Gray', 'tetris'),
             'slug'  => '20_gray',
             'color' => '#333333', // 20% gray
         )
@@ -132,26 +130,26 @@ function wpex_setup() {
     // Add support for editor font sizes
     add_theme_support('editor-font-sizes', array(
         array(
-            'name' => __('small', 'universal-theme'),
-            'shortName' => __('S', 'universal-theme'),
+            'name' => __('small', 'tetris'),
+            'shortName' => __('S', 'tetris'),
             'size' => 18,
             'slug' => 'small'
         ),
         array(
-            'name' => __('normal', 'universal-theme'),
-            'shortName' => __('M', 'universal-theme'),
+            'name' => __('normal', 'tetris'),
+            'shortName' => __('M', 'tetris'),
             'size' => 20,
             'slug' => 'normal'
         ),
         array(
-            'name' => __('large', 'universal-theme'),
-            'shortName' => __('L', 'universal-theme'),
+            'name' => __('large', 'tetris'),
+            'shortName' => __('L', 'tetris'),
             'size' => 22,
             'slug' => 'large'
         ),
         array(
-            'name' => __('larger', 'universal-theme'),
-            'shortName' => __('XL', 'universal-theme'),
+            'name' => __('larger', 'tetris'),
+            'shortName' => __('XL', 'tetris'),
             'size' => 24,
             'slug' => 'larger'
         )
@@ -251,8 +249,8 @@ function wpex_setup() {
     // Example for register_block_style
     register_block_style(
         'your-custom-block-style', array(
-            'name' => __('Your Custom Block Style', 'universal-theme'),
-            'label' => __('Custom Block Style', 'universal-theme'),
+            'name' => __('Your Custom Block Style', 'tetris'),
+            'label' => __('Custom Block Style', 'tetris'),
             'style_handle' => 'your-custom-block-style-css',
         )
     );
@@ -261,8 +259,8 @@ function wpex_setup() {
     register_block_pattern(
         'simple-basic-contact-form',
         array(
-            'title' => __('Simple Basic Contact Form', 'your-text-domain'),
-            'description' => __('A block pattern with a single column for the Simple Basic Contact Form plugin shortcode. Requires the Simple Basic Contact Form plugin to be installed and activated.', 'universal-theme'),
+            'title' => __('Simple Basic Contact Form', 'tetris'),
+            'description' => __('A block pattern with a single column for the Simple Basic Contact Form plugin shortcode. Requires the Simple Basic Contact Form plugin to be installed and activated.', 'tetris'),
             'content' => '<!-- wp:columns {"verticalAlignment":"center","isStackedOnMobile":false,"align":"full"} -->
                 <div class="wp-block-columns alignfull are-vertically-aligned-center is-not-stacked-on-mobile"><!-- wp:column {"verticalAlignment":"center","width":"100%"} -->
                 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:100%"><!-- wp:shortcode -->
@@ -456,7 +454,6 @@ function preload_script($tag, $handle, $src){
     return str_replace('type="text/javascript"', "", $tag);
 }
 add_filter('script_loader_tag', 'preload_script', 10, 3);
-
 
 /**
  * Remove query strings from script and style URLs.

@@ -16,14 +16,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--[if lt IE 9]><script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script><![endif]-->
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <style>
         <?php echo universal_dynamic_css();?>
     </style>
     <?php wp_head(); ?>
 </head>
- 
+<?php wp_body_open(); ?>
 <body <?php body_class(); ?>>
  
 <div id="wrap" class="clearfix">
