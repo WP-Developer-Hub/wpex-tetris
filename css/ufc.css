@@ -441,7 +441,7 @@ button,
 input[type=reset],
 input[type=submit],
 input[type=button] {
-    margin-top: var(--margin-label);
+    margin-bottom: var(--margin-label);
 }
 
 
@@ -449,7 +449,7 @@ input[type=button] {
 label {
   cursor: pointer;
   display: block;
-  margin-top: var(--margin-label);
+  padding-bottom: var(--margin-label);
 }
 
 label + label,
@@ -457,7 +457,7 @@ label + input,
 label + select,
 label + button,
 label + textarea {
-  margin-top: var(--margin-label);
+    margin-bottom: var(--margin-label);
 }
 
 textarea {
@@ -494,7 +494,6 @@ input[type="search"]{
   background-image: var(--co-search-icon);
   background-repeat: no-repeat;
   background-size: 1.6em 1.2em;
-  background-position: right center;
   background-position: calc(100% - 0.5em) center;
   padding-right: 2.5em;
 }
@@ -509,7 +508,6 @@ select:not([multiple]) {
 }
 
 fieldset {width: 100%; max-width: var(--width-inputs);}
-form {width: 100%; display: block; max-width: var(--width-inputs);}
+form {width: 100%; display: grid; max-width: var(--width-inputs); gap: calc(var(--margin-label) / 3) }
 #searchbar {width: unset;}
 #searchbar label {margin: unset;}
-label { display: flex; align-items: center; gap: 10px; }
