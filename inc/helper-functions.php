@@ -328,4 +328,36 @@ function universal_theme_custom_logo() {
     }
 }
 
+// Define the custom function to modify body classes
+function body_class_slugs($classes) {
+    global $post;
+
+    // Check if we are on a singular post or page
+    if (is_singular()) {
+        // Get the post or page ID
+        $post_id = $post->ID;
+
+        // Get the post or page name
+        $post_name = $post->post_name;
+
+        // Add post or page name as a class
+        $classes[] = 'post-name-' . $post_name;
+
+        // Check if the singular content is a page
+        if (is_page()) {
+            // Get the page title and sanitize it for use as a class
+            $page_title = sanitize_title_with_dashes(get_the_title());
+
+            // Add page title as a class
+            $classes[] = 'page-name-' . $page_title;
+        }
+    }
+
+    // Return the modified classes
+    return $classes;
+}
+
+// Add the filter to the body_class hook
+add_filter('body_class', 'body_class_slugs');
+
 ?>
