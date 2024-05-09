@@ -41,36 +41,7 @@
 /*  Tinymce Styles
 /*--------------------------*/
 
-#qt_comment_toolbar {
-    margin-bottom: -25px !important;
-    padding-bottom: 0px !important;
-    background: #111 !important;
-    -moz-box-sizing: border-box !important;
-    -webkit-box-sizing: border-box !important;
-    box-sizing: border-box !important;
-    border-bottom: 1px solid #555 !important;
-    position: relative !important;
-    z-index: 999999 !important;
-    border-radius: 0px !important;
-    bottom: -2px !important;
-    min-height:29px;
-}
-#qt_comment_toolbar input[type="button"] {
-    background:none transparent;
-    color: #aaa;
-    border: 0px none;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    cursor: pointer;
-    -webkit-appearance: none;
-}
-#qt_comment_toolbar input[type="button"]:hover, #qt_comment_toolbar input[type="button"]:active {
-    background: none transparent;
-    border: 0px none;
-    color: var(--universal-accent-color);
-}
-
+/*---------- marctv-quicktags ----------*/
 #wp-comment-editor-container {
     margin-bottom: 10px;
 }
@@ -78,23 +49,34 @@
     display: flex;
     background: #111;
     border:none;
-    border-radius:2px 2px 0px 0px;
+    border-radius:var(--radius-inputs) var(--radius-inputs) 0 0;
 }
 #qt_comment_toolbar input[type="button"] {
     background:transparent;
     font-size: 18px;
-    color: #aaa;
-    border: none;
-    cursor: pointer;
-    appearance: none;
+    width:35px;
+    color:#aaa;
+    border:none;
+    cursor:pointer;
+    appearance:none;
+    border:1px solid var(--universal-accent-color);
 }
 #qt_comment_toolbar input[type="button"]:hover ,#qt_comment_toolbar input[type="button"]:active {
-    background: transparent;
+    background:transparent;
     color: var(--universal-accent-color);
 }
+#comment-form-comment textarea {
+    margin-top: -25px !important;
+    top: -25px !important;
+    min-height: 200px !important;
+}
+#comment-form-comment .comment-form-cookies-consent {
+    display: flex !important;
+}
+#comment-form-comment lable {
+    margin-bottom:0px !important;
+}
 
-.wp-editor-area {appearance: none !important; -moz-box-sizing: border-box !important; -webkit-box-sizing: border-box !important; box-sizing: border-box !important; max-width: 100% !important; padding: 10px !important; border: 1px solid #eee !important; border-radius: 2px !important; background-color: #fff !important; transition: border-color 0.3s ease-in-out !important}
-.wp-editor-area:focus {border-color: var(--universal-accent-color) !important; outline: none !important}
 
 /*--------------------------*
 /*  Github Widget Styles
@@ -115,14 +97,6 @@
     color: #FFF !important;
     border-radius: 0px !important;
 }
-
-/*--------------------------*
-/* Simple Basic Author Box
-/*--------------------------*/
-
-/*.page .sb-author-box,*/
-/*#footer .sb-author-box,*/
-/*#secondary .sb-author-box {padding: 0; margin: 0;}*/
 
 /*--------------------------*
 /* Universal Meta oEmbed

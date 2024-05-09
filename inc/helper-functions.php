@@ -360,4 +360,30 @@ function body_class_slugs($classes) {
 // Add the filter to the body_class hook
 add_filter('body_class', 'body_class_slugs');
 
+if ( ! function_exists( 'customize_comment_form' ) ) {
+    function customize_comment_form($fields) {
+        ob_start();
+        wp_editor('', 'comment', array(
+            'media_buttons' => false,
+            'teeny' => true, // Enable teeny mode
+            'textarea_rows' => 10,
+            'quicktags' => true,
+            'tinymce' => false,   // Enable TinyMCE
+        ));
+        $editor_contents = ob_get_clean();
+        $fields['comment'] = $editor_contents;
+        return $fields;
+    }
+    add_filter('comment_form_fields', 'customize_comment_form');
+}
+
+if ( ! function_exists( 'customize_comment_quicktags' ) ) {
+    function customize_comment_quicktags($qtInit) {
+        if(!is_admin()) {
+            $qtInit['buttons'] = 'strong,em,spell,'; // Define the buttons you want to include
+        }
+        return $qtInit;
+    }
+    add_filter('quicktags_settings', 'customize_comment_quicktags');
+}
 ?>

@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </div><!-- /logo -->
                 <?php get_search_form(); ?>
             </div>
-            <span id="nav-spacer" class="u-block u-spacer-h u-spacer-light" style="background: #222; margin: 20px 0 5px 0;"></span>
+            <span id="nav-spacer" class="u-block u-spacer-h u-spacer-light" style="background: #222; margin: 0;"></span>
             <nav id="navigation" class="u-flex u-ai-c u-block-100 clearfix">
                 <?php wp_nav_menu( array(
                     'container' => false,
