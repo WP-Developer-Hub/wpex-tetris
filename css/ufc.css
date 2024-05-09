@@ -74,12 +74,12 @@
 :root {
   --leading-inputs: 100%;
   --padding-inputs: 1.0em;
-  --margin-label: 20px;
+  --margin-label: 0.75em;
   --margin-form-gap: 1.5em;
   --width-input-border: 1px;
   --width-inputs: 100%;
   --width-textarea: 100%;
-  --height-textarea: 250px;
+  --height-textarea: 150px;
   --radius-inputs: 2px;
   --opacity-input-disabled: 0.5;
   --transition-duration-inputs: 250ms;
