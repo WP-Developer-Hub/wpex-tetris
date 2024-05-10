@@ -75,7 +75,7 @@
 
 :root {
   --leading-inputs: 100%;
-  --padding-inputs: 1.0em;
+  --padding-inputs: 0.75em;
   --margin-label: 0.75em;
   --margin-form-gap: 1.5em;
   --width-input-border: 1px;
