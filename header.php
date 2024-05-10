@@ -28,15 +28,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div id="wrap" class="u-fc">
  
     <div id="header-wrap" class="clearfix">
-        <header id="header" class="u-grid clearfix">
-            <div id="header-upper" class="u-flex u-ai-c u-jc-sb clearfix">
-                <div id="logo" class="u-flex u-ai-c u-block-100 clearfix">
-                    <?php universal_theme_custom_logo(); ?>
-                </div><!-- /logo -->
-                <?php get_search_form(); ?>
-            </div>
-            <span id="nav-spacer" class="u-block u-spacer-h u-spacer-light" style="background: #222; margin: 0;"></span>
-            <nav id="navigation" class="u-flex u-ai-c u-block-100 clearfix">
+        <header id="header" class="u-flex u-ai-c u-jc-sb clearfix">
+            <div id="logo" class="u-flex u-ai-c u-block-100 clearfix">
+                <?php universal_theme_custom_logo(); ?>
+            </div><!-- /logo -->
+            <nav id="navigation" class="u-flex u-ai-c clearfix">
                 <?php wp_nav_menu( array(
                     'container' => false,
                     'fallback_cb' => false,

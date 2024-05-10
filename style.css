@@ -26,7 +26,7 @@ body { background-color: #ddd; font: 14px/1.8 'Open Sans',Helvetica,Arial,sans-s
 body a { color: var(--universal-accent-color) }
 body a:hover { text-decoration: underline; color: var(--universal-accent-color); }
 img { max-width: 100%; height: auto; }
-#wrap { width: 100%; margin: 0 auto; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
+#wrap { width: calc(100% - 200px); margin: 0 auto; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
 .container { background: #fff; padding: 30px; margin-top: 10px; margin-bottom: 10px; box-shadow: var(--u-box-shadow)}
 #post { float: left; width: calc(100% - 300px); }
 #sidebar { float: right; width: 250px; font-size: 0.929em; }
@@ -100,19 +100,19 @@ a:focus { outline: 0 }
 #page-heading { padding: 20px; background: #fff; margin-bottom: 10px; font-weight: 300; text-align: center; margin-top: 10px; box-shadow: var(--u-box-shadow)}
 #page-heading h1,
 #page-heading h2 { margin: 0; font-size: 2.000em; line-height: 1.2em; font-weight: 300; }
+#page-heading #searchbar label { padding-bottom: 0;}
+#universal_search_filter_form #universal_search_filter_inputs * {max-width: 296px; display: unset;}
 
 /* Header
 ----------------------------------------------------------- */
-#header { position: relative; background: #111; box-shadow: var(--u-box-shadow)}
-#header-upper { padding: 15px }
-#header-upper input { width: 500px; }
+#header { position: relative; background: #111; box-shadow: var(--u-box-shadow); padding: 30px;}
 #logo a h1 { font-weight: 700; margin: 0; text-decoration: none; color: #fff; padding: 40px; text-transform: uppercase; letter-spacing: 1px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
-#logo img { max-width: 100%; min-height: 69px; max-height: 138px;}
+#logo img { max-width: 100%;}
 #logo h1, #text-logo { font-size: 2.286em; line-height: 1em; margin: 0; }
 
 /* Navigation
 ----------------------------------------------------------- */
-#navigation { max-width: 100%; padding: 15px; font-size: 18px }
+#navigation { max-width: 100%; font-size: 18px }
 #navigation ul { display: flex; justify-content: center; align-items: center; list-style: none; width: max-content; padding: 0 border-radius: 20px;}
 #navigation ul li { margin: 0 4px; border-radius: 2px; transition: all 250ms linear 0s }
 #navigation ul li { display: block; position: relative; min-width: 100px }
@@ -187,12 +187,11 @@ a:focus { outline: 0 }
 .single-post .meta strong { font-weight: 600; color: #111; }
 .single-post .meta li:last-child { margin-right: 0; padding-right: 0; background: none; }
 #post-tags { margin-top: 30px; white-space: wrap }
-#post-tags a { background: var(--universal-accent-color); border-radius: 2px; color: #fff; font-size: 1.2em; padding: 2px 12px; }
+#post-tags a { background: var(--universal-accent-color); border-radius: 2px; color: var(--universal-accent-color-text-color); font-size: 1.2em; padding: 2px 12px; }
 #post-tags a:hover { background: #111; color: #fff; text-decoration: none; }
 #single-author { margin-top: 30px }
 #single-author h4 { font-size: 1.143em; center repeat-x; margin-bottom: 20px; }
 #single-author h4 span { background: #fff; padding-right: 15px; }
-/*#author-image { float: left; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; border: 5px solid #eee; }*/
 #author-image img { display: block; max-width: unset;}
 #author-bio p:last-child { margin: 0 }
 
@@ -229,13 +228,13 @@ h5.widget-title {font-weight: bold;}
 .sidebar-box .heading { margin-top: 0 }
 #sidebar a { color: #666 }
 #sidebar .wp-calendar-table { background: #fff }
+#sidebar {--co-textfld-bg: #fff;}
 #sidebar a:hover { color: var(--universal-accent-color); text-decoration: none; }
 
 /* Widgets
 ----------------------------------------------------------- */
-.tagcloud a { float: left; display: block; font-size: 1.2em !important; line-height: 1.2em !important; margin-bottom: 7px; margin-right: 7px; padding: 7px 15px; margin-right: 5px; margin-bottom: 5px; border-radius: 2px; }
-.tagcloud a { word-break: break-all; background: var(--universal-accent-color); color: var(--universal-accent-color-text-color); }
-.tagcloud a:hover { background: #111; color: #fff; }
+.tagcloud a { float: left; display: block; font-size: 1.2em !important; line-height: 1.2em !important; margin-bottom: 7px; margin-right: 7px; padding: 7px 15px; margin-right: 5px; margin-bottom: 5px; border-radius: 2px; word-break: break-all; background: var(--universal-accent-color); color: var(--universal-accent-color-text-color) !important; }
+.tagcloud a:hover { background: #111; color: #fff !important; }
 
 #footer .widget_nav_menu li,
 #footer .widget_recent_entries li,

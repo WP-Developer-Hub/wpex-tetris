@@ -6,7 +6,7 @@
 .light {
     --co-body-accent: var(--universal-accent-color);
     --co-body-accent-contrast: var(--universal-accent-color-text-color);
-    --co-textfld-bg: #fff;
+    --co-textfld-bg: #f9f9f9;
     --co-textfld-border: #bbb;
     --co-textfld-active-border: #ccc;
     --co-textfld-focus-border: var(--co-body-accent);
@@ -19,6 +19,7 @@
     --co-btn-text: var(--universal-accent-color-text-color);
     --co-btn-bg: var(--co-body-accent);
     --co-btn-active-bg: #000;
+    --co-btn-active-text: #fff;
     --co-btn-focus-bg: #212121;
     --co-select-arrow: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' height='15px' width='20px'%3E%3Ctext x='0' y='12' fill='rgba(0,0,0,1.0)'%3E%E2%96%BE%3C/text%3E%3C/svg%3E");
     --co-search-icon: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27c1.2-1.4 1.95-3.31 1.95-5.4C16.38 5.36 13.02 2 9.25 2S2 5.36 2 9.13s3.36 7.13 7.13 7.13c2.09 0 3.99-.75 5.4-1.95l.27.28v.79l5 4.99L20.49 18l-4.99-5zm-6.37 0C6.36 14 4 11.64 4 9.13S6.36 4.25 8.87 4.25s4.88 2.36 4.88 4.88-2.36 4.87-4.88 4.87z' fill='rgba(0,0,0,1.0)'/%3E%3C/svg%3E");
@@ -64,6 +65,7 @@
         --co-btn-text: var(--universal-accent-color-text-color);
         --co-btn-bg: var(--co-body-accent);
         --co-btn-active-bg: #000;
+        --co-btn-active-text: #fff;
         --co-btn-focus-bg: #212121;
         --co-select-arrow: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' height='15px' width='20px'%3E%3Ctext x='0' y='12' fill='rgba(255,255,255,1.0)'%3E%E2%96%BE%3C/text%3E%3C/svg%3E");
         --co-search-icon: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27c1.2-1.4 1.95-3.31 1.95-5.4C16.38 5.36 13.02 2 9.25 2S2 5.36 2 9.13s3.36 7.13 7.13 7.13c2.09 0 3.99-.75 5.4-1.95l.27.28v.79l5 4.99L20.49 18l-4.99-5zm-6.37 0C6.36 14 4 11.64 4 9.13S6.36 4.25 8.87 4.25s4.88 2.36 4.88 4.88-2.36 4.87-4.88 4.87z' fill='rgba(255,255,255,1.0)'/%3E%3C/svg%3E");
@@ -421,6 +423,8 @@ input[type=button]:hover,
 input[type=button]:active,
 input::file-selector-button:hover,
 input::file-selector-button:active {
+  text-decoration: none;
+  color: var(--co-btn-active-text);
   background-color: var(--co-btn-active-bg);
   border-color: var(--co-btn-active-bg);
 }
@@ -435,13 +439,17 @@ input::file-selector-button:focus {
   background-color: var(--co-btn-focus-bg);
 }
 
+.u-link-button-selected {
+  border-color: var(--co-btn-active-bg);
+}
+
 button,
 .u-link-button,
 .u-link-button-selected,
 input[type=reset],
 input[type=submit],
 input[type=button] {
-    margin-bottom: var(--margin-label);
+/*    margin-bottom: var(--margin-label);*/
 }
 
 
