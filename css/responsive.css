@@ -4,9 +4,6 @@
 	#logo a h1 { padding: 5px 0 }
     #nav-spacer,
     #navigation { display: none; }
-    #header-upper { flex-direction: column; padding: 0 }
-    #header-upper #searchbar,
-    #header-upper input { width: 100%;}
     #mobile-navigation { display: block;}
 }
 @media only screen and (min-width:480px) and (max-width:959px) {
@@ -75,6 +72,6 @@
 	.symple-box.left,
 	.symple-box.right { float: none; width: 100% !important; }
 }
-@media only screen and (min-width:480px) and (max-width:767px) {
-
+@media only screen and (max-width:767px) {
+    #wrap { width: 100% }
 }

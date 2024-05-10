@@ -101,7 +101,6 @@ a:focus { outline: 0 }
 #page-heading h1,
 #page-heading h2 { margin: 0; font-size: 2.000em; line-height: 1.2em; font-weight: 300; }
 #page-heading #searchbar label { padding-bottom: 0;}
-#universal_search_filter_form #universal_search_filter_inputs * {max-width: 296px; display: unset;}
 
 /* Header
 ----------------------------------------------------------- */
@@ -285,8 +284,7 @@ h5.widget-title {font-weight: bold;}
 
 /* Comments
 ----------------------------------------------------------- */
-#commentsbox input[type="submit"]:active { top: 1px }
-#commentsbox { padding-top: 40px }
+,#commentsbox { padding-top: 40px }
 h3.comments-title { font-size: 1.143em; }
 h3.comments-title span { background: #fff; padding-right: 15px; }
 .comment-details ul { margin: 0 }
@@ -332,14 +330,8 @@ h3.comments-title span { background: #fff; padding-right: 15px; }
 h3#reply-title { font-size: 1em; }
 h3#reply-title span { background: #fff; padding-right: 15px; }
 .children #commentform textarea { width: 95.6% }
-#commentform label { font-size: 13px; font-weight: normal; }
 #commentsbox span.required { color: #C30; font-size: 0.643em; }
-#commentform input { margin-top: 0 !important }
-#commentform input#author,
-#commentform input#email,
-#commentform input#url { font-size: 13px; width: 40%; margin-top: 10px; }
-#commentform textarea { font-size: 13px; width: 100%; margin-top: 10px; }
-.comment-notes, .logged-in-as { font-size: 12px; }
+#commentform textarea { font-size: unset;}
 
 /* 404 Page
 ----------------------------------------------------------- */
