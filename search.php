@@ -22,16 +22,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header(); ?>
-
-	<?php if ( ! is_home() ) : ?>
-		<header id="page-heading" class="clearfix">
-            <h1><?php if ( is_category() ) {
-                    single_cat_title();
-                } else {
-                    the_archive_title();
-            } ?></h1>
-		</header>
-	<?php endif; ?>
+    <header id="page-heading" class="clearfix">
+        <h1 id="archive-title"><?php _e( 'Search Results For', 'tetris' ); ?>: &quot;<?php the_search_query(); ?>&quot;</h1>
+    </header>
+    <header id="page-heading" class="search-heading clearfix">
+        <?php get_search_form(); ?>
+    </header>
 
 <?php if ( have_posts() ) : ?>
 

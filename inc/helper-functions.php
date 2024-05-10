@@ -328,6 +328,19 @@ function universal_theme_custom_logo() {
     }
 }
 
+/**
+ * Generate a CSS class string to indicate selection based on a passed string and the 'post_format' parameter.
+ *
+ * @param string|bool $passed_string The string to compare with the 'post_format' parameter. Defaults to false.
+ */
+function universal_search_filter_item_class($passed_string = false) {
+    $post_format = (isset($_GET['post_format']) ? $_GET['post_format'] : 'all');
+
+    if ($passed_string == $post_format) {
+        echo ' u-link-button-selected';
+    }
+}
+
 // Define the custom function to modify body classes
 function body_class_slugs($classes) {
     global $post;
