@@ -122,8 +122,12 @@ a:focus { outline: 0 }
 #navigation ul li:last-child() { border-bottom: none; }
 #navigation ul li:hover > ul { display: block; width: max-content; z-index: 999 }
 #navigation li:hover,
+#navigation .current-post-ancestor,
+#navigation .current-page-ancestor,
 #navigation .current-menu-item { background: var(--universal-accent-color); }
 #navigation li:hover a,
+#navigation .current-post-ancestor a,
+#navigation .current-page-ancestor a,
 #navigation .current-menu-item a { color: var(--universal-accent-color-text-color) }
 
 
@@ -143,10 +147,11 @@ a:focus { outline: 0 }
 #mobile-navigation li a { display: flex; margin: 0; padding: 25px; color: #fff; text-decoration: none}
 #mobile-navigation details details { display: flex; background-color: #212121 }
 #mobile-navigation details[open] > summary .toggle-icon {transform: rotate(90deg); }
-#mobile-navigation li:not(.current-menu-item):hover,
-#mobile-navigation li:not(.current-menu-item):active,
-#mobile-navigation .current-menu-item { border-bottom: 1px solid var(--universal-accent-color); }
-#mobile-navigation .current-menu-item { border-bottom-width: 5px; }
+#mobile-navigation li:hover,
+#mobile-navigation li:active,
+#mobile-navigation .current-menu-item ,
+#mobile-navigation .current-post-ancestor,
+#mobile-navigation .current-page-ancestor { border-bottom: 1px solid var(--universal-accent-color); }
 #mobile-navigation summary a { max-width: 100%; text-decoration: none; padding: 5px; color: #ffffff }
 
 /* Entries
