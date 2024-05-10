@@ -23,7 +23,9 @@ if ( has_post_thumbnail() ) : ?>
         <?php endif; ?>
     <?php else : ?>
         <div class="blog-entry-thumbnail" >
-            <?php the_post_thumbnail( 'wpex-entry' ); ?>
+            <a href="<?php the_permalink(); ?>">
+                <?php the_post_thumbnail( 'wpex-entry' ); ?>
+            </a>
         </div><!-- /blog-entry-thumbnail -->
     <?php endif; ?>
 <?php endif; ?>
