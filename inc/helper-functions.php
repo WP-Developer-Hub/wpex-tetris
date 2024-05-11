@@ -80,27 +80,37 @@ function universal_display_embed_media($post_id) {
         // Get oEmbed response for the URL
         $oembed_response = wp_oembed_get($universal_oembed_url);
 
+        // Initialize the wrapper variable
+        $wrapper = '';
+        $width = '';
+
         // Determine the opening tag based on post context
         if (is_single()) {
-            $wrapper_start = '<div id="post-media" class="u-flex u-flex-wrap u-cf">';
+            $wrapper_start = '<div id="post-media" class="u-flex u-flex-wrap u-jc-c u-cf">';
+            $width = '960';
+
         } else {
-            $wrapper_start = '<div class="blog-entry-embed u-flex u-flex-wrap u-cf">';
+            $wrapper_start = '<div class="blog-entry-embed u-flex u-flex-wrap u-jc-c u-cf">';
+            $width = '370';
         }
 
-        // Output embedded video if oEmbed response exists
+        // Output embedded media if oEmbed response exists
         if ($oembed_response) {
             $wrapper .= $wrapper_start . $oembed_response . '</div>';
         } else {
             // Fallback to displaying the URL if oEmbed response is empty
-            $wrapper .= $wrapper_start . esc_url($universal_oembed_url) . '</div>';
+            $wrapper .= $wrapper_start . '<img class="blog-entry-embed-missing" src="http://s.wordpress.com/mshots/v1/' . esc_url($universal_oembed_url) . '?w=' . $width . '" height="100%" width="' . $width . '">' . '</div>';
+
         }
 
+        // Add a spacer element if it's a single post
         if (is_single()) {
             $wrapper .= '<span class="u-block u-spacer-h u-spacer-light" style="background: #eee; margin-top: 30px;"></span>';
         }
-    
+
         return $wrapper;
     }
+    return '';
 }
 
 /**
