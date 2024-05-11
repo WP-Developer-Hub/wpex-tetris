@@ -160,6 +160,7 @@ function universal_custom_paginate_comments_links($range = 4) {
         echo '<div class="page-of-page"><span class="inner">' . $current_page . ' of ' . get_comment_pages_count() . '</span></div>';
 
         echo '<div class="pagination-links">';
+        echo previous_comments_link('<span class="page-button inner dashicons dashicons-arrow-left-alt2"></span>');
         for ($i = 1; $i <= get_comment_pages_count(); $i++) {
             if (1 != get_comment_pages_count() && (
                 !($i >= $current_page + $range + 1 || $i <= $current_page - $range - 1) || get_comment_pages_count() <= $showitems
@@ -168,6 +169,7 @@ function universal_custom_paginate_comments_links($range = 4) {
                 echo ($current_page == $i) ? "<span class=\"current outer\"><span class=\"inner\">" . $i . "</span></span>" : "<a href='" . esc_url($url) . "' class=\"inactive\"><span class=\"inner\">" . $i . "</span></a>";
             }
         }
+        echo next_comments_link('<span class="page-button inner dashicons dashicons-arrow-right-alt2"></span>');
         echo '</div>'; // .pagination-links
 
         echo "</div></div>\n";
