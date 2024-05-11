@@ -91,8 +91,9 @@
     border-color var(--transition-duration-inputs)
       var(--transition-function-inputs);
 }
-
-:read-only:not(label, button, input[type=button], input[type=submit], input[type=reset]) {
+input:read-only:not(label, button, input[type=button], input[type=submit], input[type=reset]),
+select:read-only:not(label, button, input[type=button], input[type=submit], input[type=reset]),
+textarea:read-only:not(label, button, input[type=button], input[type=submit], input[type=reset]) {
   cursor: default;
 }
 

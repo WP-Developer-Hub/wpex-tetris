@@ -1,6 +1,6 @@
 .wp-playlist {
   margin: 0;
-  border-radius: 4px;
+  border: none;
 }
 
 /* Track progress bar background (amount of track fully loaded)
