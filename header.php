@@ -43,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             </nav><!-- #navigation -->
         </header><!-- #header -->
         <details id="mobile-navigation">
-            <summary for="drop" id="main-toggle" class="menu-toggle u-jc-sb"><span class="menu-summary-name u-tt-all-uppercase"><?php echo esc_html('Menu', 'universal-theme')?></span>  <span class="dashicons dashicons-menu"></span> </summary>
+            <summary for="drop" id="main-toggle" class="menu-toggle u-jc-sb"><span class="menu-summary-name u-tt-all-uppercase"><?php echo esc_html('Menu', 'tetris')?></span>  <span class="dashicons dashicons-menu"></span> </summary>
             <?php
                 wp_nav_menu(array(
                     'container' => false,

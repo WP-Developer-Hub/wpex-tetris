@@ -57,7 +57,7 @@ if ($post_formats && is_array($post_formats[0])) {
         <a href="<?php echo esc_url($all_link_url); ?>" class="u-link-button u-flex u-flex-row u-flex-nowrap u-ai-c u-jc-sb<?php echo universal_search_filter_item_class('all'); ?>">
             <?php
             // Display "All" link with total post count
-            '<span>' . _e('All', 'universal-theme') . '</span>';
+            '<span>' . _e('All', 'tetris') . '</span>';
             echo '&nbsp;<span>(' . $total_post_count . ')' . '</span>';
             ?>
         </a>
