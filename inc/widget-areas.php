@@ -25,6 +25,15 @@ function wpex_widget_areas() {
 		'before_title'  => '<h4 class="widget-title"><span>',
 		'after_title'   => '</span></h4>',
 	) );
+    register_sidebar( array(
+        'name'          => __( 'Error Widget','tetris'),
+        'id'            => 'error-widget',
+        'description'   => __( 'Widgets in this area are used on the 404 error page below the error message. Please note that adding more than one widget may confuse the user. Also, don\'t forget to add a title, as the title acts as the screen reader text.', 'tetris' ),
+        'before_widget' => '<section class="error-widget %2$s clearfix">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h4 class="screen-reader-text"><span>',
+        'after_title'   => '</span></h4>',
+    ) );
 	register_sidebar( array(
 		'name'          => __( 'Footer 1','tetris'),
 		'id'            => 'footer-one',
