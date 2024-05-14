@@ -188,7 +188,7 @@ a:focus { outline: 0 }
 .wp-playlist video,
 .wp-playlist .mejs-container {max-height: 550px; width: 100%;}
 #post-header h1 { margin: 0; font-size: 2.000em; line-height: 1.2em; }
-.single-post-meta { color: #999; font-size: 0.929em; margin-top: 10px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+.single-post-meta { color: #999; font-size: 0.929em; margin-top: 10px; }
 .single-post-meta li { display: inline; margin-right: 5px; }
 .single-post-meta strong { font-weight: 600; color: #111; }
 .single-post-meta li:last-child { margin-right: 0; padding-right: 0; background: none; }
@@ -196,7 +196,7 @@ a:focus { outline: 0 }
 #post-tags { margin-top: 30px; white-space: wrap }
 #post-tags a { background: var(--universal-accent-color); border-radius: 2px; color: var(--universal-accent-color-text-color); font-size: 1.2em; padding: 2px 12px; }
 #post-tags a:hover { background: #111; color: #fff; text-decoration: none; }
-#single-author { margin-top: 30px }
+#single-author { margin-top: 30px; margin-bottom: 30px }
 #single-author h4 { font-size: 1.143em; center repeat-x; margin-bottom: 20px; }
 #single-author h4 span { background: #fff; padding-right: 15px; }
 #author-image img { display: block; max-width: unset;}
