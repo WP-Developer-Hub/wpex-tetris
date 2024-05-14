@@ -234,9 +234,12 @@ h5.widget-title {font-weight: bold;}
 .taglist li a,
 .sidebar-box { margin-bottom: 30px; font-size: 14px !important;}
 .sidebar-box .heading { margin-top: 0 }
+#error-widget-box a,
 #sidebar a { color: #666 }
+#error-widget-box .wp-calendar-table,
 #sidebar .wp-calendar-table { background: #fff }
 #sidebar {--co-textfld-bg: #fff;}
+#error-widget-box a:hover,
 #sidebar a:hover { color: var(--universal-accent-color); text-decoration: none; }
 
 /* Widgets
