@@ -19,12 +19,12 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
 			<!--  Show header on all post formats except quotes -->
             <header id="post-header">
                 <h1><?php the_title(); ?></h1>
-                <ul class="meta clearfix">
-                    <li><strong>Posted on:</strong> <?php echo get_the_date(); ?></li>
-                    <li><strong>Under:</strong><span class="u-wrap-text"> <?php the_category( ',' ); ?></span></li>
-                    <li><strong>By:</strong> <?php the_author_posts_link(); ?></li>
+                <ul class="single-post-meta clearfix">
+                    <li class="single-post-meta-divider"><strong>Posted on:</strong> <?php echo get_the_date(); ?></li>
+                    <li class="single-post-meta-divider" ><strong>By:</strong> <?php the_author_posts_link(); ?></li>
+                    <li class="single-post-meta-divider"><strong>Under:</strong><span class="u-wrap-text-all"> <?php the_category( ',  ' ); ?></span></li>
                     <?php if ( comments_open() ) : ?>
-                        <li class="comment-scroll"><strong>With:</strong> <?php comments_popup_link(__('0 Comments', 'tetris'), __('1 Comment', 'tetris'), __('% Comments', 'tetris'), 'comments-link' ); ?></li>
+                        <li class="comment-scroll single-post-meta-divider"><strong>With:</strong> <?php comments_popup_link(__('0 Comments', 'tetris'), __('1 Comment', 'tetris'), __('% Comments', 'tetris'), 'comments-link' ); ?></li>
                     <?php endif; ?>
                 </ul><!-- .meta -->
             </header><!-- #post-header -->

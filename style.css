@@ -92,7 +92,7 @@ p a,
 p a:visited { line-height: inherit }
 a:link { text-decoration: none }
 a:focus { outline: 0 }
-a { outline: 0 }
+a { outline: 0;}
 a:hover { cursor: pointer }
 p a,
 p a:visited { line-height: inherit }
@@ -188,10 +188,11 @@ a:focus { outline: 0 }
 .wp-playlist video,
 .wp-playlist .mejs-container {max-height: 550px; width: 100%;}
 #post-header h1 { margin: 0; font-size: 2.000em; line-height: 1.2em; }
-.single-post .meta { color: #999; font-size: 0.929em; margin-top: 10px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
-.single-post .meta li { display: inline; margin-right: 5px; margin-right: 10px; }
-.single-post .meta strong { font-weight: 600; color: #111; }
-.single-post .meta li:last-child { margin-right: 0; padding-right: 0; background: none; }
+.single-post-meta { color: #999; font-size: 0.929em; margin-top: 10px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+.single-post-meta li { display: inline; margin-right: 5px; }
+.single-post-meta strong { font-weight: 600; color: #111; }
+.single-post-meta li:last-child { margin-right: 0; padding-right: 0; background: none; }
+.single-post-meta-divider:not(:last-child)::after {content: "|"; margin-left: 5px;}
 #post-tags { margin-top: 30px; white-space: wrap }
 #post-tags a { background: var(--universal-accent-color); border-radius: 2px; color: var(--universal-accent-color-text-color); font-size: 1.2em; padding: 2px 12px; }
 #post-tags a:hover { background: #111; color: #fff; text-decoration: none; }

@@ -221,6 +221,7 @@
 
 .u-wrap-text {overflow-wrap: break-word; word-break: break-word; hyphens: auto; transition: all 150ms linear 0.1ms}
 .u-wrap-text-any {overflow-wrap: anywhere; word-break: break-word; hyphens: auto; transition: all 150ms linear 0.1ms}
+.u-wrap-text-all {overflow-wrap: break-word; word-break: break-all; hyphens: auto; transition: all 150ms linear 0.1ms}
 
 .u-tt-all-caps {text-transform: capitalize; transition: all 150ms linear 0.1ms}
 
