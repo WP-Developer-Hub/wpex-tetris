@@ -12,7 +12,7 @@ jQuery(document).ready(function($) {
             library: {
                 type: mediaType,
             },
-            multiple: true
+            multiple: "add"
         });
 
         // Pre-select previously chosen attachments
