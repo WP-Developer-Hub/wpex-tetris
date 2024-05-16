@@ -52,7 +52,7 @@ address { letter-spacing: 1px; margin: 20px 0; }
 .entry ul li,
 .entry ol li { margin: 0 0 5px }
 .tiktok-embed,
-.tiktok-embed iframe { background: #000 !important; padding: 0 !important; margin: 0 !important; border-radius: 0 !important; }
+.tiktok-embed iframe { background: #000 !important; padding: 0 !important; margin: 0 !important; border-radius: 0 !important; max-width: 100% !important;}
 .tiktok-embed::after,
 .tiktok-embed::before { content: "" }
  
