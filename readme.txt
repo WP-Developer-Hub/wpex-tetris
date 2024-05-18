@@ -1,6 +1,7 @@
 # WP Tetris Plus
 
-This is a update version of Tetris Free WordPress Theme by wpexplorern with a few enhancements from my own custom theme universal theme such as:
+The aim of this repo is to maintain is an updated version of Tetris Free WordPress Theme by wpexplorern by complying with modern web standards and by also adding modern features well keeping this theme as light weight as posable as well a few enhancements from my own custom theme universal theme such as:
+
 HTML5 mobile menu.
 No Js.
 No light-box.
