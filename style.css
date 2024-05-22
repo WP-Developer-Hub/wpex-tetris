@@ -179,7 +179,7 @@ a:focus { outline: 0 }
  
 /* Single Post
 ----------------------------------------------------------- */
-#post-thumbnail { max-height: 550px; }
+#post-thumbnail { max-height: 512px; }
 #post-thumbnail,
 #post-media { padding: 0; }
 #post-thumbnail img,

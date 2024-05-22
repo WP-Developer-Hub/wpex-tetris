@@ -50,27 +50,6 @@ function universal_customizer_settings($wp_customize) {
         'description' => __('This panel contains various settings for customizing the theme.', 'tetris'), // Added description
     ));
 
-    // General Settings Section
-    $wp_customize->add_section('universal_general_settings_section', array(
-        'title' => __('General Settings', 'tetris'),
-        'description' => __('This section contains general settings for the theme.', 'tetris'),
-        'priority' => 30,
-        'panel' => 'universal_theme_settings_panel',
-    ));
-
-    // Display Media Post Grid
-    $wp_customize->add_setting('universal_disable_media_on_lg', array(
-        'default' => false,
-        'transport' => 'refresh',
-        'sanitize_callback' => 'sanitize_key',
-    ));
-    $wp_customize->add_control('universal_disable_media_on_lg', array(
-        'label' => __('Display Media Post Grid', 'tetris'),
-        'description' => __('Enable this option to display the media posts in the grid or list layout based on the selected format.', 'tetris'),
-        'section' => 'universal_general_settings_section',
-        'type' => 'checkbox',
-    ));
-
     // Post Page Settings Section
     $wp_customize->add_section('universal_post_page_settings_section', array(
         'title' => __('Post Page Settings', 'tetris'),
