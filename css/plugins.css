@@ -104,13 +104,9 @@
 
 .instagram-media,
 .instagram-media-rendered {
-    background: transparent !important;
     border-radius: 0px !important;
-    border: none !important;
     box-shadow: none !important;
     display: block !important;
     margin: 0px !important;
-    min-width: auto !important;
-    min-height: 710px !important;
     padding: 0px !important;
 }
