@@ -67,12 +67,6 @@ class Universal_Meta_Box {
             <tbody>
                 <tr>
                     <td>
-                        <label for="universal_oembed_url" class="screen-reader-text"><?php _e('Embed Media URL:', 'tetris'); ?></label>
-                        <input type="text" id="universal_oembed_url" name="universal_oembed_url" class="widefat" value="<?php echo esc_attr($oembed_url); ?>" placeholder="<?php _e('Enter embed media URL', 'tetris'); ?>">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
                         <span class="dashicons dashicons-admin-links" class="screen-reader-text"></span>
                         <?php _e('Use the link format to display embedded media above the theme.', 'tetris'); ?>
                     </td>
@@ -137,10 +131,6 @@ class Universal_Meta_Box {
     public function save_meta_box_data($post_id) {
         if (!isset($_POST['universal_meta_box_nonce']) || !wp_verify_nonce($_POST['universal_meta_box_nonce'], 'universal_meta_box_nonce')) {
             return;
-        }
-
-        if (isset($_POST['universal_oembed_url'])) {
-            update_post_meta($post_id, 'universal_oembed_url', sanitize_text_field($_POST['universal_oembed_url']));
         }
 
         if (isset($_POST['universal_local_media_attachment_ids'])) {

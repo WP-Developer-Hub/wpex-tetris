@@ -16,8 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( has_post_thumbnail() ) : ?>
     <?php if ( is_singular() ) : ?>
         <?php if ( get_theme_mod('universal_show_post_thumbnail', false) ) : ?>
-            <div id="post-thumbnail" style="background-image: url('<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'medium')); ?>'); background-size: cover; background-position: center center;">
-                <?php the_post_thumbnail( 'wpex-post' ); ?>
+            <div id="post-thumbnail" style="background-image: url('<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'thumbnail')); ?>'); background-size: cover; background-position: center center;">
+                <?php the_post_thumbnail( 'wpex-entry' ); ?>
             </div><!-- /blog-entry-thumbnail -->
             <span class="u-block u-spacer-h u-spacer-light" style="background: #eee; margin-top: 30px;"></span>
         <?php endif; ?>

@@ -282,7 +282,7 @@ function wpex_setup() {
     ) );
 
     // Add Post Formats Support
-    add_theme_support( 'post-formats', array( 'video', 'link', 'audio', 'image', 'gallery' ) );
+    add_theme_support( 'post-formats', array( 'video', 'audio', 'image', 'gallery' ) );
 
     //Localization support
     load_theme_textdomain( 'tetris', get_template_directory() .'/languages' );
