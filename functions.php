@@ -273,7 +273,7 @@ function wpex_setup() {
     );
 
     // Add image size
-    add_image_size( 'wpex-entry', '370', '9999', false );
+    add_image_size( 'wpex-entry', '370', '370', true );
     add_image_size( 'wpex-post', '960', '9999', false );
     
     // Menu
