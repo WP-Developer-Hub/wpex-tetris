@@ -240,6 +240,7 @@ function wpex_setup() {
     add_theme_support('admin-bar');
 
     // Add editor style
+    add_editor_style('style.css');
     add_editor_style('css/ufg.css');
     add_editor_style('css/ufc.css');
     add_editor_style('css/plugin.css');
