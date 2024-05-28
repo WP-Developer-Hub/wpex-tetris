@@ -367,10 +367,9 @@ h3#reply-title span { background: #fff; padding-right: 15px; }
 .textcenter { text-align: center }
 .textright { text-align: right }
 .textleft { text-align: left }
-.wp-caption { max-width: 100% !important }
-.wp-caption { border: 1px solid #ddd; text-align: center; background-color: #f3f3f3; padding-top: 4px; margin: 10px; -moz-border-radius: 3px; -khtml-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+.wp-caption { max-width: 100% !important border: 1px solid #ddd; text-align: center; background-color: #f3f3f3; padding: 10px; -moz-border-radius: 3px; -khtml-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
 .wp-caption img { margin: 0; padding: 0; border: 0 none; max-width: 100$; }
-.wp-caption p.wp-caption-text { font-size: 0.786em; line-height: 17px; padding: 0 4px 5px; margin: 0; }
+.wp-caption figcaption.wp-caption-text { font-size: 0.986em; line-height: 17px; padding: 0; margin: 0; }
 .wp-smiley { margin: 0 !important; max-height: 1em; }
 blockquote.left { margin-right: 20px; text-align: right; margin-left: 0; width: 33%; float: left; }
 blockquote.right { margin-left: 20px; text-align: left; margin-right: 0; width: 33%; float: right; }
