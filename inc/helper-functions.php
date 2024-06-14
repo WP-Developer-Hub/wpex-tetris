@@ -349,7 +349,7 @@ if ( ! function_exists( 'customize_comment_form' ) ) {
 if ( ! function_exists( 'customize_comment_quicktags' ) ) {
     function customize_comment_quicktags($qtInit) {
         if(!is_admin()) {
-            $qtInit['buttons'] = 'strong,em,spell,'; // Define the buttons you want to include
+            $qtInit['buttons'] = 'strong,em,spell,';
         }
         return $qtInit;
     }
