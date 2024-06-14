@@ -1,6 +1,12 @@
 .wp-playlist {
   margin: 0;
+  color: #fff;
   border: none;
+  background: #000;
+}
+
+.wp-playlist * {
+  color: #fff;
 }
 
 /* Track progress bar background (amount of track fully loaded)
@@ -22,6 +28,10 @@
   background: #212121;
   vertical-align: bottom;
   border-bottom-color: #555;
+}
+
+.wp-playlist-tracks .wp-playlist-item * {
+  color: #fff !important;
 }
 
 .wp-playlist-tracks .wp-playlist-item:hover {
