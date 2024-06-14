@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( is_singular() ) { ?>
-    <div id="post-media"><?php echo universal_display_media(get_the_ID()); ?></div>
+    <div id="post-audio"><?php echo universal_display_media(get_the_ID()); ?></div>
 <?php } else { ?>
     <div class="blog-entry-media">
         <?php echo universal_display_media(get_the_ID()); ?>
