@@ -11,6 +11,9 @@
     .single-post-meta li { display: block; margin-right: 0px; padding-right: 0 }
     .single-post-meta-divider:not(:last-child)::after { content: "" }
 }
+@media only screen and (min-width:480px) and (max-width:1044px) {
+    .author-inner { flex-direction: column }
+}
 @media only screen and (min-width:480px) and (max-width:959px) {
     #wrap { width: 100% }
 }
@@ -40,7 +43,6 @@
 	#error-page-text { font-size: 14px }
 	#author-image { margin-bottom: 10px }
 	#author-bio { width: 100% }
-    .author-inner { flex-direction: column }
 	.comment-details { margin-left: 0 }
 	.comment-details:after { display: none }
 	.comment-avatar { display: inline-block; margin-bottom: 10px; position: inherit; top: auto; left: auto; }
