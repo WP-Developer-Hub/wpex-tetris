@@ -39,7 +39,8 @@ img { max-width: 100%; height: auto; }
 blockquote { position: relative; margin: 30px 20px; padding-left: 25px; font-style: italic; font-weight: bold; color: #000; quotes: "\201C""\201D""\2018""\2019"; }
 blockquote:before { color: #000; content: open-quote; font-size: 3em; line-height: .1em; position: absolute; top: 20px; left: -10px; }
 blockquote p:last-child { margin: 0 }
-pre { background: #fff; margin: 40px 0; padding: 25px 20px; line-height: 25px; border: 1px solid #ddd; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; }
+pre, code { font-family: monospace; background: #212121; color: #aaa; margin: 40px 0; padding: 25px 20px; line-height: 25px; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; display: block; max-height: 350px; overflow: auto; }
+code { border-left: 5px solid var(--universal-accent-color); }
 address { letter-spacing: 1px; margin: 20px 0; }
 #page-featured-img { position: relative; margin-bottom: 30px; }
 #page-featured-img img { display: block; width: 100%; }
