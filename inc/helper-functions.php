@@ -30,7 +30,7 @@ function universal_display_media($post_id) {
             // Display a gallery of images
             $gallery_attr = array(
                 'ids' => $attachment_ids,
-                'type' => 'carousel',
+                'type' => 'slideshow',
                 'columns' => is_single() ? '3' : '6',
                 'link' => is_single() ? 'file' : 'attachment',
                 'size' => is_single() ? 'wpex-post' : 'wpex-entry',
@@ -355,4 +355,18 @@ if ( ! function_exists( 'customize_comment_quicktags' ) ) {
     }
     add_filter('quicktags_settings', 'customize_comment_quicktags');
 }
+
+if ( ! function_exists( 'wp_kama_playlist_scripts_action' ) ) {
+    function wp_kama_playlist_scripts_action($type, $style){
+        $style = isset($style) ? $style : 'dark';
+    }
+    add_action('wp_playlist_scripts', 'wp_kama_playlist_scripts_action', 10, 2);
+}
+
+// Define the post_playlist callback
+function filter_post_playlist( $output, $attr, $instance ) {
+    $attr['style'] = isset($attr['style']) ? $attr['style'] : 'dark';
+    return $output;
+}
+add_filter( 'post_playlist', 'filter_post_playlist', 10, 3 );
 ?>
