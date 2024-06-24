@@ -27,7 +27,7 @@ if ( ! function_exists( 'universal_display_media' ) ) {
             // Get post format (if supported)
             $post_format = get_post_format($post_id);
     
-            if ($post_format === 'gallery') {
+            if ($post_format === 'gallery' || $post_format === 'image') {
                 // Display a gallery of images
                 $gallery_attr = array(
                     'ids' => $attachment_ids,
