@@ -27,12 +27,12 @@ class Universal_Meta_Box {
      */
     public function add_meta_box() {
         add_meta_box(
-            'universal_meta_box', // Metabox ID.
-            __('Universal Media', 'tetris'), // Metabox title.
-            array($this, 'render_meta_box_content'), // Callback function to render the metabox content.
-            'post', // Post type to display the metabox.
-            'normal', // Metabox position (e.g., 'normal', 'side', 'advanced').
-            'high' // Metabox priority (e.g., 'default', 'high', 'low').
+            'universal_meta_box',
+            __('Universal Media', 'tetris'),
+            array($this, 'render_meta_box_content'),
+            'post',
+            'normal',
+            'high'
         );
     }
 
@@ -45,9 +45,15 @@ class Universal_Meta_Box {
         // Add a nonce field for security.
         wp_nonce_field('universal_meta_box_nonce', 'universal_meta_box_nonce');
 
-        // Get the saved oEmbed URL value for the post.
-        $oembed_url = get_post_meta($post->ID, 'universal_oembed_url', true);
-        $local_media_ids = get_post_meta($post->ID, 'universal_local_media_attachment_ids', true);
+        // Get 'universal_local_audio_attachment_ids'
+        $local_audio_ids = get_post_meta($post->ID, 'universal_local_audio_attachment_ids', true);
+
+        // Get 'universal_local_video_attachment_ids'
+        $local_video_ids = get_post_meta($post->ID, 'universal_local_video_attachment_ids', true);
+
+        // Get 'universal_local_image_attachment_ids'
+        $local_image_ids = get_post_meta($post->ID, 'universal_local_image_attachment_ids', true);
+
         ?>
         <style>
             .universal_meta_table {
@@ -100,12 +106,14 @@ class Universal_Meta_Box {
                         <span class="dashicons dashicons-format-audio"></span>
                         <span class="dashicons dashicons-format-video"></span>
                         <span class="dashicons dashicons-format-gallery"></span>
-                        <?php _e('Use the Audio, Video, or Gallery formats to embed media above the theme. Choose the appropriate dashicon based on how media is displayed (list or grid layout).', 'tetris'); ?>
+                        <?php _e('Use the Audio, Video, or Gallery formats to display the appropriate local media above the theme. Choosing Standard post will display the post thumbnail above the theme is the option to show post thumbnail in single.php is enabled.', 'tetris'); ?>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <input type="hidden" id="universal_local_media_attachment_ids" name="universal_local_media_attachment_ids" value="<?php echo esc_attr($local_media_ids); ?>">
+        <input type="hidden" id="universal_local_audio_attachment_ids" name="universal_local_audio_attachment_ids" value="<?php echo esc_attr($local_audio_ids); ?>">
+        <input type="hidden" id="universal_local_video_attachment_ids" name="universal_local_video_attachment_ids" value="<?php echo esc_attr($local_video_ids); ?>">
+        <input type="hidden" id="universal_local_image_attachment_ids" name="universal_local_image_attachment_ids" value="<?php echo esc_attr($local_image_ids); ?>">
         <?php
     }
 
@@ -129,16 +137,33 @@ class Universal_Meta_Box {
      * @param int $post_id The ID of the post being saved.
      */
     public function save_meta_box_data($post_id) {
+        // Verify nonce
         if (!isset($_POST['universal_meta_box_nonce']) || !wp_verify_nonce($_POST['universal_meta_box_nonce'], 'universal_meta_box_nonce')) {
             return;
         }
 
-        if (isset($_POST['universal_local_media_attachment_ids'])) {
-            update_post_meta($post_id, 'universal_local_media_attachment_ids', sanitize_text_field($_POST['universal_local_media_attachment_ids']));
+        // Save/update 'universal_local_audio_attachment_ids'
+        if (isset($_POST['universal_local_audio_attachment_ids'])) {
+            update_post_meta($post_id, 'universal_local_audio_attachment_ids', sanitize_text_field($_POST['universal_local_audio_attachment_ids']));
         } else {
-            delete_post_meta($post_id, 'universal_local_media_attachment_ids');
+            delete_post_meta($post_id, 'universal_local_audio_attachment_ids');
+        }
+
+        // Save/update 'universal_local_video_attachment_ids'
+        if (isset($_POST['universal_local_video_attachment_ids'])) {
+            update_post_meta($post_id, 'universal_local_video_attachment_ids', sanitize_text_field($_POST['universal_local_video_attachment_ids']));
+        } else {
+            delete_post_meta($post_id, 'universal_local_video_attachment_ids');
+        }
+
+        // Save/update 'universal_local_image_attachment_ids'
+        if (isset($_POST['universal_local_image_attachment_ids'])) {
+            update_post_meta($post_id, 'universal_local_image_attachment_ids', sanitize_text_field($_POST['universal_local_image_attachment_ids']));
+        } else {
+            delete_post_meta($post_id, 'universal_local_image_attachment_ids');
         }
     }
+
 }
 
 // Instantiate the Universal_Meta_Box class.

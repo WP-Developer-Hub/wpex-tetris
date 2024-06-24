@@ -20,14 +20,22 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 if ( ! function_exists( 'universal_display_media' ) ) {
     function universal_display_media($post_id) {
-        $attachment_ids = get_post_meta($post_id, 'universal_local_media_attachment_ids', true);
+        // Get post format (if supported)
+        $post_format = get_post_format($post_id);
+
+        // $attachment_ids now contains the IDs based on the post format or condition
+        $attachment_ids = '';
+
+        // Check if $post_format is not empty
+        if (!empty($post_format)) {
+            // Get the attachment IDs from post meta
+            $attachment_ids = get_post_meta($post_id, ('universal_local_' . ($post_format == "gallery" ? 'image' : $post_format) . '_attachment_ids'), true);
+        }
+
         $container = '';
-    
+
         if (!empty($attachment_ids)) {
-            // Get post format (if supported)
-            $post_format = get_post_format($post_id);
-    
-            if ($post_format === 'gallery' || $post_format === 'image') {
+            if ($post_format === 'gallery') {
                 // Display a gallery of images
                 $gallery_attr = array(
                     'ids' => $attachment_ids,
@@ -60,10 +68,7 @@ if ( ! function_exists( 'universal_display_media' ) ) {
                 $container .= '<span class="u-block u-spacer-h u-spacer-light" style="background: #eee; margin-top: 30px;"></span>';
             }
     
-        } else {
-            $container = "No attachments found for this post.";
         }
-    
         return $container;
     }
 }
