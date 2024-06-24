@@ -3,21 +3,35 @@ jQuery(document).ready(function($) {
     function openMediaUploader(mediaType) {
         var inputFieldId = '#universal_local_media_attachment_ids';
 
-
-        var uploader = wp.media({
-            title: 'Upload ' + mediaType.charAt(0).toUpperCase() + mediaType.slice(1),
+        var mediaUploader = wp.media({
             button: {
                 text: 'Use This ' + mediaType.charAt(0).toUpperCase() + mediaType.slice(1)
             },
-            library: {
-                type: mediaType,
-            },
-            multiple: "add"
+            states: [
+                new wp.media.controller.Library({
+                    title: 'Upload ' + mediaType.charAt(0).toUpperCase() + mediaType.slice(1),
+                    library: wp.media.query({
+                        type: mediaType
+                    }),
+                    date: false,
+                    priority: 20,
+                    sortable: true,
+                    multiple: 'add',
+                    searchable: true,
+                    autoSelect: true,
+                    filterable: false,
+                    syncSelection: true,
+                    allowLocalEdits: true,
+                    displaySettings: false,
+                    displayUserSettings: true,
+                    describe: mediaType == 'image' ? true : false,
+                }),
+            ]
         });
 
-        // Pre-select previously chosen attachments
-        uploader.on('open', function() {
-            var attachments = uploader.state().get('selection');
+        // Pre-select previously chosen attachments and handle reordering
+        mediaUploader.on('open', function() {
+            var attachments = mediaUploader.state().get('selection');
             var idsValue = $(inputFieldId).val();
             if (idsValue.length > 0) {
                 var ids = idsValue.split(',');
@@ -27,11 +41,17 @@ jQuery(document).ready(function($) {
                     attachment.fetch();
                     attachments.add(attachment ? [attachment] : []);
                 });
+
+                // Initiate sortable after attachments are added
+                setTimeout(function() {
+                    handleMediaSorting(mediaType);
+                }, 500); // Delay to ensure elements are rendered
             }
         });
 
-        uploader.on('select', function() {
-            var attachments = uploader.state().get('selection').toJSON();
+        // Handle the event when media items are selected or reordered
+        mediaUploader.on('select update', function() {
+            var attachments = mediaUploader.state().get('selection').toJSON();
             var attachmentIds = [];
 
             // Extract IDs of selected attachments
@@ -46,7 +66,31 @@ jQuery(document).ready(function($) {
             localStorage.setItem('selected_' + mediaType + '_ids', attachmentIds.join(','));
         });
 
-        uploader.open();
+        mediaUploader.open();
+    }
+
+    // Function to handle media item sorting
+    function handleMediaSorting(mediaType) {
+        var mediaFrame = $('.media-frame-content');
+        var sortableContainer = mediaFrame.find('.attachments');
+
+        sortableContainer.sortable({
+            items: '.attachment',
+            cursor: 'move',
+            placeholder: 'sortable-placeholder',
+            update: function(event, ui) {
+                var sortedIds = [];
+                sortableContainer.find('.attachment').each(function() {
+                    sortedIds.push($(this).data('id'));
+                });
+
+                var inputFieldId = '#universal_local_media_attachment_ids';
+                $(inputFieldId).val(sortedIds.join(','));
+
+                // Store sorted IDs in local storage
+                localStorage.setItem('selected_' + mediaType + '_ids', sortedIds.join(','));
+            }
+        });
     }
 
     // Handle click events for each media upload button with hard-coded mediaType
