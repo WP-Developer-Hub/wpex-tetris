@@ -24,7 +24,6 @@ jQuery(document).ready(function($) {
                     allowLocalEdits: true,
                     displaySettings: false,
                     displayUserSettings: true,
-                    describe: mediaType == 'image' ? true : false,
                 }),
             ]
         });
