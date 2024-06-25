@@ -13,11 +13,6 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	return;
 }
+?>
 
-if ( is_singular() ) { ?>
-    <div id="post-audio"><?php echo universal_display_media(get_the_ID()); ?></div>
-<?php } else { ?>
-    <div class="blog-entry-media">
-        <?php echo universal_display_media(get_the_ID()); ?>
-    </div><!-- .blog-entry-thumbnail -->
-<?php } ?>
+<div id="post-audio"><?php echo universal_display_media(get_the_ID()); ?></div>
