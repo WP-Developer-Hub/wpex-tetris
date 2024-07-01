@@ -1,12 +1,37 @@
 .wp-playlist {
   margin: 0;
+  padding: 0;
   color: #fff;
   border: none;
   background: #000;
 }
 
+.wp-playlist-current-item {
+  margin: 0;
+  padding: 10px;
+  height: unset;
+}
+
+.wp-playlist-current-item img {
+  width: 90px;
+  display: flex;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  background-color: #212121;
+  max-width: 128px !important;
+}
+
 .wp-playlist * {
   color: #fff;
+}
+
+.mejs-container .mejs-controls {
+  border-top: solid 1px #555;
+}
+
+.wp-playlist .wp-playlist-tracks {
+  margin: 0 !important;
+  border-top: solid 1px #555;
 }
 
 .wp-playlist .wp-playlist-tracks .wp-playlist-item {
