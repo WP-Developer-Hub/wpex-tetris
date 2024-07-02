@@ -1,16 +1,16 @@
 /*-----------------------------------------------------------
 Theme Name: Tetris
-Version: 2.0.0
-Description: Premium WordPress theme by WPExplorer
-Author: WPExplorer
+Version: 2.5.0
+Description: Premium WordPress theme by WPExplorer & now maintained by DJABHipHop
+Author: WPExplorer, DJABHipHop
 Author URI: http://www.wpexplorer.com/
-Designed & Developed by WPExplorer
+Designed & Developed by WPExplorer & now maintained by DJABHipHop
 Theme URI: http://www.wpexplorer.com/tetris-wordpress-theme/
 Tested up to: 7.X
 Requires PHP: 7.X
 License: GNU General Public License version 3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Tags: custom-background, threaded-comments, custom-menu, featured-images, full-width-template, theme-options, translation-ready
+Tags: custom-background, threaded-comments, custom-menu, featured-images, theme-options, translation-ready
 Text Domain: wpex
 ----------------------------------------------------------- */
 :root {--u-post-item-min-width: 300px; --u-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2); accent-color: var(--universal-accent-color) }
