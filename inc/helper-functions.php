@@ -35,7 +35,7 @@ if ( ! function_exists( 'universal_display_media' ) ) {
         $container = '';
 
         if (!empty($attachment_ids)) {
-            if ($post_format === 'gallery') {
+            if ($post_format === 'gallery' || $post_format === 'image') {
                 // Display a gallery of images
                 $gallery_attr = array(
                     'ids' => $attachment_ids,
