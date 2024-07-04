@@ -71,36 +71,11 @@ class Universal_Meta_Box {
         </style>
         <table class="widefat universal_meta_table">
             <tbody>
-                <tr>
-                    <td>
-                        <span class="dashicons dashicons-admin-links" class="screen-reader-text"></span>
-                        <?php _e('Use the link format to display embedded media above the theme.', 'tetris'); ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="universal_local_media_upload_video" class="screen-reader-text"><?php _e('Add Video:', 'tetris'); ?></label>
-                        <button id="universal_local_media_upload_video" class="button universal_media_button widefat" data-editor="content">
-                            <span class="dashicons dashicons-format-video"></span> <?php _e('Add Video', 'tetris'); ?>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="universal_local_media_upload_audio" class="screen-reader-text"><?php _e('Add Audio:', 'tetris'); ?></label>
-                        <button id="universal_local_media_upload_audio" class="button universal_media_button widefat" data-editor="content">
-                            <span class="dashicons dashicons-format-audio"></span> <?php _e('Add Audio', 'tetris'); ?>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="universal_local_media_upload_image" class="screen-reader-text"><?php _e('Add Images:', 'tetris'); ?></label>
-                        <button id="universal_local_media_upload_image" class="button universal_media_button widefat" data-editor="content">
-                            <span class="dashicons dashicons-format-image"></span> <?php _e('Add Images', 'tetris'); ?>
-                        </button>
-                    </td>
-                </tr>
+                <?php
+                    echo $this->generate_media_row('video', 'Video', 'format-video', $local_video_ids);
+                    echo $this->generate_media_row('audio', 'Audio', 'format-audio', $local_audio_ids);
+                    echo $this->generate_media_row('image', 'Images', 'format-image', $local_image_ids);
+                ?>
                 <tr>
                     <td>
                         <span class="dashicons dashicons-format-audio"></span>
@@ -115,6 +90,21 @@ class Universal_Meta_Box {
         <input type="hidden" id="universal_local_video_attachment_ids" name="universal_local_video_attachment_ids" value="<?php echo esc_attr($local_video_ids); ?>">
         <input type="hidden" id="universal_local_image_attachment_ids" name="universal_local_image_attachment_ids" value="<?php echo esc_attr($local_image_ids); ?>">
         <?php
+    }
+
+    private function generate_media_row($type, $label, $icon, $ids) {
+        ob_start();
+        ?>
+        <tr>
+            <td>
+                <label for="universal_local_media_upload_<?php echo $type; ?>" class="screen-reader-text"><?php _e('Add ' . $label, 'tetris'); ?></label>
+                <button type="button" id="universal_local_media_upload_<?php echo $type; ?>" class="button universal_media_button widefat" data-editor="content">
+                    <span class="universal_media_button_icon dashicons dashicons-<?php echo $icon; ?>"></span> <?php _e('Add ' . $label, 'tetris'); ?>
+                </button>
+            </td>
+        </tr>
+        <?php
+        return ob_get_clean();
     }
 
     /**

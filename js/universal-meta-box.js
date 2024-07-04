@@ -61,15 +61,15 @@ jQuery(document).ready(function($) {
         mediaUploader.open();
     }
 
+    $('#universal_local_media_upload_video').click(function(e) {
+        e.preventDefault();
+        openMediaUploader('video', '#universal_local_video_attachment_ids');
+    });
+
     // Handle click events for each media upload button with hard-coded mediaType
     $('#universal_local_media_upload_audio').click(function(e) {
         e.preventDefault();
         openMediaUploader('audio', '#universal_local_audio_attachment_ids');
-    });
-
-    $('#universal_local_media_upload_video').click(function(e) {
-        e.preventDefault();
-        openMediaUploader('video', '#universal_local_video_attachment_ids');
     });
 
     $('#universal_local_media_upload_image').click(function(e) {
