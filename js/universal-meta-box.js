@@ -1,5 +1,4 @@
 jQuery(document).ready(function($) {
-
     // Function to open the media uploader and handle selection
     function openMediaUploader(mediaType, inputFieldId) {
         var mediaUploader = wp.media({
@@ -62,10 +61,6 @@ jQuery(document).ready(function($) {
         mediaUploader.open();
     }
 
-    function clearAllMedia(mediaType) {
-        $('#universal_local_' + mediaType + '_attachment_ids').val('');
-    }
-
     // Handle click events for each media upload button with hard-coded mediaType
     $('#universal_local_media_upload_audio').click(function(e) {
         e.preventDefault();
@@ -80,12 +75,5 @@ jQuery(document).ready(function($) {
     $('#universal_local_media_upload_image').click(function(e) {
         e.preventDefault();
         openMediaUploader('image', '#universal_local_image_attachment_ids');
-    });
-    
-    $('#universal_clear_all_local_media').click(function(e) {
-        e.preventDefault();
-        clearAllMedia('audio');
-        clearAllMedia('video');
-        clearAllMedia('image');
     });
 });

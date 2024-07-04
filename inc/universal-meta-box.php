@@ -79,33 +79,25 @@ class Universal_Meta_Box {
                 </tr>
                 <tr>
                     <td>
-                        <label for="universal_local_media_upload_video" class="screen-reader-text"><?php _e('Add Video', 'tetris'); ?></label>
-                        <button type="button" id="universal_local_media_upload_video" class="button universal_media_button widefat" data-editor="content">
+                        <label for="universal_local_media_upload_video" class="screen-reader-text"><?php _e('Add Video:', 'tetris'); ?></label>
+                        <button id="universal_local_media_upload_video" class="button universal_media_button widefat" data-editor="content">
                             <span class="dashicons dashicons-format-video"></span> <?php _e('Add Video', 'tetris'); ?>
                         </button>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="universal_local_media_upload_audio" class="screen-reader-text"><?php _e('Add Audio', 'tetris'); ?></label>
-                        <button type="button" id="universal_local_media_upload_audio" class="button universal_media_button widefat" data-editor="content">
+                        <label for="universal_local_media_upload_audio" class="screen-reader-text"><?php _e('Add Audio:', 'tetris'); ?></label>
+                        <button id="universal_local_media_upload_audio" class="button universal_media_button widefat" data-editor="content">
                             <span class="dashicons dashicons-format-audio"></span> <?php _e('Add Audio', 'tetris'); ?>
                         </button>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="universal_local_media_upload_image" class="screen-reader-text"><?php _e('Add Images', 'tetris'); ?></label>
-                        <button type="button" id="universal_local_media_upload_image" class="button universal_media_button widefat" data-editor="content">
+                        <label for="universal_local_media_upload_image" class="screen-reader-text"><?php _e('Add Images:', 'tetris'); ?></label>
+                        <button id="universal_local_media_upload_image" class="button universal_media_button widefat" data-editor="content">
                             <span class="dashicons dashicons-format-image"></span> <?php _e('Add Images', 'tetris'); ?>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="universal_clear_all_local_media" class="screen-reader-text"><?php _e('Clear All Local Media Item', 'tetris'); ?></label>
-                        <button type="button" id="universal_clear_all_local_media" class="button universal_media_button widefat" data-editor="content">
-                            <span class="dashicons dashicons-trash"></span> <?php _e('Clear All Local Media Item', 'tetris'); ?>
                         </button>
                     </td>
                 </tr>
