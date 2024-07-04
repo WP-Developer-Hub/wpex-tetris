@@ -45,36 +45,46 @@ class Universal_Meta_Box {
         // Add a nonce field for security.
         wp_nonce_field('universal_meta_box_nonce', 'universal_meta_box_nonce');
 
-        // Get 'universal_local_audio_attachment_ids'
-        $local_audio_ids = get_post_meta($post->ID, 'universal_local_audio_attachment_ids', true);
-
-        // Get 'universal_local_video_attachment_ids'
-        $local_video_ids = get_post_meta($post->ID, 'universal_local_video_attachment_ids', true);
-
-        // Get 'universal_local_image_attachment_ids'
-        $local_image_ids = get_post_meta($post->ID, 'universal_local_image_attachment_ids', true);
-
         ?>
         <style>
             .universal_meta_table {
                 all: unset !important;
+            }
+            .universal_meta_table .square {
+                min-width: 40px;
+                text-align: center;
+                vertical-align: middle;
+            }
+            .universal_meta_table .button-link-delete {
+                border-color: #d63638 !important;
+            }
+            .universal_group {
+                display: flex;
+            }
+            .universal_group .universal_media_button {
+                border-radius: 0;
+                margin-right: -1px;
+            }
+            .universal_group .widefat {
+                transition: all 1s ease-in-out 0s;
             }
             .universal_media_button {
                 text-align: left;
                 padding: 10px !important;
             }
             .universal_media_button .dashicons {
-                text-align: left;
-                margin-right: 5px;
                 vertical-align: middle;
+            }
+            .universal_media_button .universal_media_button_icon {
+                margin-right: 5px;
             }
         </style>
         <table class="widefat universal_meta_table">
             <tbody>
                 <?php
-                    echo $this->generate_media_row('video', 'Video', 'format-video', $local_video_ids);
-                    echo $this->generate_media_row('audio', 'Audio', 'format-audio', $local_audio_ids);
-                    echo $this->generate_media_row('image', 'Images', 'format-image', $local_image_ids);
+                    echo $this->add_media_library_control('video', 'Video', 'format-video', $post);
+                    echo $this->add_media_library_control('audio', 'Audio', 'format-audio', $post);
+                    echo $this->add_media_library_control('image', 'Images', 'format-image', $post);
                 ?>
                 <tr>
                     <td>
@@ -86,25 +96,55 @@ class Universal_Meta_Box {
                 </tr>
             </tbody>
         </table>
-        <input type="hidden" id="universal_local_audio_attachment_ids" name="universal_local_audio_attachment_ids" value="<?php echo esc_attr($local_audio_ids); ?>">
-        <input type="hidden" id="universal_local_video_attachment_ids" name="universal_local_video_attachment_ids" value="<?php echo esc_attr($local_video_ids); ?>">
-        <input type="hidden" id="universal_local_image_attachment_ids" name="universal_local_image_attachment_ids" value="<?php echo esc_attr($local_image_ids); ?>">
         <?php
     }
 
-    private function generate_media_row($type, $label, $icon, $ids) {
+    /**
+     * Adds media library control for a specified media type.
+     *
+     * @param string $type The media type (e.g., 'audio', 'video', 'image').
+     * @param string $label The label for the media type.
+     * @param string $icon The Dashicon class for the media type.
+     * @param WP_Post $post The current post object.
+     * @return string The HTML output for the media library control.
+     */
+    private function add_media_library_control($type, $label, $icon, $post) {
+        $local_ids = get_post_meta($post->ID, 'universal_local_' . $type . '_attachment_ids', true);
+
         ob_start();
         ?>
         <tr>
             <td>
-                <label for="universal_local_media_upload_<?php echo $type; ?>" class="screen-reader-text"><?php _e('Add ' . $label, 'tetris'); ?></label>
-                <button type="button" id="universal_local_media_upload_<?php echo $type; ?>" class="button universal_media_button widefat" data-editor="content">
-                    <span class="universal_media_button_icon dashicons dashicons-<?php echo $icon; ?>"></span> <?php _e('Add ' . $label, 'tetris'); ?>
-                </button>
+                <div class="universal_group">
+                    <label for="universal_local_media_upload_<?php echo $type; ?>" class="screen-reader-text"><?php _e('Add ' . $label, 'tetris'); ?></label>
+                    <button type="button" id="universal_local_media_upload_<?php echo $type; ?>" class="button universal_media_button widefat" data-editor="content">
+                        <span class="universal_media_button_icon dashicons dashicons-<?php echo $icon; ?>"></span> <?php _e('Add ' . $label, 'tetris'); ?>
+                    </button>
+                    <label for="universal_local_media_clear_all_<?php echo $type; ?>" class="screen-reader-text"><?php _e('Clear All ' . $label, 'tetris'); ?></label>
+                    <button type="button" id="universal_local_media_clear_all_<?php echo $type; ?>" class="button button-link-delete universal_media_button square" style="display: none;" data-editor="content">
+                        <span class="dashicons dashicons-remove"></span>
+                    </button>
+                </div>
+                <input type="hidden" id="universal_local_<?php echo $type; ?>_attachment_ids" name="universal_local_<?php echo $type; ?>_attachment_ids" value="<?php echo esc_attr($local_ids); ?>">
             </td>
         </tr>
         <?php
         return ob_get_clean();
+    }
+
+    /**
+     * Saves the media library setting for a specified media type.
+     *
+     * @param int $post_id The ID of the post being saved.
+     * @param string $type The media type (e.g., 'audio', 'video', 'image').
+     */
+    private function save_media_library_meta($post_id, $type) {
+        // Save/update 'universal_local_audio_attachment_ids'
+        if (isset($_POST['universal_local_' . $type . '_attachment_ids'])) {
+            update_post_meta($post_id, 'universal_local_' . $type . '_attachment_ids', sanitize_text_field($_POST['universal_local_' . $type . '_attachment_ids']));
+        } else {
+            delete_post_meta($post_id, 'universal_local_' . $type . '_attachment_ids');
+        }
     }
 
     /**
@@ -122,7 +162,7 @@ class Universal_Meta_Box {
     }
 
     /**
-     * Saves meta box data when a post is saved or updated.
+     * Saves meta box data for the post.
      *
      * @param int $post_id The ID of the post being saved.
      */
@@ -132,28 +172,15 @@ class Universal_Meta_Box {
             return;
         }
 
-        // Save/update 'universal_local_audio_attachment_ids'
-        if (isset($_POST['universal_local_audio_attachment_ids'])) {
-            update_post_meta($post_id, 'universal_local_audio_attachment_ids', sanitize_text_field($_POST['universal_local_audio_attachment_ids']));
-        } else {
-            delete_post_meta($post_id, 'universal_local_audio_attachment_ids');
-        }
-
         // Save/update 'universal_local_video_attachment_ids'
-        if (isset($_POST['universal_local_video_attachment_ids'])) {
-            update_post_meta($post_id, 'universal_local_video_attachment_ids', sanitize_text_field($_POST['universal_local_video_attachment_ids']));
-        } else {
-            delete_post_meta($post_id, 'universal_local_video_attachment_ids');
-        }
+        $this->save_media_library_meta($post_id, 'video');
+
+        // Save/update 'universal_local_audio_attachment_ids'
+        $this->save_media_library_meta($post_id, 'audio');
 
         // Save/update 'universal_local_image_attachment_ids'
-        if (isset($_POST['universal_local_image_attachment_ids'])) {
-            update_post_meta($post_id, 'universal_local_image_attachment_ids', sanitize_text_field($_POST['universal_local_image_attachment_ids']));
-        } else {
-            delete_post_meta($post_id, 'universal_local_image_attachment_ids');
-        }
+        $this->save_media_library_meta($post_id, 'image');
     }
-
 }
 
 // Instantiate the Universal_Meta_Box class.
