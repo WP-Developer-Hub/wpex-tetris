@@ -40,16 +40,16 @@ if ( ! function_exists( 'universal_display_media' ) ) {
                 $gallery_attr = array(
                     'ids' => $attachment_ids,
                     'type' => 'slideshow',
-                    'columns' => is_single() ? '3' : '6',
-                    'link' => is_single() ? 'file' : 'attachment',
-                    'size' => is_single() ? 'wpex-post' : 'wpex-entry',
+                    'columns' => '3' ,
+                    'link' => 'attachment',
+                    'size' => 'wpex-entry',
                 );
     
                 $container .= gallery_shortcode($gallery_attr);
             } else {
                 // Determine if tracklist should be displayed based on the count of attachment IDs
                 $display_tracklist = (count(explode(',', $attachment_ids)) > 1);
-    
+
                 // Display playlist for audio or video post formats
                 $playlist_attr = array(
                     'ids' => $attachment_ids,
@@ -57,7 +57,7 @@ if ( ! function_exists( 'universal_display_media' ) ) {
                     'images' => true,
                     'artists' => true,
                     'tracklist' => $display_tracklist,
-                    'tracknumbers' => false,
+                    'tracknumbers' => true,
                     'type' => ($post_format === 'audio') ? 'audio' : 'video',
                 );
     
