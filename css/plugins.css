@@ -110,3 +110,9 @@
     margin: 0px !important;
     padding: 0px !important;
 }
+
+/*--------------------------*
+/* WPG Slider
+/*--------------------------*/
+#post-gallery .wpg-slider .wpg-slider-item-inner,
+#post-gallery .wpg-slider img { height: 512px !important; width: 100%; object-fit: contain; object-position: center center; }
