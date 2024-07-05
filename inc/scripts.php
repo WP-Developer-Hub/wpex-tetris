@@ -29,14 +29,17 @@ if ( ! function_exists( 'wpex_load_scripts' ) ) {
         // Layout
         wp_enqueue_style( 'layout-ufg', $dir . '/ufg.css' );
 
+        // Gallery
+        wp_enqueue_style( 'gallery', $dir . '/gallery.css' );
+
 		// Main
 		wp_enqueue_style( 'style', get_stylesheet_uri() );
 
         // Form Elements
         wp_enqueue_style( 'form-elements', $dir . '/ufc.css' );
 
-        // Layout
-        wp_enqueue_style( 'plugin-style', $dir . '/plugins.css' );
+        // Plugin
+        wp_enqueue_style( 'plugin', $dir . '/plugins.css' );
 
 		// Responsive
 		wp_enqueue_style( 'wpex-responsive', $dir . '/responsive.css' );

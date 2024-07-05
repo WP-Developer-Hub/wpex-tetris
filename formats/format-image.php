@@ -15,4 +15,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div id="post-media"><?php echo universal_display_media(get_the_ID()); ?></div>
+<div id="post-gallery"><?php echo universal_display_media(get_the_ID()); ?></div>
