@@ -23,7 +23,12 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                 <ul class="single-post-meta clearfix">
                     <li class="single-post-meta-divider"><strong>Posted on:</strong> <?php echo get_the_date(); ?></li>
                     <li class="single-post-meta-divider" ><strong>By:</strong> <?php the_author_posts_link(); ?></li>
-                    <li class="single-post-meta-divider"><strong>Under:</strong><span class="u-wrap-text-all"> <?php the_category( ',  ' ); ?></span></li>
+                    <?php if (has_category()) : ?>
+                        <li class="single-post-meta-divider">
+                            <strong>Under:</strong>
+                            <span class="u-wrap-text-all"> <?php the_category(', '); ?></span>
+                        </li>
+                    <?php endif; ?>
                     <?php if ( comments_open() ) : ?>
                         <li class="comment-scroll single-post-meta-divider"><strong>With:</strong> <?php comments_popup_link(__('0 Comments', 'tetris'), __('1 Comment', 'tetris'), __('% Comments', 'tetris'), 'comments-link' ); ?></li>
                     <?php endif; ?>
