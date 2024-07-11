@@ -100,15 +100,17 @@ class Universal_Meta_Box {
     }
 
     /**
-     * Adds media library control for a specified media type.
+     * Add media library control.
      *
-     * @param string $type The media type (e.g., 'audio', 'video', 'image').
+     * @param string $type The type of media (e.g., 'image', 'audio').
      * @param string $label The label for the media type.
-     * @param string $icon The Dashicon class for the media type.
+     * @param string $icon The Dashicon class for the icon.
      * @param WP_Post $post The current post object.
-     * @return string The HTML output for the media library control.
+     *
+     * @return string The HTML for the media library control.
      */
     private function add_media_library_control($type, $label, $icon, $post) {
+        // Get the attachment IDs from the post meta
         $local_ids = get_post_meta($post->ID, 'universal_local_' . $type . '_attachment_ids', true);
 
         ob_start();
@@ -116,16 +118,25 @@ class Universal_Meta_Box {
         <tr>
             <td>
                 <div class="universal_group">
-                    <label for="universal_local_media_upload_<?php echo $type; ?>" class="screen-reader-text"><?php _e('Add ' . $label, 'tetris'); ?></label>
-                    <button type="button" id="universal_local_media_upload_<?php echo $type; ?>" class="button universal_media_button widefat" data-editor="content">
-                        <span class="universal_media_button_icon dashicons dashicons-<?php echo $icon; ?>"></span> <?php _e('Add ' . $label, 'tetris'); ?>
+                    <!-- Add Media Button -->
+                    <label for="universal_local_media_upload_<?php echo esc_attr($type); ?>" class="screen-reader-text">
+                        <?php printf(esc_html__('Add %s', 'tetris'), esc_html($label)); ?>
+                    </label>
+                    <button type="button" id="universal_local_media_upload_<?php echo esc_attr($type); ?>" class="button universal_media_button widefat" data-editor="content">
+                        <span class="universal_media_button_icon dashicons dashicons-<?php echo esc_attr($icon); ?>"></span>
+                        <?php printf(esc_html__('Add %s', 'tetris'), esc_html($label)); ?>
                     </button>
-                    <label for="universal_local_media_clear_all_<?php echo $type; ?>" class="screen-reader-text"><?php _e('Clear All ' . $label, 'tetris'); ?></label>
-                    <button type="button" id="universal_local_media_clear_all_<?php echo $type; ?>" class="button button-link-delete universal_media_button square" style="display: none;" data-editor="content">
+                    
+                    <!-- Clear All Button -->
+                    <label for="universal_local_media_clear_all_<?php echo esc_attr($type); ?>" class="screen-reader-text">
+                        <?php printf(esc_html__('Clear All %s', 'tetris'), esc_html($label)); ?>
+                    </label>
+                    <button type="button" id="universal_local_media_clear_all_<?php echo esc_attr($type); ?>" class="button button-link-delete universal_media_button square" style="display: none;" data-editor="content">
                         <span class="dashicons dashicons-remove"></span>
                     </button>
                 </div>
-                <input type="hidden" id="universal_local_<?php echo $type; ?>_attachment_ids" name="universal_local_<?php echo $type; ?>_attachment_ids" value="<?php echo esc_attr($local_ids); ?>">
+                <!-- Hidden input to store attachment IDs -->
+                <input type="hidden" id="universal_local_<?php echo esc_attr($type); ?>_attachment_ids" name="universal_local_<?php echo esc_attr($type); ?>_attachment_ids" value="<?php echo esc_attr($local_ids); ?>">
             </td>
         </tr>
         <?php

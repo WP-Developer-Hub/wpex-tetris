@@ -373,11 +373,11 @@ h3#reply-title span { background: #fff; padding-right: 15px; }
 .textleft { text-align: left }
 .gallery { width: 100%; max-width: 100%; }
 .gallery-item,
-.wp-caption { max-width: 100% !important; border: 1px solid #ddd; text-align: center; background-color: #f3f3f3; padding: 10px;}
+.wp-caption { max-width: 100% !important; border: 1px solid #ddd; text-align: center; background-color: #f3f3f3; padding: 10px; }
 .gallery-item img,
-.wp-caption img { margin: 0; padding: 0; border: 0 none;max-width: 100%;}
+.wp-caption img { margin: 0; padding: 0; border: 0 none; max-width: 100%; }
 .gallery-item figcaption.wp-caption-text,
-.wp-caption figcaption.wp-caption-text { font-size: 0.986em; line-height: 17px; padding: 0; margin: 0; text-wrap: balance;}
+.wp-caption figcaption.wp-caption-text { font-size: 0.986em; line-height: 17px; padding: 0; margin: 0; text-wrap: balance; }
 .wp-smiley { margin: 0 !important; max-height: 1em; }
 blockquote.left { margin-right: 20px; text-align: right; margin-left: 0; width: 33%; float: left; }
 blockquote.right { margin-left: 20px; text-align: left; margin-right: 0; width: 33%; float: right; }

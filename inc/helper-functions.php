@@ -42,7 +42,7 @@ if ( ! function_exists( 'universal_display_media' ) ) {
                     'type' => 'slideshow',
                     'columns' => '3' ,
                     'link' => 'attachment',
-                    'size' => 'wpex-entry',
+                    'size' => 'wpex-post',
                 );
     
                 $container .= gallery_shortcode($gallery_attr);
