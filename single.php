@@ -21,11 +21,11 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                 <h1><?php the_title(); ?></h1>
                 <span class="u-block u-spacer-h u-spacer-light" style="background: #eee; margin-top: 10px;"></span>
                 <ul class="single-post-meta clearfix">
-                    <li class="single-post-meta-divider"><strong>Posted on:</strong> <?php echo get_the_date(); ?></li>
-                    <li class="single-post-meta-divider" ><strong>By:</strong> <?php the_author_posts_link(); ?></li>
+                    <li class="single-post-meta-divider"><strong><?php __('Posted on', 'tetris'); ?>:</strong> <?php echo get_the_date(); ?></li>
+                    <li class="single-post-meta-divider" ><strong><?php __('By', 'tetris'); ?>:</strong> <?php the_author_posts_link(); ?></li>
                     <?php if (has_category()) : ?>
                         <li class="single-post-meta-divider">
-                            <strong>Under:</strong>
+                            <strong><?php __('Under', 'tetris'); ?>:</strong>
                             <span class="u-wrap-text-all"> <?php the_category(', '); ?></span>
                         </li>
                     <?php endif; ?>
