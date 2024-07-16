@@ -47,39 +47,47 @@ class Universal_Meta_Box {
 
         ?>
         <style>
-            .universal_meta_table {
+            .universal-meta-table {
                 all: unset !important;
             }
-            .universal_meta_table .square {
+            .universal-meta-table .square {
                 min-width: 40px;
                 text-align: center;
                 vertical-align: middle;
             }
-            .universal_meta_table .button-link-delete {
+            .universal-meta-table .button-link-delete {
                 border-color: #d63638 !important;
             }
-            .universal_group {
+            .universal-group {
                 display: flex;
             }
-            .universal_group .universal_media_button {
+            .universal-group .universal-media-button {
                 border-radius: 0;
                 margin-right: -1px;
             }
-            .universal_group .widefat {
+            .universal-group .widefat {
                 transition: all 1s ease-in-out 0s;
             }
-            .universal_media_button {
+            .universal-media-button {
                 text-align: left;
                 padding: 10px !important;
             }
-            .universal_media_button .dashicons {
+            .universal-media-button .dashicons {
                 vertical-align: middle;
             }
-            .universal_media_button .universal_media_button_icon {
+            .universal-media-button .universal-media-button_icon {
                 margin-right: 5px;
             }
+            #universal-media-uploader .media-sidebar {
+                display: none;
+            }
+            #universal-media-uploader .media-toolbar,
+            #universal-media-uploader .uploader-inline,
+            #universal-media-uploader .attachments-wrapper .attachments {
+                right: 0;
+            }
         </style>
-        <table class="widefat universal_meta_table">
+        <table class="widefat universal-meta-table">
             <tbody>
                 <?php
                     echo $this->add_media_library_control('video', 'Video', 'format-video', $post);
@@ -117,13 +125,13 @@ class Universal_Meta_Box {
         ?>
         <tr>
             <td>
-                <div class="universal_group">
+                <div class="universal-group">
                     <!-- Add Media Button -->
                     <label for="universal_local_media_upload_<?php echo esc_attr($type); ?>" class="screen-reader-text">
                         <?php printf(esc_html__('Add %s', 'tetris'), esc_html($label)); ?>
                     </label>
-                    <button type="button" id="universal_local_media_upload_<?php echo esc_attr($type); ?>" class="button universal_media_button widefat" data-editor="content">
-                        <span class="universal_media_button_icon dashicons dashicons-<?php echo esc_attr($icon); ?>"></span>
+                    <button type="button" id="universal_local_media_upload_<?php echo esc_attr($type); ?>" class="button universal-media-button widefat" data-editor="content">
+                        <span class="universal-media-button_icon dashicons dashicons-<?php echo esc_attr($icon); ?>"></span>
                         <?php printf(esc_html__('Add %s', 'tetris'), esc_html($label)); ?>
                     </button>
                     
@@ -131,7 +139,7 @@ class Universal_Meta_Box {
                     <label for="universal_local_media_clear_all_<?php echo esc_attr($type); ?>" class="screen-reader-text">
                         <?php printf(esc_html__('Clear All %s', 'tetris'), esc_html($label)); ?>
                     </label>
-                    <button type="button" id="universal_local_media_clear_all_<?php echo esc_attr($type); ?>" class="button button-link-delete universal_media_button square" style="display: none;" data-editor="content">
+                    <button type="button" id="universal_local_media_clear_all_<?php echo esc_attr($type); ?>" class="button button-link-delete universal-media-button square" style="display: none;" data-editor="content">
                         <span class="dashicons dashicons-remove"></span>
                     </button>
                 </div>

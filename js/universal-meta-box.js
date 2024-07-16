@@ -48,10 +48,12 @@ jQuery(document).ready(function($) {
             },
             frame: "post",
             state: getMediaUploaderState(idsValue, mediaType),
+            states: 'media-uploader',
             library: {
                 type: mediaType
             },
-            multiple: true
+            multiple: true,
+            id: 'universal-media-uploader'
         });
 
         mediaUploader.on('open', function() {
@@ -77,15 +79,32 @@ jQuery(document).ready(function($) {
             $('#universal_local_media_clear_all_' + mediaType).fadeIn();
         });
 
+        mediaUploader.on('ready change content:render', function() {
+            var attachments = mediaUploader.state().get('library');
+            if (idsValue.val().length > 0 || attachments.length > 0) {
+                if(mediaType == 'video'){
+                    $('#universal-media-uploader #menu-item-' + mediaType + '-' + cType + '-edit').show();
+                } else {
+                    $('#universal-media-uploader #menu-item-' + cType + '-edit').show();
+                }
+            } else {
+                if(mediaType == 'video'){
+                    $('#universal-media-uploader #menu-item-' + mediaType + '-' + cType + '-edit').hide();
+                } else {
+                    $('#universal-media-uploader #menu-item-' + cType + '-edit').hide();
+                }
+            }
+        });
+
         mediaUploader.open();
     }
 
-    function clearAllMedia(button, mediaType) {
+    function clearAllMedia(mediaType) {
         var confirmMessage = 'Do you want to clear all ' + mediaType + ' attachments?';
         if (confirm(confirmMessage)) {
             $('#universal_local_' + mediaType + '_attachment_ids').val('');
             localStorage.removeItem('selected_' + mediaType + '_ids');
-            $(button).fadeOut();
+            $('#universal_local_media_clear_all_' + mediaType).fadeOut();
         }
     }
 
@@ -106,16 +125,16 @@ jQuery(document).ready(function($) {
 
     $('#universal_local_media_clear_all_video').click(function(e) {
         e.preventDefault();
-        clearAllMedia(this, 'video');
+        clearAllMedia('video');
     });
 
     $('#universal_local_media_clear_all_audio').click(function(e) {
         e.preventDefault();
-        clearAllMedia(this, 'audio');
+        clearAllMedia('audio');
     });
 
     $('#universal_local_media_clear_all_image').click(function(e) {
         e.preventDefault();
-        clearAllMedia(this, 'image');
+        clearAllMedia('image');
     });
 });
