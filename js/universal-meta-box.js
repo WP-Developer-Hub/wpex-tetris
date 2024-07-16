@@ -1,5 +1,11 @@
+Object.defineProperty(String.prototype, 'universal_capitalize', {
+    value: function() {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+    },
+    enumerable: false
+});
+
 jQuery(document).ready(function($) {
-    // Hide clear all buttons initially if there are no media items selected
     function initializeClearButtons() {
         if ($('#universal_local_audio_attachment_ids').val()) {
             $('#universal_local_media_clear_all_audio').fadeIn();
@@ -14,39 +20,44 @@ jQuery(document).ready(function($) {
 
     initializeClearButtons();
 
-    // Function to open the media uploader and handle selection
-    function openMediaUploader(mediaType, inputFieldId) {
-        var mediaUploader = wp.media({
+    function openMediaUploader(mediaType, cType, inputFieldId) {
+        var idsValue = $(inputFieldId);
+
+        function getMediaUploaderState(ids, type) {
+            switch (type) {
+                case 'video':
+                    wp.media.view.l10n.createNewVideoPlaylist = "Arrange Videos File";
+                    wp.media.view.l10n.insertVideoPlaylist = "Update Videos Playlist";
+                    return ids.val() ? 'video-playlist-edit' : 'video-playlist-library';
+                case 'audio':
+                    wp.media.view.l10n.createNewPlaylist = "Arrange Audios File";
+                    wp.media.view.l10n.insertPlaylist = "Update Audios Playlist";
+                    return ids.val() ? 'playlist-edit' : 'playlist-library';
+                case 'image':
+                    wp.media.view.l10n.createNewGallery = "Arrange Images File";
+                    wp.media.view.l10n.insertGallery = "Update Image Gallery";
+                    return ids.val() ? 'gallery-edit' : 'gallery-library';
+                default:
+                    return 'library';
+            }
+        }
+
+        var mediaUploader = wp.media.frames.file_frame = wp.media({
             button: {
-                text: 'Use This ' + mediaType.charAt(0).toUpperCase() + mediaType.slice(1)
+                text: 'Add ' + mediaType.universal_capitalize() + ' To ' + cType.universal_capitalize()
             },
-            states: [
-                new wp.media.controller.Library({
-                    title: 'Upload ' + mediaType.charAt(0).toUpperCase() + mediaType.slice(1),
-                    library: wp.media.query({ type: mediaType }),
-                    date: true,
-                    editable: true,
-                    sortable: true,
-                    multiple: 'add',
-                    searchable: true,
-                    autoSelect: true,
-                    syncSelection: true,
-                    filterable: false,
-                    allowLocalEdits: true,
-                    displaySettings: false,
-                    contentUserSetting: true,
-                    displayUserSettings: true,
-                }),
-            ]
+            frame: "post",
+            state: getMediaUploaderState(idsValue, mediaType),
+            library: {
+                type: mediaType
+            },
+            multiple: true
         });
 
-        // Pre-select previously chosen attachments and handle reordering
         mediaUploader.on('open', function() {
-            var attachments = mediaUploader.state().get('selection');
-            var idsValue = $(inputFieldId).val();
-            if (idsValue && idsValue.length > 0) {
-                var ids = idsValue.split(',');
-
+            var attachments = mediaUploader.state().get('library');
+            if (idsValue.val() && idsValue.val().length > 0) {
+                var ids = idsValue.val().split(',');
                 ids.forEach(function(id) {
                     var attachment = wp.media.attachment(id);
                     attachment.fetch();
@@ -55,86 +66,56 @@ jQuery(document).ready(function($) {
             }
         });
 
-        // Handle the event when media items are selected or reordered
-        mediaUploader.on('select', function() {
-            var attachments = mediaUploader.state().get('selection').toJSON();
+        mediaUploader.on('update', function() {
+            var attachments = mediaUploader.state().get('library').toJSON();
             var attachmentIds = [];
-
-            // Extract IDs of selected attachments
             attachments.forEach(function(attachment) {
                 attachmentIds.push(attachment.id);
             });
-
-            // Store selected IDs in the input field
-            $(inputFieldId).val(attachmentIds.join(','));
-
-            // Store selected IDs in local storage
+            idsValue.val(attachmentIds.join(','));
             localStorage.setItem('selected_' + mediaType + '_ids', attachmentIds.join(','));
-            
-            // Show the clear button
-            $('#universal_local_media_clear_all_' + mediaType).fadeIn();
-        });
-
-        // Handle the event when media items are selected or reordered
-        mediaUploader.on('display', function() {
-            var attachments = mediaUploader.state().get('selection').toJSON();
-            var attachmentIds = [];
-
-            // Extract IDs of selected attachments
-            attachments.forEach(function(attachment) {
-                attachmentIds.push(attachment.id);
-            });
-
-            // Store selected IDs in the input field
-            $(inputFieldId).val(attachmentIds.join(','));
-
-            // Store selected IDs in local storage
-            localStorage.setItem('selected_' + mediaType + '_ids', attachmentIds.join(','));
-            
-            // Show the clear button
             $('#universal_local_media_clear_all_' + mediaType).fadeIn();
         });
 
         mediaUploader.open();
     }
 
-    function clearAllMedia(mediaType) {
-        $('#universal_local_' + mediaType + '_attachment_ids').val('');
-        localStorage.removeItem('selected_' + mediaType + '_ids');
+    function clearAllMedia(button, mediaType) {
+        var confirmMessage = 'Do you want to clear all ' + mediaType + ' attachments?';
+        if (confirm(confirmMessage)) {
+            $('#universal_local_' + mediaType + '_attachment_ids').val('');
+            localStorage.removeItem('selected_' + mediaType + '_ids');
+            $(button).fadeOut();
+        }
     }
 
-    // Handle click events for each media upload button
     $('#universal_local_media_upload_video').click(function(e) {
         e.preventDefault();
-        openMediaUploader('video', '#universal_local_video_attachment_ids');
+        openMediaUploader('video', 'playlist', '#universal_local_video_attachment_ids');
     });
 
     $('#universal_local_media_upload_audio').click(function(e) {
         e.preventDefault();
-        openMediaUploader('audio', '#universal_local_audio_attachment_ids');
+        openMediaUploader('audio', 'playlist', '#universal_local_audio_attachment_ids');
     });
 
     $('#universal_local_media_upload_image').click(function(e) {
         e.preventDefault();
-        openMediaUploader('image', '#universal_local_image_attachment_ids');
+        openMediaUploader('image', 'gallery', '#universal_local_image_attachment_ids');
     });
 
-    // Handle click events for each clear button
     $('#universal_local_media_clear_all_video').click(function(e) {
         e.preventDefault();
-        clearAllMedia('video');
-        $(this).fadeOut();
+        clearAllMedia(this, 'video');
     });
 
     $('#universal_local_media_clear_all_audio').click(function(e) {
         e.preventDefault();
-        clearAllMedia('audio');
-        $(this).fadeOut();
+        clearAllMedia(this, 'audio');
     });
 
     $('#universal_local_media_clear_all_image').click(function(e) {
         e.preventDefault();
-        clearAllMedia('image');
-        $(this).fadeOut();
+        clearAllMedia(this, 'image');
     });
 });
