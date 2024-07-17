@@ -38,11 +38,14 @@ if ( ! function_exists( 'universal_display_media' ) ) {
             if ($post_format === 'gallery' || $post_format === 'image') {
                 // Display a gallery of images
                 $gallery_attr = array(
-                    'ids' => $attachment_ids,
-                    'type' => 'slideshow',
-                    'columns' => '3' ,
-                    'link' => 'attachment',
+                    'order' => 'ASC',
+                    'orderby' => 'post__in',
                     'size' => 'wpex-post',
+                    'columns' => '3' ,
+                    'ids' => $attachment_ids,
+                    'link' => 'attachment',
+                    'type' => 'slideshow',
+
                 );
     
                 $container .= gallery_shortcode($gallery_attr);
@@ -52,13 +55,15 @@ if ( ! function_exists( 'universal_display_media' ) ) {
 
                 // Display playlist for audio or video post formats
                 $playlist_attr = array(
+                    'type' => ($post_format === 'audio') ? 'audio' : 'video',
+                    'order' => 'ASC',
+                    'orderby' => 'post__in',
                     'ids' => $attachment_ids,
                     'style' => 'dark',
-                    'images' => true,
-                    'artists' => true,
                     'tracklist' => $display_tracklist,
                     'tracknumbers' => true,
-                    'type' => ($post_format === 'audio') ? 'audio' : 'video',
+                    'images' => true,
+                    'artists' => true,
                 );
     
                 $container .= wp_playlist_shortcode($playlist_attr);
