@@ -47,9 +47,6 @@ class Universal_Meta_Box {
 
         ?>
         <style>
-            .universal-meta-table {
-                all: unset !important;
-            }
             .universal-meta-table .square {
                 min-width: 40px;
                 text-align: center;
@@ -87,7 +84,7 @@ class Universal_Meta_Box {
                 right: 0;
             }
         </style>
-        <table class="widefat universal-meta-table">
+        <table class="form-table universal-meta-table">
             <tbody>
                 <?php
                     echo $this->add_media_library_control('video', 'Video', 'format-video', $post);
