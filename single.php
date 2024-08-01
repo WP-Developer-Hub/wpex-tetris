@@ -21,16 +21,16 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                 <h1><?php the_title(); ?></h1>
                 <span class="u-block u-spacer-h u-spacer-light" style="background: #eee; margin-top: 10px;"></span>
                 <ul class="single-post-meta clearfix">
-                    <li class="single-post-meta-divider"><strong><?php __('Posted on', 'tetris'); ?>:</strong> <?php echo get_the_date(); ?></li>
-                    <li class="single-post-meta-divider" ><strong><?php __('By', 'tetris'); ?>:</strong> <?php the_author_posts_link(); ?></li>
+                    <li class="single-post-meta-divider"><strong><?php _e('Posted on', 'tetris'); ?>:</strong> <?php echo get_the_date(); ?></li>
+                    <li class="single-post-meta-divider" ><strong><?php _e('By', 'tetris'); ?>:</strong> <?php the_author_posts_link(); ?></li>
                     <?php if (has_category()) : ?>
                         <li class="single-post-meta-divider">
-                            <strong><?php __('Under', 'tetris'); ?>:</strong>
+                            <strong><?php _e('Under', 'tetris'); ?>:</strong>
                             <span class="u-wrap-text-all"> <?php the_category(', '); ?></span>
                         </li>
                     <?php endif; ?>
                     <?php if ( comments_open() ) : ?>
-                        <li class="comment-scroll single-post-meta-divider"><strong>With:</strong> <?php comments_popup_link(__('0 Comments', 'tetris'), __('1 Comment', 'tetris'), __('% Comments', 'tetris'), 'comments-link' ); ?></li>
+                        <li class="comment-scroll single-post-meta-divider"><strong><?php _e('With', 'tetris'); ?>:</strong> <?php comments_popup_link(__('0 Comments', 'tetris'), __('1 Comment', 'tetris'), __('% Comments', 'tetris'), 'comments-link' ); ?></li>
                     <?php endif; ?>
                 </ul><!-- .meta -->
             </header><!-- #post-header -->
