@@ -11,7 +11,8 @@ Requires PHP: 7.X
 License: GNU General Public License version 3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Tags: custom-background, threaded-comments, custom-menu, featured-images, theme-options, translation-ready
-Text Domain: wpex
+Text Domain: tetris
+Domain Path: /languages
 ----------------------------------------------------------- */
 :root {--u-post-item-min-width: 300px; --u-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2); accent-color: var(--universal-accent-color) }
  

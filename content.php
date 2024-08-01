@@ -26,9 +26,9 @@ if ( ! defined( 'ABSPATH' ) ) {
             <?php wpex_excerpt(); ?>
         </div>
         <ul class="entry-meta">
-            <li><strong><?php __('Posted on', 'tetris'); ?>:</strong> <?php echo get_the_date(); ?></li>
-            <li><strong><?php __('by', 'tetris'); ?>:</strong> <?php the_author_posts_link(); ?></li>
-            <?php if(comments_open()) { ?><li class="comment-scroll"><strong>With:</strong> <?php comments_popup_link(__('0 Comments', 'tetris'), __('1 Comment', 'tetris'), __('% Comments', 'tetris'), 'comments-link' ); ?></li><?php } ?>
+            <li><strong><?php _e('Posted on', 'tetris'); ?>:</strong> <?php echo get_the_date(); ?></li>
+            <li><strong><?php _e('By', 'tetris'); ?>:</strong> <?php the_author_posts_link(); ?></li>
+            <?php if(comments_open()) { ?><li class="comment-scroll"><strong><?php _e('With', 'tetris'); ?>:</strong> <?php comments_popup_link(__('0 Comments', 'tetris'), __('1 Comment', 'tetris'), __('% Comments', 'tetris'), 'comments-link' ); ?></li><?php } ?>
         </ul><!-- /entry-meta -->
     </div><!-- /entry-text -->
 </article><!-- /blog-entry -->
