@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <ul class="entry-meta">
             <li><strong><?php _e('Posted on', 'tetris'); ?>:</strong> <?php echo get_the_date(); ?></li>
             <li><strong><?php _e('By', 'tetris'); ?>:</strong> <?php the_author_posts_link(); ?></li>
-            <?php if(comments_open()) { ?><li class="comment-scroll"><strong><?php _e('With', 'tetris'); ?>:</strong> <?php comments_popup_link(__('0 Comments', 'tetris'), __('1 Comment', 'tetris'), __('% Comments', 'tetris'), 'comments-link' ); ?></li><?php } ?>
+            <?php wpx_comments_popup_link(); ?>
         </ul><!-- /entry-meta -->
     </div><!-- /entry-text -->
 </article><!-- /blog-entry -->
