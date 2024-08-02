@@ -426,4 +426,38 @@ if ( ! function_exists( 'universal_gallery_defaults' ) ) {
     }
     add_filter( 'media_view_settings', 'universal_gallery_defaults' );
 }
+
+if ( !function_exists('wpx_comments_popup_link') ) {
+    function wpx_comments_popup_link() {
+        $no_comments_text = '';
+        $one_comment_text = '';
+        $multiple_comments_text = '';
+
+        // Check if comments are closed and the post type supports comments
+        if (post_type_supports(get_post_type(), 'comments')) {
+            if (comments_open()) {
+                // Comments are open
+                $no_comments_text = __('0 Comments', 'tetris');
+                $one_comment_text = __('1 Comment', 'tetris');
+                $multiple_comments_text = __('% Comments', 'tetris');
+            } else {
+                if ('0' != get_comments_number()) {
+                    // Comments are closed
+                    $no_comments_text = __('Comments closed', 'tetris');
+                    $one_comment_text = __('Comments closed', 'tetris');
+                    $multiple_comments_text = __('Comments closed', 'tetris');
+                }
+            }
+
+            if (comments_open() || (!comments_open() && '0' != get_comments_number())) {
+                echo '<li class="comment-scroll single-post-meta-divider">';
+                echo '<strong>' . __('With', 'tetris') . ': </strong>';
+                echo comments_popup_link($no_comments_text, $one_comment_text, $multiple_comments_text, 'comments-link', '');
+                echo '</li>';
+            }
+        } else {
+            echo '';
+        }
+    }
+}
 ?>
