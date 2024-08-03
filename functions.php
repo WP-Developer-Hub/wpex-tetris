@@ -350,19 +350,21 @@ add_filter( 'excerpt_more', 'wpex_new_excerpt_more' );
  */
 if ( ! function_exists( 'wpex_excerpt' ) ) {
     function wpex_excerpt( $length = '20', $readmore = false ) {
+        $output = '<div class="u-wrap-text u-trim" style="--u-line-clamp: ' . $length . '">';
         global $post;
         $id = $post->ID;
         $length = apply_filters( 'wpex_excerpt_length', $length );
         if ( has_excerpt( $id ) ) {
-            $output = $post->post_excerpt;
+            $output .= strip_tags($post->post_excerpt);
         } else {
-            $output = wp_trim_words( strip_shortcodes( get_the_content( $id ) ), $length);
+            $output .= wp_trim_words( strip_shortcodes( get_the_content( $id ) ), $length);
             if ( $readmore == true ) {
                 $readmore_link = '<span class="wpex-readmore"><a href="'. get_permalink( $id ) .'" title="'. __( 'continue reading', 'tetris' ) .'" rel="bookmark">'. __( 'Read more', 'tetris' ) .' &rarr;</a></span>';
                 $output .= apply_filters( 'wpex_readmore_link', $readmore_link );
             }
         }
-        echo $output;
+        $output .= '</div>';
+        return $output;
     }
 }
 
@@ -482,3 +484,4 @@ function ucfletter_tags($term, $taxonomy) {
     return $term;
 }
 add_filter('get_term', 'ucfletter_tags', 10, 2);
+
