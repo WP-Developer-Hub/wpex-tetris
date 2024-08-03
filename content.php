@@ -22,9 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>"><?php the_title(); ?></a>
                 </h2>
             </header>
-        <div class="u-wrap-text u-trim" style="--u-line-clamp: 6">
-            <?php wpex_excerpt(); ?>
-        </div>
+        <?php echo wpex_excerpt(6, false); ?>
         <ul class="entry-meta">
             <li><strong><?php _e('Posted on', 'tetris'); ?>:</strong> <?php echo get_the_date(); ?></li>
             <li><strong><?php _e('By', 'tetris'); ?>:</strong> <?php the_author_posts_link(); ?></li>
