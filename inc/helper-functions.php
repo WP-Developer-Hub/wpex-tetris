@@ -427,6 +427,11 @@ if ( ! function_exists( 'universal_gallery_defaults' ) ) {
     add_filter( 'media_view_settings', 'universal_gallery_defaults' );
 }
 
+/**
+ * Customize the display of comment links based on comment status and whether comments are open.
+ *
+ * @return void
+ */
 if ( !function_exists('wpx_comments_popup_link') ) {
     function wpx_comments_popup_link() {
         $no_comments_text = '';
@@ -459,5 +464,19 @@ if ( !function_exists('wpx_comments_popup_link') ) {
             echo '';
         }
     }
+}
+
+/**
+ * Modify the CSS class of the edit comment link.
+ *
+ * @param string $output The original edit comment link HTML output.
+ * @return string The modified edit comment link HTML output with the class changed.
+ */
+if ( ! function_exists('wpx_change_edit_comment_link_class') ) {
+    function wpx_change_edit_comment_link_class($output) {
+        // Replace 'comment-edit-link' with 'comment-reply-link bacause I'm to lazy to added to style.css'
+        return str_replace( 'comment-edit-link', 'comment-reply-link', $output );
+    }
+    add_filter( 'edit_comment_link', 'wpx_change_edit_comment_link_class' );
 }
 ?>
