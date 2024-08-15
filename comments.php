@@ -31,7 +31,7 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && !pi
                 <?php echo universal_custom_paginate_comments_links(); ?>
 			</nav><!-- /coment-nav-above -->
 			<?php endif; ?>
-			<ol class="commentlist">
+			<ol id="commentlist" class="commentlist">
 				<?php wp_list_comments( array( 'callback' => 'wpex_comments_output' ) ); ?>
 			</ol><!-- /commentlist -->
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
