@@ -39,8 +39,8 @@ function wpex_comments_output($comment, $args, $depth) {
 
                             // Prepare URLs for actions
                             $urls = array(
-                                'spam' => admin_url("comment.php?c=$comment->comment_ID&action=spamcomment&_wpnonce=$del_nonce"),
-                                'trash' => admin_url("comment.php?c=$comment->comment_ID&action=trashcomment&_wpnonce=$del_nonce")
+                                'spam' => admin_url("comment.php?c=$comment->comment_ID&action=spamcomment&_wpnonce=$del_nonce#commentlist"),
+                                'trash' => admin_url("comment.php?c=$comment->comment_ID&action=trashcomment&_wpnonce=$del_nonce#commentlist")
                             );
 
                             // Initialize links variable
