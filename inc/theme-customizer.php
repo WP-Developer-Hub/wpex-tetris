@@ -99,7 +99,7 @@ function universal_customizer_settings($wp_customize) {
         'sanitize_callback' => 'sanitize_textarea_field'
     ));
     $wp_customize->add_control('universal_copyright_layout', array(
-        'label' => __('Copyright Message', 'tetris'),
+        'label' => __('Copyright Info', 'tetris'),
         'description' => __('You can use placeholders like [site_name] [started_date], [current_date], [copyright_symbol], and [dash] to dynamically layout the copyright. P.S placeholders like [started_date], [current_date] will only show the year.', 'tetris'),
         'section' => 'universal_footer_settings_section',
         'type' => 'textarea',
