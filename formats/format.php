@@ -13,19 +13,26 @@
 if ( ! defined( 'ABSPATH' ) ) {
     return;
 }
-if ( has_post_thumbnail() ) : ?>
-    <?php if ( is_singular() ) : ?>
+?>
+<?php if ( is_singular() ) : ?>
+    <?php if ( has_post_thumbnail() ) : ?>
         <?php if ( get_theme_mod('universal_show_post_thumbnail', false) ) : ?>
             <div id="post-thumbnail" style="background-image: url('<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'thumbnail')); ?>'); background-size: cover; background-position: center center;">
-                <?php the_post_thumbnail( 'wpex-post' ); ?>
+                <?php the_post_thumbnail( 'wpex-post', array( 'class' => 'u-media-16-9' ) ); ?>
             </div><!-- /blog-entry-thumbnail -->
             <span class="u-block u-spacer-h u-spacer-light" style="background: #eee; margin-top: 30px;"></span>
         <?php endif; ?>
-    <?php else : ?>
-        <div class="blog-entry-thumbnail" >
-            <a href="<?php the_permalink(); ?>">
-                <?php the_post_thumbnail( 'wpex-entry' ); ?>
-            </a>
-        </div><!-- /blog-entry-thumbnail -->
     <?php endif; ?>
+<?php else : ?>
+    <div class="blog-entry-thumbnail" >
+        <a href="<?php the_permalink(); ?>" class="u-link-img">
+            <?php if ( has_post_thumbnail() ) : ?>
+                <?php the_post_thumbnail( 'wpex-entry', array( 'class' => 'u-media-1-1' ) ); ?>
+            <?php else : ?>
+                <div class="u-media-1-1 u-media-missing-img u-flex u-ai-center u-jc-center" title="<?php the_title(); ?>">
+                    <span class="<?php echo universal_get_post_format_icon_classes(get_post_format()); ?>"></span>
+                </div>
+            <?php endif; ?>
+        </a>
+    </div>
 <?php endif; ?>
