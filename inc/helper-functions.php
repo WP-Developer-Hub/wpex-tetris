@@ -95,7 +95,7 @@ if ( ! function_exists( 'universal_get_copyright_info' ) ) {
         $started_date = date('Y', strtotime(get_theme_mod('universal_footer_started_date', $current_year)));
     
         // Construct site name HTML
-        $site_name = '<span class="u-tt-all-uppercase">';
+        $site_name = '<span class="u-tt-all-caps">';
         $site_name .= is_multisite() ? get_blog_details(get_current_blog_id())->blogname : get_bloginfo('name');
         $site_name .= '</span>';
     
