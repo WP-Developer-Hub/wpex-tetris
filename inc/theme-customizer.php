@@ -47,7 +47,48 @@ function universal_customizer_settings($wp_customize) {
     $wp_customize->add_panel('universal_theme_settings_panel', array(
         'title' => __('Theme Settings', 'tetris'),
         'priority' => 30,
-        'description' => __('This panel contains various settings for customizing the theme.', 'tetris'), // Added description
+        'description' => __('This panel contains various settings for customizing the theme.', 'tetris'),
+    ));
+
+    // Grid Settings Section
+    $wp_customize->add_section('universal_grid_settings_section', array(
+        'title' => __('Grid Settings', 'tetris'),
+        'priority' => 30,
+        'panel' => 'universal_theme_settings_panel',
+        'description' => __('This section contains settings related to grid item.', 'tetris'),
+    ));
+
+    // Show Read More Link
+    $wp_customize->add_setting('universal_show_read_more_link', array(
+        'default' => true,
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('universal_show_read_more_link', array(
+        'label' => __('Show Read More Link', 'tetris'),
+        'description' => __('Enable this option to display the read more link below the post excerpt on the grid item.', 'tetris'),
+        'section' => 'universal_grid_settings_section',
+        'type' => 'checkbox',
+    ));
+
+    // Excerpt Length
+    $wp_customize->add_setting('universal_excerpt_length', array(
+        'default' => 20,
+        'transport' => 'refresh',
+        'sanitize_callback' => 'absint',
+    ));
+    $wp_customize->add_control('universal_excerpt_length', array(
+        'label' => __('Excerpt Length', 'tetris'), // Corrected label
+        'description' => __('Adjust the length of the post excerpt on the grid item.', 'tetris'),
+        'section' => 'universal_grid_settings_section',
+        'type' => 'number',
+        'input_attrs' => array(
+            'step' => 1,
+            'min'  => 6,
+            'max'  => 55,
+            'pattern' =>'[0-9]*',
+            'inputmode' => 'numeric',
+        ),
     ));
 
     // Post Page Settings Section
@@ -55,7 +96,7 @@ function universal_customizer_settings($wp_customize) {
         'title' => __('Post Page Settings', 'tetris'),
         'priority' => 30,
         'panel' => 'universal_theme_settings_panel',
-        'description' => __('This section contains settings related to single post pages.', 'tetris'), // Added description
+        'description' => __('This section contains settings related to single post pages.', 'tetris'),
     ));
 
     // Show Post Thumbnail
@@ -66,7 +107,7 @@ function universal_customizer_settings($wp_customize) {
     ));
     $wp_customize->add_control('universal_show_post_thumbnail', array(
         'label' => __('Show Post Thumbnail', 'tetris'),
-        'description'        => __('Enable this option to display the post thumbnail on single post pages.', 'tetris'),
+        'description' => __('Enable this option to display the post thumbnail on single post pages.', 'tetris'),
         'section' => 'universal_post_page_settings_section',
         'type' => 'checkbox',
     ));
@@ -90,6 +131,9 @@ function universal_customizer_settings($wp_customize) {
         'description' => __('Select the date you started.', 'tetris'),
         'section' => 'universal_footer_settings_section',
         'type' => 'date',
+        'input_attrs' => array(
+            'class' => 'widefat',
+        ),
     ));
 
     // Copyright Layout
