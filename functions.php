@@ -358,12 +358,12 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
             $output .= strip_tags($post->post_excerpt);
         } else {
             $output .= wp_trim_words( strip_shortcodes( get_the_content( $id ) ), $length);
-            if ( $readmore == true ) {
-                $readmore_link = '<span class="wpex-readmore"><a href="'. get_permalink( $id ) .'" title="'. __( 'continue reading', 'tetris' ) .'" rel="bookmark">'. __( 'Read more', 'tetris' ) .' &rarr;</a></span>';
-                $output .= apply_filters( 'wpex_readmore_link', $readmore_link );
-            }
         }
         $output .= '</div>';
+        if ( $readmore == true ) {
+            $readmore_link = '<br><span class="wpex-readmore"><a href="'. get_permalink( $id ) .'" title="'. __( 'continue reading', 'tetris' ) .'" rel="bookmark" class="u-block u-block-100 u-ta-c u-link-button">'. __( 'Read more', 'tetris' ) .'</a></span>';
+            $output .= apply_filters( 'wpex_readmore_link', $readmore_link );
+        }
         return $output;
     }
 }
