@@ -361,7 +361,7 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
         }
         $output .= '</div>';
         if ( $readmore == true ) {
-            $readmore_link = '<br><span class="wpex-readmore"><a href="'. get_permalink( $id ) .'" title="'. __( 'continue reading', 'tetris' ) .'" rel="bookmark" class="u-block u-block-100 u-ta-c u-link-button">'. __( 'Read more', 'tetris' ) .'</a></span>';
+            $readmore_link = '<br><span class="wpex-readmore"><a href="'. get_permalink( $id ) .'" title="'. __( 'continue reading', 'tetris' ) .'" rel="bookmark" class="u-block u-block-100 u-ta-c u-link-button u-tt-all-caps u-fs-16">'. __( 'Read more', 'tetris' ) .'</a></span>';
             $output .= apply_filters( 'wpex_readmore_link', $readmore_link );
         }
         return $output;
