@@ -9,7 +9,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-   return;
+    return;
 }
 
 function universal_customizer_settings($wp_customize) {
@@ -27,21 +27,21 @@ function universal_customizer_settings($wp_customize) {
 
     // Title & Tagline Visibility
     $wp_customize->add_setting('universal_title_tagline_visibility', array(
-        'default' => "title_only",
+        'default' => 'title_only',
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field'
-    ) );
+    ));
     $wp_customize->add_control('universal_title_tagline_visibility', array(
-        'type' => 'select',
         'label' => __('Site Title and Tagline Visibility', 'tetris'),
         'description' => __('Choose whether the site title and tagline should be displayed.', 'tetris'),
         'section' => 'title_tagline',
+        'type' => 'select',
         'choices' => array(
             'none' => __('None', 'tetris'),
             'title_only' => __('Site Title Only', 'tetris'),
             'tagline_only' => __('Tagline Only', 'tetris'),
         ),
-     ));
+    ));
 
     // Theme Settings Panel
     $wp_customize->add_panel('universal_theme_settings_panel', array(
@@ -51,24 +51,28 @@ function universal_customizer_settings($wp_customize) {
     ));
 
     // Grid Settings Section
-    $wp_customize->add_section('universal_grid_settings_section', array(
-        'title' => __('Grid Layout Settings', 'tetris'),
+    $wp_customize->add_section('universal_grid_item_settings_section', array(
+        'title' => __('Grid Item Settings', 'tetris'),
         'priority' => 30,
         'panel' => 'universal_theme_settings_panel',
         'description' => __('This section contains settings related to grid layout.', 'tetris'),
     ));
 
-    // Show Read More Link
-    $wp_customize->add_setting('universal_show_read_more_link', array(
-        'default' => true,
+    // Toggle Read More Link
+    $wp_customize->add_setting('universal_toggle_read_more_link', array(
+        'default' => 'true',
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field',
     ));
-    $wp_customize->add_control('universal_show_read_more_link', array(
-        'label' => __('Display Read More Link', 'tetris'),
-        'description' => __('Enable this option to display the read more link below the post excerpt on the grid item.', 'tetris'),
-        'section' => 'universal_grid_settings_section',
-        'type' => 'checkbox',
+    $wp_customize->add_control('universal_toggle_read_more_link', array(
+        'label' => __('Toggle Read More Link', 'tetris'),
+        'description' => __('Enable or disable the read more link below the post excerpt on the grid item.', 'tetris'),
+        'section' => 'universal_grid_item_settings_section',
+        'type' => 'select',
+        'choices' => array(
+            'true' => __('Enabled', 'tetris'),
+            'false' => __('Disabled', 'tetris'),
+        ),
     ));
 
     // Excerpt Length
@@ -80,7 +84,7 @@ function universal_customizer_settings($wp_customize) {
     $wp_customize->add_control('universal_excerpt_length', array(
         'label' => __('Post Excerpt Length', 'tetris'),
         'description' => __('Adjust the length of the post excerpt on the grid item.', 'tetris'),
-        'section' => 'universal_grid_settings_section',
+        'section' => 'universal_grid_item_settings_section',
         'type' => 'number',
         'input_attrs' => array(
             'step' => 1,
@@ -92,24 +96,28 @@ function universal_customizer_settings($wp_customize) {
     ));
 
     // Post Page Settings Section
-    $wp_customize->add_section('universal_post_page_settings_section', array(
+    $wp_customize->add_section('universal_single_post_page_settings_section', array(
         'title' => __('Single Post Settings', 'tetris'),
         'priority' => 30,
         'panel' => 'universal_theme_settings_panel',
         'description' => __('This section contains settings related to single post pages.', 'tetris'),
     ));
 
-    // Show Post Thumbnail
-    $wp_customize->add_setting('universal_show_post_thumbnail', array(
-        'default' => true,
+    // Toggle Post Thumbnail
+    $wp_customize->add_setting('universal_toggle_post_thumbnail', array(
+        'default' => 'true',
         'transport' => 'refresh',
-        'sanitize_callback' => 'sanitize_text_field'
+        'sanitize_callback' => 'sanitize_text_field',
     ));
-    $wp_customize->add_control('universal_show_post_thumbnail', array(
-        'label' => __('Display Post Thumbnail', 'tetris'),
-        'description' => __('Enable this option to display the post thumbnail on single post pages.', 'tetris'),
-        'section' => 'universal_post_page_settings_section',
-        'type' => 'checkbox',
+    $wp_customize->add_control('universal_toggle_post_thumbnail', array(
+        'label' => __('Toggle Post Thumbnail', 'tetris'),
+        'description' => __('Enable or disable the post thumbnail on single post pages.', 'tetris'),
+        'section' => 'universal_single_post_page_settings_section',
+        'type' => 'select',
+        'choices' => array(
+            'true' => __('Enabled', 'tetris'),
+            'false' => __('Disabled', 'tetris'),
+        ),
     ));
 
     // Footer Settings Section
@@ -121,12 +129,12 @@ function universal_customizer_settings($wp_customize) {
     ));
 
     // Started Date
-    $wp_customize->add_setting('universal_footer_started_date', array(
+    $wp_customize->add_setting('universal_footer_start_date', array(
         'default' => date('Y-m-d'),
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field',
     ));
-    $wp_customize->add_control('universal_footer_started_date', array(
+    $wp_customize->add_control('universal_footer_start_date', array(
         'label' => __('Start Date', 'tetris'),
         'description' => __('Select the date you started.', 'tetris'),
         'section' => 'universal_footer_settings_section',
@@ -140,15 +148,11 @@ function universal_customizer_settings($wp_customize) {
         'sanitize_callback' => 'sanitize_textarea_field',
     ));
     $wp_customize->add_control('universal_copyright_layout', array(
-        'label' => __('Copyright Info', 'tetris'),
-        'description' => __('You can use placeholders like [site_name], [started_date], [current_date], [copyright_symbol], and [dash] to dynamically layout the copyright. P.S placeholders like [started_date], [current_date] will only show the year.', 'tetris'),
+        'label' => __('Copyright Info Layout', 'tetris'),
+        'description' => __('You can use placeholders like [site_name], [started_date], [current_date], [copyright_symbol], and [dash] to dynamically layout the copyright. P.S placeholders like [started_date], [current_date] will only toggle the year.', 'tetris'),
         'section' => 'universal_footer_settings_section',
         'type' => 'textarea',
     ));
-
-    function universal_slug_sanitize_checkbox($input) {
-        return (isset($input) ? true : false);
-    }
 }
 add_action('customize_register', 'universal_customizer_settings');
 ?>

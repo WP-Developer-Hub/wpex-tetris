@@ -92,7 +92,7 @@ if ( ! function_exists( 'universal_get_copyright_info' ) ) {
         $current_year = date('Y');
     
         // Get the started date if available
-        $started_date = date('Y', strtotime(get_theme_mod('universal_footer_started_date', $current_year)));
+        $started_date = date('Y', strtotime(get_theme_mod('universal_footer_start_date', $current_year)));
     
         // Construct site name HTML
         $site_name = '<span class="u-tt-all-caps">';
