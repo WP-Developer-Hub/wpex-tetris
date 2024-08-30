@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="blog-entry-thumbnail" >
         <a href="<?php the_permalink(); ?>" class="u-link-img">
             <?php if ( has_post_thumbnail() ) : ?>
-                <?php the_post_thumbnail( 'wpex-entry', array( 'alt' => the_title_attribute( array( 'echo' => false ) ), 'class' => 'u-media-1-1' ) ); ?>
+                <?php the_post_thumbnail( 'wpex-entry', array( 'alt' => the_title_attribute( array( 'echo' => false ) ),  get_theme_mod('universal_aspect_ratio', 'u-media-1-1') == "auto" ? '' : 'class' => 'u-media-1-1' ) ); ?>
             <?php else : ?>
                 <div class="u-media-1-1 u-media-missing-img u-flex u-ai-center u-jc-center" title="<?php the_title(); ?>">
                     <span class="<?php echo universal_get_post_format_icon_classes(get_post_format()); ?>"></span>
