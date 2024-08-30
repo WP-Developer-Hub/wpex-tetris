@@ -58,6 +58,24 @@ function universal_customizer_settings($wp_customize) {
         'description' => __('This section contains settings related to grid layout.', 'tetris'),
     ));
 
+    // Aspect Ratio Setting
+    $wp_customize->add_setting('universal_aspect_ratio', array(
+        'default' => 'u-media-1-1', // Default to 1:1 aspect ratio
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('universal_aspect_ratio', array(
+        'label' => __('Aspect Ratio', 'tetris'),
+        'description' => __('Select the aspect ratio for grid item images. Choose "auto" for the default or "1:1" for a square aspect ratio.', 'tetris'),
+        'section' => 'universal_grid_item_settings_section',
+        'type' => 'select',
+        'choices' => array(
+            'auto' => __('Auto', 'tetris'),
+            'u-media-1-1' => __('1:1', 'tetris'),
+        ),
+    ));
+
     // Toggle Read More Link
     $wp_customize->add_setting('universal_toggle_read_more_link', array(
         'default' => 'true',
