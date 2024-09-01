@@ -1,0 +1,92 @@
+/* General Customizer Control Styles */
+.wpx-control {
+  display: block;
+}
+
+.wpx-control .wpx-control-info {
+  flex: 2 0 0;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/*Hidden Checkbox */
+.wpx-toggle-control input[type="checkbox"] {
+  display: none;
+}
+
+/* Switch Container */
+.wpx-control .wpx-toggle-control {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-items: center;
+  align-content: space-between;
+}
+
+/* Checkbox Indicator */
+.wpx-control .wpx-toggle-switch {
+  width: 50px;
+  height: 22px;
+  padding: 2px;
+  position: relative;
+  border-radius: 30px;
+  display: inline-block;
+  border: 1px groove #a8a8a5;
+  background-color: #a8a8a5;
+  transition: background-color 100ms ease, border 100ms ease;
+}
+
+/* Checkbox Head (using ::before pseudo-element) */
+.wpx-control .wpx-toggle-switch::before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #fff;
+  transition: transform 100ms ease;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Checked State */
+.wpx-control input[type="checkbox"]:checked+.wpx-toggle-switch {
+  color: white;
+  border-color: #0073aa;
+  background-color: #0073aa;
+}
+
+.wpx-control input[type="checkbox"]:checked+.wpx-toggle-switch::before {
+  transform: translateX(28px);
+}
+
+/* Focus State */
+.wpx-control input[type="checkbox"]:hover+.wpx-toggle-switch {
+  border-color: #135e96;
+  background-color: #135e96;
+}
+
+/* Hover State */
+.wpx-control input[type="checkbox"]:hover+.wpx-toggle-switch {
+  border-color: #8a8a8a;
+  background-color: #8a8a8a;
+}
+
+.wpx-control input[type="checkbox"]:checked:hover+.wpx-toggle-switch {
+  border-color: #135e96;
+  background-color: #135e96;
+}
+
+/* Focus and Hover State */
+.wpx-control input[type="checkbox"]:focus:hover+.wpx-toggle-switch {
+  border-color: #005a87;
+  background-color: #005a87;
+}
+
+/* Active State */
+.wpx-control input[type="checkbox"]:active+.wpx-toggle-switch {
+  border-color: #005a87;
+  background-color: #005a87;
+}
