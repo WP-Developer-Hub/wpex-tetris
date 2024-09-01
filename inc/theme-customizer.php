@@ -67,16 +67,12 @@ function universal_customizer_settings($wp_customize) {
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
-    $wp_customize->add_control('universal_aspect_ratio', array(
+    $wp_customize->add_control(new WPX_Ratio_Control($wp_customize, 'universal_aspect_ratio', array(
         'label' => __('Aspect Ratio', 'tetris'),
         'description' => __('Select the aspect ratio for grid item images. Choose "auto" for the default or "1:1" for a square aspect ratio.', 'tetris'),
         'section' => 'universal_grid_item_settings_section',
-        'type' => 'select',
-        'choices' => array(
-            'auto' => __('Auto', 'tetris'),
-            'u-media-1-1' => __('1:1', 'tetris'),
-        ),
-    ));
+        'type' => 'radio',
+    )));
 
     // Toggle Read More Link
     $wp_customize->add_setting('universal_toggle_read_more_link', array(
@@ -88,7 +84,7 @@ function universal_customizer_settings($wp_customize) {
        'label' => __('Toggle Read More Link', 'tetris'),
        'description' => __('Enable or disable the read more link below the post excerpt on the grid item.', 'tetris'),
        'section' => 'universal_grid_item_settings_section',
-        'type' => 'checkbox',
+       'type' => 'checkbox',
     )));
 
     // Excerpt Length
