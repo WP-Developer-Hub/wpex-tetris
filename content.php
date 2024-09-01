@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </h2>
             </header>
         <?php if(!trim(str_replace('&nbsp;','',strip_tags(wpex_excerpt()))) == ''):?>
-            <?php echo wpex_excerpt(get_theme_mod('universal_excerpt_length', 20), get_theme_mod('universal_toggle_read_more_link', 'true')); ?>
+            <?php echo wpex_excerpt(get_theme_mod('universal_excerpt_length', 20), get_theme_mod('universal_toggle_read_more_link', true)); ?>
         <?php endif;?>
         <ul class="entry-meta">
             <li><strong><?php _e('Posted on', 'tetris'); ?>:</strong> <?php echo get_the_date(); ?></li>

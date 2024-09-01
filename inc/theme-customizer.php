@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     return;
 }
 
+require_once get_template_directory() . '/inc/class-wpx-customizer-controls/class-wpx-customizer-controls.php';
+
 function universal_customizer_settings($wp_customize) {
     // Accent Color Setting and Control
     $wp_customize->add_setting('universal_accent_color', array(
@@ -82,16 +84,12 @@ function universal_customizer_settings($wp_customize) {
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field',
     ));
-    $wp_customize->add_control('universal_toggle_read_more_link', array(
-        'label' => __('Toggle Read More Link', 'tetris'),
-        'description' => __('Enable or disable the read more link below the post excerpt on the grid item.', 'tetris'),
-        'section' => 'universal_grid_item_settings_section',
-        'type' => 'select',
-        'choices' => array(
-            'true' => __('Enabled', 'tetris'),
-            'false' => __('Disabled', 'tetris'),
-        ),
-    ));
+    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_read_more_link', array(
+       'label' => __('Toggle Read More Link', 'tetris'),
+       'description' => __('Enable or disable the read more link below the post excerpt on the grid item.', 'tetris'),
+       'section' => 'universal_grid_item_settings_section',
+        'type' => 'checkbox',
+    )));
 
     // Excerpt Length
     $wp_customize->add_setting('universal_excerpt_length', array(
@@ -127,16 +125,12 @@ function universal_customizer_settings($wp_customize) {
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field',
     ));
-    $wp_customize->add_control('universal_toggle_post_thumbnail', array(
-        'label' => __('Toggle Post Thumbnail', 'tetris'),
-        'description' => __('Enable or disable the post thumbnail on single post pages.', 'tetris'),
-        'section' => 'universal_single_post_page_settings_section',
-        'type' => 'select',
-        'choices' => array(
-            'true' => __('Enabled', 'tetris'),
-            'false' => __('Disabled', 'tetris'),
-        ),
-    ));
+    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_post_thumbnail', array(
+       'label' => __('Toggle Post Thumbnail', 'tetris'),
+       'description' => __('Enable or disable the post thumbnail on single post pages.', 'tetris'),
+       'section' => 'universal_single_post_page_settings_section',
+        'type' => 'checkbox',
+    )));
 
     // Footer Settings Section
     $wp_customize->add_section('universal_footer_settings_section', array(
