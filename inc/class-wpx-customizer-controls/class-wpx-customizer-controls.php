@@ -22,7 +22,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
             // Replace the root path with the site URL
             $url = str_replace(
                 $root_path,
-                site_url(),
+                home_url(),
                 $current_dir_path
             );
 
