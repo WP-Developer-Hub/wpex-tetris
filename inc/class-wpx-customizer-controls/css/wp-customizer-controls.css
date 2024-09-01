@@ -12,7 +12,41 @@
   justify-content: center;
 }
 
-/*Hidden Checkbox */
+.wpx-ratio-group {
+  gap: 10px;
+  display: grid;
+  align-items: flex-start;
+  justify-content: center;
+  grid-template-columns: 125px 125px;
+}
+
+/* Hidden Checkbox */
+.wpx-ratio-group input[type="radio"] {
+  display: none;
+}
+
+/* Hidden Checkbox */
+.wpx-ratio-group label .wpx-ratio-card {
+  width: 125px;
+  height: 125px;
+  display: block;
+  cursor: pointer;
+  font-size: 36px;
+  align-items: center;
+  justify-content: center;
+  background-color: #a8a8a5;
+  border: 1px groove #a8a8a5;
+  transition: background-color 100ms ease, border 100ms ease;
+}
+
+/* Hidden Checkbox */
+.wpx-ratio-group label .wpx-ratio-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hidden Checkbox */
 .wpx-toggle-control input[type="checkbox"] {
   display: none;
 }
@@ -31,6 +65,7 @@
   width: 50px;
   height: 22px;
   padding: 2px;
+  cursor: pointer;
   position: relative;
   border-radius: 30px;
   display: inline-block;
@@ -52,6 +87,7 @@
 }
 
 /* Checked State */
+.wpx-control input[type="radio"]:checked+.wpx-ratio-card,
 .wpx-control input[type="checkbox"]:checked+.wpx-toggle-switch {
   color: white;
   border-color: #0073aa;
@@ -63,29 +99,34 @@
 }
 
 /* Focus State */
+.wpx-control input[type="radio"]:hover+.wpx-ratio-card,
 .wpx-control input[type="checkbox"]:hover+.wpx-toggle-switch {
   border-color: #135e96;
   background-color: #135e96;
 }
 
 /* Hover State */
+.wpx-control input[type="radio"]:hover+.wpx-ratio-card,
 .wpx-control input[type="checkbox"]:hover+.wpx-toggle-switch {
   border-color: #8a8a8a;
   background-color: #8a8a8a;
 }
 
+.wpx-control input[type="radio"]:checked:hover+.wpx-ratio-card,
 .wpx-control input[type="checkbox"]:checked:hover+.wpx-toggle-switch {
   border-color: #135e96;
   background-color: #135e96;
 }
 
 /* Focus and Hover State */
+.wpx-control input[type="radio"]:focus:hover+.wpx-ratio-card,
 .wpx-control input[type="checkbox"]:focus:hover+.wpx-toggle-switch {
   border-color: #005a87;
   background-color: #005a87;
 }
 
 /* Active State */
+.wpx-control input[type="radio"]:active+.wpx-ratio-card,
 .wpx-control input[type="checkbox"]:active+.wpx-toggle-switch {
   border-color: #005a87;
   background-color: #005a87;

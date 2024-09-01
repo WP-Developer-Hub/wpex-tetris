@@ -87,7 +87,6 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                     <span class="wpx-ratio-card"></span>
                     <span class="description wpx-ratio-title">1:1</span>
                   </label>
-
                   <!-- Rectangular Ratio Option -->
                   <label for="<?php echo esc_attr($this->id); ?>-none">
                     <input type="radio" id="<?php echo esc_attr($this->id); ?>-none" name="<?php echo esc_attr($this->id); ?>" <?php $this->link(); ?> value="none" <?php checked($this->value(), 'none'); ?> />
@@ -97,7 +96,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                 </div>
               </div>
             </div>
-            <?php
+        <?php
         }
 
     }
