@@ -88,6 +88,7 @@
   --transition-function-inputs: ease-in-out;
   --transition-inputs: color var(--transition-duration-inputs),
     background-color var(--transition-duration-inputs),
+    accent-color var(--transition-duration-inputs),
     border-color var(--transition-duration-inputs)
       var(--transition-function-inputs);
 }
@@ -112,6 +113,8 @@ datalist,
 fieldset,
 legend,
 optgroup,
+meter,
+progress,
 output,
 .u-link-button,
 input::file-selector-button {
@@ -180,6 +183,8 @@ input::file-selector-button:focus {
 /* All text-fields x select */
 select,
 textarea,
+meter,
+progress,
 input[type=date],
 input[type=datetime-local],
 input[type=datetime],
@@ -520,3 +525,55 @@ fieldset {width: 100%; max-width: var(--width-inputs);}
 form {width: 100%; display: grid; max-width: var(--width-inputs); gap: calc(var(--margin-label) / 3) }
 #searchbar {width: unset;}
 #searchbar label {margin: unset;}
+
+/* Checkbox and Radio */
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0;
+  width: 18px;
+  height: 18px;
+}
+
+/* Meter and Progress */
+meter,
+progress {
+  height: 28px;
+}
+
+/* Meter -webkit-meter-optimum-value */
+meter::-webkit-meter-optimum-value {
+  background: var(--co-btn-bg);
+  transition: var(--transition-inputs);
+}
+
+/* Meter -webkit-meter-optimum-value:hover */
+meter::-webkit-meter-optimum-value:hover {
+  background: var(--co-btn-active-bg);
+}
+
+/* Meter -moz-meter-optimum-value:hover */
+meter::-moz-meter-bar {
+  background: var(--co-btn-bg);
+  transition: var(--transition-inputs);
+}
+
+/* Meter -moz-meter-optimum-value:hover */
+meter::-moz-meter-bar:hover {
+  background: var(--co-btn-active-bg);
+}
+
+/* Progress, Checkbox, Range and Radio hover */
+progress:hover,
+input[type="radio"]:hover,
+input[type="range"]:hover,
+input[type="checkbox"]:hover {
+  accent-color: var(--co-btn-active-bg);
+}
+
+/* Checkbox and Radio Inside Label */
+label:has(input[type="radio"]),
+label:has(input[type="checkbox"]) {
+    gap: 0.5em;
+    display: flex;
+    align-items: center;
+}
