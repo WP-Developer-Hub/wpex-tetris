@@ -101,4 +101,51 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
         }
 
     }
+
+    class WPX_Wide_Fat_Control extends WPX_Customize_Control {
+        public $type = 'text'; // Default type, can be overridden
+
+        // Enqueue styles for the custom control
+        public function enqueue() {
+            // Assuming the CSS file is in the 'class-wpx-customizer-controls' directory
+            $css_url = $this->get_wpx_resource_url() . 'css/wp-customizer-controls.css';
+            wp_enqueue_style( 'wpx-customize-controls', $css_url, array(), $this->wpxCustomControlsCssVersion );
+        }
+
+        // Render the control's content
+        public function render_content() {
+            ?>
+            <?php if (!empty($this->label)) : ?>
+                <label id="_customize-label-<?php echo esc_attr($this->id); ?>" for="<?php echo esc_attr($this->id); ?>" class="customize-control-title"><?php echo esc_html($this->label); ?></label>
+            <?php endif; ?>
+            <?php if (!empty($this->description)) : ?>
+                <p id="_customize-description-<?php echo esc_attr($this->id); ?>" class="description customize-control-description"><?php echo esc_html($this->description); ?></p>
+            <?php endif; ?>
+                <?php
+                // Determine the input type
+                switch ($this->type) {
+                    case 'date':
+                        $input_type = 'date';
+                        break;
+                    case 'time':
+                        $input_type = 'time';
+                        break;
+                    case 'datetime-local':
+                        $input_type = 'datetime-local';
+                        break;
+                    case 'month':
+                        $input_type = 'month';
+                        break;
+                    case 'week':
+                        $input_type = 'week';
+                        break;
+                    default:
+                        $input_type = 'date';
+                        break;
+                }
+                ?>
+                <input id="_customize-input-<?php echo esc_attr($this->id); ?>" type="<?php echo esc_attr($input_type); ?>" class="widefat wpx_date_input" <?php $this->link(); ?> value="<?php echo esc_attr($this->value()); ?>"/>
+            <?php
+        }
+    }
 }

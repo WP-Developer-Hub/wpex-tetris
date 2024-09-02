@@ -90,3 +90,37 @@
   border-color: #005a87;
   background-color: #005a87;
 }
+
+.wpx_date_input::-webkit-datetime-edit-hour-field:focus,
+.wpx_date_input::-webkit-datetime-edit-minute-field:focus,
+.wpx_date_input::-webkit-datetime-edit-second-field:focus,
+.wpx_date_input::-webkit-datetime-edit-ampm-field:focus,
+.wpx_date_input::-webkit-datetime-edit-day-field:focus,
+.wpx_date_input::-webkit-datetime-edit-week-field:focus,
+.wpx_date_input::-webkit-datetime-edit-month-field:focus,
+.wpx_date_input::-webkit-datetime-edit-year-field:focus  {
+  color: #fff;
+  border-color: #0073aa;
+  background-color: #0073aa;
+}
+
+.wpx_date_input::-moz-datetime-edit-hour-field:focus,
+.wpx_date_input::-moz-datetime-edit-minute-field:focus,
+.wpx_date_input::-moz-datetime-edit-second-field:focus,
+.wpx_date_input::-moz-datetime-edit-ampm-field:focus,
+.wpx_date_input::-moz-datetime-edit-second-field:focus,
+.wpx_date_input::-moz-datetime-edit-ampm-field:focus,
+.wpx_date_input::-moz-datetime-edit-day-field:focus,
+.wpx_date_input::-moz-datetime-edit-week-field:focus,
+.wpx_date_input::-moz-datetime-edit-month-field:focus,
+.wpx_date_input::-moz-datetime-edit-year-field:focus  {
+  color: #fff;
+  border-color: #0073aa;
+  background-color: #0073aa;
+}
+
+::selection{
+  color: #fff;
+  border-color: #0073aa;
+  background-color: #0073aa;
+}
