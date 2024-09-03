@@ -84,4 +84,5 @@
 @media only screen and (max-width:610px) {
     .single-post-meta li { display: block; margin-right: 0px; padding-right: 0;}
     .single-post-meta-divider:not(:last-child)::after {content: ""; }
+    .author-inner { flex-direction: column; align-items: center; justify-content: center }
 }
