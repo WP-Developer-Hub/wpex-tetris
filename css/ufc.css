@@ -537,33 +537,74 @@ input[type="checkbox"] {
 /* Meter and Progress */
 meter,
 progress {
-  height: 28px;
+  height: 18px;
+  appearance: none;
+  border-radius: 100px;
+  background: var(--co-textfld-bg);
+  border: var(--width-input-border) solid var(--co-textfld-border);
 }
 
-/* Meter -webkit-meter-optimum-value */
-meter::-webkit-meter-optimum-value {
-  background: var(--co-btn-bg);
-  transition: var(--transition-inputs);
+::-webkit-progress-bar {
+  border: none;
+  appearance: none;
+  border-radius: 100px;
+  background: transparent;
+  width: var(--width-inputs);
 }
 
-/* Meter -webkit-meter-optimum-value:hover */
-meter::-webkit-meter-optimum-value:hover {
-  background: var(--co-btn-active-bg);
+::-webkit-meter-bar,
+::-webkit-meter-inner-element {
+  margin: 0;
+  padding: 0;
+  border: none;
+  height: 16px;
+  appearance: none;
+  border-radius: 100px;
+  display: inline-block;
+  background: transparent;
+  width: var(--width-inputs);
 }
 
-/* Meter -moz-meter-optimum-value:hover */
-meter::-moz-meter-bar {
-  background: var(--co-btn-bg);
-  transition: var(--transition-inputs);
+::-internal-fallback * {
+  display: none !important;
 }
 
-/* Meter -moz-meter-optimum-value:hover */
-meter::-moz-meter-bar:hover {
-  background: var(--co-btn-active-bg);
+::-webkit-meter-optimum-value {
+  height: 18px;
+  width: 50%;
+  border-radius: 100px;
+  background: var(--co-textfld-focus-border);
+}
+
+::-webkit-progress-value {
+  border-radius: 100px;
+  background: var(--co-textfld-focus-border);
+}
+
+:not([value])::-webkit-progress-value {
+  border-radius: 100px;
+  width: 50% !important;
+  inline-size: 50% !important;
+  animation: 2s bounce linear infinite;
+}
+
+::-moz-meter-bar {
+  border-radius: 100px;
+  background: var(--co-textfld-focus-border);
+}
+
+::-moz-progress-bar {
+  border-radius: 100px;
+  background: var(--co-textfld-focus-border);
+}
+
+:not([value])::-moz-progress-bar {
+  border-radius: 100px;
+  width: 50% !important;
+  animation: 2s bounce ease-in-out infinite;
 }
 
 /* Progress, Checkbox, Range and Radio hover */
-progress:hover,
 input[type="radio"]:hover,
 input[type="range"]:hover,
 input[type="checkbox"]:hover {
@@ -573,7 +614,21 @@ input[type="checkbox"]:hover {
 /* Checkbox and Radio Inside Label */
 label:has(input[type="radio"]),
 label:has(input[type="checkbox"]) {
-    gap: 0.5em;
-    display: flex;
-    align-items: center;
+  gap: 0.5em;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes bounce {
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(100%);
+  }
+
+  -100% {
+    transform: translateX(0);
+  }
 }
