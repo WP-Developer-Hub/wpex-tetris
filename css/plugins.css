@@ -116,6 +116,13 @@
 /*--------------------------*/
 #post-gallery .wpg-slider .wpg-slider-item-inner,
 #post-gallery .wpg-slider img { height: 512px !important; width: 100%; object-fit: contain; object-position: center center; }
+#post-gallery .wpg-slider .wpg-slider-item .wpg-slider-item-inner .wpg-slider-content {
+    padding-top: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    line-break: anywhere;
+    -webkit-box-orient: vertical;
+}
 
 /*--------------------------*
 /* SB AuthorBox
