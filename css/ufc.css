@@ -165,6 +165,7 @@ input[type=time],
 input[type=url],
 input[type=week],
 button,
+.u-badg,
 .u-link-button,
 input[type=reset],
 input[type=submit],
@@ -427,6 +428,7 @@ input[type=color]:focus:not([disabled]) {
 
 button,
 .u-link-button,
+.u-badg,
 input[type=reset],
 input[type=submit],
 input[type=button],
@@ -649,6 +651,11 @@ input[type=week] {
   appearance: none;
 }
 
+::-webkit-datetime-edit {
+  text-align: left;
+  display: inline-block;
+}
+
 ::-webkit-datetime-edit-hour-field,
 ::-webkit-datetime-edit-minute-field,
 ::-webkit-datetime-edit-second-field,
@@ -701,6 +708,31 @@ H {
 ::-moz-datetime-edit-year-field:focus {
   color: var(--co-body-accent-contrast);
   background-color: var(--co-body-accent);
+}
+
+.u-badg {
+  margin: 5px;
+  padding: 0 10px;
+}
+
+.u-badg-bl {
+  left: 0;
+  bottom: 0;
+}
+
+.u-badg-br {
+  right: 0;
+  bottom: 0;
+}
+
+.u-badg-tl{
+  top: 0;
+  left: 0;
+}
+
+.u-badg-tr {
+  top: 0;
+  right: 0;
 }
 
 @keyframes bounce {

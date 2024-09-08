@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php endif; ?>
 <?php else : ?>
     <div class="blog-entry-thumbnail" >
-        <a href="<?php the_permalink(); ?>" class="u-link-img">
+        <a href="<?php the_permalink(); ?>" class="u-link-img u-pos-rel">
             <?php if ( has_post_thumbnail() ) : ?>
                 <?php the_post_thumbnail( 'wpex-entry', array( 'alt' => the_title_attribute( array( 'echo' => false ) ),  get_theme_mod('universal_aspect_ratio', 'u-media-1-1') == "none" ? '' : 'class' => 'u-media-1-1' ) ); ?>
             <?php else : ?>
@@ -33,6 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <span class="<?php echo universal_get_post_format_icon_classes(get_post_format()); ?>"></span>
                 </div>
             <?php endif; ?>
+            <?php if ( get_theme_mod('universal_toggle_recent_post_badg', 'true')) : echo wpx_recent_post_badg(get_theme_mod('universal_recent_post_keep_badg_for', 7), get_the_ID()); endif; ?>
         </a>
     </div>
 <?php endif; ?>

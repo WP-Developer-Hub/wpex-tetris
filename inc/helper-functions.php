@@ -513,4 +513,25 @@ if ( ! function_exists('universal_get_post_format_icon_classes') ) {
         }
     }
 }
+
+/**
+ * Display a "New" badge for recent posts.
+ *
+ * This function checks if a post is published within a specific number of days
+ * (default is 7 days) from the current date and appends a "New" badge if it is.
+ *
+ * @param int $id The post ID to check the publication date.
+ * @return string|void The "New" badge HTML if the post is recent, otherwise nothing.
+ */
+if ( ! function_exists( 'wpx_recent_post_badg' ) ) {
+    function wpx_recent_post_badg($number_of_days = 7, $id) {
+        $post_date = get_the_date( 'U', $id );
+        $current_date = current_time( 'timestamp' );
+        $date_diff = $current_date - $post_date;
+
+        if ( $date_diff < $number_of_days * DAY_IN_SECONDS ) {
+            return ' <span class="u-badg u-badg-br u-fs-14 u-pos-abs">' . __( 'New', 'tetris' ) . '</span>';
+        }
+    }
+}
 ?>
