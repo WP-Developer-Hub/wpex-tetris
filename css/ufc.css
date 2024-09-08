@@ -95,6 +95,7 @@ SOFTWARE.
 :root {
   --leading-inputs: 100%;
   --padding-inputs: 0.75em;
+  --padding-date: 0.15em;
   --margin-label: 0.75em;
   --margin-form-gap: 1.5em;
   --width-input-border: 1px;
@@ -636,6 +637,70 @@ label:has(input[type="checkbox"]) {
   gap: 0.5em;
   display: flex;
   align-items: center;
+}
+
+/* date, datetime-local, datetime, month, time & week patches */
+input[type=date],
+input[type=datetime-local],
+input[type=datetime],
+input[type=month],
+input[type=time],
+input[type=week] {
+  appearance: none;
+}
+
+::-webkit-datetime-edit-hour-field,
+::-webkit-datetime-edit-minute-field,
+::-webkit-datetime-edit-second-field,
+::-webkit-datetime-edit-ampm-field,
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-week-field,
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-year-field {
+  display: inline-block;
+  padding: var(--padding-date);
+  border-radius: var(--radius-inputs);
+  margin-block: 0 calc(var(--padding-date)/2);
+}
+
+::-webkit-datetime-edit-hour-field:focus,
+::-webkit-datetime-edit-minute-field:focus,
+::-webkit-datetime-edit-second-field:focus,
+::-webkit-datetime-edit-ampm-field:focus,
+::-webkit-datetime-edit-day-field:focus,
+::-webkit-datetime-edit-week-field:focus,
+::-webkit-datetime-edit-month-field:focus,
+::-webkit-datetime-edit-year-field:focus {
+  color: var(--co-body-accent-contrast);
+  background-color: var(--co-body-accent);
+}
+
+::-moz-datetime-edit-hour-field,
+::-moz-datetime-edit-minute-field,
+::-moz-datetime-edit-second-field,
+::-moz-datetime-edit-ampm-field,
+::-moz-datetime-edit-day-field,
+::-moz-datetime-edit-week-field,
+::-moz-datetime-edit-month-field,
+H {
+  display: inline-block;
+  padding: var(--padding-date);
+  border-radius: var(--radius-inputs);
+  margin-block: 0 calc(var(--padding-date)/2);
+}
+
+::-moz-datetime-edit-hour-field:focus,
+::-moz-datetime-edit-minute-field:focus,
+::-moz-datetime-edit-second-field:focus,
+::-moz-datetime-edit-ampm-field:focus,
+::-moz-datetime-edit-second-field:focus,
+::-moz-datetime-edit-ampm-field:focus,
+::-moz-datetime-edit-day-field:focus,
+::-moz-datetime-edit-week-field:focus,
+::-moz-datetime-edit-month-field:focus,
+::-moz-datetime-edit-year-field:focus {
+  color: var(--co-body-accent-contrast);
+  background-color: var(--co-body-accent);
 }
 
 @keyframes bounce {
