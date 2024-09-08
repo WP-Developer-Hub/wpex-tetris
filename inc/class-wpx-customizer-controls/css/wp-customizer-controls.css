@@ -1,6 +1,7 @@
 /* General Customizer Control Styles */
 .wpx-control {
   display: block;
+  margin-block: 10px;
 }
 
 .wpx-control .wpx-control-info {
@@ -164,4 +165,9 @@
   color: #fff;
   border-color: #0073aa;
   background-color: #0073aa;
+}
+
+/* date, datetime-local, datetime, month, time & week patches */
+.wpx_date_input {
+  appearance: none !important;
 }
