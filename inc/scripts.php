@@ -76,9 +76,27 @@ function universal_mejs_add_container_class() {
         settings.features = settings.features || mejs.MepDefaults.features;
         settings.features.push( 'exampleclass' );
         MediaElementPlayer.prototype.buildexampleclass = function( player ) {
-            player.container.addClass( 'universal-mejs-container' );
+            player.container.addClass( 'universal-mejs-container u-media-16-9' );
         };
     })();
+    jQuery(document).ready(function($) {
+        // Function to handle fullscreen changes
+        function handleFullscreenChange() {
+            if (document.fullscreenElement) {
+                // Fullscreen mode
+                $('video').css('max-height', 'none'); // Remove max-height
+            } else {
+                // Exit fullscreen mode
+                $('video').css('max-height', '512px'); // Restore max-height
+            }
+        }
+
+        // Attach event listener to fullscreen changes
+        $(document).on('fullscreenchange webkitfullscreenchange mozfullscreenchange msfullscreenchange', handleFullscreenChange);
+
+        // Initial setup to ensure the max-height is set correctly on load
+        handleFullscreenChange();
+    });
     </script>
     <?php
 }
