@@ -184,17 +184,13 @@ a:focus { outline: 0 }
  
 /* Single Post
 ----------------------------------------------------------- */
-#post-thumbnail { max-height: 512px; }
-#post-thumbnail,
-#post-media { padding: 0; }
+#post-media,
+#post-thumbnail { height: 512px; padding: 0; overflow: hidden;}
 #post-thumbnail img,
 #post-media img { height: 512px; width: 100%; object-fit: contain; object-position: center center;}
 #post-thumbnail img { -webkit-backdrop-filter: blur(50px); backdrop-filter: blur(50px); background: rgba(0, 0, 0, 0.5); }
-.wp-video video,
-.wp-video .mejs-container,
-.wp-playlist video,
-.wp-playlist .mejs-container {max-height: 512px; width: 100%;}
-#post-header h1 { margin: 0; font-size: 2.000em; line-height: 1.2em; }
+#post-media .mejs-container { max-height: 512px !important; width: 100%; }
+#post-header h1 { margin: 0; font-size: 2.000em; }
 .single-post-meta { color: #999; font-size: 0.929em; margin-top: 10px; }
 .single-post-meta li { display: inline; margin-right: 5px; }
 .single-post-meta strong { font-weight: 600; color: #111; }
