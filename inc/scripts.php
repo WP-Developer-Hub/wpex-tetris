@@ -79,15 +79,14 @@ function universal_mejs_add_container_class() {
             player.container.addClass( 'universal-mejs-container u-media-16-9' );
         };
     })();
+
+    // Function to handle fullscreen changes
     jQuery(document).ready(function($) {
-        // Function to handle fullscreen changes
         function handleFullscreenChange() {
             if (document.fullscreenElement) {
-                // Fullscreen mode
-                $('video').css('max-height', 'none'); // Remove max-height
+                $('video').css('max-height', 'none');
             } else {
-                // Exit fullscreen mode
-                $('video').css('max-height', '512px'); // Restore max-height
+                $('video').css('max-height', '512px');
             }
         }
 
@@ -96,6 +95,20 @@ function universal_mejs_add_container_class() {
 
         // Initial setup to ensure the max-height is set correctly on load
         handleFullscreenChange();
+
+        // Make sure all instances wp-video & wp-playlist in inner-post 512px.
+        function wrapMediaElements() {
+           $('.inner-post .wp-video, .inner-post .wp-playlist').each(function() {
+               if (!$(this).closest('.post-media').length) {
+                    var $wrapper = $('<div class="post-media u-media-16-9 u-pos-rel"></div>');
+                    $(this).wrap($wrapper);
+                    $(this).css('width', '100%');
+                    $('.post-media').css('margin-block', '0.5rem');
+               }
+           });
+        }
+
+        wrapMediaElements();
     });
     </script>
     <?php
