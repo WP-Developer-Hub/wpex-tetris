@@ -184,12 +184,12 @@ a:focus { outline: 0 }
  
 /* Single Post
 ----------------------------------------------------------- */
-#post-media,
-#post-thumbnail { height: 512px; padding: 0; overflow: hidden;}
+#post-thumbnail { height: 512px; width: 100% !important; padding: 0; overflow: hidden;}
 #post-thumbnail img,
 #post-media img { height: 512px; width: 100%; object-fit: contain; object-position: center center;}
 #post-thumbnail img { -webkit-backdrop-filter: blur(50px); backdrop-filter: blur(50px); background: rgba(0, 0, 0, 0.5); }
-#post-media .mejs-container { max-height: 512px !important; width: 100%; }
+#post-media .mejs-container,
+.post-media .mejs-container { max-height: 512px !important; width: 100%; }
 #post-header h1 { margin: 0; font-size: 2.000em; }
 .single-post-meta { color: #999; font-size: 0.929em; margin-top: 10px; }
 .single-post-meta li { display: inline; margin-right: 5px; }
