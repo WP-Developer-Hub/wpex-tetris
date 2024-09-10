@@ -43,14 +43,14 @@ if ( ! defined( 'ABSPATH' ) ) {
             </nav><!-- #navigation -->
         </header><!-- #header -->
         <details id="mobile-navigation">
-            <summary for="drop" id="main-toggle" class="menu-toggle u-jc-sb"><span class="menu-summary-name u-tt-all-uppercase"><?php echo esc_html('Menu', 'tetris')?></span>  <span class="dashicons dashicons-menu"></span> </summary>
+            <summary id="main-toggle" class="menu-toggle u-jc-sb"><span class="menu-summary-name u-tt-all-uppercase"><?php echo esc_html('Menu', 'tetris')?></span>  <span class="dashicons dashicons-menu"></span> </summary>
             <?php
                 wp_nav_menu(array(
                     'container' => false,
                     'fallback_cb'=> false,
                     'sort_column' => 'menu_order',
                     'theme_location' => 'main_menu',
-                    'walker' => new universal_menu_walker_2_0(),
+                    'walker' => new universal_menu_walker_2_0(),h
                 ));
             ?>
         </details>
