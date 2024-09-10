@@ -128,24 +128,35 @@ if ( ! function_exists( 'universal_custom_paginate_comments_links' ) ) {
         $showitems = ($range * 2) + 1;
         $current_page = max(1, get_query_var('cpage'));
 
+        // Check if there are more than one page of comments
         if (get_comment_pages_count() > 1) {
-            echo '<div class="page-pagination"><div class="page-pagination-inner clearfix">';
-            echo '<div class="page-of-page"><span class="inner">' . $current_page . ' of ' . get_comment_pages_count() . '</span></div>';
+            echo '<nav class="page-pagination" role="navigation" aria-label="Comment Pagination">';
+            echo '<div class="page-pagination-inner clearfix">';
+            
+            // Page of page indicator
+            echo '<div class="page-of-page">';
+            echo '<span class="inner">' . esc_html($current_page) . ' of ' . esc_html(get_comment_pages_count()) . '</span>';
+            echo '</div>';
 
+            // Pagination links
             echo '<div class="pagination-links">';
-            echo previous_comments_link('<span class="page-button inner dashicons dashicons-arrow-left-alt2"></span>');
+            echo get_previous_comments_link('<span class="page-button inner dashicons dashicons-arrow-left-alt2" aria-label="Previous Page"></span>');
+            
+            // Loop through pagination links
             for ($i = 1; $i <= get_comment_pages_count(); $i++) {
                 if (1 != get_comment_pages_count() && (
                     !($i >= $current_page + $range + 1 || $i <= $current_page - $range - 1) || get_comment_pages_count() <= $showitems
                 )) {
                     $url = get_comments_pagenum_link($i);
-                    echo ($current_page == $i) ? "<span class=\"current outer\"><span class=\"inner\">" . $i . "</span></span>" : "<a href='" . esc_url($url) . "' class=\"inactive\"><span class=\"inner\">" . $i . "</span></a>";
+                    echo ($current_page == $i) ?
+                        '<span class="current outer"><span class="inner">' . esc_html($i) . '</span></span>' :
+                        '<a href="' . esc_url($url) . '" class="inactive"><span class="inner">' . esc_html($i) . '</span></a>';
                 }
             }
-            echo next_comments_link('<span class="page-button inner dashicons dashicons-arrow-right-alt2"></span>');
-            echo '</div>'; // .pagination-links
-
-            echo "</div></div>\n";
+            echo get_next_comments_link('<span class="page-button inner dashicons dashicons-arrow-right-alt2" aria-label="Next Page"></span>');
+            echo '</div>';
+            echo '</div>';
+            echo '</nav>';
         }
     }
 }
