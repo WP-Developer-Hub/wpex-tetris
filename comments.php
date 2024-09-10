@@ -26,7 +26,7 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && !pi
 		<?php if ( have_comments() ) : ?>
 			<h3 class="comments-title widget-title"><span><?php comments_popup_link(__('Leave a comment', 'tetris'), __('1 Comment', 'tetris'), __('% Comments', 'tetris'), 'comments-link', __('Comments closed', 'tetris')); ?></span></h3>
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
-			<nav role="navigation" id="comment-nav-above" class="site-navigation comment-navigation">
+			<nav id="comment-nav-above" class="page-pagination site-navigation comment-navigation">
 				<h1 class="assistive-text"><?php echo __('Comment Navigation','tetris'); ?></h1>
                 <?php echo universal_custom_paginate_comments_links(); ?>
 			</nav><!-- /coment-nav-above -->
@@ -35,7 +35,7 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && !pi
 				<?php wp_list_comments( array( 'callback' => 'wpex_comments_output' ) ); ?>
 			</ol><!-- /commentlist -->
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
-			<nav role="navigation" id="comment-nav-below" class="site-navigation comment-navigation">
+			<nav id="comment-nav-below" class="page-pagination site-navigation comment-navigation">
 				<h1 class="assistive-text"><?php echo __('Comment Navigation','tetris'); ?></h1>
                 <?php echo universal_custom_paginate_comments_links(); ?>
 			</nav><!-- /coment-nav-below -->
