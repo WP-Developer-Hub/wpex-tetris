@@ -22,7 +22,7 @@ function wpex_comments_output($comment, $args, $depth) {
                     <div class="comment-avatar">
                         <?php echo get_avatar($comment, $size = '45'); ?>
                     </div><!-- /comment-avatar -->
-                    <section class="comment-author vcard">
+                    <div class="comment-author vcard">
                         <?php printf(__('<cite class="author">%s</cite>', 'tetris'), get_comment_author_link()) ?>
                         <span class="comment-date"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"> &middot; <?php echo get_comment_date(); ?></a></span>
                         <span class="reply">
@@ -72,12 +72,12 @@ function wpex_comments_output($comment, $args, $depth) {
                             echo $links;
                             ?>
                         </span>
-                    </section><!-- /comment-meta -->
-                    <section class="comment-content">
+                    </div><!-- /comment-meta -->
+                    <div class="comment-content">
                         <div class="comment-text u-wrap-text">
                             <?php comment_text() ?>
                         </div><!-- /comment-text -->
-                    </section><!-- /comment-content -->
+                    </div><!-- /comment-content -->
                 </div><!-- /comment-details -->
         </div><!-- /comment -->
 <?php

@@ -439,7 +439,7 @@ function tu_filter_comment_fields( $fields ) {
 
     $consent   = empty( $commenter['comment_author_email'] ) ? '' : ' checked="checked"';
 
-    $fields['cookies'] = '<p class="comment-form-cookies-consent"><label for="wp-comment-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"' . $consent . ' />' . 'Save my name, email in this browser for the next time I comment.</label></p>';
+    $fields['cookies'] = '<p class="comment-form-cookies-consent"><label for="wp-comment-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"' . $consent . '>' . 'Save my name, email in this browser for the next time I comment.</label></p>';
 
     return $fields;
 }

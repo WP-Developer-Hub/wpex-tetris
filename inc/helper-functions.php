@@ -130,7 +130,6 @@ if ( ! function_exists( 'universal_custom_paginate_comments_links' ) ) {
 
         // Check if there are more than one page of comments
         if (get_comment_pages_count() > 1) {
-            echo '<nav class="page-pagination" role="navigation" aria-label="Comment Pagination">';
             echo '<div class="page-pagination-inner clearfix">';
             
             // Page of page indicator
@@ -140,7 +139,7 @@ if ( ! function_exists( 'universal_custom_paginate_comments_links' ) ) {
 
             // Pagination links
             echo '<div class="pagination-links">';
-            echo get_previous_comments_link('<span class="page-button inner dashicons dashicons-arrow-left-alt2" aria-label="Previous Page"></span>');
+            echo get_previous_comments_link('<span class="page-button inner dashicons dashicons-arrow-left-alt2"></span>');
             
             // Loop through pagination links
             for ($i = 1; $i <= get_comment_pages_count(); $i++) {
@@ -153,10 +152,9 @@ if ( ! function_exists( 'universal_custom_paginate_comments_links' ) ) {
                         '<a href="' . esc_url($url) . '" class="inactive"><span class="inner">' . esc_html($i) . '</span></a>';
                 }
             }
-            echo get_next_comments_link('<span class="page-button inner dashicons dashicons-arrow-right-alt2" aria-label="Next Page"></span>');
+            echo get_next_comments_link('<span class="page-button inner dashicons dashicons-arrow-right-alt2"></span>');
             echo '</div>';
             echo '</div>';
-            echo '</nav>';
         }
     }
 }
