@@ -29,7 +29,7 @@ class Universal_Menu_Walker_2_0 extends Walker_Nav_Menu {
         $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
         // Get the menu item ID and classes
-        $menu_item_id = 'menu-item-' . $item->ID;
+        $menu_item_id = 'menu-item-' . ($item->ID + 1);
         $classes = empty( $item->classes ) ? array() : (array) $item->classes;
 
         // Add necessary classes
