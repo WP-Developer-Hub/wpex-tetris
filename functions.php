@@ -373,31 +373,50 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
  *
  * @since 1.0.0
  */
-function wpex_pagination( $pages = '', $range = 4 ) {
-     $showitems = ($range * 2)+1;
-     global $paged;
-     if ( empty( $paged ) ) $paged = 1;
-     if ( $pages == '') {
-         global $wp_query;
-         $pages = $wp_query->max_num_pages;
-         if ( !$pages ) {
-             $pages = 1;
-         }
-     }
-    echo "<div class=\"page-pagination\"><div class=\"page-pagination-inner clearfix\">";
-     if ( 1 != $pages) {
-         echo "<div class=\"page-of-page\"><span class=\"inner\">".$paged." of ".$pages."</span></div>";
-         echo previous_posts_link('<span class="page-button inner dashicons dashicons-arrow-left-alt2"></span>');
-         for ($i=1; $i <= $pages; $i++) {
-             if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems ))
-             {
-                 echo ($paged == $i)? "<span class=\"current outer\"><span class=\"inner\">".$i."</span></span>":"<a href='".get_pagenum_link($i)."' class=\"inactive\"><span class=\"inner\">".$i."</span></a>";
-             }
-         }
-         echo next_posts_link('<span class="page-button inner dashicons dashicons-arrow-right-alt2"></span>');
-         echo "</div>";
-     }
-    echo "</div>\n";
+function wpex_pagination($pages = '', $range = 4) {
+    $showitems = ($range * 2) + 1;
+    global $paged;
+    
+    if (empty($paged)) {
+        $paged = 1;
+    }
+    
+    if ($pages === '') {
+        global $wp_query;
+        $pages = $wp_query->max_num_pages;
+        if (!$pages) {
+            $pages = 1;
+        }
+    }
+    
+    // Start pagination container
+    echo '<div class="page-pagination"><div class="page-pagination-inner clearfix">';
+    
+    if ($pages > 1) {
+        // Page of page info
+        echo '<div class="page-of-page"><span class="inner">' . esc_html($paged) . ' of ' . esc_html($pages) . '</span></div>';
+        
+        // Previous posts link
+        echo '<div class="pagination-links">';
+        echo get_previous_posts_link('<span class="page-button inner dashicons dashicons-arrow-left-alt2"></span>');
+        
+        // Page numbers
+        for ($i = 1; $i <= $pages; $i++) {
+            if (1 != $pages && !($i >= $paged + $range + 1 || $i <= $paged - $range - 1) || $pages <= $showitems) {
+                $class = ($paged == $i) ? 'current outer' : 'inactive';
+                $link = ($paged == $i) ?
+                    "<span class=\"$class\"><span class=\"inner\">" . esc_html($i) . "</span></span>" :
+                    "<a href='" . esc_url(get_pagenum_link($i)) . "' class=\"$class\"><span class=\"inner\">" . esc_html($i) . "</span></a>";
+                echo $link;
+            }
+        }
+        
+        // Next posts link
+        echo get_next_posts_link('<span class="page-button inner dashicons dashicons-arrow-right-alt2"></span>');
+        echo '</div>'; // .pagination-links
+    }
+    
+    echo '</div></div>'; // Close pagination container
 }
 
 function ps_remove_avatar_srcset( $avatar, $id_or_email, $size, $default, $alt ) {
