@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header(); ?>
 
 	<?php if ( ! is_home() ) : ?>
-		<header id="page-heading" class="clearfix">
+		<header class="page-heading clearfix">
             <h1><?php if ( is_category() ) {
                     single_cat_title();
                 } else {

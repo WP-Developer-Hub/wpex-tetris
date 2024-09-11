@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header(); ?>
 
-	<div id="page-heading">
+	<div class="page-heading">
 		<h1><?php the_title(); ?></h1>	
 	</div><!-- /page-heading -->
 

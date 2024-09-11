@@ -22,10 +22,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header(); ?>
-    <header id="page-heading" class="clearfix">
+    <header class="page-heading clearfix">
         <h1 id="archive-title"><?php _e( 'Search Results For', 'tetris' ); ?>: &quot;<?php the_search_query(); ?>&quot;</h1>
     </header>
-    <header id="page-heading" class="search-heading clearfix">
+    <header class="page-heading search-heading clearfix">
         <?php get_search_form(); ?>
     </header>
 
