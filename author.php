@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header(); ?>
 
 	<?php if ( ! is_home() ) : ?>
-		<header id="page-heading" class="clearfix">
+		<header class="page-heading clearfix">
             <h1 id="archive-title"> <?php echo esc_html__( 'Posts By', 'tetris' ) . ': ' . esc_html( get_the_author() )?> </h1>
 		</header>
 	<?php endif; ?>
