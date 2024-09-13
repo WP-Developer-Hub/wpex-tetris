@@ -627,10 +627,22 @@ progress {
 }
 
 /* Progress, Checkbox, Range and Radio hover */
+input[type="radio"],
+input[type="range"],
+input[type="checkbox"] {
+  outline: 0;
+}
+
 input[type="radio"]:hover,
 input[type="range"]:hover,
 input[type="checkbox"]:hover {
   accent-color: var(--co-btn-active-bg);
+}
+
+input[type="radio"]:focus,
+input[type="range"]:focus,
+input[type="checkbox"]:focus {
+  accent-color: var(--co-btn-focus-bg);
 }
 
 /* Checkbox and Radio Inside Label */
