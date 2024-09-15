@@ -24,7 +24,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 /* Main
 ----------------------------------------------------------- */
 body { background-color: #ddd; font: 14px/1.8 'Open Sans',Helvetica,Arial,sans-serif; color: #666; -webkit-text-size-adjust: 100%; }
-body a { color: var(--universal-accent-color) }
+body a { color: var(--universal-accent-color); transition: all 250ms linear 0s }
 body a:hover { text-decoration: underline; color: var(--universal-accent-color); }
 img { max-width: 100%; height: auto; }
 #wrap { width: calc(100% - 200px); margin: 0 auto; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
@@ -123,7 +123,7 @@ a:focus { outline: 0 }
 #navigation ul { display: flex; justify-content: center; align-items: center; list-style: none; width: max-content; padding: 0 border-radius: 20px;}
 #navigation ul li { margin: 0 4px; border-radius: 2px; transition: all 250ms linear 0s }
 #navigation ul li { display: block; position: relative; min-width: 100px }
-#navigation a { display: block; color: #fff; text-align: center; text-decoration: none; vertical-align: middle; padding: 6px 6px; cursor: pointer }
+#navigation a { display: block; color: #fff; text-align: center; text-decoration: none; vertical-align: middle; padding: 6px 6px; cursor: pointer; transition: all 250ms linear 0s }
 #navigation ul ul { display: none; border-radius: 2px; position: absolute; top: 100%; left: 0; background-color: #212121; width: max-content; transition: all 500ms linear 0s }
 #navigation ul ul ul { top: 0; left: 100%; }
 #navigation ul ul li { margin: 0; border-bottom: solid 1px #666;  }
@@ -198,7 +198,7 @@ a:focus { outline: 0 }
 .single-post-meta-divider:not(:last-child)::after {content: "|"; margin-left: 5px;}
 .inner-post p { overflow-wrap: break-word; word-break: break-all; hyphens: auto; transition: all 150ms linear 0.1ms }
 #post-tags { margin-top: 30px; white-space: wrap }
-#post-tags a { background: var(--universal-accent-color); border-radius: 2px; color: var(--universal-accent-color-text-color); font-size: 1.2em; padding: 2px 12px; }
+#post-tags a { background: var(--universal-accent-color); border-radius: 2px; color: var(--universal-accent-color-text-color); font-size: 1.2em; padding: 2px 12px; transition: all 250ms linear 0s }
 #post-tags a:hover { background: #111; color: #fff; text-decoration: none; }
 #single-author { margin-top: 30px; margin-bottom: 30px }
 #single-author h4 { font-size: 1.143em; center repeat-x; margin-bottom: 20px; }
@@ -248,19 +248,19 @@ h5.widget-title {font-weight: bold;}
 
 /* Widgets
 ----------------------------------------------------------- */
-.tagcloud a { float: left; display: block; font-size: 1.2em !important; line-height: 1.2em !important; margin-bottom: 7px; margin-right: 7px; padding: 7px 15px; margin-right: 5px; margin-bottom: 5px; border-radius: 2px; word-break: break-all; background: var(--universal-accent-color); color: var(--universal-accent-color-text-color) !important; }
+.tagcloud a { float: left; display: block; font-size: 1.2em !important; line-height: 1.2em !important; margin-bottom: 7px; margin-right: 7px; padding: 7px 15px; margin-right: 5px; margin-bottom: 5px; border-radius: 2px; word-break: break-all; background: var(--universal-accent-color); color: var(--universal-accent-color-text-color) !important; transition: all 250ms linear 0s }
 .tagcloud a:hover { background: #111; color: #fff !important; }
 .widget_media_image .wp-caption { width: 100% !important; margin: 0; }
- 
-#footer .widget_nav_menu li,
-#footer .widget_recent_entries li,
-#footer .widget_categories li,
+
+#footer .widget_nav_menu li a,
+#footer .widget_recent_entries li a,
+#footer .widget_categories li a,
 #footer .widget_archive a,
-#footer .widget_meta li,
-#footer .wpex-taxonomies-widget li,
-#footer #footer .wpex-recent-post-types-widget li,
-#footer .widget_pages li,
-#footer .widget_links li { margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #333; }
+#footer .widget_meta li a,
+#footer .wpex-taxonomies-widget li a,
+#footer #footer .wpex-recent-post-types-widget li a,
+#footer .widget_pages li a,
+#footer .widget_links li a { padding: 10px 0; display: block; border-bottom: 1px solid #333; }
 #wp-calendar { font-size: 0.786em }
 .wp-calendar-nav-prev,
 #wp-calendar caption { background: #111214; color: #fff; padding: 10px; text-align: center; font-weight: bold; }
