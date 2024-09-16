@@ -252,15 +252,34 @@ h5.widget-title {font-weight: bold;}
 .tagcloud a:hover { background: #111; color: #fff !important; }
 .widget_media_image .wp-caption { width: 100% !important; margin: 0; }
 
+.widget_nav_menu li a,
+.widget_recent_entries li,
+.widget_categories li a,
+.widget_archive li,
+.widget_meta li,
+.wp-tag-cloud li,
+.widget_recent_comments li,
+.widget_pages li a,
+.widget_links li a { display: block; padding: 5px 0;}
+
+.widget_nav_menu li .children li a,
+.widget_recent_entries li .children li a,
+.widget_categories li .children li a,
+.widget_archive .children li,
+.widget_meta li .children li a,
+.widget_pages li .children li a,
+.widget_links li .children li a { padding: 10px 20px; }
+
 #footer .widget_nav_menu li a,
-#footer .widget_recent_entries li a,
+#footer .widget_recent_entries li,
 #footer .widget_categories li a,
-#footer .widget_archive a,
-#footer .widget_meta li a,
-#footer .wpex-taxonomies-widget li a,
-#footer #footer .wpex-recent-post-types-widget li a,
+#footer .widget_archive li,
+#footer .widget_meta li,
+#footer .wp-tag-cloud li,
+#footer .widget_recent_comments li,
 #footer .widget_pages li a,
-#footer .widget_links li a { padding: 10px 0; display: block; border-bottom: 1px solid #333; }
+#footer .widget_links li a { border-bottom: 1px solid #333; }
+
 #wp-calendar { font-size: 0.786em }
 .wp-calendar-nav-prev,
 #wp-calendar caption { background: #111214; color: #fff; padding: 10px; text-align: center; font-weight: bold; }
