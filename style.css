@@ -260,7 +260,7 @@ h5.widget-title {font-weight: bold;}
 .wp-tag-cloud li,
 .widget_recent_comments li,
 .widget_pages li a,
-.widget_links li a { display: block; padding: 5px 0;}
+.widget_links li a { display: block; padding-top: 2px; padding-bottom: 2px;}
 
 .widget_nav_menu li .children li a,
 .widget_recent_entries li .children li a,
@@ -268,7 +268,7 @@ h5.widget-title {font-weight: bold;}
 .widget_archive .children li,
 .widget_meta li .children li a,
 .widget_pages li .children li a,
-.widget_links li .children li a { padding: 10px 20px; }
+.widget_links li .children li a { padding-left: 10px; }
 
 #footer .widget_nav_menu li a,
 #footer .widget_recent_entries li,
@@ -278,7 +278,7 @@ h5.widget-title {font-weight: bold;}
 #footer .wp-tag-cloud li,
 #footer .widget_recent_comments li,
 #footer .widget_pages li a,
-#footer .widget_links li a { border-bottom: 1px solid #333; }
+#footer .widget_links li a { padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #333; }
 
 #wp-calendar { font-size: 0.786em }
 .wp-calendar-nav-prev,
