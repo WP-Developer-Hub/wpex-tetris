@@ -448,46 +448,6 @@ add_filter( 'comment_form_default_fields', 'tu_filter_comment_fields', 20 );
 remove_filter('comment_text', 'make_clickable', 9);
 
 /**
- * Remove the 'type="text/css"' attribute from stylesheet link tags.
- *
- * @param string $tag The complete HTML tag for the stylesheet.
- * @param string $handle The name of the stylesheet.
- * @param string $src The URL of the stylesheet file.
- * @return string The modified HTML tag for the stylesheet.
- */
-function preload_css($tag, $handle, $src){
-    return str_replace('type="text/css"', "", $tag);
-}
-add_filter('style_loader_tag', 'preload_css', 10, 3);
-
-/**
- * Remove the 'type="text/javascript"' attribute from script link tags.
- *
- * @param string $tag The complete HTML tag for the script.
- * @param string $handle The name of the script.
- * @param string $src The URL of the script file.
- * @return string The modified HTML tag for the script.
- */
-function preload_script($tag, $handle, $src){
-    return str_replace('type="text/javascript"', "", $tag);
-}
-add_filter('script_loader_tag', 'preload_script', 10, 3);
-
-/**
- * Remove query strings from script and style URLs.
- *
- * @param string $src The URL of the script or style.
- * @return string The URL without query strings.
- */
-function wpcode_snippet_remove_query_strings_split($src) {
-    $output = preg_split( "/(&ver|\\?ver)/", $src ); // Split the URL by '&ver' or '?ver'
-
-    return $output ? $output[0] : ''; // Return the URL without query strings
-}
-add_filter('script_loader_src', 'wpcode_snippet_remove_query_strings_split', 15);
-add_filter('style_loader_src', 'wpcode_snippet_remove_query_strings_split', 15);
-
-/**
  * Modify term name to title case (capitalize each word)
  *
  * @param WP_Term $term    The term object being retrieved.
