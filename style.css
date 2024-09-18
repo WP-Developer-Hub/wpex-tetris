@@ -26,6 +26,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 body { background-color: #ddd; font: 14px/1.8 'Open Sans',Helvetica,Arial,sans-serif; color: #666; -webkit-text-size-adjust: 100%; }
 body a { color: var(--universal-accent-color); transition: all 250ms linear 0s }
 body a:hover { text-decoration: underline; color: var(--universal-accent-color); }
+body a:not([href]) { opacity: var(--opacity-input-disabled); cursor: not-allowed !important;}
 img { max-width: 100%; height: auto; }
 #wrap { width: calc(100% - 200px); margin: 0 auto; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
 .container { background: #fff; padding: 30px; margin-top: 10px; margin-bottom: 10px; box-shadow: var(--u-box-shadow)}
@@ -105,6 +106,7 @@ p a,
 p a:visited { line-height: inherit }
 a:link { text-decoration: none }
 a:focus { outline: 0 }
+a:not([href]) { opacity: var(--opacity-input-disabled); cursor: not-allowed !important;}
 .page-heading{ padding: 20px; background: #fff; margin-bottom: 10px; font-weight: 300; text-align: center; margin-top: 10px; box-shadow: var(--u-box-shadow)}
 .page-heading h1,
 .page-heading h2 { margin: 0; font-size: 2.000em; line-height: 1.2em; font-weight: 300; }
