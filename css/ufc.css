@@ -120,7 +120,7 @@ textarea:read-only:not(label, button, input[type=button], input[type=submit], in
 
 :disabled {
   opacity: var(--opacity-input-disabled);
-  cursor: not-allowed;
+  cursor: not-allowed !important;
 }
 
 /* All elemenets regardless of types */
