@@ -215,7 +215,7 @@
 .u-fw-thick {font-weight: 700 !important; transition: all 150ms linear 0.1ms}
 .u-fw-ultra-thick {font-weight: 900 !important; transition: all 150ms linear 0.1ms}
 
-.u-trim {display: -webkit-box; -webkit-line-clamp: var(--u-line-clamp, 1); -webkit-box-orient: vertical; overflow: hidden; line-break: anywhere;
+.u-trim {display: -webkit-box; -webkit-line-clamp: var(--u-line-clamp, 1); -webkit-box-orient: vertical; overflow: hidden; line-break: anywhere; }
 
 .u-wrap-text {overflow-wrap: break-word; word-break: break-word; hyphens: auto; transition: all 150ms linear 0.1ms}
 .u-wrap-text-any {overflow-wrap: anywhere; word-break: break-word; hyphens: auto; transition: all 150ms linear 0.1ms}
@@ -327,3 +327,17 @@
 .u-text-dark { color: #000; }
 .u-text-light { color: #fff; }
 .u-text-accent { color: var(--universal-accent-color); }
+
+/* Reset Margin */
+.u-margin-0 { margin: 0 !important; }
+.u-margin-0-t { margin-top: 0 !important; }
+.u-margin-0-l { margin-left: 0 !important; }
+.u-margin-0-r { margin-right: 0 !important; }
+.u-margin-0-b { margin-bottom: 0 !important; }
+
+/* Reset Padding */
+.u-padding-0 { padding: 0 !important; }
+.u-padding-0-t { padding-top: 0 !important; }
+.u-padding-0-l { padding-left: 0 !important; }
+.u-padding-0-r { padding-right: 0 !important; }
+.u-padding-0-b { padding-bottom: 0 !important; }
