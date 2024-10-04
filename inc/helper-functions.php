@@ -579,13 +579,14 @@ if ( ! function_exists('universal_get_post_format_icon_classes') ) {
  * @return string|void The "New" badge HTML if the post is recent, otherwise nothing.
  */
 if ( ! function_exists( 'wpx_recent_post_badge' ) ) {
-    function wpx_recent_post_badge($number_of_days = 7, $id) {
+    function wpx_recent_post_badge($id, $number_of_days = 7, $pos = "br", $is_wide = false) {
         $post_date = get_the_date( 'U', $id );
         $current_date = current_time( 'timestamp' );
         $date_diff = $current_date - $post_date;
+        $classes = $is_wide ? 'u-block u-block-100 u-margin-0' : 'u-badge-' . $pos .' u-pos-abs';
 
         if ( $date_diff < $number_of_days * DAY_IN_SECONDS ) {
-            return ' <span class="u-badge u-badge-br u-fs-14 u-pos-abs">' . __( 'New', 'tetris' ) . '</span>';
+            return ' <span class="u-badge '. $classes .' u-fs-14 u-ta-c">' . __( 'New', 'tetris' ) . '</span>';
         }
     }
 }
