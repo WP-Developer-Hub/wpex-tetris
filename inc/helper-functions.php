@@ -578,14 +578,14 @@ if ( ! function_exists('universal_get_post_format_icon_classes') ) {
  * @param int $id The post ID to check the publication date.
  * @return string|void The "New" badge HTML if the post is recent, otherwise nothing.
  */
-if ( ! function_exists( 'wpx_recent_post_badg' ) ) {
-    function wpx_recent_post_badg($number_of_days = 7, $id) {
+if ( ! function_exists( 'wpx_recent_post_badge' ) ) {
+    function wpx_recent_post_badge($number_of_days = 7, $id) {
         $post_date = get_the_date( 'U', $id );
         $current_date = current_time( 'timestamp' );
         $date_diff = $current_date - $post_date;
 
         if ( $date_diff < $number_of_days * DAY_IN_SECONDS ) {
-            return ' <span class="u-badg u-badg-br u-fs-14 u-pos-abs">' . __( 'New', 'tetris' ) . '</span>';
+            return ' <span class="u-badge u-badge-br u-fs-14 u-pos-abs">' . __( 'New', 'tetris' ) . '</span>';
         }
     }
 }

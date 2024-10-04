@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <span class="<?php echo universal_get_post_format_icon_classes(get_post_format()); ?>"></span>
                 </div>
             <?php endif; ?>
-            <?php if ( get_theme_mod('universal_toggle_recent_post_badg', 'true')) : echo wpx_recent_post_badg(get_theme_mod('universal_recent_post_keep_badg_for', 7), get_the_ID()); endif; ?>
+            <?php if ( get_theme_mod('universal_toggle_recent_post_badge', 'true')) : echo wpx_recent_post_badge(get_theme_mod('universal_recent_post_keep_badge_for', 7), get_the_ID()); endif; ?>
         </a>
     </div>
 <?php endif; ?>
