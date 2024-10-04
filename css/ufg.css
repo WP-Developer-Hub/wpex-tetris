@@ -207,7 +207,6 @@
 .u-ta-c {text-align: center !important; transition:all 150ms linear 0.1ms}
 .u-ta-r {text-align: right !important; transition:all 150ms linear 0.1ms}
 
-
 /* Font-Weight */
 .u-fw-ultra-thin {font-weight: 50 !important; transition: all 150ms linear 0.1ms}
 .u-fw-thin {font-weight: 100 !important; transition: all 150ms linear 0.1ms}
@@ -324,3 +323,8 @@
 .u-media-missing-img .dashicons::before { display: flex; align-items: center; justify-content: center; color: white; font-size: 96px; width: 100%; height: 100%;}
 
 .u-link-img { text-decoration: none !important; color: white !important;}
+
+/* Text Color*/
+.u-text-dark { color: #000; }
+.u-text-light { color: #fff; }
+.u-text-accent { color: var(--universal-accent-color); }
