@@ -216,7 +216,6 @@
 .u-fw-ultra-thick {font-weight: 900 !important; transition: all 150ms linear 0.1ms}
 
 .u-trim {display: -webkit-box; -webkit-line-clamp: var(--u-line-clamp, 1); -webkit-box-orient: vertical; overflow: hidden; line-break: anywhere;
-}
 
 .u-wrap-text {overflow-wrap: break-word; word-break: break-word; hyphens: auto; transition: all 150ms linear 0.1ms}
 .u-wrap-text-any {overflow-wrap: anywhere; word-break: break-word; hyphens: auto; transition: all 150ms linear 0.1ms}

@@ -66,7 +66,6 @@ function universal_customizer_settings($wp_customize) {
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field',
     ));
-
     $wp_customize->add_control(new WPX_Ratio_Control($wp_customize, 'universal_aspect_ratio', array(
         'label' => __('Aspect Ratio', 'tetris'),
         'description' => __('Select the aspect ratio for grid item images. Choose "auto" for the default or "1:1" for a square aspect ratio.', 'tetris'),
@@ -75,12 +74,12 @@ function universal_customizer_settings($wp_customize) {
     )));
 
     // Toggle Recent Post Badge
-    $wp_customize->add_setting('universal_toggle_recent_post_badg', array(
+    $wp_customize->add_setting('universal_toggle_recent_post_badge', array(
         'default' => 'true',
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field',
     ));
-    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_recent_post_badg', array(
+    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_recent_post_badge', array(
        'label' => __('Toggle Recent Post Badge', 'tetris'),
        'description' => __('Enable or disable the "New" badge on the top of the post thumbnail in grid items, positioned at the bottom-right corner.', 'tetris'),
        'section' => 'universal_grid_item_settings_section',
@@ -88,12 +87,12 @@ function universal_customizer_settings($wp_customize) {
     )));
 
     // Recent Post Badge Age
-    $wp_customize->add_setting('universal_recent_post_keep_badg_for', array(
+    $wp_customize->add_setting('universal_recent_post_keep_badge_for', array(
         'default'           => 7,
         'transport'         => 'refresh',
         'sanitize_callback' => 'absint',
     ));
-    $wp_customize->add_control('universal_recent_post_keep_badg_for', array(
+    $wp_customize->add_control('universal_recent_post_keep_badge_for', array(
         'label'       => __('Keep Badge For', 'tetris'),
         'description' => __('Specify the number of days the "New" post badge should be visable for the posts grid. Min 7 days, Max 28 days.', 'tetris'),
         'section'     => 'universal_grid_item_settings_section',

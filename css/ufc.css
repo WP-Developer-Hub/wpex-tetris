@@ -166,7 +166,7 @@ input[type=time],
 input[type=url],
 input[type=week],
 button,
-.u-badg,
+.u-badge,
 .u-link-button,
 input[type=reset],
 input[type=submit],
@@ -429,7 +429,7 @@ input[type=color]:focus:not([disabled]) {
 
 button,
 .u-link-button,
-.u-badg,
+.u-badge,
 input[type=reset],
 input[type=submit],
 input[type=button],
@@ -723,27 +723,27 @@ H {
   background-color: var(--co-body-accent);
 }
 
-.u-badg {
+.u-badge {
   margin: 5px;
   padding: 0 10px;
 }
 
-.u-badg-bl {
+.u-badge-bl {
   left: 0;
   bottom: 0;
 }
 
-.u-badg-br {
+.u-badge-br {
   right: 0;
   bottom: 0;
 }
 
-.u-badg-tl{
+.u-badge-tl{
   top: 0;
   left: 0;
 }
 
-.u-badg-tr {
+.u-badge-tr {
   top: 0;
   right: 0;
 }
