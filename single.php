@@ -59,7 +59,7 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                        <a href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' )); ?>"><?php echo get_avatar( get_the_author_meta('user_email'), '150', '', 'Avatar', array( 'class' => '' ) ); ?></a>
                     </div><!-- #author-image -->
                     <div id="author-bio" class="u-block u-block-100">
-                        <p><?php the_author_meta('description'); ?></p>
+                        <?php the_author_meta('description'); ?>
                     </div><!-- #author-bio -->
                 </div>
             </div><!-- #single-author -->
