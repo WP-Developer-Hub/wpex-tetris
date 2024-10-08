@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div id="post-thumbnail" style="background-image: url('<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'thumbnail')); ?>'); background-size: cover; background-position: center center;">
                 <?php the_post_thumbnail( 'wpex-post', array( 'alt' => the_title_attribute( array( 'echo' => false ) ), 'class' => 'u-media-16-9' ) ); ?>
             </div><!-- /blog-entry-thumbnail -->
-            <span class="u-block u-spacer-h u-spacer-light" style="background: #eee; margin-top: 30px;"></span>
+            <?php echo wpx_spacer('', '30'); ?>
         <?php endif; ?>
     <?php endif; ?>
 <?php else : ?>

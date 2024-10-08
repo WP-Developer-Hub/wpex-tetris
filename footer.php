@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php dynamic_sidebar('footer-three'); ?>
 				</div><!-- /footer-box -->
 			</div><!-- /footer-widgets -->
-            <span class="u-block u-spacer-h u-spacer-light" style="background: #222; margin: 20px 0;"></span>
+            <?php echo wpx_spacer( '#222', '20' ); ?>
             <div id="copyright">
                 <?php echo universal_get_copyright_info(); ?>
             </div>
