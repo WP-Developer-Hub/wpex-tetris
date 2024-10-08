@@ -250,7 +250,8 @@ h5.widget-title {font-weight: bold;}
 ----------------------------------------------------------- */
 .tagcloud a { float: left; display: block; font-size: 1.2em !important; line-height: 1.2em !important; margin-bottom: 7px; margin-right: 7px; padding: 7px 15px; margin-right: 5px; margin-bottom: 5px; border-radius: 2px; word-break: break-all; background: var(--universal-accent-color); color: var(--universal-accent-color-text-color) !important; transition: all 250ms linear 0s }
 .tagcloud a:hover { background: #111; color: #fff !important; }
-.widget_media_image .wp-caption { width: 100% !important; margin: 0; }
+.widget_media_image .wp-caption,
+.widget_media_image .wp-caption img { width: 100%; margin: 0 auto; padding: 0; }
 
 .widget_nav_menu li a,
 .widget_recent_entries li,
@@ -390,11 +391,11 @@ h3#reply-title span { background: #fff; padding-right: 15px; }
 .textleft { text-align: left }
 .gallery { width: 100%; max-width: 100%; }
 .gallery-item,
-.wp-caption { max-width: 100% !important; border: 1px solid #ddd; text-align: center; background-color: #f3f3f3; padding: 10px; }
+.wp-caption { max-width: 100% !important; text-align: center; position: relative;}
 .gallery-item img,
-.wp-caption img { margin: 0; padding: 0; border: 0 none; max-width: 100%; }
+.wp-caption img { display: block; margin: 0; padding: 0; border: 0 none; max-width: 100%; }
 .gallery-item figcaption.wp-caption-text,
-.wp-caption figcaption.wp-caption-text { font-size: 0.986em; line-height: 17px; padding: 0; margin: 0; text-wrap: balance; }
+.wp-caption figcaption.wp-caption-text { color: #fff; width: 100%; font-size: 0.986em; line-height: 27px; padding: 0; margin: 0; text-wrap: balance; background-color: rgba(0, 0, 0, 0.5); position: absolute; bottom: 0; backdrop-filter: blur(5px) }
 .wp-smiley { margin: 0 !important; max-height: 1em; }
 blockquote.left { margin-right: 20px; text-align: right; margin-left: 0; width: 33%; float: left; }
 blockquote.right { margin-left: 20px; text-align: left; margin-right: 0; width: 33%; float: right; }
