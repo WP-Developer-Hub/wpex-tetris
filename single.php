@@ -19,7 +19,7 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
 			<!--  Show header on all post formats except quotes -->
             <header id="post-header">
                 <h1><?php the_title(); ?></h1>
-                <span class="u-block u-spacer-h u-spacer-light" style="background: #eee; margin-top: 10px;"></span>
+                <?php echo wpx_spacer(); ?>
                 <ul class="single-post-meta clearfix">
                     <li class="single-post-meta-divider"><strong><?php _e('Posted on', 'tetris'); ?>:</strong> <?php echo get_the_date(); ?></li>
                     <li class="single-post-meta-divider" ><strong><?php _e('By', 'tetris'); ?>:</strong> <?php the_author_posts_link(); ?></li>
@@ -34,7 +34,7 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
             </header><!-- #post-header -->
 
             <?php if ( !empty( get_the_content() ) ) : ?>
-            <span class="u-block u-spacer-h u-spacer-light" style="background: #eee; margin-top: 10px;"></span>
+            <?php echo wpx_spacer(); ?>
                 <article <?php post_class('entry clearfix'); ?>>
                     <div class="inner-post">
                         <?php the_content(); // This is your main post content output ?>
@@ -43,12 +43,12 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
             <?php endif; ?>
 
             <?php if (strpos($post->post_content, '<!--nextpage-->') !== false) : ?>
-                <span class="u-block u-spacer-h u-spacer-light" style="background: #eee; margin-top: 10px;"></span>
+                <?php echo wpx_spacer(); ?>
                 <?php wp_link_pages();?>
             <?php endif; ?>
 
             <?php if ( !empty( get_the_tags() ) ) : ?>
-                <span class="u-block u-spacer-h u-spacer-light" style="background: #eee; margin-top: 10px;"></span>
+                <?php echo wpx_spacer(); ?>
                 <?php the_tags( '<div id="post-tags" class="u-flex u-flex-wrap u-flex-gap-5">', '', '</div>' ); ?>
             <?php endif; ?>
 
