@@ -394,7 +394,7 @@ function wpex_pagination($pages = '', $range = 4) {
     
     if ($pages > 1) {
         // Page of page info
-        echo '<div class="page-of-page"><span class="inner">' . esc_html($paged) . ' of ' . esc_html($pages) . '</span></div>';
+        echo wpx_page_indicator($paged, $pages);
         
         // Previous posts link
         echo '<div class="pagination-links">';
