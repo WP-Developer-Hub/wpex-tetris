@@ -38,3 +38,10 @@ No sidebar and title on pages.
 Search filters for filtering by post format.
 Custom block pattern for simple basic contact form.
 Players ex in color, matches theme and color.
+
+== Notes ==
+* Note: The default WordPress gallery and caption styling are very basic
+  and might not look great in all cases. We've significantly improved the styling
+  with modern enhancements like background effects, text truncation, and
+  responsive behavior to give a cleaner and more visually appealing layout.
+  Feel free to customize further if needed.
