@@ -44,7 +44,9 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
 
             <?php if (strpos($post->post_content, '<!--nextpage-->') !== false) : ?>
                 <?php echo wpx_spacer(); ?>
-                <?php wp_link_pages();?>
+                <nav class="page-pagination site-navigation comment-navigation">
+                    <?php echo wpx_custom_link_pages();?>
+                </nav>
             <?php endif; ?>
 
             <?php if ( !empty( get_the_tags() ) ) : ?>
