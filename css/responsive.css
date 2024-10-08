@@ -48,9 +48,6 @@
 	.comment-avatar { display: inline-block; margin-bottom: 10px; position: inherit; top: auto; left: auto; }
 	.comment-date { display: block }
 	.comment-reply-link { display: block; padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid #ddd; }
-	#commentform input#author,
-	#commentform input#email,
-	#commentform input#url { width: 60% }
 	.children { margin: 30px 0 0 }
 	.children li.depth-2,
 	.children li.depth-3,
