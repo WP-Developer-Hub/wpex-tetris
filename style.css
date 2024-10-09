@@ -212,11 +212,14 @@ a:focus { outline: 0 }
 .page-of-page span.inner { padding: 0 10px }
 .page-of-page,
 .page-pagination a,
+.page-pagination select,
 .page-pagination span.dots,
 .page-pagination span.current { font-size: 0.857em; font-weight: normal; line-height: 50px; height: 50px; text-align: center; margin-right: 5px; margin-bottom: 5px; display: block; float: left; color: #fff; background: #000; -moz-box-sizing: border-box; border-radius: 2px; transition: all 150ms linear 0.1ms; }
 .page-pagination a,
+.page-pagination select,
 .page-pagination span.dots,
-.page-pagination span.current { width: 50px; display: flex; justify-content: center; align-items: center; }
+.page-pagination span.current { min-width: 50px; display: flex; justify-content: center; align-items: center; }
+.page-pagination select { text-align: unset; min-width: 65px; width: unset; line-height: unset;}
 .page-pagination .page-button::before { transition: all 150ms linear 0.1ms; }
 .page-pagination a:hover,
 .page-pagination span.current { color: var(--universal-accent-color-text-color); background: var(--universal-accent-color); text-decoration: none; }
