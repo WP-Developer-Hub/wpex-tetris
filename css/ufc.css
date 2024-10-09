@@ -44,6 +44,28 @@ SOFTWARE.
     --co-search-icon: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27c1.2-1.4 1.95-3.31 1.95-5.4C16.38 5.36 13.02 2 9.25 2S2 5.36 2 9.13s3.36 7.13 7.13 7.13c2.09 0 3.99-.75 5.4-1.95l.27.28v.79l5 4.99L20.49 18l-4.99-5zm-6.37 0C6.36 14 4 11.64 4 9.13S6.36 4.25 8.87 4.25s4.88 2.36 4.88 4.88-2.36 4.87-4.88 4.87z' fill='rgba(0,0,0,1.0)'/%3E%3C/svg%3E");
 }
 
+.dark_inputs {
+    --co-body-accent: var(--universal-accent-color);
+    --co-body-accent-contrast: var(--universal-accent-color-text-color);
+    --co-textfld-bg: #222;
+    --co-textfld-border: #444;
+    --co-textfld-active-border: #555;
+    --co-textfld-focus-border: var(--co-body-accent);
+    --co-textfld-valid-border: hsl(140 90% 20%);
+    --co-textfld-valid-active-border: hsl(140 90% 30%);
+    --co-textfld-valid-focus-border: hsl(140 90% 45%);
+    --co-textfld-invalid-border: hsl(20 90% 20%);
+    --co-textfld-invalid-active-border: hsl(20 90% 30%);
+    --co-textfld-invalid-focus-border: hsl(20 90% 45%);
+    --co-btn-text: var(--universal-accent-color-text-color);
+    --co-btn-bg: var(--co-body-accent);
+    --co-btn-active-bg: #000;
+    --co-btn-active-text: #fff;
+    --co-btn-focus-bg: #212121;
+    --co-select-arrow: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' height='15px' width='20px'%3E%3Ctext x='0' y='12' fill='rgba(255,255,255,1.0)'%3E%E2%96%BE%3C/text%3E%3C/svg%3E");
+    --co-search-icon: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27c1.2-1.4 1.95-3.31 1.95-5.4C16.38 5.36 13.02 2 9.25 2S2 5.36 2 9.13s3.36 7.13 7.13 7.13c2.09 0 3.99-.75 5.4-1.95l.27.28v.79l5 4.99L20.49 18l-4.99-5zm-6.37 0C6.36 14 4 11.64 4 9.13S6.36 4.25 8.87 4.25s4.88 2.36 4.88 4.88-2.36 4.87-4.88 4.87z' fill='rgba(255,255,255,1.0)'/%3E%3C/svg%3E");
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         --co-body-accent: var(--universal-accent-color);
@@ -542,6 +564,7 @@ select:not([multiple]) {
   background-size: 1.5EM 1EM;
   background-position: calc(100% - 0.25em) center;
   padding-right: 0.5em;
+  color: var(--co-btn-text);
 }
 
 fieldset {width: 100%; max-width: var(--width-inputs);}
