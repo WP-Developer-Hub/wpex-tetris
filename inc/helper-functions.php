@@ -157,8 +157,8 @@ if ( ! function_exists( 'universal_custom_paginate_comments_links' ) ) {
                 'echo' => false,
                 'total' => $total_pages,
                 'current' => $current_page,
-                'prev_text' => '<span class="page-button inner dashicons dashicons-arrow-left-alt2"></span>',
-                'next_text' => '<span class="page-button inner dashicons dashicons-arrow-right-alt2"></span>',
+                'prev_text' => '<span class="page-button inner dashicons dashicons-arrow-left-alt2" aria-label="Previous page"></span>',
+                'next_text' => '<span class="page-button inner dashicons dashicons-arrow-right-alt2" aria-label="Next page"></span>',
             );
 
             // Get the pagination links
@@ -202,9 +202,8 @@ if ( ! function_exists( 'wpx_custom_link_pages' ) ) {
             'after' => '',
             'before' => '',
             'next_or_number' => 'next',
-            'separator' => $pagination_select,
-            'nextpagelink' => '<span class="page-button dashicons dashicons-arrow-right-alt2"></span>',
-            'previouspagelink' => '<span class="page-button dashicons dashicons-arrow-left-alt2"></span>',
+            'nextpagelink' => '<span class="page-button dashicons dashicons-arrow-right-alt2" aria-label="NEST page"></span>',
+            'previouspagelink' => '<span class="page-button dashicons dashicons-arrow-left-alt2" aria-label="Previous page"></span>',
         );
 
         // Initialize pagination HTML structure
@@ -215,18 +214,17 @@ if ( ! function_exists( 'wpx_custom_link_pages' ) ) {
         $pagination_html .= wpx_page_indicator($current_page, $total_pages);
 
         // Pagination links container
-        $pagination_html .= '<div class="pagination-links dark_inputs">';
+        $pagination_html .= '<div class="pagination-links ufc_dark">';
 
         // Generate pagination links
         $pagination_html .= wp_link_pages($args);
 
         // Page Select Box
         $pagination_html .= '<select onchange="location = this.value;">';
-        // Loop through pages to create options
         for ( $i = 1; $i <= $total_pages; $i++ ) {
             $page_url = esc_url( get_permalink() . sprintf('%d/', $i) );
             $selected = ($i === $current_page) ? ' selected="selected"' : '';
-            $pagination_html .= '<option value="' . $page_url . '"' . $selected . '>' . esc_html($i) . '</option>';
+            $pagination_html .= '<option value="' . $page_url . '"' . $selected . '> Page ' . esc_html($i) . '</option>';
         }
         $pagination_html .= '</select>';
 

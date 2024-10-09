@@ -395,8 +395,8 @@ function wpex_pagination() {
 
         // Custom pagination links using get_the_posts_navigation
         $pagination_args = array(
-            'prev_text' => '<span class="page-button inner dashicons dashicons-arrow-left-alt2"></span>',
-            'next_text' => '<span class="page-button inner dashicons dashicons-arrow-right-alt2"></span>',
+            'prev_text' => '<span class="page-button inner dashicons dashicons-arrow-left-alt2" aria-label="Previous page"></span>',
+            'next_text' => '<span class="page-button inner dashicons dashicons-arrow-right-alt2" aria-label="Next page"></span>',
         );
 
         // Append the navigation HTML to pagination_html

@@ -56,4 +56,4 @@ if ( ! defined( 'ABSPATH' ) ) {
         </details>
     </div><!-- #header-wrap -->
  
-    <div id="main-content" class="light clearfix">
+    <div id="main-content" class="ufc_light clearfix">
