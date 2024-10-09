@@ -388,7 +388,7 @@ function wpex_pagination() {
         $pagination_html .= '<div class="page-pagination-inner clearfix">';
 
         // Page indicator
-        $pagination_html .= wpx_page_indicator($total_pages, $current_page);
+        $pagination_html .= wpx_page_indicator($current_page, $total_pages);
 
         // Pagination links
         $pagination_html .= '<div class="pagination-links">';
