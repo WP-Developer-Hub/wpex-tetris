@@ -36,7 +36,7 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
             <?php if ( !empty( get_the_content() ) ) : ?>
             <?php echo wpx_spacer(); ?>
                 <article <?php post_class('entry clearfix'); ?>>
-                    <div class="inner-post">
+                    <div id="inner-post" class="inner-post">
                         <?php the_content(); // This is your main post content output ?>
                     </div><!-- .inner-post -->
                 </article><!-- .entry -->
@@ -44,9 +44,7 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
 
             <?php if (strpos($post->post_content, '<!--nextpage-->') !== false) : ?>
                 <?php echo wpx_spacer(); ?>
-                <nav class="page-pagination site-navigation comment-navigation">
-                    <?php echo wpx_custom_link_pages();?>
-                </nav>
+                <?php echo wpx_custom_link_pages();?>
             <?php endif; ?>
 
             <?php if ( !empty( get_the_tags() ) ) : ?>

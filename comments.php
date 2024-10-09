@@ -26,19 +26,15 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && !pi
 		<?php if ( have_comments() ) : ?>
 			<h3 class="comments-title widget-title"><span><?php comments_popup_link(__('Leave a comment', 'tetris'), __('1 Comment', 'tetris'), __('% Comments', 'tetris'), 'comments-link', __('Comments closed', 'tetris')); ?></span></h3>
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
-			<nav id="comment-nav-above" class="page-pagination site-navigation comment-navigation">
-				<h1 class="assistive-text"><?php echo __('Comment Navigation','tetris'); ?></h1>
-                <?php echo universal_custom_paginate_comments_links(); ?>
-			</nav><!-- /coment-nav-above -->
+            <?php echo universal_custom_paginate_comments_links('above'); ?>
+			<!-- /coment-nav-above -->
 			<?php endif; ?>
 			<ol id="commentlist" class="commentlist">
 				<?php wp_list_comments( array( 'callback' => 'wpex_comments_output' ) ); ?>
 			</ol><!-- /commentlist -->
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
-			<nav id="comment-nav-below" class="page-pagination site-navigation comment-navigation">
-				<h1 class="assistive-text"><?php echo __('Comment Navigation','tetris'); ?></h1>
-                <?php echo universal_custom_paginate_comments_links(); ?>
-			</nav><!-- /coment-nav-below -->
+            <?php echo universal_custom_paginate_comments_links('below'); ?>
+            <!-- /coment-nav-below -->
 			<?php endif; ?>
 		<?php endif; ?>
 		<?php if (!comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>

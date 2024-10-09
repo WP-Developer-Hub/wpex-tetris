@@ -37,7 +37,7 @@ get_header(); ?>
 		endwhile; ?>
 	</div><!-- #blog-wrap -->
 
-	<?php wpex_pagination(); ?>
+	<?php echo wpex_pagination(); ?>
 
 <?php endif; ?>
 

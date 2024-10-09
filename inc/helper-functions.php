@@ -132,35 +132,48 @@ if ( ! function_exists( 'wpx_page_indicator' ) ) {
  * @return void
  */
 if ( ! function_exists( 'universal_custom_paginate_comments_links' ) ) {
-    function universal_custom_paginate_comments_links($range = 4) {
-        $showitems = ($range * 2) + 1;
-        $current_page = max(1, get_query_var('cpage'));
+    function universal_custom_paginate_comments_links($id = 'default') {
+        // Get comment count
         $total_pages = get_comment_pages_count();
 
-        // Check if there are more than one page of comments
-        if ($total_pages > 1) {
-            echo '<div class="page-pagination-inner clearfix">';
+        // Get total pages
+        $current_page = max(1, get_query_var('cpage'));
 
-            echo wpx_page_indicator($current_page, $total_pages);
+        // Check if there are more than one page of comments
+        if ( $total_pages > 1 && get_option( 'page_comments' ) ) {
+            // Initialize pagination HTML structure
+            $pagination_html = '<div id="comment-nav-' . esc_attr($id) . '" class="page-pagination site-navigation comment-navigation">';
+            $pagination_html .= '<h1 class="assistive-text">' . __('Comment Navigation','tetris') . '</h1>';
+            $pagination_html .= '<div class="page-pagination-inner clearfix">';
+
+            // page indicator
+            $pagination_html .= wpx_page_indicator($current_page, $total_pages);
 
             // Pagination links
-            echo '<div class="pagination-links">';
-            echo get_previous_comments_link('<span class="page-button inner dashicons dashicons-arrow-left-alt2"></span>');
+            $pagination_html .= '<div class="pagination-links">';
+
+            // Custom pagination links using paginate_comments_links
+            $pagination_args = array(
+                'echo' => false,
+                'total' => $total_pages,
+                'current' => $current_page,
+                'prev_text' => '<span class="page-button inner dashicons dashicons-arrow-left-alt2"></span>',
+                'next_text' => '<span class="page-button inner dashicons dashicons-arrow-right-alt2"></span>',
+            );
+
+            // Get the pagination links
+            $pagination_html .= paginate_comments_links($pagination_args);
+
+            // Close pagination-links div
+            $pagination_html .= '</div>';
             
-            // Loop through pagination links
-            for ($i = 1; $i <= $total_pages; $i++) {
-                if (1 != get_comment_pages_count() && (
-                    !($i >= $current_page + $range + 1 || $i <= $current_page - $range - 1) || $total_page <= $showitems
-                )) {
-                    $url = get_comments_pagenum_link($i);
-                    echo ($current_page == $i) ?
-                        '<span class="current outer"><span class="inner">' . esc_html($i) . '</span></span>' :
-                        '<a href="' . esc_url($url) . '" class="inactive"><span class="inner">' . esc_html($i) . '</span></a>';
-                }
-            }
-            echo get_next_comments_link('<span class="page-button inner dashicons dashicons-arrow-right-alt2"></span>');
-            echo '</div>';
-            echo '</div>';
+            // Close page-pagination-inner div
+            $pagination_html .= '</div>';
+            
+            // Close page-pagination div
+            $pagination_html .= '</div>';
+            
+            return $pagination_html;
         }
     }
 }
@@ -177,55 +190,48 @@ if ( ! function_exists( 'wpx_custom_link_pages' ) ) {
     function wpx_custom_link_pages() {
         global $page, $numpages;
 
-        // Call wp_link_pages to ensure theme checker compliance, but suppress output
-        wp_link_pages( array(
-            'echo' => 0
-        ));
+        // Get total pages
+        $total_pages = $numpages ?: 1;
 
-        // Get the total number of pages
-        $total_pages = intval( $numpages );
+        // Get current page
+        $current_page = max(1, get_query_var('page') ? get_query_var('page') : 1);
 
-        // Current page
-        $current_page = max( 1, get_query_var('page') ? get_query_var('page') : 1 );
+        // Set up args for wp_link_pages
+        $args = array(
+            'echo' => 0,
+            'before' => '',
+            'after' => '',
+            'next_or_number' => 'next',
+            'nextpagelink' => '<span class="page-button dashicons dashicons-arrow-right-alt2"></span>',
+            'previouspagelink' => '<span class="page-button dashicons dashicons-arrow-left-alt2"></span>',
+        );
 
-        // Output the page indicator
-        $pagination_html = wpx_page_indicator( $current_page, $total_pages );
-
-        // Start building pagination HTML
+        // Initialize pagination HTML structure
+        $pagination_html = '<div class="page-pagination">';
         $pagination_html .= '<div class="page-pagination-inner clearfix">';
+
+        // Generate page indicator
+        $pagination_html .= wpx_page_indicator($current_page, $total_pages);
+
+        // Pagination links container
         $pagination_html .= '<div class="pagination-links">';
 
-        // Previous page link
-        if ( $current_page > 1 ) {
-            $prev_page_url = esc_url( get_permalink() . sprintf( '%d/', $current_page - 1 ) );
-            $pagination_html .= '<a href="' . $prev_page_url . '" class="previous">' .
-                '<span class="page-button inner dashicons dashicons-arrow-left-alt2"></span>' . '</a>';
-        }
+        // Generate pagination links
+        $pagination_html .= wp_link_pages($args);
 
-        // Loop through the pages
-        for ( $i = 1; $i <= $total_pages; $i++ ) {
-            if ( $i == $current_page ) {
-                $pagination_html .= '<span class="current outer"><span class="inner">' . esc_html( $i ) . '</span></span>';
-            } else {
-                $page_url = esc_url( get_permalink() . sprintf( '%d/', $i ) );
-                $pagination_html .= '<a href="' . $page_url . '" class="inactive">' .
-                    '<span class="inner">' . esc_html( $i ) . '</span></a>';
-            }
-        }
+        // Close pagination-links div
+        $pagination_html .= '</div>';
+        
+        // Close page-pagination-inner div
+        $pagination_html .= '</div>';
+        
+        // Close page-pagination div
+        $pagination_html .= '</div>';
 
-        // Next page link
-        if ( $current_page < $total_pages ) {
-            $next_page_url = esc_url( get_permalink() . sprintf( '%d/', $current_page + 1 ) );
-            $pagination_html .= '<a href="' . $next_page_url . '" class="next">' .
-                '<span class="page-button inner dashicons dashicons-arrow-right-alt2"></span>' . '</a>';
-        }
-
-        $pagination_html .= '</div>'; // Close pagination links
-        $pagination_html .= '</div>'; // Close page-pagination-inner
-
-        return $pagination_html;
+        return $pagination_html; // Return the generated HTML
     }
 }
+
 
 /**
  * Convert hexadecimal color code to RGBA format.
