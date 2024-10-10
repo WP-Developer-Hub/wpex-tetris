@@ -83,9 +83,3 @@
     .single-post-meta-divider:not(:last-child)::after {content: ""; }
     .author-inner { flex-direction: column; align-items: center; justify-content: center }
 }
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::after,
-    *::before { transition: none !important; animation: none !important; }
-}
