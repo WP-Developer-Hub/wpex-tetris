@@ -8,6 +8,12 @@
 .gallery.gallery-columns-8 {grid-template-columns: repeat(8, 1fr); transition: all 150ms linear 0.1ms}
 .gallery.gallery-columns-9 {grid-template-columns: repeat(9, 1fr); transition: all 150ms linear 0.1ms}
 
+
 .gallery .size-full,
 .gallery .size-large,
-.gallery .size-medium {aspect-ratio:9/16 !important; width: 100% !important; object-fit: cover; object-position: top center; }
+.gallery .size-medium,
+.gallery .size-wpex-post,
+.gallery .attachment-full,
+.gallery .attachment-large,
+.gallery .attachment-medium,
+.gallery .attachment-wpex-post {aspect-ratio:9/16 !important; width: 100% !important; object-fit: cover; object-position: top center; }
