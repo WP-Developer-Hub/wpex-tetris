@@ -681,5 +681,4 @@ if ( ! function_exists( 'wpx_spacer' ) ) {
         return is_single() ? '<span class="u-block u-spacer-h u-spacer-light" style="background: ' . esc_attr($background) . '; margin-top: ' . esc_attr($margin_top) . 'px;"></span>' : '';
     }
 }
-?>
 

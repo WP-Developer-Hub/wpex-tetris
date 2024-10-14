@@ -195,4 +195,4 @@ function universal_customizer_settings($wp_customize) {
     ));
 }
 add_action('customize_register', 'universal_customizer_settings');
-?>
+
