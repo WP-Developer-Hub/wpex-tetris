@@ -157,8 +157,8 @@ if ( ! function_exists( 'universal_custom_paginate_comments_links' ) ) {
                 'echo' => false,
                 'total' => $total_pages,
                 'current' => $current_page,
-                'prev_text' => '<span class="page-button inner dashicons dashicons-arrow-left-alt2" aria-label="Previous page"></span>',
-                'next_text' => '<span class="page-button inner dashicons dashicons-arrow-right-alt2" aria-label="Next page"></span>',
+                'prev_text' => '<span class="page-button inner dashicons dashicons-arrow-left-alt2"></span><span class="screen-reader-text">' . esc_html__('Previous Page', 'tetris') . '</span>',
+                'next_text' => '<span class="page-button inner dashicons dashicons-arrow-right-alt2"></span><span class="screen-reader-text">' . esc_html__('Next Page', 'tetris') . '</span>',
             );
 
             // Get the pagination links
@@ -202,8 +202,8 @@ if ( ! function_exists( 'wpx_custom_link_pages' ) ) {
             'after' => '',
             'before' => '',
             'next_or_number' => 'next',
-            'nextpagelink' => '<span class="page-button dashicons dashicons-arrow-right-alt2" aria-label="NEST page"></span>',
-            'previouspagelink' => '<span class="page-button dashicons dashicons-arrow-left-alt2" aria-label="Previous page"></span>',
+            'nextpagelink' => '<span class="page-button inner dashicons dashicons-arrow-right-alt2"></span><span class="screen-reader-text">' . esc_html__('Next Page', 'tetris') . '</span>',
+            'previouspagelink' => '<span class="page-button inner dashicons dashicons-arrow-left-alt2"></span><span class="screen-reader-text">' . esc_html__('Previous Page', 'tetris') . '</span>',
         );
 
         // Initialize pagination HTML structure
