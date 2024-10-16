@@ -50,7 +50,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     'fallback_cb'=> false,
                     'sort_column' => 'menu_order',
                     'theme_location' => 'main_menu',
-                    'walker' => new universal_menu_walker_2_0(),h
+                    'walker' => new universal_menu_walker_2_0(),
                 ));
             ?>
         </details>
