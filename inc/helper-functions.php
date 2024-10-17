@@ -427,6 +427,22 @@ if ( ! function_exists( 'universal_search_filter_item_class' ) ) {
 }
 
 /**
+ * Retrieves the total count of published posts based on the current search query.
+ *
+ * This function performs a WP_Query to count the number of posts that are
+ * published and match the current search query (if any). It returns the
+ * total number of matching posts found.
+ *
+ * @return int The total number of published posts found for the current search query.
+ */
+if ( ! function_exists( 'wpx_get_post_count' ) ) {
+    function wpx_get_post_count(){
+        $total_post_count = new WP_Query("s=$s&posts_per_page=-1&post_status=publish");
+        return $total_post_count->found_posts;
+    }
+}
+
+/**
  * Customize the comment form fields.
  *
  * @param array $fields The default comment form fields.
