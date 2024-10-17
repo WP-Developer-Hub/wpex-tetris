@@ -421,7 +421,7 @@ if ( ! function_exists( 'universal_search_filter_item_class' ) ) {
         $post_format = (isset($_GET['post_format']) ? $_GET['post_format'] : 'all');
 
         if ($passed_string == $post_format) {
-            echo ' u-link-button-selected';
+            return ' u-link-button-selected';
         }
     }
 }
