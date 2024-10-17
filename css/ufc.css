@@ -491,6 +491,8 @@ input::file-selector-button:focus {
 }
 
 .u-link-button-selected {
+  cursor: default;
+  pointer-events: none;
   border-color: var(--co-btn-active-bg);
 }
 
