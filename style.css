@@ -28,7 +28,7 @@ body a { color: var(--universal-accent-color); transition: all 250ms linear 0s }
 body a:hover { text-decoration: underline; color: var(--universal-accent-color); }
 img { max-width: 100%; height: auto; }
 #wrap { width: calc(100% - 200px); margin: 0 auto; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
-.container { background: #fff; padding: 30px; margin-top: 10px; margin-bottom: 10px; box-shadow: var(--u-box-shadow)}
+.container { background: #fff; padding: 30px; margin-top: 10px; box-shadow: var(--u-box-shadow)}
 #post { float: left; width: calc(100% - 300px); }
 #sidebar { float: right; width: 250px; font-size: 0.929em; }
  
@@ -209,13 +209,13 @@ a:focus { outline: 0 }
  
 /* Pagination
 ----------------------------------------------------------- */
-.page-pagination { clear: both; margin: 10px 0 5px 0; overflow: hidden; }
+.page-pagination { clear: both; margin: 10px 0 0 0; overflow: hidden; }
 .page-of-page span.inner { padding: 0 10px }
 .page-of-page,
 .page-pagination a,
 .page-pagination select,
 .page-pagination span.dots,
-.page-pagination span.current { font-size: 0.857em; font-weight: normal; line-height: 50px; height: 50px; text-align: center; margin-right: 5px; margin-bottom: 5px; display: block; float: left; color: #fff; background: #000; -moz-box-sizing: border-box; border-radius: 2px; transition: all 150ms linear 0.1ms; }
+.page-pagination span.current { font-size: 0.857em; font-weight: normal; line-height: 50px; height: 50px; text-align: center; margin-right: 5px; display: block; float: left; color: #fff; background: #000; -moz-box-sizing: border-box; border-radius: 2px; transition: all 150ms linear 0.1ms; }
 .page-pagination a,
 .page-pagination select,
 .page-pagination span.dots,
@@ -316,7 +316,7 @@ h5.widget-title {font-weight: bold;}
 /* Footer
 ----------------------------------------------------------- */
 #footer-wrap { margin: 0; }
-#footer { background: #111; padding: 40px 40px 20px 40px; font-size: 0.929em; position: relative; box-shadow: var(--u-box-shadow) }
+#footer { background: #111; margin-top: 10px; padding: 40px 40px 20px 40px; font-size: 0.929em; position: relative; box-shadow: var(--u-box-shadow) }
 #footer a { color: #aaa }
 #footer a:hover { color: var(--universal-accent-color); text-decoration: none; }
 .footer-widget { margin: auto; margin-bottom: 40px; font-size: 14px;}
