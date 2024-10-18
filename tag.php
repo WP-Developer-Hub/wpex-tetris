@@ -39,6 +39,8 @@ get_header(); ?>
 
 	<?php echo wpex_pagination(); ?>
 
+<?php else: ?>
+    <?php get_template_part( 'addons/addon-error-message' ); ?>
 <?php endif; ?>
 
 <?php get_footer(); ?>
