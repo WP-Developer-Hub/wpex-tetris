@@ -401,13 +401,12 @@ h3#reply-title span { background: #fff; padding-right: 15px; }
 .gallery-item img,
 .wp-caption img { display: block; margin: 0; padding: 0; border: 0 none; max-width: 100%; }
 .gallery-item figcaption.wp-caption-text,
-.wp-caption figcaption.wp-caption-text { color: #fff; width: 100%; font-size: 0.986em; line-height: 27px; padding: 0; margin: 0; text-wrap: balance; background-color: rgba(0, 0, 0, 0.5); position: absolute; bottom: 0; backdrop-filter: blur(5px); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; }
+.wp-caption figcaption.wp-caption-text { color: #fff; width: 100%; max-width: 100%; font-size: 0.986em; line-height: 27px; padding: 0; margin: 0; text-wrap: balance; background-color: rgba(0, 0, 0, 0.5); position: absolute; bottom: 0; backdrop-filter: blur(5px); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; }
 .wp-smiley { margin: 0 !important; max-height: 1em; }
 blockquote.left { margin-right: 20px; text-align: right; margin-left: 0; width: 33%; float: left; }
 blockquote.right { margin-left: 20px; text-align: left; margin-right: 0; width: 33%; float: right; }
-#img-attch-page { text-align: center; overflow: hidden; }
-#img-attch-page img { display: block; }
-.gallery-item img { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+#img-attch-page .wp-caption-text,
+.gallery.gallery-columns-1 .wp-caption-text { line-height: 47px; font-size: 1.25em;}
 .bypostauthor { }
 /* Text meant only for screen readers. */
 .screen-reader-text,
