@@ -4,7 +4,7 @@
 
 /* Flex and Grid Utilities */
 .u-block {display: block; transition: all 150ms linear 0.1ms}
-.u-block-100 {width: 100%}
+.u-block-100 {width: 100% !important}
 .u-max-100 {max-width: 100%}
 
 .u-flex {display: flex; transition: all 150ms linear 0.1ms}

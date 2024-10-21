@@ -21,24 +21,31 @@ get_header(); ?>
     </div><!-- /page-heading -->
 
     <div id="img-attch-page" class="container u-flex u-flex-col u-ai-c u-jc-c clearfix">
-        <figure class="wp-caption clearfix">
-            <?php echo wp_get_attachment_image( $post->ID, 'large' ); ?>
+        <?php
+            // Get the attachment ID
+            $attachment_id = $post->ID; // Ensure this is the correct ID for the image
 
-            <?php
             // Get the caption and description
-            $caption = wp_get_attachment_caption( $post->ID );
-            $description = get_post_field( 'post_content', $post->ID );
+            $caption = wp_get_attachment_caption($attachment_id);
+            $description = get_post_field('post_content', $attachment_id);
+            $img_caption = !empty($caption) ? esc_html($caption) : esc_html($description);
 
-            // Check which one to display
-            if ( !empty($caption) || !empty($description) ) { ?>
-                <figcaption class="wp-caption-text u-fs-30" id="img-attch-page-<?php echo esc_attr($post->ID); ?>" style="line-height: 47px;">
-                    <?php
-                    // Display caption if available, otherwise display description
-                    echo !empty($caption) ? esc_html($caption) : esc_html($description);
-                    ?>
-                </figcaption>
-            <?php } ?>
-        </figure><!-- #post -->
+            // Get the image HTML
+            $image_html = wp_get_attachment_image($attachment_id, 'wpex-post');
+            $metadata = wp_get_attachment_image_src($attachment_id, 'wpex-post');
+            $image_width = $metadata['1'];
+
+            // Output the captioned image
+            echo img_caption_shortcode(
+                array(
+                    'id' => $attachment_id,
+                    'align' => '',
+                    'width' => $image_width,
+                    'caption' => $img_caption,
+                 ),
+                $image_html
+            );
+        ?>
     </div><!-- #img-attch-page -->
 
 <?php get_footer(); ?>
