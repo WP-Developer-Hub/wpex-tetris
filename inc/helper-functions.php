@@ -35,13 +35,16 @@ if ( ! function_exists( 'universal_display_media' ) ) {
         $container = '';
 
         if (!empty($attachment_ids)) {
+            $item_count = count(explode(',', $attachment_ids));
+
             if ($post_format === 'gallery' || $post_format === 'image') {
+                $column_count = $post_format === 'image' ?  1 : (($item_count > 4) ? 4 : $item_count / 1.5);
                 // Display a gallery of images
                 $gallery_attr = array(
                     'order' => 'ASC',
                     'orderby' => 'post__in',
                     'size' => 'wpex-post',
-                    'columns' => '5' ,
+                    'columns' => $column_count,
                     'ids' => $attachment_ids,
                     'link' => 'attachment',
                     'type' => 'slideshow',
@@ -51,7 +54,7 @@ if ( ! function_exists( 'universal_display_media' ) ) {
                 $container .= gallery_shortcode($gallery_attr);
             } else {
                 // Determine if tracklist should be displayed based on the count of attachment IDs
-                $display_tracklist = (count(explode(',', $attachment_ids)) > 1);
+                $display_tracklist = ($item_count > 1);
 
                 // Display playlist for audio or video post formats
                 $playlist_attr = array(
