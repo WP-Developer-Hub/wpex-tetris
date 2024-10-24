@@ -48,7 +48,6 @@ if ( ! function_exists( 'universal_display_media' ) ) {
                     'ids' => $attachment_ids,
                     'link' => 'attachment',
                     'type' => 'slideshow',
-
                 );
     
                 $container .= gallery_shortcode($gallery_attr);
