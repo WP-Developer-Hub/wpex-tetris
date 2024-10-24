@@ -21,7 +21,12 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                 <h1><?php the_title(); ?></h1>
                 <?php echo wpx_spacer(); ?>
                 <ul class="single-post-meta clearfix">
-                    <li class="single-post-meta-divider"><strong><?php _e('Posted on', 'tetris'); ?>:</strong> <?php echo get_the_date(); ?></li>
+                    <li class="single-post-meta-divider">
+                        <strong><?php _e('Posted on', 'tetris'); ?>:</strong>
+                        <time datetime="<?php echo esc_attr(get_the_date('c')); ?>">
+                            <?php echo esc_html(get_the_date()); ?>
+                        </time>
+                    </li>
                     <li class="single-post-meta-divider" ><strong><?php _e('By', 'tetris'); ?>:</strong> <?php the_author_posts_link(); ?></li>
                     <?php if (has_category()) : ?>
                         <li class="single-post-meta-divider">
