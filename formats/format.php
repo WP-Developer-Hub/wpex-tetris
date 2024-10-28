@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php endif; ?>
 <?php else : ?>
     <div class="blog-entry-thumbnail" >
-        <a href="<?php the_permalink(); ?>" class="u-link-img u-pos-rel">
+        <a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>" class="u-link-img u-pos-rel">
             <?php if ( has_post_thumbnail() ) : ?>
             <?php
                 $classes = get_theme_mod('universal_aspect_ratio', 'u-media-1-1') !== "none" ? 'u-media-1-1' : '';

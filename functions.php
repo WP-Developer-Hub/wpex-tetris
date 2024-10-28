@@ -315,22 +315,15 @@ function wpex_esc_title() {
  * @since 1.2.0
  */
 function wpex_move_comment_form_fields( $fields ) {
-        $comment_field = $fields['comment'];
-        unset( $fields['comment'] );
-        $fields['comment'] = $comment_field;
-        return $fields;
-    }
-add_filter( 'comment_form_fields', 'wpex_move_comment_form_fields' );
-
-/**
- * Replace Soliloquy affiliate
- *
- * @since 1.0.0
- */
-function wpex_affiliate_url() {
-    return 'http://www.wpexplorer.com/soliloquy-wordpress-plugin';
+    $comment_field = $fields['comment'];
+    $cookies_field = $fields['cookies'];
+    unset( $fields['comment'] );
+    unset( $fields['cookies'] );
+    $fields['comment'] = $comment_field;
+    $fields['cookies'] = $cookies_field;
+    return $fields;
 }
-add_filter( 'tgmsp_affiliate_url', 'wpex_affiliate_url' );
+add_filter( 'comment_form_fields', 'wpex_move_comment_form_fields' );
 
 /**
  * Change default read more
