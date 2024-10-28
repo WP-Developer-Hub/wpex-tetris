@@ -243,7 +243,6 @@ if ( ! function_exists( 'wpx_custom_link_pages' ) ) {
     }
 }
 
-
 /**
  * Convert hexadecimal color code to RGBA format.
  *
@@ -705,6 +704,13 @@ if ( ! function_exists( 'wpx_recent_post_badge' ) ) {
     }
 }
 
+/**
+ * Generates a spacer element with customizable background and top margin.
+ *
+ * @param string $background Background color for the spacer.
+ * @param string|int $margin_top Margin-top in pixels.
+ * @return string HTML for the spacer element, or an empty string if not a single post.
+ */
 if ( ! function_exists( 'wpx_spacer' ) ) {
     function wpx_spacer($background = '#eee', $margin_top = '10') {
         $margin_top = empty($margin_top) ? '10' : $margin_top;
