@@ -491,11 +491,15 @@ if ( ! function_exists( 'customize_comment_form' ) ) {
     function customize_comment_form($fields) {
         ob_start();
         wp_editor('', 'comment', array(
-            'media_buttons' => false,
-            'teeny' => true, // Enable teeny mode
-            'textarea_rows' => 10,
+            'teeny' => true,
+            'tabindex' => '',
+            'wpautop' => false,
+            'tinymce' => false,
             'quicktags' => true,
-            'tinymce' => false,   // Enable TinyMCE
+            'editor_class' => '',
+            'textarea_rows' => 10,
+            'media_buttons' => false,
+            'tabfocus_elements' => ':prev,:next',
         ));
         $editor_contents = ob_get_clean();
         $fields['comment'] = $editor_contents;
@@ -513,12 +517,18 @@ if ( ! function_exists( 'customize_comment_form' ) ) {
 if ( ! function_exists( 'customize_comment_quicktags' ) ) {
     function customize_comment_quicktags($qtInit) {
         if(!is_admin()) {
-            $qtInit['buttons'] = 'strong,em,spell,';
+            $qtInit['buttons'] = 'strong,em';
         }
         return $qtInit;
     }
     add_filter('quicktags_settings', 'customize_comment_quicktags');
 }
+
+add_action('wp_head', function() {
+    echo "<script type='text/javascript'>
+            window.onload = function() {QTags.addButton('eg_underline', 'u', '<u>', '</u>', 'u')};
+          </script>";
+});
 
 /**
  * Customize default settings for WordPress galleries.
