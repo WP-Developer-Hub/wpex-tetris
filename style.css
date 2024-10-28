@@ -360,8 +360,9 @@ h3.comments-title span { background: #fff; padding-right: 15px; }
 .comment-reply-link { font-size: 0.786em; color: #888; }
 .comment-reply-link:hover { text-decoration: none }
 .comment-reply-link:before { content: "\b7\a0" }
+.comment-reply-link:after { content: "\a0" }
 #respond { font-size: 1.143em }
-#cancel-comment-reply-link { display: block; position: absolute; font-size: 0.786em; font-weight: 600; margin: 0 0 10px; color: #C30; }
+#cancel-comment-reply-link { display: block; font-size: 0.786em; font-weight: 600; margin: 0 0 10px; color: #C30; }
 .comment-reply-link:hover,
 #cancel-comment-reply-link:hover { color: #000 }
 .commentlist .children { margin: 0 }
