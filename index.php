@@ -23,15 +23,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header(); ?>
 
-	<?php if ( ! is_home() ) : ?>
-		<header class="page-heading clearfix">
-            <h1><?php if ( is_category() ) {
+    <header class="page-heading clearfix">
+        <h1>
+            <?php
+                if ( is_category() ) {
                     single_cat_title();
+                } elseif ( is_home() && get_the_title( get_option('page_on_front') ) ) {
+                    bloginfo('description');
                 } else {
                     the_archive_title();
-            } ?></h1>
-		</header>
-	<?php endif; ?>
+                }
+            ?>
+        </h1>
+    </header>
 
 <?php if ( have_posts() ) : ?>
 
