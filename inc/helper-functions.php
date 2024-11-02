@@ -626,19 +626,22 @@ if (!function_exists('wpx_format_archive_title')) {
 
         if (is_day()) {
             $archive_day = get_the_date('F j, Y');
+            $archive_day_datetime = get_the_date('c'); // ISO 8601 format
             $title = (($archive_day == $current_day)
                 ? sprintf(__('%s Today', 'tetris'), $prefix)
-                : sprintf(__('%s On: %s', 'tetris'), $prefix, $archive_day));
+                : sprintf(__('%s On: <time datetime="%s">%s</time>', 'tetris'), $prefix, esc_attr($archive_day_datetime), esc_html($archive_day)));
         } elseif (is_month()) {
             $archive_month = get_the_date('F Y');
+            $archive_month_datetime = get_the_date('Y-m'); // Format for month archives
             $title = (($archive_month == $current_month)
                 ? sprintf(__('%s This Month', 'tetris'), $prefix)
-                : sprintf(__('%s In: %s', 'tetris'), $prefix, $archive_month));
+                : sprintf(__('%s In: <time datetime="%s">%s</time>', 'tetris'), $prefix, esc_attr($archive_month_datetime), esc_html($archive_month)));
         } elseif (is_year()) {
             $archive_year = get_the_date('Y');
+            $archive_year_datetime = get_the_date('Y'); // Year is the same for datetime
             $title = (($archive_year == $current_year)
                 ? sprintf(__('%s This Year', 'tetris'), $prefix)
-                : sprintf(__('%s In: %s', 'tetris'), $prefix, $archive_year));
+                : sprintf(__('%s In: <time datetime="%s">%s</time>', 'tetris'), $prefix, esc_attr($archive_year_datetime), esc_html($archive_year)));
         } elseif (is_tax()) { // for custom taxonomies
             $title = sprintf(__('%s', 'tetris'), single_term_title('', false));
         } elseif (is_post_type_archive()) {
