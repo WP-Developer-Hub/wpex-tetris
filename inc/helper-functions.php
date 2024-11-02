@@ -719,7 +719,7 @@ if ( ! function_exists( 'wpx_spacer' ) ) {
     function wpx_spacer($background = '#eee', $margin_top = '10') {
         $margin_top = empty($margin_top) ? '10' : $margin_top;
         $background = empty($background) ? '#eee' : $background;
-        return is_single() ? '<span class="u-block u-spacer-h u-spacer-light" style="background: ' . esc_attr($background) . '; margin-top: ' . esc_attr($margin_top) . 'px;"></span>' : '';
+        return '<span class="u-block u-spacer-h u-spacer-light" style="background: ' . esc_attr($background) . '; margin-top: ' . esc_attr($margin_top) . 'px;"></span>';
     }
 }
 
