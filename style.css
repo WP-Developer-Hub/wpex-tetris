@@ -292,7 +292,7 @@ h5.widget-title {font-weight: bold;}
 .wp-calendar-nav,
 #wp-calendar caption { background: #111214; color: #fff; padding: 10px; text-align: center; font-weight: bold; }
 .wp-calendar-nav-prev,
-.wp-calendar-nav-next { font-weight: unset; display: block; }
+.wp-calendar-nav-next { font-weight: normal; display: block; }
 .wp-calendar-nav-prev a,
 .wp-calendar-nav-next a { display: block; min-width: 50px; padding: 2.5px 5px; border-radius: 2px; background: var(--universal-accent-color ); color: var(--universal-accent-color-text-color) !important }
 .wp-calendar-nav-prev a:hover
