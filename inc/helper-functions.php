@@ -528,9 +528,11 @@ if ( ! function_exists( 'customize_comment_quicktags' ) ) {
 }
 
 add_action('wp_head', function() {
-    echo "<script type='text/javascript'>
-            window.onload = function() {QTags.addButton('eg_underline', 'u', '<u>', '</u>', 'u')};
-          </script>";
+    if ((is_single() || is_page()) && comments_open()) {
+        echo "<script type='text/javascript'>
+                window.onload = function() {QTags.addButton('eg_underline', 'u', '<u>', '</u>', 'u')};
+              </script>";
+    }
 });
 
 /**
