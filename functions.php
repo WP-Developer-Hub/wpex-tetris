@@ -276,7 +276,10 @@ function wpex_setup() {
     // Add image size
     add_image_size( 'wpex-entry', '370', '9999', false );
     add_image_size( 'wpex-post', '960', '9999', false );
-    
+
+    // Set the default post thumbnail size to match wpex-entry
+    set_post_thumbnail_size(370, 9999, false);
+
     // Menu
     register_nav_menus ( array(
         'main_menu'    => __( 'Main', 'tetris' ),
