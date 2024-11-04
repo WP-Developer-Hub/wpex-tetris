@@ -305,7 +305,7 @@
 
 .u-media-1-1,
 .size-thumbnail,
-.attachment-thumbnail {aspect-ratio:1/1 !important; width: 100% !important; object-fit: cover; object-position: top center;}
+.attachment-thumbnail {aspect-ratio:1/1 !important; object-fit: cover; object-position: top center;}
 .u-media-4-3 {aspect-ratio:4/3 !important; width: 100% !important; object-fit: cover; object-position: top center;}
 .u-media-16-9 {aspect-ratio:16/9 !important; width: 100% !important; object-fit: cover; object-position: top center;}
 .u-media-21-9 {aspect-ratio:21/9 !important; width: 100% !important; bject-fit: cover; object-position: top center;}
