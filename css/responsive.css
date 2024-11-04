@@ -32,7 +32,9 @@
 }
 @media only screen and (max-width:767px) {
 	#post { float: none; width: 100% }
-    #sidebar { float: none; width: 100% }
+    #sidebar { float: none; width: 100%; padding-bottom: 20px !important; }
+    #sidebar .widget_search { margin-bottom: 0 }
+    #sidebar .sidebar-widgets { display: none }
     #footer-widgets { display: block }
 	.footer-box { width: 100% }
 	.entry blockquote { margin-left: 0; margin-right: 0; }

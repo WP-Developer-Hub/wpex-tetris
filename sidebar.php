@@ -10,5 +10,12 @@
  */ ?>
 
 <aside id="sidebar" class="clearfix">
-	<?php dynamic_sidebar( 'sidebar' ); ?>
+    <section class="sidebar-box widget_search clearfix">
+        <h4 class="screen-reader-text"><?php _e('Search', 'tetris'); ?></h4>
+        <?php get_search_form(); ?>
+    </section>
+    <section class="sidebar-widgets clearfix">
+        <?php dynamic_sidebar( 'sidebar' ); ?>
+    </section>
 </aside><!-- #sidebar -->
+
