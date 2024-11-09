@@ -1,4 +1,5 @@
 .gallery { display: grid; gap: 10px; margin-bottom: 10px; transition: all 190ms linear 0.1ms; container: wpx-gallery / inline-size; }
+.gallery.gallery-columns-2 { grid-template-columns: 1fr; }
 .gallery.gallery-columns-2 { grid-template-columns: repeat(2, 1fr); }
 .gallery.gallery-columns-3 { grid-template-columns: repeat(3, 1fr); }
 .gallery.gallery-columns-4 { grid-template-columns: repeat(4, 1fr); }
@@ -8,15 +9,13 @@
 .gallery.gallery-columns-8 { grid-template-columns: repeat(8, 1fr); }
 .gallery.gallery-columns-9 { grid-template-columns: repeat(9, 1fr); }
 
+.gallery .gallery-item { width: unset; float: unset; margin: unset; padding: unset;}
 
-.gallery .size-full,
-.gallery .size-large,
-.gallery .size-medium,
-.gallery .size-wpex-post,
-.gallery .attachment-full,
-.gallery .attachment-large,
-.gallery .attachment-medium,
-.gallery .attachment-wpex-post { aspect-ratio:9/16 !important; width: 100% !important; object-fit: cover; object-position: top center; }
+.gallery .gallery-item img:not(.size-thumbnail),
+.gallery .gallery-item img:not(.attachment-thumbnail) { aspect-ratio: 9/16 !important; width: 100% !important; object-fit: cover; object-position: top center; }
+
+.gallery .gallery-item img.size-thumbnail,
+.gallery .gallery-item img.attachment-thumbnail { aspect-ratio: 1/1 !important; width: 100% !important; }
 
 .gallery.gallery-columns-1 { background: #000; padding: 20px;}
 .gallery.gallery-columns-1 .attachment-wpex-post { object-fit: contain; max-height: 512px; background: #212121; }

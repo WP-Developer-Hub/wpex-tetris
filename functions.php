@@ -244,6 +244,7 @@ function wpex_setup() {
     add_editor_style('css/ufg.css');
     add_editor_style('css/ufc.css');
     add_editor_style('css/plugin.css');
+    add_editor_style('css/gallery.css');
     add_editor_style('css/responsive.css');
     add_editor_style('css/universal-player.css');
 
