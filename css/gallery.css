@@ -11,6 +11,8 @@
 
 .gallery .gallery-item { width: unset; float: unset; margin: unset; padding: unset;}
 
+.gallery br { display: none !important; }
+
 .gallery .gallery-item img:not(.size-thumbnail),
 .gallery .gallery-item img:not(.attachment-thumbnail) { aspect-ratio: 9/16 !important; width: 100% !important; object-fit: cover; object-position: top center; }
 
