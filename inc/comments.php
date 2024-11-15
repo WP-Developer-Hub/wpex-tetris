@@ -24,7 +24,7 @@ function wpex_comments_output($comment, $args, $depth) {
                     </div><!-- /comment-avatar -->
                     <div class="comment-author vcard">
                         <?php printf(__('<cite class="author">%s</cite>', 'tetris'), get_comment_author_link()) ?>
-                        <time datetime="<?php echo get_comment_date( 'c' ); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"  class="comment-date"> &middot; <?php echo get_comment_date(); ?></a></<time>
+                        <time datetime="<?php echo get_comment_date( 'c' ); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>" class="comment-date">&middot; <?php echo get_comment_date(); ?></a></time>
                         <span class="reply">
                             <?php
                             // Display reply link
