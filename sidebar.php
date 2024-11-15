@@ -14,8 +14,8 @@
         <h4 class="screen-reader-text"><?php _e('Search', 'tetris'); ?></h4>
         <?php get_search_form(); ?>
     </section>
-    <section class="sidebar-widgets clearfix">
+    <div class="sidebar-widgets clearfix">
         <?php dynamic_sidebar( 'sidebar' ); ?>
-    </section>
+    </div>
 </aside><!-- #sidebar -->
 
