@@ -350,11 +350,11 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
         $output = '<div class="u-wrap-text u-trim" style="--u-line-clamp: ' . $length . '">';
         global $post;
         $id = $post->ID;
-        $length = apply_filters( 'wpex_excerpt_length', $length );
+        $length = apply_filters( 'wpex_excerpt_length', $length * 10 );
         if ( has_excerpt( $id ) ) {
-            $output .= strip_tags($post->post_excerpt);
+            $output .= wp_trim_words( strip_tags( strip_shortcodes( $post->post_excerpt ) ), $length);
         } else {
-            $output .= wp_trim_words( strip_shortcodes( get_the_content( $id ) ), $length);
+            $output .= wp_trim_words( strip_tags( strip_shortcodes( get_the_content( $id ) ) ), $length);
         }
         $output .= '</div>';
         if ( $readmore == true ) {
@@ -363,6 +363,13 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
         }
         return $output;
     }
+}
+
+if ( ! function_exists( 'wpex_excerpt' ) ) {
+    function wpex_excerpt_length( $length ) {
+        return (get_theme_mod( 'universal_excerpt_length', 20 ) * 10);
+    }
+    add_filter( 'excerpt_length', 'wpex_excerpt_length', 10 );
 }
 
 /**
