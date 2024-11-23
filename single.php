@@ -13,7 +13,7 @@ get_header();
 
 if ( have_posts()) : while ( have_posts()) : the_post(); ?>
 	<div id="single-post-content" class="sidebar-bg container clearfix">
-		<div id="post" class="clearfix">
+		<article id="post" <?php post_class('clearfix'); ?>>
             <!--  Display media -->
             <?php get_template_part( 'formats/format', get_post_format() ); ?>
 			<!--  Show header on all post formats except quotes -->
@@ -40,11 +40,11 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
 
             <?php if ( !empty( get_the_content() ) ) : ?>
             <?php echo wpx_spacer(); ?>
-                <article <?php post_class('entry clearfix'); ?>>
+                <div class="entry clearfix">
                     <div id="inner-post" class="inner-post">
                         <?php the_content(); // This is your main post content output ?>
                     </div><!-- .inner-post -->
-                </article><!-- .entry -->
+                </div><!-- .entry -->
             <?php endif; ?>
 
             <?php if (strpos($post->post_content, '<!--nextpage-->') !== false) : ?>
@@ -71,7 +71,7 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
 
 			<?php comments_template(); ?>
 
-		</div><!-- post -->
+		</article><!-- post -->
 		
 		<?php get_sidebar(); ?>
 		

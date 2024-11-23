@@ -15,16 +15,17 @@
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
-	return;
+    return;
 }
 
 get_header();
 
 if ( have_posts()) : while (have_posts() ) : the_post(); ?>
     <div id="single-page-content" class="container clearfix">
-        <div class="entry clearfix">
+        <!-- Page wrapper with post_class() applied -->
+        <article id="page" <?php post_class('entry clearfix'); ?>>
             <?php the_content(); ?>
-        </div><!-- .entry -->
+        </article><!-- .entry -->
     </div><!-- #single-page-content -->
 
 <?php endwhile; ?>
