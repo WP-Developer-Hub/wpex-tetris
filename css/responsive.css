@@ -6,14 +6,14 @@
     #navigation { display: none; }
     #mobile-navigation { display: block;}
 }
-@media only screen and (max-width:1059px) {
+@media only screen  and (min-width:768px) and (max-width:844px) {
     .single-post-meta { display: grid; gap: 2px }
     .single-post-meta li { display: block; margin-right: 0px; padding-right: 0 }
     .single-post-meta-divider:not(:last-child)::after { content: "" }
 }
 @media only screen and (min-width:480px) and (max-width:1044px) {
-    .author-inner { flex-direction: column }
     #wrap { width: 100% }
+    .author-inner { flex-direction: column }
 }
 @media only screen and (min-width:768px) and (max-width:959px) {
     #post { width: calc(100% - 250px) }
@@ -79,6 +79,7 @@
 }
 
 @media only screen and (max-width:610px) {
+    .single-post-meta { display: grid; gap: 2px }
     .single-post-meta li { display: block; margin-right: 0px; padding-right: 0;}
     .single-post-meta-divider:not(:last-child)::after {content: ""; }
     .author-inner { flex-direction: column; align-items: center; justify-content: center }
