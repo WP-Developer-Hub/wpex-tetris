@@ -92,13 +92,13 @@ if ( ! function_exists( 'universal_get_copyright_info' ) ) {
         $started_date = date('Y', strtotime(get_theme_mod('universal_footer_start_date', $current_year)));
     
         // Construct site name HTML
-        $site_url = home_url(); // Get the homepage URL
+        $blog_url = home_url(); // Get the homepage URL
         $site_name = is_multisite()
             ? get_blog_details(get_current_blog_id())->blogname
             : get_bloginfo('name');
 
         // Make $site_name a link
-        $site_name = '<a class="u-tt-all-caps" href="' . esc_url($site_url) . '">' . esc_html($site_name) . '</a>';
+        $site_name = '<a class="u-tt-all-caps" href="' . esc_url($blog_url) . '">' . esc_html($site_name) . '</a>';
     
         // Replace placeholders with dynamic content
         $message = str_replace('[copyright_symbol]', '&copy;', $message);
