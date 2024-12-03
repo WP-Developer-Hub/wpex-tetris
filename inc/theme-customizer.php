@@ -88,19 +88,19 @@ function universal_customizer_settings($wp_customize) {
 
     // Recent Post Badge Age
     $wp_customize->add_setting('universal_recent_post_keep_badge_for', array(
-        'default'           => 7,
-        'transport'         => 'refresh',
+        'default' => 7,
+        'transport' => 'refresh',
         'sanitize_callback' => 'absint',
     ));
     $wp_customize->add_control('universal_recent_post_keep_badge_for', array(
-        'label'       => __('Keep Badge For', 'tetris'),
+        'label' => __('Keep Badge For', 'tetris'),
         'description' => __('Specify the number of days the "New" post badge should be visable for the posts grid. Min 7 days, Max 28 days.', 'tetris'),
-        'section'     => 'universal_grid_item_settings_section',
-        'type'        => 'number',
+        'section' => 'universal_grid_item_settings_section',
+        'type' => 'number',
         'input_attrs' => array(
-            'step'    => 1,
-            'min'     => 7,
-            'max'     => 28,
+            'step' => 1,
+            'min' => 7,
+            'max' => 28,
             'pattern' => '[0-9]*',
             'inputmode' => 'numeric',
         ),
@@ -154,9 +154,23 @@ function universal_customizer_settings($wp_customize) {
         'sanitize_callback' => 'sanitize_text_field',
     ));
     $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_post_thumbnail', array(
-       'label' => __('Toggle Post Thumbnail', 'tetris'),
-       'description' => __('Enable or disable the post thumbnail on single post pages.', 'tetris'),
-       'section' => 'universal_single_post_page_settings_section',
+        'label' => __('Toggle Post Thumbnail', 'tetris'),
+        'description' => __('Enable or disable the post thumbnail on single post pages.', 'tetris'),
+        'section' => 'universal_single_post_page_settings_section',
+        'type' => 'checkbox',
+    )));
+
+    // Toggle Post Author Box
+    $wp_customize->add_setting('universal_toggle_post_author_box', array(
+        'default' => 'true',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_post_author_box', array(
+        'label' => __('Toggle Post Author Box', 'tetris'),
+        'description' => __('Enable or disable the author box on single post pages.', 'tetris'),
+        'section' => 'universal_single_post_page_settings_section',
         'type' => 'checkbox',
     )));
 
