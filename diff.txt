@@ -1,0 +1,96 @@
+diff --git a/inc/theme-customizer.php b/inc/theme-customizer.php
+index eb681e2..752bc9b 100644
+--- a/inc/theme-customizer.php
++++ b/inc/theme-customizer.php
+@@ -88,19 +88,19 @@ function universal_customizer_settings($wp_customize) {
+ 
+     // Recent Post Badge Age
+     $wp_customize->add_setting('universal_recent_post_keep_badge_for', array(
+-        'default'           => 7,
+-        'transport'         => 'refresh',
++        'default' => 7,
++        'transport' => 'refresh',
+         'sanitize_callback' => 'absint',
+     ));
+     $wp_customize->add_control('universal_recent_post_keep_badge_for', array(
+-        'label'       => __('Keep Badge For', 'tetris'),
++        'label' => __('Keep Badge For', 'tetris'),
+         'description' => __('Specify the number of days the "New" post badge should be visable for the posts grid. Min 7 days, Max 28 days.', 'tetris'),
+-        'section'     => 'universal_grid_item_settings_section',
+-        'type'        => 'number',
++        'section' => 'universal_grid_item_settings_section',
++        'type' => 'number',
+         'input_attrs' => array(
+-            'step'    => 1,
+-            'min'     => 7,
+-            'max'     => 28,
++            'step' => 1,
++            'min' => 7,
++            'max' => 28,
+             'pattern' => '[0-9]*',
+             'inputmode' => 'numeric',
+         ),
+@@ -154,9 +154,23 @@ function universal_customizer_settings($wp_customize) {
+         'sanitize_callback' => 'sanitize_text_field',
+     ));
+     $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_post_thumbnail', array(
+-       'label' => __('Toggle Post Thumbnail', 'tetris'),
+-       'description' => __('Enable or disable the post thumbnail on single post pages.', 'tetris'),
+-       'section' => 'universal_single_post_page_settings_section',
++        'label' => __('Toggle Post Thumbnail', 'tetris'),
++        'description' => __('Enable or disable the post thumbnail on single post pages.', 'tetris'),
++        'section' => 'universal_single_post_page_settings_section',
++        'type' => 'checkbox',
++    )));
++
++    // Toggle Post Author Box
++    $wp_customize->add_setting('universal_toggle_post_author_box', array(
++        'default' => 'true',
++        'transport' => 'refresh',
++        'sanitize_callback' => 'sanitize_text_field',
++    ));
++
++    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_post_author_box', array(
++        'label' => __('Toggle Post Author Box', 'tetris'),
++        'description' => __('Enable or disable the author box on single post pages.', 'tetris'),
++        'section' => 'universal_single_post_page_settings_section',
+         'type' => 'checkbox',
+     )));
+ 
+diff --git a/single.php b/single.php
+index 137f418..6437517 100644
+--- a/single.php
++++ b/single.php
+@@ -57,6 +57,7 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
+                 <?php the_tags( '<div id="post-tags" class="u-flex u-flex-wrap u-flex-gap-5">', '', '</div>' ); ?>
+             <?php endif; ?>
+ 
++            <?php if ( get_theme_mod( 'universal_toggle_post_author_box', true ) ) : ?>
+             <div id="single-author" >
+                 <h4 class="heading widget-title"><span><?php the_author_posts_link(); ?></span></h4>
+                 <div class="author-inner u-flex u-flex-gap-10">
+@@ -68,6 +69,7 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
+                     </div><!-- #author-bio -->
+                 </div>
+             </div><!-- #single-author -->
++            <?php endif; ?>
+ 
+ 			<?php comments_template(); ?>
+ 
+diff --git a/style.css b/style.css
+index db0c368..6da65c1 100644
+--- a/style.css
++++ b/style.css
+@@ -198,10 +198,10 @@ a:focus { outline: 0 }
+ .single-post-meta li:last-child { margin-right: 0; padding-right: 0; background: none; }
+ .single-post-meta-divider:not(:last-child)::after {content: "|"; margin-left: 5px;}
+ .inner-post p { overflow-wrap: break-word; word-break: break-all; hyphens: auto; transition: all 150ms linear 0.1ms }
+-#post-tags { margin-top: 30px; white-space: wrap }
++#post-tags { margin-top: 30px; margin-bottom: 30px; white-space: wrap }
+ #post-tags a { background: var(--universal-accent-color); border-radius: 2px; color: var(--universal-accent-color-text-color); font-size: 1.2em; padding: 2px 12px; transition: all 250ms linear 0s }
+ #post-tags a:hover { background: #111; color: #fff; text-decoration: none; }
+-#single-author { margin-top: 30px; margin-bottom: 30px }
++#single-author { margin-bottom: 30px; }
+ #single-author h4 { font-size: 1.143em; center repeat-x; margin-bottom: 20px; }
+ #single-author h4 span { background: #fff; padding-right: 15px; }
+ #author-image img { display: block; max-width: unset;}
