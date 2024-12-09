@@ -23,9 +23,9 @@ get_header();
 if ( have_posts()) : while (have_posts() ) : the_post(); ?>
     <div id="single-page-content" class="container clearfix">
         <!-- Page wrapper with post_class() applied -->
-        <article id="page" <?php post_class('entry clearfix'); ?>>
+        <div id="page" <?php post_class('entry clearfix'); ?>>
             <?php the_content(); ?>
-        </article><!-- .entry -->
+        </div><!-- .entry -->
     </div><!-- #single-page-content -->
 
 <?php endwhile; ?>
