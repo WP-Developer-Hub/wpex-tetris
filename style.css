@@ -78,7 +78,7 @@ h6 a:hover { color: var(--universal-accent-color); text-decoration: none; }
 .entry h3,
 .entry h4,
 .entry h5,
-.entry h6 { margin: 40px 0 20px }
+.entry h6 { margin: 0 20px 10px 0 }
 h1 { font-size: 1.714em; margin: 0 0 20px; }
 h2 { font-size: 1.286em }
 h3 { font-size: 1.286em }
