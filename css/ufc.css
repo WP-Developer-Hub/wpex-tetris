@@ -496,30 +496,17 @@ input::file-selector-button:focus {
   border-color: var(--co-btn-active-bg);
 }
 
-button,
-.u-link-button,
-.u-link-button-selected,
-input[type=reset],
-input[type=submit],
-input[type=button] {
-/*    margin-bottom: var(--margin-label);*/
-}
-
-
 /* Labels */
 label {
   cursor: pointer;
   display: block;
-  padding-bottom: var(--margin-label);
+  margin-bottom: var(--margin-label);
 }
 
-label + label,
-label + input,
-label + select,
-label + button,
-label + textarea {
-    margin-bottom: var(--margin-label);
-}
+label:last-child,
+fieldset:last-child,
+label:has(input[type="radio"]):only-child,
+label:has(input[type="checkbox"]):only-child { margin-bottom: unset }
 
 textarea {
   max-width: var(--width-textarea);
@@ -569,8 +556,8 @@ select:not([multiple]) {
   color: var(--co-btn-text);
 }
 
-fieldset {width: 100%; max-width: var(--width-inputs);}
-form {width: 100%; display: grid; max-width: var(--width-inputs); gap: calc(var(--margin-label) / 3) }
+fieldset {width: 100%; display: grid; border: var(--width-input-border) solid var(--co-textfld-active-border); padding: var(--margin-label); margin-bottom: var(--margin-label); max-width: var(--width-inputs); gap: var(--margin-label) }
+form {width: 100%; display: grid; max-width: var(--width-inputs); gap: var(--margin-label) }
 #searchbar {width: unset;}
 #searchbar label {margin: unset;}
 
@@ -662,7 +649,7 @@ input[type="checkbox"] {
 input[type="radio"]:hover,
 input[type="range"]:hover,
 input[type="checkbox"]:hover {
-  accent-color: var(--co-btn-active-bg);
+  accent-color: var(--co-btn-focus-bg);
 }
 
 input[type="radio"]:focus,
@@ -677,6 +664,17 @@ label:has(input[type="checkbox"]) {
   gap: 0.5em;
   display: flex;
   align-items: center;
+  accent-color: var(--co-textfld-bg);
+}
+
+input[type="radio"]:checked,
+input[type="checkbox"]:checked {
+  accent-color: var(--co-btn-bg);
+}
+
+input[type="radio"]:checked:hover,
+input[type="checkbox"]:checked:hover {
+  accent-color: var(--co-btn-focus-bg);
 }
 
 /* date, datetime-local, datetime, month, time & week patches */
