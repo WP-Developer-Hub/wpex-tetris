@@ -141,6 +141,7 @@ textarea:read-only:not(label, button, input[type=button], input[type=submit], in
 }
 
 :disabled,
+.disabled,
 [roll="disabled"] {
   opacity: var(--opacity-input-disabled);
   cursor: not-allowed !important;
