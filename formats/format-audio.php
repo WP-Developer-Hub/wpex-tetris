@@ -15,5 +15,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div id="post-audio"><?php echo universal_display_media(get_the_ID()); ?></div>
-<?php echo wpx_spacer('', '30'); ?>
+<?php echo universal_display_media(get_the_ID()); ?>
