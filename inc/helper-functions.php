@@ -38,6 +38,7 @@ if ( ! function_exists( 'universal_display_media' ) ) {
             $item_count = count(explode(',', $attachment_ids));
 
             if ($post_format === 'gallery' || $post_format === 'image') {
+                $container .= '<div id="post-' . $post_format . '" class="u-media-16-9">';
                 $column_count = $post_format === 'image' ?  1 : (($item_count > 4) ? 4 : $item_count / 1.5);
                 // Display a gallery of images
                 $gallery_attr = array(
@@ -52,6 +53,12 @@ if ( ! function_exists( 'universal_display_media' ) ) {
     
                 $container .= gallery_shortcode($gallery_attr);
             } else {
+                if($post_format === 'audio'){
+                    $container .= '<div id="post-audio">';
+                }else{
+                	$container .= '<div id="post-media" class="u-media-16-9">';
+                }
+
                 // Determine if tracklist should be displayed based on the count of attachment IDs
                 $display_tracklist = ($item_count > 1);
 
@@ -70,6 +77,8 @@ if ( ! function_exists( 'universal_display_media' ) ) {
     
                 $container .= wp_playlist_shortcode($playlist_attr);
             }
+            $container .= '</div>';
+            $container .= wpx_spacer('', '30');
         }
         return $container;
     }
