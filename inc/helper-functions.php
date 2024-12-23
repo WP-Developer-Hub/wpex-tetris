@@ -33,52 +33,53 @@ if ( ! function_exists( 'universal_display_media' ) ) {
         }
 
         $container = '';
+        if ( !post_password_required($post_id) ) {
+            if (!empty($attachment_ids)) {
+                $item_count = count(explode(',', $attachment_ids));
 
-        if (!empty($attachment_ids)) {
-            $item_count = count(explode(',', $attachment_ids));
+                if ($post_format === 'gallery' || $post_format === 'image') {
+                    $container .= '<div id="post-gallery" class="u-media-16-9">';
+                    $column_count = $post_format === 'image' ?  1 : (($item_count > 4) ? 4 : $item_count / 1.5);
+                    // Display a gallery of images
+                    $gallery_attr = array(
+                        'order' => 'ASC',
+                        'orderby' => 'post__in',
+                        'size' => 'wpex-post',
+                        'columns' => $column_count,
+                        'ids' => $attachment_ids,
+                        'link' => 'attachment',
+                        'type' => 'slideshow',
+                    );
+        
+                    $container .= gallery_shortcode($gallery_attr);
+                } else {
+                    if($post_format === 'audio'){
+                        $container .= '<div id="post-audio">';
+                    }else{
+                        $container .= '<div id="post-media" class="u-media-16-9">';
+                    }
 
-            if ($post_format === 'gallery' || $post_format === 'image') {
-                $container .= '<div id="post-' . $post_format . '" class="u-media-16-9">';
-                $column_count = $post_format === 'image' ?  1 : (($item_count > 4) ? 4 : $item_count / 1.5);
-                // Display a gallery of images
-                $gallery_attr = array(
-                    'order' => 'ASC',
-                    'orderby' => 'post__in',
-                    'size' => 'wpex-post',
-                    'columns' => $column_count,
-                    'ids' => $attachment_ids,
-                    'link' => 'attachment',
-                    'type' => 'slideshow',
-                );
-    
-                $container .= gallery_shortcode($gallery_attr);
-            } else {
-                if($post_format === 'audio'){
-                    $container .= '<div id="post-audio">';
-                }else{
-                	$container .= '<div id="post-media" class="u-media-16-9">';
+                    // Determine if tracklist should be displayed based on the count of attachment IDs
+                    $display_tracklist = ($item_count > 1);
+
+                    // Display playlist for audio or video post formats
+                    $playlist_attr = array(
+                        'type' => ($post_format === 'audio') ? 'audio' : 'video',
+                        'order' => 'ASC',
+                        'orderby' => 'post__in',
+                        'ids' => $attachment_ids,
+                        'style' => 'dark',
+                        'tracklist' => $display_tracklist,
+                        'tracknumbers' => true,
+                        'images' => true,
+                        'artists' => true,
+                    );
+        
+                    $container .= wp_playlist_shortcode($playlist_attr);
                 }
-
-                // Determine if tracklist should be displayed based on the count of attachment IDs
-                $display_tracklist = ($item_count > 1);
-
-                // Display playlist for audio or video post formats
-                $playlist_attr = array(
-                    'type' => ($post_format === 'audio') ? 'audio' : 'video',
-                    'order' => 'ASC',
-                    'orderby' => 'post__in',
-                    'ids' => $attachment_ids,
-                    'style' => 'dark',
-                    'tracklist' => $display_tracklist,
-                    'tracknumbers' => true,
-                    'images' => true,
-                    'artists' => true,
-                );
-    
-                $container .= wp_playlist_shortcode($playlist_attr);
+                $container .= '</div>';
+                $container .= wpx_spacer('', '30');
             }
-            $container .= '</div>';
-            $container .= wpx_spacer('', '30');
         }
         return $container;
     }
