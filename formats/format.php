@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php else : ?>
     <div class="blog-entry-thumbnail" >
         <a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>" class="u-link-img u-pos-rel">
-            <?php if ( !empty( $post->post_password ) ) : ?>
+            <?php if ( post_password_required() ) : ?>
               <div class="u-media-1-1 u-media-missing-img u-flex u-ai-center u-jc-center" title="<?php the_title(); ?>">
                   <span class="dashicons dashicons-lock"></span>
               </div>
