@@ -80,6 +80,8 @@ if ( ! function_exists( 'universal_display_media' ) ) {
                 $container .= '</div>';
                 $container .= wpx_spacer('', '30');
             }
+        } else {
+            $container .= wpex_get_post_media_placeholder();
         }
         return $container;
     }
@@ -733,5 +735,30 @@ if ( ! function_exists( 'wpx_spacer' ) ) {
         $background = empty($background) ? '#eee' : $background;
         return '<span class="u-block u-spacer-h u-spacer-light" style="background: ' . esc_attr($background) . '; margin-top: ' . esc_attr($margin_top) . 'px;"></span>';
     }
+}
+
+/**
+* Removes or edits the 'Protected:' part from posts titles
+*/
+function wpex_remove_protected_text() {
+    return __('%s');
+}
+add_filter( 'protected_title_format', 'wpex_remove_protected_text' );
+
+function wpex_get_post_media_placeholder() {
+    // Start the HTML output
+    $output = '<div class="u-media-'. esc_attr(is_single() ? '16-9' : '1-1') .' u-media-missing-img u-flex u-ai-center u-jc-center" title="' . esc_attr(get_the_title()) . '">';
+
+    if ( post_password_required() ) {
+        $output .= '<span class="dashicons dashicons-lock"></span>';
+    } else {
+        $output .= '<span class="' . universal_get_post_format_icon_classes( get_post_format() ) . '"></span>';
+    }
+
+    // Close the div
+    $output .= '</div>';
+
+    // Return the generated HTML
+    return $output;
 }
 
