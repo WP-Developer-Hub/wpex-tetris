@@ -22,8 +22,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>"><?php the_title(); ?></a>
                 </h2>
             </header>
-        <?php if((!trim(str_replace('&nbsp;','',strip_tags(wpex_excerpt()))) == '') && !post_password_required()):?>
-            <?php echo wpex_excerpt(get_theme_mod('universal_excerpt_length', 20), get_theme_mod('universal_toggle_read_more_link', true)); ?>
+        <?php if(!post_password_required()):?>
+            <?php if(!trim(str_replace('&nbsp;','',strip_tags(wpex_excerpt()))) == ''):?>
+                <?php echo wpex_excerpt(get_theme_mod('universal_excerpt_length', 20), get_theme_mod('universal_toggle_read_more_link', true)); ?>
+            <?php endif;?>
         <?php else : ?>
             <p><?php echo __( 'This content is protected. Log in or enter the password to view the full content.', 'tetris' ); ?></p>
         <?php endif;?>
