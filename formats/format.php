@@ -26,21 +26,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php else : ?>
     <div class="blog-entry-thumbnail" >
         <a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>" class="u-link-img u-pos-rel">
-            <?php if ( post_password_required() ) : ?>
-              <div class="u-media-1-1 u-media-missing-img u-flex u-ai-center u-jc-center" title="<?php the_title(); ?>">
-                  <span class="dashicons dashicons-lock"></span>
-              </div>
+            <?php if ( has_post_thumbnail() && !post_password_required() ) : ?>
+                <?php
+                    $classes = get_theme_mod('universal_aspect_ratio', 'u-media-1-1') !== "none" ? 'u-media-1-1' : '';
+                    the_post_thumbnail('wpex-entry', array( 'alt' => the_title_attribute( array( 'echo' => false ) ), 'class' => $classes));
+                ?>
             <?php else : ?>
-                <?php if ( has_post_thumbnail() ) : ?>
-                    <?php
-                        $classes = get_theme_mod('universal_aspect_ratio', 'u-media-1-1') !== "none" ? 'u-media-1-1' : '';
-                        the_post_thumbnail('wpex-entry', array( 'alt' => the_title_attribute( array( 'echo' => false ) ), 'class' => $classes));
-                    ?>
-                <?php else : ?>
-                    <div class="u-media-1-1 u-media-missing-img u-flex u-ai-center u-jc-center" title="<?php the_title(); ?>">
+                <div class="u-media-1-1 u-media-missing-img u-flex u-ai-center u-jc-center" title="<?php the_title(); ?>">
+                    <?php if (post_password_required() ) : ?>
+                        <span class="dashicons dashicons-lock"></span>
+                    <?php else : ?>
                         <span class="<?php echo universal_get_post_format_icon_classes(get_post_format()); ?>"></span>
-                    </div>
-                <?php endif; ?>
+                    <?php endif; ?>
+                </div>
             <?php endif; ?>
             <?php if ( get_theme_mod('universal_toggle_recent_post_badge', 'true')) : echo wpx_recent_post_badge(get_the_ID(), get_theme_mod('universal_recent_post_keep_badge_for', 7)); endif; ?>
         </a>
