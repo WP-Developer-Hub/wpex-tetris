@@ -57,6 +57,12 @@ var { font-weight: bold; }
 .entry ol { list-style: decimal }
 .entry ul li,
 .entry ol li { margin: 0 0 5px }
+a .avatar,
+.entry a img,
+.wp-caption a img { filter: brightness(0.9); transition: all 150ms linear 0.1ms }
+a:hover .avatar,
+.entry a:hover img,
+.wp-caption a:hover { filter: brightness(1.0) }
 .tiktok-embed,
 .tiktok-embed iframe { background: #000 !important; padding: 0 !important; margin: 0 !important; border-radius: 0 !important; max-width: 100% !important;}
 .tiktok-embed::after,
@@ -170,8 +176,10 @@ a:focus { outline: 0 }
 .blog-entry p { font-size: 1em }
 .blog-entry p:last-child { margin: 0 }
 .blog-entry h2 { margin: 0 0 10px; font-size: 1.143em; }
-.blog-entry img { box-shadow: #000 0em 0em 0em; background: #e9e9e9; transition: opacity 500ms ease-in-out }
-.blog-entry img:hover { opacity: 0.9 }
+.blog-entry img,
+.blog-entry .u-media-missing-img { box-shadow: var(--u-box-shadow); filter: brightness(0.9); transition: all 150ms linear 0.1ms }
+.blog-entry img:hover,
+.blog-entry .u-media-missing-img:hover { filter: brightness(1.0); }
 .blog-entry .entry-meta { margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; font-size: 0.857em; }
 .blog-entry .entry-meta strong { font-weight: 600; color: #000; margin-right: 2px; }
 .blog-entry-thumbnail img { display: block; width: 100%; }
