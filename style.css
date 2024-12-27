@@ -174,10 +174,7 @@ a:focus { outline: 0 }
 .blog-entry img:hover { opacity: 0.9 }
 .blog-entry .entry-meta { margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; font-size: 0.857em; }
 .blog-entry .entry-meta strong { font-weight: 600; color: #000; margin-right: 2px; }
-.blog-entry.format-quote { display: block; background: #000 color: #fff; font-size: 2.000em; font-weight: 300; }
-.blog-entry.format-quote .quote-content { position: relative; display: block; color: #fff; }
 .blog-entry-thumbnail img { display: block; width: 100%; }
-.blog-entry-galery img {height: 300px;}
 .blog-entry-thumbnail a,
 .blog-entry-thumbnail img { display: block }
 .blog-entry-thumbnail img,
