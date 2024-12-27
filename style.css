@@ -59,7 +59,7 @@ var { font-weight: bold; }
 .entry ol li { margin: 0 0 5px }
 a .avatar,
 .entry a img,
-.wp-caption a img { filter: brightness(0.9); transition: all 150ms linear 0.1ms }
+.wp-caption a img { filter: brightness(0.9); transition: all 0.4s ease-in-out 0.1ms }
 a:hover .avatar,
 .entry a:hover img,
 .wp-caption a:hover { filter: brightness(1.0) }
@@ -177,7 +177,7 @@ a:focus { outline: 0 }
 .blog-entry p:last-child { margin: 0 }
 .blog-entry h2 { margin: 0 0 10px; font-size: 1.143em; }
 .blog-entry img,
-.blog-entry .u-media-missing-img { box-shadow: var(--u-box-shadow); filter: brightness(0.9); transition: all 150ms linear 0.1ms }
+.blog-entry .u-media-missing-img { box-shadow: var(--u-box-shadow); filter: brightness(0.9); transition: all 0.4s ease-in-out 0.1ms }
 .blog-entry img:hover,
 .blog-entry .u-media-missing-img:hover { filter: brightness(1.0); }
 .blog-entry .entry-meta { margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; font-size: 0.857em; }
