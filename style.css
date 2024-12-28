@@ -108,10 +108,6 @@ a:link { text-decoration: none }
 a:focus { outline: 0 }
 a { outline: 0;}
 a:hover { cursor: pointer }
-p a,
-p a:visited { line-height: inherit }
-a:link { text-decoration: none }
-a:focus { outline: 0 }
 .page-heading{ padding: 20px; background: #fff; margin-bottom: 10px; font-weight: 300; text-align: center; margin-top: 10px; box-shadow: var(--u-box-shadow)}
 .page-heading h1,
 .page-heading h2 { margin: 0; font-size: 2.000em; line-height: 1.2em; font-weight: 300; }
