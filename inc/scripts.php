@@ -102,12 +102,14 @@ if ( ! function_exists( 'universal_mejs_add_container_class' ) ) {
             function wrapMediaElements() {
                $('.inner-post .wp-video, .inner-post .wp-playlist').each(function() {
                    if (!$(this).closest('.post-media').length) {
-                        var $wrapper = $('<div class="post-media u-media-16-9 u-pos-rel"></div>');
-                        $(this).wrap($wrapper);
+                        if (!$(this).hasClass('wp-audio-playlist')) {
+                            var $wrapper = $('<div class="post-media u-media-16-9 u-pos-rel"></div>');
+                            $(this).wrap($wrapper);
+                        }
                         $(this).css('width', '100%');
-                        $('.post-media').css('margin-block', '0.5rem');
                    }
                });
+               $('.inner-post .post-media, .inner-post .wp-playlist, .inner-post .wp-audio').css('margin-block', '0.5rem');
             }
     
             wrapMediaElements();
