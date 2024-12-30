@@ -747,6 +747,17 @@ if ( ! function_exists( 'wpx_spacer' ) ) {
     add_filter( 'protected_title_format', 'wpex_remove_protected_text' );
 }
 
+/**
+* Generates a placeholder for post media with dynamic styling and icons.
+*
+* This function outputs a `<div>` element styled as a media container.
+* The container's aspect ratio is determined by the context (single post or not).
+* Inside the container:
+* - A lock icon is displayed for password-protected posts.
+* - A format-specific icon is displayed for other posts.
+*
+* @return string The generated HTML for the media placeholder.
+*/
 if ( ! function_exists( 'wpex_get_post_media_placeholder' ) ) {
     function wpex_get_post_media_placeholder() {
         // Start the HTML output
