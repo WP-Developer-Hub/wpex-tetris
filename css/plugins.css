@@ -76,27 +76,6 @@
     margin-bottom:0px !important;
 }
 
-
-/*--------------------------*
-/*  Github Widget Styles
-/*--------------------------*/
-
-.github-widget .github-widget-header,
-.github-widget input[type="checkbox"] {
-    display:none !important;
-    visibility:collapse !important;
-}
-.dark {
-    background: #111 !important;
-    color: #FFF !important;
-    padding: 10px;
-    border-radius: 0px !important;
-}
-.dark * {
-    color: #FFF !important;
-    border-radius: 0px !important;
-}
-
 /*--------------------------*
 /* Universal Meta oEmbed
 /*--------------------------*/
