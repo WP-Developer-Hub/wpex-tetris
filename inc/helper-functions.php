@@ -740,7 +740,7 @@ if ( ! function_exists( 'wpx_spacer' ) ) {
 /**
 * Removes or edits the 'Protected:' part from posts titles
 */
-if ( ! function_exists( 'wpx_spacer' ) ) {
+if ( ! function_exists( 'wpex_remove_protected_text' ) ) {
     function wpex_remove_protected_text() {
         return __('%s');
     }
