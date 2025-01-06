@@ -554,7 +554,6 @@ select:not([multiple]) {
   background-size: 1.5EM 1EM;
   background-position: calc(100% - 0.25em) center;
   padding-right: 0.5em;
-  color: var(--co-btn-text);
 }
 
 fieldset {width: 100%; display: grid; border: var(--width-input-border) solid var(--co-textfld-active-border); padding: var(--margin-label); margin-bottom: var(--margin-label); max-width: var(--width-inputs); gap: var(--margin-label) }
