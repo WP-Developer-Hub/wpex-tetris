@@ -541,7 +541,7 @@ if ( ! function_exists( 'customize_comment_quicktags' ) ) {
 
 add_action('wp_head', function() {
     if ((is_single() || is_page()) && comments_open()) {
-        echo "<script type='text/javascript'>
+        echo "<script>
                 window.onload = function() {QTags.addButton('eg_underline', 'u', '<u>', '</u>', 'u')};
               </script>";
     }
