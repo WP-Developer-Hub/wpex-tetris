@@ -1,9 +1,11 @@
+.wp-video,
 .wp-playlist {
   margin: 0;
   padding: 0;
   color: #fff;
   border: none;
   background: #000;
+  border: solid 1px #ccc;
 }
 
 .wp-playlist-current-item {

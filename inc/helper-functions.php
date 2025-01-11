@@ -161,7 +161,7 @@ if ( ! function_exists( 'universal_custom_paginate_comments_links' ) ) {
         if ( $total_pages > 1 && get_option( 'page_comments' ) ) {
             // Initialize pagination HTML structure
             $pagination_html = '<div id="comment-nav-' . esc_attr($id) . '" class="page-pagination site-navigation comment-navigation">';
-            $pagination_html .= '<h1 class="assistive-text">' . __('Comment Navigation','tetris') . '</h1>';
+            $pagination_html .= '<h1 class="screen-reader-text">' . __('Comment Navigation','tetris') . '</h1>';
             $pagination_html .= '<div class="page-pagination-inner clearfix">';
 
             // page indicator
@@ -730,9 +730,9 @@ if ( ! function_exists( 'wpx_recent_post_badge' ) ) {
  * @return string HTML for the spacer element, or an empty string if not a single post.
  */
 if ( ! function_exists( 'wpx_spacer' ) ) {
-    function wpx_spacer($background = '#eee', $margin_top = '10') {
+    function wpx_spacer($background = '#ddd', $margin_top = '10') {
         $margin_top = empty($margin_top) ? '10' : $margin_top;
-        $background = empty($background) ? '#eee' : $background;
+        $background = empty($background) ? '#ddd' : $background;
         return '<span class="u-block u-spacer-h u-spacer-light" style="background: ' . esc_attr($background) . '; margin-top: ' . esc_attr($margin_top) . 'px;"></span>';
     }
 }
