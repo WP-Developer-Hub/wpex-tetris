@@ -148,6 +148,7 @@ textarea:read-only:not(label, button, input[type=button], input[type=submit], in
 }
 
 /* All elemenets regardless of types */
+kbd,
 input,
 select,
 option,
@@ -173,6 +174,7 @@ input::file-selector-button {
 /* Radio & Checkbox */
 /* Buttons */
 /* Select, Buttons and text-fields */
+kbd,
 select,
 textarea,
 input[type=date],
@@ -450,6 +452,7 @@ input[type=color]:focus:not([disabled]) {
   border-color: var(--co-textfld-focus-border);
 }
 
+kbd,
 button,
 .u-link-button,
 .u-badge,
@@ -744,6 +747,18 @@ H {
 ::-moz-datetime-edit-year-field:focus {
   color: var(--co-body-accent-contrast);
   background-color: var(--co-body-accent);
+}
+
+kbd {
+  line-height: 1;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  display: inline-block;
+  font-family: Consolas, monospace;
+  padding: calc(var(--padding-inputs) / 2);
+  background-color: var(--universal-accent-color-alt);
 }
 
 .u-badge {

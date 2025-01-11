@@ -352,7 +352,7 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
         $id = $post->ID;
         $length = apply_filters( 'wpex_excerpt_length', $length * 10 );
         if ( has_excerpt( $id ) ) {
-            $output .= wp_trim_words( strip_tags( strip_shortcodes( $post->post_excerpt ) ), $length);
+            $output .= wp_trim_words( strip_tags( strip_shortcodes( get_the_excerpt( $id ) ) ), $length);
         } else {
             $output .= wp_trim_words( strip_tags( strip_shortcodes( get_the_content( $id ) ) ), $length);
         }

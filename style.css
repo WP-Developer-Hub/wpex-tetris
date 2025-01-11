@@ -38,25 +38,29 @@ img { max-width: 100%; height: auto; }
 .remove-margin { margin-right: 0 !important }
 .clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
 .clear { clear: both }
-blockquote { position: relative; margin: 30px 20px; padding-left: 25px; font-style: italic; font-weight: bold; color: #000; quotes: "\201C""\201D""\2018""\2019"; }
-blockquote:before { color: #000; content: open-quote; font-size: 3em; line-height: .1em; position: absolute; top: 20px; left: -10px; }
-blockquote p:last-child { margin: 0 }
-pre, code { font-family: monospace; background: #212121; color: #aaa; margin: 10px 0; padding: 20px; line-height: 25px; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; display: block; max-height: 350px; overflow: auto;}
-code { border-left: 5px solid var(--universal-accent-color); height}
+blockquote { position: relative; margin: 20px 15px; font-style: italic; font-weight: 600; color: #000; quotes: "\201C""\201D""\2018""\2019"; }
+blockquote:before,
+blockquote:after { color: #000; font-weight: 100; font-size: 2.5em; line-height: 0; position: relative; top: 0.95rem; content: open-quote; padding-right: 3px; }
+blockquote:after { content: close-quote; padding-right: 0; }
+blockquote p { display: inline; }
+pre, code { font-family: monospace; background: #212121; color: #aaa; margin: 20px 0; padding: 20px; line-height: 25px; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; display: block; max-height: 350px; overflow: auto;}
+code { border-left: 5px solid var(--universal-accent-color); }
 address { letter-spacing: 1px; margin: 20px 0; }
-kbd { background-color:var(--universal-accent-color); color: var(--universal-accent-color-text-color); border-radius: var(--radius-inputs); border: 1px solid var(--universal-accent-color-alt); box-shadow: var(--u-box-shadow); display: inline-block; font-size: 0.9em; font-weight: bold; line-height: 1; padding: 4px 8px; white-space: nowrap }
-mark { background-color:var(--universal-accent-color-alt); color: var(--universal-accent-color-text-color); display: inline-block; padding: 0 8px; }
-var { font-weight: bold; }
-#page-featured-img { position: relative; margin-bottom: 30px; }
-#page-featured-img img { display: block; width: 100%; }
+mark { background-color: var(--universal-accent-color-alt); color: var(--universal-accent-color-text-color); display: inline-block; padding: 0 8px; }
+var { font-weight: bold; color: var(--universal-accent-color-alt);}
+hr { color: #c9c9c9; opacity: 0.5; }
 .sticky {}
 .gallery-caption {}
-.entry ul { margin: 30px 0 30px 20px }
-.entry ol { margin: 30px 0 30px 25px }
+.entry ul,
+.entry ol { margin: 20px 0 20px 15px; }
 .entry ul { list-style: disc }
 .entry ol { list-style: decimal }
 .entry ul li,
-.entry ol li { margin: 0 0 5px }
+.entry ol li { line-height: 2rem }
+.entry hr,
+.entry p,
+.entry embed,
+.entry iframe { margin: 20px 0 }
 a .avatar,
 .entry a img,
 .wp-caption a img { filter: brightness(0.9); transition: all 0.4s ease-in-out 0.1ms }
@@ -85,8 +89,8 @@ h6 a:hover { color: var(--universal-accent-color); text-decoration: none; }
 .entry h3,
 .entry h4,
 .entry h5,
-.entry h6 { margin: 0 20px 10px 0 }
-h1 { font-size: 1.714em; margin: 0 0 20px; }
+.entry h6 { margin: 20px 0 }
+h1 { font-size: 1.714em; }
 h2 { font-size: 1.286em }
 h3 { font-size: 1.286em }
 h4 { font-size: 1em }
@@ -203,6 +207,7 @@ a:hover { cursor: pointer }
 #post-tags { margin-top: 30px; margin-bottom: 30px; white-space: wrap }
 #post-tags a { background: var(--universal-accent-color); border-radius: 2px; color: var(--universal-accent-color-text-color); font-size: 1.2em; padding: 2px 12px; transition: all 250ms linear 0s }
 #post-tags a:hover { background: #111; color: #fff; text-decoration: none; }
+#author-title { margin-top: 10px; }
 #single-author { margin-bottom: 30px; }
 #single-author h4 { font-size: 1.143em; center repeat-x; margin-bottom: 20px; }
 #single-author h4 span { background: #fff; padding-right: 15px; }
@@ -335,7 +340,7 @@ h5.widget-title {font-weight: bold;}
 /* Comments
 ----------------------------------------------------------- */
 ,#commentsbox { padding-top: 40px }
-h3.comments-title { font-size: 1.143em; }
+h3.comments-title { font-size: 1.143em; margin: 20px 0 }
 h3.comments-title span { background: #fff; padding-right: 15px; }
 .comment-details ul { margin: 0 }
 .comment-details ul li { border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 8px; padding-top: 8px; }
@@ -378,6 +383,7 @@ h3.comments-title span { background: #fff; padding-right: 15px; }
 #comments-logged-in { margin-bottom: 30px; margin-top: 10px; font-size: 0.929em; }
 #log-out { float: right; margin-top: -56px; }
 .form-submit { margin-bottom: 0; height: 55px; }
+#reply-title { margin: 20px 0 }
 h3#reply-title { font-size: 1em; }
 h3#reply-title span { background: #fff; padding-right: 15px; }
 .children #commentform textarea { width: 95.6% }

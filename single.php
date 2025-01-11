@@ -59,7 +59,7 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
 
             <?php if ( get_theme_mod( 'universal_toggle_post_author_box', true ) ) : ?>
             <div id="single-author" >
-                <h4 class="heading widget-title"><span><?php the_author_posts_link(); ?></span></h4>
+                <h4 id="author-title" class="heading widget-title"><span><?php the_author_posts_link(); ?></span></h4>
                 <div class="author-inner u-flex u-flex-gap-10">
                     <div id="author-image">
                        <a href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' )); ?>"><?php echo get_avatar( get_the_author_meta('user_email'), '150', '', 'Avatar', array( 'class' => '' ) ); ?></a>
