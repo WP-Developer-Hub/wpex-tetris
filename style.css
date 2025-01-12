@@ -35,32 +35,29 @@ img { max-width: 100%; height: auto; }
  
 /* Commons
 ----------------------------------------------------------- */
+p:empty, p:empty:before { display: none; }
 .remove-margin { margin-right: 0 !important }
 .clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
 .clear { clear: both }
-blockquote { position: relative; margin: 20px 15px; font-style: italic; font-weight: 600; color: #000; quotes: "\201C""\201D""\2018""\2019"; }
+blockquote { position: relative; font-style: italic; font-weight: 600; color: #000; quotes: "\201C""\201D""\2018""\2019"; }
 blockquote:before,
 blockquote:after { color: #000; font-weight: 100; font-size: 2.5em; line-height: 0; position: relative; top: 0.95rem; content: open-quote; padding-right: 3px; }
 blockquote:after { content: close-quote; padding-right: 0; }
 blockquote p { display: inline; }
-pre, code { font-family: monospace; background: #212121; color: #aaa; margin: 20px 0; padding: 20px; line-height: 25px; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; display: block; max-height: 350px; overflow: auto;}
+pre, code { font-family: monospace; background: #212121; color: #aaa; padding: 20px; line-height: 25px; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; display: block; max-height: 350px; overflow: auto;}
 code { border-left: 5px solid var(--universal-accent-color); }
-address { letter-spacing: 1px; margin: 20px 0; }
+address { letter-spacing: 1px; }
 mark { background-color: var(--universal-accent-color-alt); color: var(--universal-accent-color-text-color); display: inline-block; padding: 0 8px; }
 var { font-weight: bold; color: var(--universal-accent-color-alt);}
-hr { color: #c9c9c9; opacity: 0.5; }
 .sticky {}
 .gallery-caption {}
+.entry .inner-post { display: grid; gap: 20px; grid-template-columns: 1fr; margin: 10px 0  }
 .entry ul,
-.entry ol { margin: 20px 0 20px 15px; }
+.entry ol { margin-left: 15px; }
 .entry ul { list-style: disc }
 .entry ol { list-style: decimal }
 .entry ul li,
 .entry ol li { line-height: 2rem }
-.entry hr,
-.entry p,
-.entry embed,
-.entry iframe { margin: 20px 0 }
 a .avatar,
 .entry a img,
 .wp-caption a img { filter: brightness(0.9); transition: all 0.4s ease-in-out 0.1ms }
@@ -85,11 +82,6 @@ h3 a:hover,
 h4 a:hover,
 h5 a:hover,
 h6 a:hover { color: var(--universal-accent-color); text-decoration: none; }
-.entry h2,
-.entry h3,
-.entry h4,
-.entry h5,
-.entry h6 { margin: 20px 0 }
 h1 { font-size: 1.714em; }
 h2 { font-size: 1.286em }
 h3 { font-size: 1.286em }
@@ -98,14 +90,12 @@ h5 { font-size: 0.857em }
 h6 { font-size: 0.714em }
 #post,
 .entry { container: wpx-gallery/inline-size; font-size: 1em }
-p { margin: 0 0 20px }
-.entry p:last-child { margin: 0 }
 p img { margin: 0 }
 p.lead { font-size: 1.500em; line-height: 27px; color: #777; }
 em { font-style: italic }
 strong { font-weight: bold }
 small { font-size: 80% }
-hr { border: solid rgba(0,0,0,0.2); border-width: 1px 0 0; clear: both; margin: 10px 0 30px; height: 0; }
+hr { border: solid rgba(201,201,201,0.5); border-width: 1px 0 0; clear: both; margin: 0; height: 0; }
 p a,
 p a:visited { line-height: inherit }
 a:link { text-decoration: none }
