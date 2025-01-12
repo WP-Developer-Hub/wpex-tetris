@@ -24,11 +24,13 @@ if ( have_posts()) : while (have_posts() ) : the_post(); ?>
     <div id="single-page-content" class="container clearfix">
         <!-- Page wrapper with post_class() applied -->
         <div id="page" <?php post_class('entry clearfix'); ?>>
-            <?php the_content(); ?>
+            <div class="inner-post">
+                <?php the_content(); ?>
+            </div><!-- .inner-post -->
         </div><!-- .entry -->
     </div><!-- #single-page-content -->
-
-<?php endwhile; ?>
+<?php endwhile; else: ?>
+    <?php get_template_part( 'addons/addon-error-message' ); ?>
 <?php endif; ?>
 
 <?php get_footer(); ?>
