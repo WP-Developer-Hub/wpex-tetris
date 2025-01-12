@@ -92,6 +92,7 @@
 /*--------------------------*
 /* WPG Slider
 /*--------------------------*/
+.entry .wpg-slider { margin: 10px 0 }
 #post-gallery .wpg-slider img,
 #post-gallery .wpg-slider .wpg-slider-item-inner { max-height: 512px !important; }
 #post-gallery .wpg-slider .wpg-slider-item .wpg-slider-item-inner .wpg-slider-content {
