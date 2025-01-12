@@ -51,7 +51,7 @@ mark { background-color: var(--universal-accent-color-alt); color: var(--univers
 var { font-weight: bold; color: var(--universal-accent-color-alt);}
 .sticky {}
 .gallery-caption {}
-.entry .inner-post { display: grid; gap: 20px; grid-template-columns: 1fr; margin: 10px 0  }
+.entry .inner-post { display: grid; gap: 20px; grid-template-columns: 1fr; margin: 10px 0 }
 .entry ul,
 .entry ol { margin-left: 15px; }
 .entry ul { list-style: disc }
@@ -64,6 +64,7 @@ a .avatar,
 a:hover .avatar,
 .entry a:hover img,
 .wp-caption a:hover { filter: brightness(1.0) }
+#page.entry .inner-post { margin: 0 }
 .tiktok-embed,
 .tiktok-embed iframe { background: #000 !important; padding: 0 !important; margin: 0 !important; border-radius: 0 !important; max-width: 100% !important;}
 .tiktok-embed::after,
@@ -90,7 +91,6 @@ h5 { font-size: 0.857em }
 h6 { font-size: 0.714em }
 #post,
 .entry { container: wpx-gallery/inline-size; font-size: 1em }
-p img { margin: 0 }
 p.lead { font-size: 1.500em; line-height: 27px; color: #777; }
 em { font-style: italic }
 strong { font-weight: bold }
