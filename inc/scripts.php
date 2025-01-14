@@ -100,16 +100,15 @@ if ( ! function_exists( 'universal_mejs_add_container_class' ) ) {
     
             // Make sure all instances wp-video & wp-playlist in inner-post 512px.
             function wrapMediaElements() {
-               $('.inner-post .wp-video, .inner-post .wp-playlist').each(function() {
+               $('.wp-video, .wp-playlist').each(function() {
                    if (!$(this).closest('.post-media').length) {
                         if (!$(this).hasClass('wp-audio-playlist')) {
-                            var $wrapper = $('<div class="post-media u-media-16-9 u-pos-rel"></div>');
+                            var $wrapper = $('<div class="post-media"></div>');
                             $(this).wrap($wrapper);
                         }
                         $(this).css('width', '100%');
                    }
                });
-               $('.inner-post .post-media, .inner-post .wp-playlist, .inner-post .wp-audio').css('margin-block', '0.5rem');
             }
     
             wrapMediaElements();
@@ -129,7 +128,7 @@ if ( ! function_exists( 'wpx_add_reduced_motion_styles' ) ) {
                         *, *::after, *::before {
                             /* Reduce durations significantly */
                             animation-duration: 100ms !important;
-                            transition-duration: 0ms !important;
+                            transition-duration: 5ms !important;
 
                             /* Use fades instead of more complex motion */
                             animation-timing-function: ease-in-out;

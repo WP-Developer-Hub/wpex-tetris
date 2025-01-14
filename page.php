@@ -23,7 +23,7 @@ get_header();
 if ( have_posts()) : while (have_posts() ) : the_post(); ?>
     <div id="single-page-content" class="container clearfix">
         <!-- Page wrapper with post_class() applied -->
-        <div id="page" <?php post_class('entry clearfix'); ?>>
+        <div id="page" <?php post_class('entry'); ?>>
             <div class="inner-post">
                 <?php the_content(); ?>
             </div><!-- .inner-post -->
