@@ -41,16 +41,14 @@
 
 .wp-playlist .wp-playlist-tracks .wp-playlist-item {
   color: #fff;
-  background: #121212;
-  border-bottom-color: #333;
-}
-
-.wp-playlist .wp-playlist-tracks .wp-playlist-item {
   height: 50px;
   padding: 10px;
   display: flex;
+  background: #121212;
   align-items: center;
   vertical-align: bottom;
+  border-bottom-color: #333;
+  transition: background 250ms linear 0s, color 250ms linear 0s, border-color 250ms linear 0s;
 }
 
 .wp-playlist .wp-playlist-tracks .wp-playlist-item:nth-child(even) {
