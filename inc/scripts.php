@@ -129,14 +129,11 @@ if ( ! function_exists( 'wpx_add_reduced_motion_styles' ) ) {
                         *, *::after, *::before {
                             /* Reduce durations significantly */
                             animation-duration: 100ms !important;
-                            transition-duration: 50ms !important;
+                            transition-duration: 0ms !important;
 
                             /* Use fades instead of more complex motion */
                             animation-timing-function: ease-in-out;
                             transition-timing-function: ease-in-out;
-
-                            /* Replace animations that involve large movement */
-                            transform: none !important; /* Avoid sliding or zooming */
                         }
                     }
                 </style>
