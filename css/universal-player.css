@@ -1,92 +1,43 @@
 .wp-video,
-.wp-playlist {
-  margin: 0;
-  padding: 0;
-  color: #fff;
-  border: none;
-  background: #000;
-  border: solid 1px #ccc;
-}
+.wp-audio,
+.wp-playlist { margin: 0; padding: 0; color: #fff; background: #000; }
 
-.wp-playlist-current-item {
-  margin: 0;
-  padding: 10px;
-  height: unset;
-}
+.wp-playlist-current-item { margin: 0; padding: 10px; height: unset; }
 
-.wp-playlist-current-item img {
-  width: 90px;
-  display: flex;
-  object-fit: cover;
-  aspect-ratio: 1 / 1;
-  background-color: #212121;
-  max-width: 128px !important;
-}
+.wp-playlist-current-item img { width: 90px; display: flex; object-fit: cover; aspect-ratio: 1 / 1; background-color: #212121; max-width: 128px !important; }
 
-.wp-playlist * {
-  color: #fff;
-}
+.wp-playlist * { color: #fff; }
 
-.mejs-container .mejs-controls {
-  border-top: solid 1px #333;
-}
+.wp-video,
+.wp-audio,
+.wp-playlist { max-width: 100% !important; }
 
-.wp-playlist .wp-playlist-tracks {
-  height: 225px;
-  overflow: auto;
-  position: relative;
-  margin: 0 !important;
-  border-top: solid 1px #333;
-}
+.wp-video .mejs-container,
+.wp-video-playlist .mejs-container { max-height: 512px !important; width: 100% !important; overflow: hidden; }
 
-.wp-playlist .wp-playlist-tracks .wp-playlist-item {
-  color: #fff;
-  height: 50px;
-  padding: 10px;
-  display: flex;
-  background: #121212;
-  align-items: center;
-  vertical-align: bottom;
-  border-bottom-color: #333;
-  transition: background 250ms linear 0s, color 250ms linear 0s, border-color 250ms linear 0s;
-}
+.mejs-container video { height: 100% !important; width: 100% !important; }
 
-.wp-playlist .wp-playlist-tracks .wp-playlist-item:nth-child(even) {
-  background: #212121;
-}
+.mejs-container .mejs-controls { border-top: solid 1px #333; }
 
-.wp-playlist .wp-playlist-tracks .wp-playlist-item:hover {
-  background: var(--universal-accent-color);
-}
+.wp-playlist .wp-playlist-tracks { height: 225px; overflow: auto; position: relative; margin: 0 !important; border-top: solid 1px #333; }
 
-.wp-playlist .wp-playlist-tracks .wp-playlist-item:hover * {
-  color: var(--universal-accent-color-text-color);
-}
+.wp-playlist .wp-playlist-tracks .wp-playlist-item { color: #fff; height: 50px; padding: 10px; display: flex; background: #121212; align-items: center; vertical-align: bottom; border-bottom-color: #333; transition: background 250ms linear 0s, color 250ms linear 0s, xborder-color 250ms linear 0s; }
 
-.wp-playlist .wp-playlist-tracks .wp-playlist-playing {
-  font-weight: normal;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .08);
-  border-bottom-color: var(--universal-accent-color);
-}
+.wp-playlist .wp-playlist-tracks .wp-playlist-item: nth-child(even) { background: #212121; }
 
-.wp-playlist .wp-playlist-tracks .wp-playlist-item * {
-  color: #fff;
-}
+.wp-playlist .wp-playlist-tracks .wp-playlist-item: hover { background: var(--universal-accent-color); }
 
-.wp-playlist .wp-playlist-tracks .wp-playlist-item .wp-playlist-caption {
-  color: #fff !important;
-}
+.wp-playlist .wp-playlist-tracks .wp-playlist-item: hover * { color: var(--universal-accent-color-text-color); }
 
-.wp-playlist .wp-playlist-tracks .wp-playlist-item-length {
-  top: unset;
-  padding-right: 5px;
-}
+.wp-playlist .wp-playlist-tracks .wp-playlist-playing { font-weight: normal; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08); border-bottom-color: var(--universal-accent-color); }
+
+.wp-playlist .wp-playlist-tracks .wp-playlist-item * { color: #fff; }
+
+.wp-playlist .wp-playlist-tracks .wp-playlist-item .wp-playlist-caption { color: #fff !important; }
+
+.wp-playlist .wp-playlist-tracks .wp-playlist-item-length { top: unset; padding-right: 5px; }
 
 .universal-mejs-container .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current,
-.universal-mejs-container .mejs-controls .mejs-time-rail .mejs-time-current {
-  background: var(--universal-accent-color);
-}
+.universal-mejs-container .mejs-controls .mejs-time-rail .mejs-time-current { background: var(--universal-accent-color); }
 
-.universal-mejs-container .mejs-controls .mejs-time-rail span {
-    color: #000;
-}
+.universal-mejs-container .mejs-controls .mejs-time-rail span { color: #000; }
