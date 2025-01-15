@@ -56,7 +56,8 @@ if ( ! function_exists( 'universal_display_media' ) ) {
                     if($post_format === 'audio'){
                         $container .= '<div id="post-audio">';
                     }else{
-                        $container .= '<div id="post-media" class="u-media-16-9">';
+                        $class = $item_count > 1 ?? 'class="u-media-16-9"';
+                        $container .= '<div id="post-media" ' . $class . '>';
                     }
 
                     // Determine if tracklist should be displayed based on the count of attachment IDs
