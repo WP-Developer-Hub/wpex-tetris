@@ -37,7 +37,8 @@
 
 .wp-playlist .wp-playlist-tracks .wp-playlist-item-length { top: unset; padding-right: 5px; }
 
-.universal-mejs-container .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current,
-.universal-mejs-container .mejs-controls .mejs-time-rail .mejs-time-current { background: var(--universal-accent-color); }
+.mejs-controls .mejs-volume-current,
+.mejs-controls .mejs-horizontal-volume-current,
+.mejs-controls .mejs-time-rail .mejs-time-current { background: var(--universal-accent-color); }
 
-.universal-mejs-container .mejs-controls .mejs-time-rail span { color: #000; }
+.mejs-controls .mejs-time-rail span { color: #000; }
