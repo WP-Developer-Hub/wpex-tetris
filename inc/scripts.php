@@ -77,7 +77,7 @@ if ( ! function_exists( 'universal_mejs_add_container_class' ) ) {
             var settings = window._wpmejsSettings || {};
             settings.features = settings.features || mejs.MepDefaults.features;
             MediaElementPlayer.prototype.buildexampleclass = function( player ) {
-                player.container.addClass( 'universal-mejs-container' );
+                player.container.addClass( 'universal-mejs-container u-media-16-9' );
             };
         })();
      
@@ -100,7 +100,7 @@ if ( ! function_exists( 'universal_mejs_add_container_class' ) ) {
             // Make sure all instances wp-video & wp-playlist in inner-post 512px.
             function wrapMediaElements() {
                $('.wp-video, .wp-playlist').each(function() {
-//                   if (!$(this).closest('#post-media').length) {
+                   if (!$(this).closest('#post-media').length) {
                        if (!$(this).closest('.post-media').length) {
                             if (!$(this).hasClass('wp-audio-playlist')) {
                                 var $wrapper = $('<div class="post-media"></div>');
@@ -108,7 +108,7 @@ if ( ! function_exists( 'universal_mejs_add_container_class' ) ) {
                             }
                             $(this).css('width', '100%');
                        }
-//                    }
+                    }
                });
             }
      
