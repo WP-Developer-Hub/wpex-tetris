@@ -67,7 +67,7 @@ a:hover .avatar,
 .entry a:hover img,
 .wp-caption a:hover { will-change: filter; filter: brightness(1.0) }
 .tiktok-embed,
-.tiktok-embed iframe { background: #000 !important; padding: 0 !important; margin: 0 !important; border-radius: 0 !important; max-width: 100% !important;}
+.tiktok-embed iframe { padding: 0 !important; margin: 0 !important; border-radius: 0 !important; max-width: 100% !important;}
 .tiktok-embed::after,
 .tiktok-embed::before { content: "" }
 embed,
