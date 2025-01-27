@@ -281,6 +281,7 @@ input[type=url]:hover:not([readonly], [disabled]),
 input[type=url]:active:not([readonly], [disabled]),
 input[type=week]:hover:not([readonly], [disabled]),
 input[type=week]:active:not([readonly], [disabled]) {
+  will-change: border-color;
   border-color: var(--co-textfld-active-border);
 }
 
@@ -299,6 +300,7 @@ input[type=text]:focus:not([readonly], [disabled]),
 input[type=time]:focus:not([readonly], [disabled]),
 input[type=url]:focus:not([readonly], [disabled]),
 input[type=week]:focus:not([readonly], [disabled]) {
+  will-change: border-color;
   border-color: var(--co-textfld-focus-border);
 }
 
@@ -332,6 +334,7 @@ input[type=url]:required:valid:hover:not([readonly], [disabled]),
 input[type=url]:required:valid:active:not([readonly], [disabled]),
 input[type=week]:required:valid:hover:not([readonly], [disabled]),
 input[type=week]:required:valid:active:not([readonly], [disabled]) {
+  will-change: border-color;
   border-color: var(--co-textfld-valid-active-border);
 }
 
@@ -350,6 +353,7 @@ input[type=text]:required:valid:focus:not([readonly], [disabled]),
 input[type=time]:required:valid:focus:not([readonly], [disabled]),
 input[type=url]:required:valid:focus:not([readonly], [disabled]),
 input[type=week]:required:valid:focus:not([readonly], [disabled]) {
+  will-change: border-color;
   border-color: var(--co-textfld-valid-focus-border);
 }
 
@@ -383,6 +387,7 @@ input[type=url]:required:invalid:hover,
 input[type=url]:required:invalid:active,
 input[type=week]:required:invalid:hover,
 input[type=week]:required:invalid:active {
+  will-change: border-color;
   border-color: var(--co-textfld-invalid-active-border);
 }
 
@@ -401,6 +406,7 @@ input[type=text]:required:invalid:focus,
 input[type=time]:required:invalid:focus,
 input[type=url]:required:invalid:focus,
 input[type=week]:required:invalid:focus {
+  will-change: border-color;
   border-color: var(--co-textfld-invalid-focus-border);
 }
 
@@ -419,6 +425,7 @@ input[type=text]::selection,
 input[type=time]::selection,
 input[type=url]::selection,
 input[type=week]::selection {
+  will-change: border-color, color;
   background-color: var(--co-body-accent);
   color: var(--co-body-accent-contrast);
 }
@@ -427,6 +434,7 @@ select:not([disabled], [readonly]) option:focus,
 select:not([disabled], [readonly]) option:active,
 select:not([disabled], [readonly]) option:hover,
 select:not([disabled], [readonly]) option:checked {
+  will-change: background-color, color;
   background-color: var(--co-body-accent);
   color: var(--co-body-accent-contrast);
 }
@@ -441,6 +449,7 @@ input[type=color] {
 
 input[type=color]:hover:not([disabled]),
 input[type=color]:active:not([disabled]) {
+  will-change: border-color;
   border-color: var(--co-textfld-active-border);
 }
 
@@ -449,6 +458,7 @@ input[type=color]:focus {
 }
 
 input[type=color]:focus:not([disabled]) {
+  will-change: border-color;
   border-color: var(--co-textfld-focus-border);
 }
 
@@ -482,6 +492,7 @@ input::file-selector-button:active {
   color: var(--co-btn-active-text);
   background-color: var(--co-btn-active-bg);
   border-color: var(--co-btn-active-bg);
+  will-change: border-color, background-color, color;
 }
 
 button:focus,
@@ -491,12 +502,14 @@ input[type=reset]:focus,
 input[type=submit]:focus,
 input[type=button]:focus,
 input::file-selector-button:focus {
+  will-change: background-color;
   background-color: var(--co-btn-focus-bg);
 }
 
 .u-link-button-selected {
   cursor: default;
   pointer-events: none;
+  will-change: border-color;
   border-color: var(--co-btn-active-bg);
 }
 
@@ -533,6 +546,7 @@ label:has(input:disabled) {
 
 label:has(input:disabled) :disabled {
   opacity: 1;
+  will-change: opacity;
 }
 
 input[type="search"]::-webkit-search-decoration,
@@ -652,12 +666,14 @@ input[type="checkbox"] {
 input[type="radio"]:hover,
 input[type="range"]:hover,
 input[type="checkbox"]:hover {
+  will-change: accent-color;
   accent-color: var(--co-btn-focus-bg);
 }
 
 input[type="radio"]:focus,
 input[type="range"]:focus,
 input[type="checkbox"]:focus {
+  will-change: accent-color;
   accent-color: var(--co-btn-focus-bg);
 }
 
@@ -672,11 +688,13 @@ label:has(input[type="checkbox"]) {
 
 input[type="radio"]:checked,
 input[type="checkbox"]:checked {
+  will-change: accent-color;
   accent-color: var(--co-btn-bg);
 }
 
 input[type="radio"]:checked:hover,
 input[type="checkbox"]:checked:hover {
+  will-change: accent-color;
   accent-color: var(--co-btn-focus-bg);
 }
 
@@ -717,6 +735,7 @@ input[type=week] {
 ::-webkit-datetime-edit-week-field:focus,
 ::-webkit-datetime-edit-month-field:focus,
 ::-webkit-datetime-edit-year-field:focus {
+  will-change: background-color, color;
   color: var(--co-body-accent-contrast);
   background-color: var(--co-body-accent);
 }
@@ -745,6 +764,7 @@ H {
 ::-moz-datetime-edit-week-field:focus,
 ::-moz-datetime-edit-month-field:focus,
 ::-moz-datetime-edit-year-field:focus {
+  will-change: background-color, color;
   color: var(--co-body-accent-contrast);
   background-color: var(--co-body-accent);
 }
