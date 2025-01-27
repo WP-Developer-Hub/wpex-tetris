@@ -119,27 +119,3 @@ if ( ! function_exists( 'universal_mejs_add_container_class' ) ) {
     }
     add_action('wp_print_footer_scripts', 'universal_mejs_add_container_class');
 }
- 
-if ( ! function_exists( 'wpx_add_reduced_motion_styles' ) ) {
-    function wpx_add_reduced_motion_styles() {
-        if ( !defined( 'WP_DEBUG' ) || !WP_DEBUG ) {
-            echo " 
-                <style> 
-                    @media (prefers-reduced-motion: reduce) { 
-                        *, *::after, *::before { 
-                            /* Reduce durations significantly */ 
-                            animation-duration: 100ms !important; 
-                            transition-duration: 0ms !important; 
- 
-                            /* Use fades instead of more complex motion */ 
-                            animation-timing-function: ease-in-out; 
-                            transition-timing-function: ease-in-out; 
-                        } 
-                    } 
-                </style> 
-            ";
-        }
-    }
-    add_action( 'wp_head', 'wpx_add_reduced_motion_styles', PHP_INT_MAX );
-}
- 
