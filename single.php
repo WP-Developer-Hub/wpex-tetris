@@ -52,9 +52,11 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                 <?php echo wpx_custom_link_pages();?>
             <?php endif; ?>
 
-            <?php if ( !empty( get_the_tags() ) ) : ?>
-                <?php echo wpx_spacer(); ?>
-                <?php the_tags( '<div id="post-tags" class="u-flex u-flex-wrap u-flex-gap-5">', '', '</div>' ); ?>
+            <?php if ( get_theme_mod( 'universal_toggle_post_tags', true ) ) : ?>
+                <?php if ( !empty( get_the_tags() ) ) : ?>
+                    <?php echo wpx_spacer(); ?>
+                    <?php the_tags( '<div id="post-tags" class="u-flex u-flex-wrap u-flex-gap-5">', '', '</div>' ); ?>
+                <?php endif; ?>
             <?php endif; ?>
 
             <?php if ( get_theme_mod( 'universal_toggle_post_author_box', true ) ) : ?>

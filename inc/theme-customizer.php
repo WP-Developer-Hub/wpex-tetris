@@ -160,6 +160,20 @@ function universal_customizer_settings($wp_customize) {
         'type' => 'checkbox',
     )));
 
+    // Toggle Post Tags
+    $wp_customize->add_setting('universal_toggle_post_tags', array(
+        'default' => 'true',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_post_tags', array(
+        'label' => __('Toggle Post Tags', 'tetris'),
+        'description' => __('Enable or disable the post tags on single post pages.', 'tetris'),
+        'section' => 'universal_single_post_page_settings_section',
+        'type' => 'checkbox',
+    )));
+
     // Toggle Post Author Box
     $wp_customize->add_setting('universal_toggle_post_author_box', array(
         'default' => 'true',
