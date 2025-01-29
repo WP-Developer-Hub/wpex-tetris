@@ -196,7 +196,7 @@ a:hover { cursor: pointer }
 .single-post-meta-divider:not(:last-child)::after {content: "|"; margin-left: 5px;}
 #post .entry .inner-post { margin: 20px 0 }
 #post-tags { margin-top: 30px; margin-bottom: 30px; white-space: wrap }
-#post-tags a { background: var(--universal-accent-color); border-radius: 2px; color: var(--universal-accent-color-text-color); font-size: 1.2em; padding: 2px 12px; transition: background 250ms linear 0s, color 250ms linear 0s; }
+#post-tags a { background: var(--universal-accent-color); border-radius: 2px; color: var(--universal-accent-color-text-color); font-size: 1.2em; text-transform: lowercase; padding: 2px 12px; transition: background 250ms linear 0s, color 250ms linear 0s; }
 #post-tags a:hover { will-change: background, color; background: #111; color: #fff; text-decoration: none; }
 #author-title { margin-top: 10px; }
 #single-author { margin-bottom: 30px; }
@@ -253,7 +253,7 @@ h5.widget-title {font-weight: bold;}
 
 /* Widgets
 ----------------------------------------------------------- */
-.tagcloud a { float: left; display: block; font-size: 1.2em !important; line-height: 1.2em !important; margin-bottom: 7px; margin-right: 7px; padding: 7px 15px; margin-right: 5px; margin-bottom: 5px; border-radius: 2px; word-break: break-all; background: var(--universal-accent-color); color: var(--universal-accent-color-text-color) !important; transition: background 250ms linear, color 250ms linear }
+.tagcloud a { float: left; display: block; font-size: 1.2em !important; text-transform: lowercase; line-height: 1.2em !important; margin-bottom: 7px; margin-right: 7px; padding: 7px 15px; margin-right: 5px; margin-bottom: 5px; border-radius: 2px; word-break: break-all; background: var(--universal-accent-color); color: var(--universal-accent-color-text-color) !important; transition: background 250ms linear, color 250ms linear }
 .tagcloud a:hover { will-change: background, color; background: #111; color: #fff !important; }
 .widget_media_image .wp-caption,
 .widget_media_image .wp-caption img { width: 100%; margin: 0 auto; padding: 0; }
