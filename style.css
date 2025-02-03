@@ -26,7 +26,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 ----------------------------------------------------------- */
 body { background-color: #ddd; font: 14px/1.8 'Open Sans',Helvetica,Arial,sans-serif; color: #666; -webkit-text-size-adjust: 100%; }
 body a { color: var(--universal-accent-color); transition: color 250ms linear }
-body a:hover { text-decoration: underline; will-change: color; color: var(--universal-accent-color); }
+body a:hover { text-decoration: underline; color: var(--universal-accent-color); }
 img { max-width: 100%; height: auto; }
 #wrap { width: calc(100% - 200px); margin: 0 auto; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
 .container { background: #fff; padding: 30px; margin-top: 10px; box-shadow: var(--u-box-shadow)}
@@ -45,10 +45,10 @@ blockquote:after { color: #000; font-weight: 100; font-size: 2.5em; line-height:
 blockquote:after { content: close-quote; padding-right: 0; }
 blockquote p { display: inline; }
 pre, code { font-family: monospace; background: #212121; color: #aaa; padding: 20px; line-height: 25px; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; display: block; max-height: 350px; overflow: auto;}
-code { border-left: 5px solid var(--universal-accent-color); }
+code { border-left: 5px solid var(--universal-accent-color-dark); }
 address { letter-spacing: 1px; }
-mark { background-color: var(--universal-accent-color-alt); color: var(--universal-accent-color-text-color); display: inline-block; padding: 0 8px; }
-var { font-weight: bold; color: var(--universal-accent-color-alt);}
+mark { background-color: var(--universal-accent-color-light); color: var(--universal-accent-color-text-light); display: inline-block; padding: 0 8px; }
+var { font-weight: bold; color: var(--universal-accent-color-light);}
 .sticky {}
 .gallery-caption {}
 .textwidget,
@@ -65,7 +65,7 @@ a .avatar,
 .wp-caption a img { filter: brightness(0.9); transition: filter 250ms ease-in-out }
 a:hover .avatar,
 .entry a:hover img,
-.wp-caption a:hover { will-change: filter; filter: brightness(1.0) }
+.wp-caption a:hover { filter: brightness(1.0) }
 .tiktok-embed,
 .tiktok-embed iframe { padding: 0 !important; margin: 0 !important; border-radius: 0 !important; max-width: 100% !important;}
 .tiktok-embed::after,
@@ -127,23 +127,21 @@ a:hover { cursor: pointer }
 #navigation ul ul li { margin: 0; border-bottom: solid 1px #666;  }
 #navigation ul li:last-child() { border-bottom: none; }
 #navigation ul li:hover > ul { display: block; width: max-content; z-index: 999 }
-#navigation li:hover { will-change: background }
 #navigation li:hover,
 #navigation .current-post-ancestor,
 #navigation .current-page-ancestor,
 #navigation .current-menu-item { background: var(--universal-accent-color); }
-#navigation li:hover a { will-change: color }
 #navigation li:hover a,
 #navigation .current-post-ancestor a,
 #navigation .current-page-ancestor a,
-#navigation .current-menu-item a { color: var(--universal-accent-color-text-color) }
+#navigation .current-menu-item a { color: var(--universal-accent-color-text) }
  
  
 /* Style the navigation menu for mobile */
 #mobile-navigation { display: none; width: 100%; border-radius: 2px; font-size: 18px; background-color: #212121; }
 #mobile-navigation ul > { max-height: 300px; overflow-x: auto }
 #mobile-navigation .menu-toggle { padding: 0; font-size: 30px; line-height: 40px; align-items: center; list-style: none }
-#mobile-navigation #main-toggle { padding: 10px 5px; line-height: 50px; color: var(--universal-accent-color-text-color); background: var(--universal-accent-color); list-style: none }
+#mobile-navigation #main-toggle { padding: 10px 5px; line-height: 50px; color: var(--universal-accent-color-text); background: var(--universal-accent-color); list-style: none }
 #mobile-navigation .dashicons { display: flex; justify-content: center; align-items: center; width: 50px; height: 50px; font-size: 50px; line-height: 50px }
 #mobile-navigation .menu-summary-name { font-size: 35px; margin-left: 5px;}
 #mobile-navigation summary { display: flex; background: #000; list-style: none }
@@ -172,7 +170,7 @@ a:hover { cursor: pointer }
 .blog-entry img,
 .blog-entry .u-media-missing-img { box-shadow: var(--u-box-shadow); filter: brightness(0.9); transition: filter 250ms ease-in-out }
 .blog-entry img:hover,
-.blog-entry .u-media-missing-img:hover { will-change: filter; filter: brightness(1.0); }
+.blog-entry .u-media-missing-img:hover { filter: brightness(1.0); }
 .blog-entry .entry-meta { margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; font-size: 0.857em; }
 .blog-entry .entry-meta strong { font-weight: 600; color: #000; margin-right: 2px; }
 .blog-entry-thumbnail img { display: block; width: 100%; }
@@ -195,9 +193,9 @@ a:hover { cursor: pointer }
 .single-post-meta li:last-child { margin-right: 0; padding-right: 0; background: none; }
 .single-post-meta-divider:not(:last-child)::after {content: "|"; margin-left: 5px;}
 #post .entry .inner-post { margin: 20px 0 }
-#post-tags { margin-top: 30px; margin-bottom: 30px; white-space: wrap }
-#post-tags a { background: var(--universal-accent-color); border-radius: 2px; color: var(--universal-accent-color-text-color); font-size: 1.2em; text-transform: lowercase; padding: 2px 12px; transition: background 250ms linear 0s, color 250ms linear 0s; }
-#post-tags a:hover { will-change: background, color; background: #111; color: #fff; text-decoration: none; }
+#post-tags { margin-top: 20px; margin-bottom: 20px; white-space: wrap }
+#post-tags a {  background: var(--universal-accent-color); color: var(--universal-accent-color-text);border-radius: 2px; font-size: 1.2em; text-transform: lowercase; padding: 2px 12px; transition: background 250ms linear 0s, color 250ms linear 0s; }
+#post-tags a:hover { background: var(--universal-accent-color-dark); color: var(--universal-accent-color-text-dark); text-decoration: none; }
 #author-title { margin-top: 10px; }
 #single-author { margin-bottom: 30px; }
 #single-author h4 { font-size: 1.143em; center repeat-x; margin-bottom: 20px; }
@@ -220,9 +218,8 @@ a:hover { cursor: pointer }
 .page-pagination span.current { min-width: 50px; display: flex; justify-content: center; align-items: center; }
 .page-pagination select { text-align: unset; min-width: 75px; line-height: unset }
 .page-pagination .page-button::before { transition: background 250ms linear, color 250ms linear }
-.page-pagination a:hover { will-change: background, color; }
 .page-pagination a:hover,
-.page-pagination span.current { color: var(--universal-accent-color-text-color); background: var(--universal-accent-color); text-decoration: none; }
+.page-pagination span.current { color: var(--universal-accent-color-text); background: var(--universal-accent-color); text-decoration: none; }
 .page-pagination .pagination-links { grid-template-columns: auto auto 1fr }
  
 /* Pages & sidebar widget-title
@@ -254,8 +251,8 @@ h5.widget-title {font-weight: bold;}
 
 /* Widgets
 ----------------------------------------------------------- */
-.tagcloud a { float: left; display: block; font-size: 1.2em !important; text-transform: lowercase; line-height: 1.2em !important; margin-bottom: 7px; margin-right: 7px; padding: 7px 15px; margin-right: 5px; margin-bottom: 5px; border-radius: 2px; word-break: break-all; background: var(--universal-accent-color); color: var(--universal-accent-color-text-color) !important; transition: background 250ms linear, color 250ms linear }
-.tagcloud a:hover { will-change: background, color; background: #111; color: #fff !important; }
+.tagcloud a { float: left; display: block; font-size: 1.2em !important; text-transform: lowercase; line-height: 1.2em !important; margin-bottom: 7px; margin-right: 7px; padding: 7px 15px; margin-right: 5px; margin-bottom: 5px; border-radius: 2px; word-break: break-all; background: var(--universal-accent-color); color: var(--universal-accent-color-text) !important; transition: background 250ms linear, color 250ms linear }
+.tagcloud a:hover { background: var(--universal-accent-color-dark); color: var(--universal-accent-color-text-dark) !important; }
 .widget_media_image .wp-caption,
 .widget_media_image .wp-caption img { width: 100%; margin: 0 auto; padding: 0; }
 
@@ -294,16 +291,16 @@ h5.widget-title {font-weight: bold;}
 .wp-calendar-nav-prev,
 .wp-calendar-nav-next { font-weight: normal; display: block; }
 .wp-calendar-nav-prev a,
-.wp-calendar-nav-next a { display: block; min-width: 50px; padding: 2.5px 5px; border-radius: 2px; background: var(--universal-accent-color ); color: var(--universal-accent-color-text-color) !important }
+.wp-calendar-nav-next a { display: block; min-width: 50px; padding: 2.5px 5px; border-radius: 2px; background: #000; color: #fff !important }
 .wp-calendar-nav-prev a:hover
-.wp-calendar-nav-next a:hover { background: #000; color: #fff !important }
+.wp-calendar-nav-next a:hover { cackground: var(--universal-accent-color ); color: var(--universal-accent-color-text) !important }
 #wp-calendar,
 #footer #wp-calendar tr { width: 100% }
 #wp-calendar th { text-align: center; border: 1px solid #ccc; border-top: none; padding: 5px 0; background: #f5f5f5; }
 #wp-calendar tbody td { padding: 4px 0; text-align: center; border: 1px solid #ccc; background: #f0f0f0; color: #000; }
 #wp-calendar tbody a { display: block }
 #wp-calendar tbody #today a,
-#wp-calendar tbody #today { background: var(--universal-accent-color) !important; color: var(--universal-accent-color-text-color) !important; }
+#wp-calendar tbody #today { background: var(--universal-accent-color) !important; color: var(--universal-accent-color-text) !important; }
 
 #footer .wp-calendar-nav,
 #footer #wp-calendar caption { background: #292b2f; border: 1px solid #4c4f54 }

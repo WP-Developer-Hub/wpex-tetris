@@ -59,7 +59,7 @@ if ($post_formats && is_array($post_formats[0])) {
     $total_post_count = new WP_Query("s=$s&posts_per_page=-1&post_status=publish");
     ?>
 
-    <div class="u-margin-top-10 u-grid u-grid-col-s u-flex-gap-10 u-tt-all-uppercase">
+    <div class="u-margin-top-10 u-grid u-grid-col-s u-flex-gap-10 u-tt-all-uppercase ufc_search">
         <a href="<?php echo esc_url($all_link_url); ?>" class="u-link-button u-flex u-flex-row u-flex-nowrap u-ai-c u-jc-sb<?php echo universal_search_filter_item_class('all'); ?>">
             <span><?php echo __('All', 'tetris'); ?></span>
             <?php echo '&nbsp;<span>(' . esc_html($total_post_count->found_posts) . ')</span>';?>
