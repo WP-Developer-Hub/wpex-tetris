@@ -61,8 +61,8 @@
     border:1px solid var(--universal-accent-color);
 }
 #qt_comment_toolbar input[type="button"]:hover, #qt_comment_toolbar input[type="button"]:active {
-    background:transparent;
-    color: var(--universal-accent-color);
+    background:var(--universal-accent-color);
+    color: var(--universal-accent-color-text-color);
 }
 #comment-form-comment textarea {
     margin-top: -25px !important;
