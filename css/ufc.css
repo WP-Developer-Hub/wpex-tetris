@@ -765,9 +765,11 @@ kbd {
   font-weight: bold;
   text-align: center;
   white-space: nowrap;
+  pointer-events: none;
   display: inline-block;
   font-family: Consolas, monospace;
   padding: calc(var(--padding-inputs) / 2);
+  color: var(--universal-accent-color-text-light);
   background-color: var(--universal-accent-color-light);
 }
 

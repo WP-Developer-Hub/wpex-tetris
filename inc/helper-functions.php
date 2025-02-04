@@ -261,93 +261,6 @@ if ( ! function_exists( 'wpx_custom_link_pages' ) ) {
 }
 
 /**
- * Adjust the brightness of a hexadecimal color.
- *
- * This function modifies the brightness of a given hex color by adding or subtracting
- * a specified factor to its RGB components. It supports both 6-character and 3-character
- * shorthand hex colors. The result is clamped to valid RGB values (0–255).
- *
- * @param string $color  The hexadecimal color code (e.g., '#FFAA33' or '#FA3').
- * @param int    $factor The amount to adjust the brightness. Positive values lighten the
- *                       color, and negative values darken it.
- *
- * @return string The adjusted hexadecimal color code, or '#000000' if the input color
- *                is invalid.
- *
- * Usage Example:
- *   echo universal_adjust_brightness('#FFAA33', -20); // Darken the color
- *   echo universal_adjust_brightness('#FA3', 30);    // Lighten the color
- */
-if ( ! function_exists( 'universal_adjust_brightness' ) ) {
-    function universal_adjust_brightness($color, $factor) {
-        // Sanitize color by removing the '#'
-        if ($color[0] == '#') {
-            $color = substr($color, 1);
-        }
-    
-        // Convert hex to RGB
-        if (strlen($color) == 6) {
-            $r = hexdec($color[0] . $color[1]);
-            $g = hexdec($color[2] . $color[3]);
-            $b = hexdec($color[4] . $color[5]);
-        } elseif (strlen($color) == 3) {
-            $r = hexdec($color[0] . $color[0]);
-            $g = hexdec($color[1] . $color[1]);
-            $b = hexdec($color[2] . $color[2]);
-        } else {
-            return '#000000';
-        }
-    
-        // Adjust brightness by the factor
-        $r = max(0, min(255, $r + $factor));
-        $g = max(0, min(255, $g + $factor));
-        $b = max(0, min(255, $b + $factor));
-    
-        // Return adjusted color as hex
-        return sprintf("#%02x%02x%02x", $r, $g, $b);
-    }
-}
-
-/**
- * Determine if a color is light or dark.
- *
- * @param string $color The color code.
- * @return string|false The color code for text color (black or white) or false if no color provided.
- */
-if ( ! function_exists( 'universal_is_light_color' ) ) {
-    function universal_is_light_color($color) {
-        $default = 'rgb(0,0,0)'; // Default color if no color provided
-    
-        // Return false if no color provided
-        if (empty($color))
-            return false;
-    
-        // Sanitize $color by removing "#" if provided
-        if ($color[0] == '#') {
-            $color = substr($color, 1);
-        }
-    
-        // Check if color has 6 or 3 characters and extract individual RGB values
-        if (strlen($color) == 6) {
-            $hex = array($color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5]);
-        } elseif (strlen($color) == 3) {
-            $hex = array($color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2]);
-        } else {
-            return false;
-        }
-    
-        // Convert hexadecimal values to decimal
-        $rgb = array_map('hexdec', $hex);
-    
-        // Calculate perceived brightness
-        $brightness = ($rgb[0] * 299 + $rgb[1] * 587 + $rgb[2] * 114) / 1000;
-    
-        // Determine text color based on brightness
-        return $brightness > 128 ? "#000000" : "#FFFFFF";
-    }
-}
-
-/**
  * Generate dynamic CSS variables based on theme customizer settings.
  *
  * @return string The generated CSS string.
@@ -355,30 +268,20 @@ if ( ! function_exists( 'universal_is_light_color' ) ) {
 if ( ! function_exists( 'universal_dynamic_css' ) ) {
     function universal_dynamic_css() {
         // Get accent color from theme customizer
-        $universal_accent_color = get_theme_mod('universal_accent_color', '#0073e6');
-
-        // Calculate lighter and darker shades of the accent color
-        $universal_accent_color_light = universal_adjust_brightness($universal_accent_color, 20); // Lighter shade
-        $universal_accent_color_dark = universal_adjust_brightness($universal_accent_color, -30); // Darker shade
-        
-        // Calculate text color for the accent (light or dark)
-        $universal_accent_color_text = universal_is_light_color($universal_accent_color);
-        $universal_accent_color_text_dark = universal_is_light_color($universal_accent_color_dark);
-        $universal_accent_color_text_light = universal_is_light_color($universal_accent_color_light);
+        $universal_accent_color = explode(',', get_theme_mod('universal_accent_color', array('#0073e6', '#fff', '#0073e6', '#fff', '#0073e6', '#fff')));
 
         // Generate dynamic CSS with root variables
         $css = ":root {
-            caret-color: {$universal_accent_color};
-            --universal-accent-color: {$universal_accent_color};
-            --universal-accent-color-dark: {$universal_accent_color_dark};
-            --universal-accent-color-light: {$universal_accent_color_light};
-            --universal-accent-color-text: {$universal_accent_color_text};
-            --universal-accent-color-text-dark: {$universal_accent_color_text_dark};
-            --universal-accent-color-text-light: {$universal_accent_color_text_light};
+            caret-color: {$universal_accent_color[0]};
+            --universal-accent-color: {$universal_accent_color[0]};
+            --universal-accent-color-dark: {$universal_accent_color[2]};
+            --universal-accent-color-light: {$universal_accent_color[3]};
+            --universal-accent-color-text: {$universal_accent_color[1]};
+            --universal-accent-color-text-dark: {$universal_accent_color[5]};
+            --universal-accent-color-text-light: {$universal_accent_color[4]};
         }";
-
         // Return generated CSS string
-        return $css;
+        return $css; //$css;
     }
 }
 
