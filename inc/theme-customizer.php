@@ -19,12 +19,17 @@ function universal_customizer_settings($wp_customize) {
     $wp_customize->add_setting('universal_accent_color', array(
         'default' => '#0073e6',
         'transport' => 'refresh',
-        'sanitize_callback' => 'sanitize_hex_color'
+        'sanitize_callback' => 'sanitize_text_field'
     ));
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'universal_accent_color', array(
+    $wp_customize->add_control(new WPX_Color_Picker_Control($wp_customize, 'universal_accent_color', array(
         'label' => __('Accent Color', 'tetris'),
         'section' => 'colors',
-        'mode' => 'full',
+        'type' => 'text',
+        'input_attrs' => array(
+            'step' => 1,
+            'min' => -50,
+            'max' => 50,
+        ),
     )));
 
     // Title & Tagline Visibility

@@ -143,7 +143,133 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                         break;
                 }
                 ?>
-                <input id="_customize-input-<?php echo esc_attr($this->id); ?>" type="<?php echo esc_attr($input_type); ?>" class="widefat wpx_date_input" <?php $this->link(); ?> value="<?php echo esc_attr($this->value()); ?>"/>
+            <input id="_customize-input-<?php echo esc_attr($this->id); ?>" type="<?php echo esc_attr($input_type); ?>" class="widefat wpx_date_input" <?php $this->link(); ?> value="<?php echo esc_attr($this->value()); ?>"/>
+            <?php
+        }
+    }
+
+    class WPX_Color_Picker_Control extends WPX_Customize_Control {
+        public $type = 'text';
+
+        public function enqueue() {
+            $css_url = $this->get_wpx_resource_url() . 'css/wp-customizer-controls.css';
+            $js_url = $this->get_wpx_resource_url() . 'js/wp-customizer-controls.js';
+
+            wp_enqueue_script('wp-color-picker');
+            wp_enqueue_style('wp-color-picker');
+            wp_enqueue_style('wpx-customize-controls', $css_url, array(), $this->wpxCustomControlsCssVersion);
+            wp_enqueue_script('wpx-customize-controls-js', $js_url, array(), $this->wpxCustomControlsJsVersion);
+        }
+
+        public function render_content() {
+            $min = isset($this->input_attrs['min']) ? $this->input_attrs['min'] : -100;
+            $max = isset($this->input_attrs['max']) ? $this->input_attrs['max'] : 100;
+            $step = isset($this->input_attrs['step']) ? $this->input_attrs['step'] : 1;
+            $value = '';
+
+            $value = explode(',', $this->value());
+
+            $default = $this->setting->default;
+
+            ?>
+
+            <div class="wpx-control wpx-color-picker-control" tabindex="<?php echo esc_attr( $this->instance_number ); ?>">
+                <div class="wpx-control-info">
+                    <?php if (!empty($this->label)) : ?>
+                        <label for="<?php echo esc_attr($this->id); ?>" class="customize-control-title">
+                            <?php echo esc_html($this->label); ?>
+                        </label>
+                    <?php endif; ?>
+
+                    <?php if (!empty($this->description)) : ?>
+                        <p id="_customize-description-<?php echo esc_attr($this->id); ?>" class="description customize-control-description">
+                            <?php echo esc_html($this->description); ?>
+                        </p>
+                    <?php endif; ?>
+
+                    <div class="wpx-color-picker-group">
+                        <input
+                            type="text"
+                            data-default-color='<?php echo esc_attr($default); ?>'
+                            id="<?php echo esc_attr($this->id); ?>_color"
+                            value="<?php echo esc_attr($value[0]); ?>"
+                            aria-describedby="_customize-description-<?php echo esc_attr($this->id); ?>_color"
+                        />
+                        <span class="wpx-range-group">
+                            <label class="widefat wpx-swap-control">
+                                <span class="wpx-color-picker-display" id="<?php echo esc_attr($this->id); ?>_light_value">
+                                    <?php echo __('Accent Color Light', 'tetris'); ?>
+                                </span>
+                                <div class="wpx-toggle-control">
+                                    <span class="screen-reader-text">
+                                        <?php echo __('Swap Accent Color Light Text', 'tetris'); ?>
+                                    </span>
+                                    <input type="checkbox" id="<?php echo esc_attr($this->id); ?>_swap_text_light" value="1" <?php checked( $value[6], 1 ); ?> />
+                                    <span class="wpx-toggle-switch"></span>
+                                </div>
+                            </label>
+                            <input type="range"
+                                id="<?php echo esc_attr($this->id); ?>_light_slider"
+                                class="wpx-color-picker-input"
+                                min="<?php echo esc_attr($min); ?>"
+                                max="<?php echo esc_attr($max); ?>"
+                                step="<?php echo esc_attr($step); ?>"
+                                value="<?php echo esc_attr($value[8]); ?>"
+                                list="wpx_datalist_<?php echo esc_attr($this->id); ?>_light"
+                            />
+                            <datalist id="wpx_datalist_<?php echo esc_attr($this->id); ?>_light" class="wpx-range-value">
+                                <option value="<?php echo esc_attr($min); ?>">Min</option>
+                                <option value="0">0</option>
+                                <option value="<?php echo esc_attr($max); ?>">Max</option>
+                            </datalist>
+                        </span>
+                        <span class="wpx-range-group">
+                            <label class="widefat wpx-swap-control">
+                                <span class="wpx-color-picker-display" id="<?php echo esc_attr($this->id); ?>_dark_value">
+                                    <?php echo __('Accent Color Dark', 'tetris'); ?>
+                                </span>
+                                <div class="wpx-toggle-control">
+                                    <span class="screen-reader-text">
+                                        <?php echo __('Swap Accent Color Dark Text', 'tetris'); ?>
+                                    </span>
+                                    <input type="checkbox" id="<?php echo esc_attr($this->id); ?>_swap_text_dark" value="1" <?php checked( $value[7], 1 ); ?> />
+                                    <span class="wpx-toggle-switch"></span>
+                                </div>
+                            </label>
+                            <input type="range"
+                                id="<?php echo esc_attr($this->id); ?>_dark_slider"
+                                class="wpx-color-picker-input"
+                                min="<?php echo esc_attr($min); ?>"
+                                max="<?php echo esc_attr($max); ?>"
+                                step="<?php echo esc_attr($step); ?>"
+                                value="<?php echo esc_attr($value[9]); ?>"
+                                list="wpx_datalist_<?php echo esc_attr($this->id); ?>_dark"
+                            />
+                            <datalist id="wpx_datalist_<?php echo esc_attr($this->id); ?>_dark" class="wpx-range-value">
+                                <option value="<?php echo esc_attr($min); ?>">Min</option>
+                                <option value="0">0</option>
+                                <option value="<?php echo esc_attr($max); ?>">Max</option>
+                            </datalist>
+                        <span>
+                    </div>
+
+                    <input
+                        <?php $this->link(); ?>
+                        type="hidden"
+                        id="<?php echo esc_attr($this->id); ?>"
+                        value="<?php echo esc_attr($value); ?>"
+                        aria-describedby="_customize-description-<?php echo esc_attr($this->id); ?>"
+                    />
+
+                </div>
+            </div>
+            <script type="text/javascript">
+                (function($) {
+                    $(function() {
+                        $("<?php echo esc_js('#' . $this->id); ?> ").wpxAccentColorControls();
+                    });
+                })(jQuery);
+            </script>
             <?php
         }
     }
