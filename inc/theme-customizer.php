@@ -17,7 +17,7 @@ require_once get_template_directory() . '/inc/class-wpx-customizer-controls/clas
 function universal_customizer_settings($wp_customize) {
     // Accent Color Setting and Control
     $wp_customize->add_setting('universal_accent_color', array(
-        'default' => '#0073e6',
+        'default' => array('#0073e6', '1', '1', '40', '-20'),
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field'
     ));
