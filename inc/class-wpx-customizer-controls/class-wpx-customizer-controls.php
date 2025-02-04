@@ -165,12 +165,18 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
             $min = isset($this->input_attrs['min']) ? $this->input_attrs['min'] : -100;
             $max = isset($this->input_attrs['max']) ? $this->input_attrs['max'] : 100;
             $step = isset($this->input_attrs['step']) ? $this->input_attrs['step'] : 1;
-            $value = '';
 
-            $value = explode(',', $this->value());
+            $default = array_pad(!empty($this->setting->default) ? $this->setting->default : array(), 5, '') ;
 
-            $default = $this->setting->default;
+            // Ensure $value has at least 10 elements to prevent undefined index errors
+            $value = array_pad(explode(',', $this->value()), 10, '');
 
+            // Assign values to separate variables
+            $color = !empty($value[6]) ? $value[0] : $default[0];
+            $swap_text_light = !empty($value[6]) ? $value[6] : $default[1];
+            $swap_text_dark = !empty($value[7]) ? $value[7] : $default[2];
+            $lightness_value = !empty($value[8]) ? $value[8] : $default[3];
+            $darkness_value = !empty($value[9]) ? $value[9] : $default[4];
             ?>
 
             <div class="wpx-control wpx-color-picker-control" tabindex="<?php echo esc_attr( $this->instance_number ); ?>">
@@ -190,9 +196,9 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                     <div class="wpx-color-picker-group">
                         <input
                             type="text"
-                            data-default-color='<?php echo esc_attr($default); ?>'
+                            data-default-color='<?php echo esc_attr($default[0]); ?>'
                             id="<?php echo esc_attr($this->id); ?>_color"
-                            value="<?php echo esc_attr($value[0]); ?>"
+                            value="<?php echo esc_attr($color); ?>"
                             aria-describedby="_customize-description-<?php echo esc_attr($this->id); ?>_color"
                         />
                         <span class="wpx-range-group">
@@ -204,7 +210,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                                     <span class="screen-reader-text">
                                         <?php echo __('Swap Accent Color Light Text', 'tetris'); ?>
                                     </span>
-                                    <input type="checkbox" id="<?php echo esc_attr($this->id); ?>_swap_text_light" value="1" <?php checked( $value[6], 1 ); ?> />
+                                    <input type="checkbox" id="<?php echo esc_attr($this->id); ?>_swap_text_light" value="1" <?php checked( $swap_text_light, 1 ); ?> />
                                     <span class="wpx-toggle-switch"></span>
                                 </div>
                             </label>
@@ -214,7 +220,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                                 min="<?php echo esc_attr($min); ?>"
                                 max="<?php echo esc_attr($max); ?>"
                                 step="<?php echo esc_attr($step); ?>"
-                                value="<?php echo esc_attr($value[8]); ?>"
+                                value="<?php echo esc_attr($lightness_value); ?>"
                                 list="wpx_datalist_<?php echo esc_attr($this->id); ?>_light"
                             />
                             <datalist id="wpx_datalist_<?php echo esc_attr($this->id); ?>_light" class="wpx-range-value">
@@ -232,7 +238,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                                     <span class="screen-reader-text">
                                         <?php echo __('Swap Accent Color Dark Text', 'tetris'); ?>
                                     </span>
-                                    <input type="checkbox" id="<?php echo esc_attr($this->id); ?>_swap_text_dark" value="1" <?php checked( $value[7], 1 ); ?> />
+                                    <input type="checkbox" id="<?php echo esc_attr($this->id); ?>_swap_text_dark" value="1" <?php checked( $swap_text_dark, 1 ); ?> />
                                     <span class="wpx-toggle-switch"></span>
                                 </div>
                             </label>
@@ -242,7 +248,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                                 min="<?php echo esc_attr($min); ?>"
                                 max="<?php echo esc_attr($max); ?>"
                                 step="<?php echo esc_attr($step); ?>"
-                                value="<?php echo esc_attr($value[9]); ?>"
+                                value="<?php echo esc_attr($darkness_value); ?>"
                                 list="wpx_datalist_<?php echo esc_attr($this->id); ?>_dark"
                             />
                             <datalist id="wpx_datalist_<?php echo esc_attr($this->id); ?>_dark" class="wpx-range-value">

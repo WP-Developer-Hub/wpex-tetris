@@ -267,21 +267,38 @@ if ( ! function_exists( 'wpx_custom_link_pages' ) ) {
  */
 if ( ! function_exists( 'universal_dynamic_css' ) ) {
     function universal_dynamic_css() {
-        // Get accent color from theme customizer
-        $universal_accent_color = explode(',', get_theme_mod('universal_accent_color', array('#0073e6', '#fff', '#0073e6', '#fff', '#0073e6', '#fff')));
+        // Get accent color from theme customizer (default value if not set)
+        $universal_accent_color = explode(',', get_theme_mod('universal_accent_color', '#0073e6, #fff, #0073e7, #fff, #0073e8, #fff'));
+
+        // Check if the array has the expected number of elements
+        if ( count($universal_accent_color) < 6 ) {
+            // Ensure there are enough colors, filling with defaults if necessary
+            $universal_accent_color = array_pad($universal_accent_color, 6, '#fff');
+        }
+
+        // Initialize the variables with fallbacks if empty
+        $accent_color = !empty($universal_accent_color[0]) ? $universal_accent_color[0] : '#0073e6';
+        $accent_color_text = !empty($universal_accent_color[1]) ? $universal_accent_color[1] : '#fff';
+
+        $accent_color_light = !empty($universal_accent_color[4]) ? $universal_accent_color[4] : $accent_color;
+        $accent_color_text_light = !empty($universal_accent_color[5]) ? $universal_accent_color[5] : $accent_color_text;
+
+        $accent_color_dark = !empty($universal_accent_color[2]) ? $universal_accent_color[2] : $accent_color;
+        $accent_color_text_dark = !empty($universal_accent_color[3]) ? $universal_accent_color[3] : $accent_color_text;
 
         // Generate dynamic CSS with root variables
         $css = ":root {
-            caret-color: {$universal_accent_color[0]};
-            --universal-accent-color: {$universal_accent_color[0]};
-            --universal-accent-color-dark: {$universal_accent_color[2]};
-            --universal-accent-color-light: {$universal_accent_color[3]};
-            --universal-accent-color-text: {$universal_accent_color[1]};
-            --universal-accent-color-text-dark: {$universal_accent_color[5]};
-            --universal-accent-color-text-light: {$universal_accent_color[4]};
+            caret-color: {$accent_color};
+            --universal-accent-color: {$accent_color};
+            --universal-accent-color-dark: {$accent_color_dark};
+            --universal-accent-color-light: {$accent_color_light};
+            --universal-accent-color-text: {$accent_color_text};
+            --universal-accent-color-text-dark: {$accent_color_text_dark};
+            --universal-accent-color-text-light: {$accent_color_text_light};
         }";
-        // Return generated CSS string
-        return $css; //$css;
+
+        // Return the generated CSS string
+        return $css;
     }
 }
 
