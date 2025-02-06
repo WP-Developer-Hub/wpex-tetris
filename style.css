@@ -357,18 +357,16 @@ h3.comments-title span { background: #fff; padding-right: 15px; }
 .comment-author,
 .comment-author .author a:link,
 .comment-author .author a:visited { font-weight: 600 }
-.comment-content { margin-top: 5px display: block; width: 100%; flex-grow: 1;}
+.comment-content { margin-top: 5px; display: block; width: 100%; flex-grow: 1;}
 .comment-content p:last-child { margin: 0 }
 .comment-date { font-size: 0.786em; font-weight: normal; }
 .comment-date a { color: #888 }
-.comment-reply-link { font-size: 0.8em; color: #888; }
-.comment-reply-link:hover { text-decoration: none }
-.comment-reply-link:before { content: "\b7\a0" }
-.comment-reply-link:after { content: "\a0" }
+.reply { margin-top: 10px; padding-top: 5px; border-top: solid 1px #eee }
+.reply span:before { content: "\a0|\a0"; color: #888 }
+.reply span:first-child:before { content: "";}
+.comment-reply-link { font-size: 1em; }
 #respond { font-size: 1.143em }
-#cancel-comment-reply-link { display: block; font-size: 0.786em; font-weight: 600; margin: 0 0 10px; color: #C30; }
-.comment-reply-link:hover,
-#cancel-comment-reply-link:hover { color: #000 }
+#cancel-comment-reply-link { display: block; font-size: 0.786em; font-weight: 600; margin: 0 0 10px; }
 .commentlist .children { margin: 0 }
 #comments-title { border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding-top: 10px; padding-bottom: 10px; margin-top: 30px; background: #fbfbfb; text-align: center; color: #222; }
 #comments_wrap { margin-top: 15px }
