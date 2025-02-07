@@ -23,7 +23,7 @@ function wpex_comments_output($comment, $args, $depth) {
                         <?php echo get_avatar($comment, $size = '50'); ?>
                     </div><!-- /comment-avatar -->
                     <div class="comment-author vcard u-grid u-grid-gap-0">
-                        <?php printf(__('<cite class="author">%s</cite>', 'tetris'), get_comment_author_link()) ?>
+                    <?php printf('<span class="author" title="%s">%s</span>', esc_attr(get_comment_author()), get_comment_author_link()); ?>
                         <time datetime="<?php echo get_comment_date( 'c' ); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>" class="comment-date"><?php echo get_comment_date(); ?></a></time>
                     </div><!-- /comment-meta -->
                     <div class="comment-content">
