@@ -233,7 +233,7 @@ if ( ! function_exists( 'wpx_custom_link_pages' ) ) {
         $pagination_html .= wpx_page_indicator($current_page, $total_pages);
 
         // Pagination links container
-        $pagination_html .= '<div class="pagination-links ufc_dark">';
+        $pagination_html .= '<div class="pagination-links ufc_dark u-grid">';
 
         // Generate pagination links
         $pagination_html .= wp_link_pages($args);
@@ -241,7 +241,7 @@ if ( ! function_exists( 'wpx_custom_link_pages' ) ) {
         // Page Select Box
         $pagination_html .= '<select onchange="location = this.value;">';
         for ( $i = 1; $i <= $total_pages; $i++ ) {
-            $page_url = esc_url( get_permalink() . sprintf('%d/', $i) );
+            $page_url = esc_url( get_permalink() . sprintf('/%d/', $i) );
             $selected = ($i === $current_page) ? ' selected="selected"' : '';
             $pagination_html .= '<option value="' . $page_url . '"' . $selected . '> Page ' . esc_html($i) . '</option>';
         }

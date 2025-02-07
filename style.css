@@ -218,11 +218,12 @@ a:hover { cursor: pointer }
 .page-pagination select,
 .page-pagination span.dots,
 .page-pagination span.current { min-width: 50px; display: flex; justify-content: center; align-items: center; }
-.page-pagination select { text-align: unset; min-width: 65px; width: unset; line-height: unset;}
+.page-pagination select { text-align: unset; min-width: 75px; line-height: unset }
 .page-pagination .page-button::before { transition: background 250ms linear, color 250ms linear }
 .page-pagination a:hover { will-change: background, color; }
 .page-pagination a:hover,
 .page-pagination span.current { color: var(--universal-accent-color-text-color); background: var(--universal-accent-color); text-decoration: none; }
+.page-pagination .pagination-links { grid-template-columns: auto auto 1fr }
  
 /* Pages & sidebar widget-title
 ----------------------------------------------------------- */
