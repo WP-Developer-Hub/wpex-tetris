@@ -112,7 +112,7 @@ function wpex_setup() {
     add_theme_support('automatic-feed-links');
 
     // Add support for HTML5 markup
-    add_theme_support('html5', array('comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'style', 'script'));
+    add_theme_support('html5');
 
     // Add support for custom logo
     add_theme_support('custom-logo', array('height' => false, 'width' => false, 'flex-width' => true, 'flex-height' => true));
