@@ -739,11 +739,11 @@ if ( ! function_exists( 'wpx_spacer' ) ) {
 }
 
 /**
-* Removes or edits the 'Protected:' part from posts titles
-*/
+ * Removes or edits the 'Protected:' part from post titles
+ */
 if ( ! function_exists( 'wpex_remove_protected_text' ) ) {
     function wpex_remove_protected_text() {
-        return __('%s');
+        return '%s'; // No need for translation
     }
     add_filter( 'protected_title_format', 'wpex_remove_protected_text' );
 }
