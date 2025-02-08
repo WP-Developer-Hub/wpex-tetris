@@ -112,7 +112,28 @@ function wpex_setup() {
     add_theme_support('automatic-feed-links');
 
     // Add support for HTML5 markup
-    add_theme_support('html5');
+    add_theme_support('html5', array(
+        'comment-list',
+        'comment-form',
+        'search-form',
+        'gallery',
+        'caption',
+        'style',
+        'script',
+        'widgets',
+        'navigation-widgets',
+        'post-thumbnails',
+        'custom-logo',
+        'responsive-embeds',
+        'custom-header',
+        'custom-background',
+        'title-tag',
+        'align-wide',
+        'align-full',
+        'block-styles',
+        'editor-styles',
+        'html5-canvas'
+    ));
 
     // Add support for custom logo
     add_theme_support('custom-logo', array('height' => false, 'width' => false, 'flex-width' => true, 'flex-height' => true));
