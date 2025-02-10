@@ -335,22 +335,6 @@ function wpex_esc_title() {
 }
 
 /**
- * Move comment form fields
- *
- * @since 1.2.0
- */
-function wpex_move_comment_form_fields( $fields ) {
-    $comment_field = $fields['comment'];
-    $cookies_field = $fields['cookies'];
-    unset( $fields['comment'] );
-    unset( $fields['cookies'] );
-    $fields['comment'] = $comment_field;
-    $fields['cookies'] = $cookies_field;
-    return $fields;
-}
-add_filter( 'comment_form_fields', 'wpex_move_comment_form_fields' );
-
-/**
  * Change default read more
  *
  * @since 1.0.0
