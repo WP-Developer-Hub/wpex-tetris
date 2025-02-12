@@ -498,57 +498,6 @@ if ( ! function_exists( 'body_class_slugs' ) ) {
 }
 
 /**
- * Customize the comment form fields.
- *
- * @param array $fields The default comment form fields.
- * @return array        The modified comment form fields.
- */
-if ( ! function_exists( 'customize_comment_form' ) ) {
-    function customize_comment_form($fields) {
-        ob_start();
-        wp_editor('', 'comment', array(
-            'teeny' => true,
-            'tabindex' => '',
-            'wpautop' => false,
-            'tinymce' => false,
-            'quicktags' => true,
-            'editor_class' => '',
-            'textarea_rows' => 10,
-            'media_buttons' => false,
-            'tabfocus_elements' => ':prev,:next',
-        ));
-        $editor_contents = ob_get_clean();
-        $fields['comment'] = $editor_contents;
-        return $fields;
-    }
-    add_filter('comment_form_fields', 'customize_comment_form');
-}
-
-/**
- * Customize the quicktags settings for the comment editor.
- *
- * @param array $qtInit The default quicktags settings.
- * @return array        The modified quicktags settings.
- */
-if ( ! function_exists( 'customize_comment_quicktags' ) ) {
-    function customize_comment_quicktags($qtInit) {
-        if(!is_admin()) {
-            $qtInit['buttons'] = 'strong,em';
-        }
-        return $qtInit;
-    }
-    add_filter('quicktags_settings', 'customize_comment_quicktags');
-}
-
-add_action('wp_head', function() {
-    if ((is_single() || is_page()) && comments_open()) {
-        echo "<script>
-                window.onload = function() {QTags.addButton('eg_underline', 'u', '<u>', '</u>', 'u')};
-              </script>";
-    }
-});
-
-/**
  * Customize default settings for WordPress galleries.
  *
  * @param array $settings The default gallery settings.
