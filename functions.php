@@ -427,30 +427,7 @@ function wpex_pagination() {
 function ps_remove_avatar_srcset( $avatar, $id_or_email, $size, $default, $alt ) {
     return preg_replace('/(\ssrcset=)/', 'src=', $avatar);
 }
-add_filter('get_avatar', 'ps_remove_avatar_srcset', 10, 999999);
-
-function ps_limit_comment_length($comment) {
-    $max_length = 280;
-
-    if (strlen($comment['comment_content']) > $max_length) {
-        wp_die('<strong>Warning:</strong> Please keep your comment under ' . $max_length . ' characters.', 'Comment Length Warning', array('response' => 500, 'back_link' => true));
-    }
-    return $comment;
-}
-add_filter('preprocess_comment', 'ps_limit_comment_length');
-
-function tu_filter_comment_fields( $fields ) {
-    $commenter = wp_get_current_commenter();
-
-    $consent   = empty( $commenter['comment_author_email'] ) ? '' : ' checked="checked"';
-
-    $fields['cookies'] = '<p class="comment-form-cookies-consent"><label for="wp-comment-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"' . $consent . '>' . 'Save my name, email in this browser for the next time I comment.</label></p>';
-
-    return $fields;
-}
-add_filter( 'comment_form_default_fields', 'tu_filter_comment_fields', 20 );
-
-remove_filter('comment_text', 'make_clickable', 9);
+add_filter('get_avatar', 'ps_remove_avatar_srcset', 10, 999999);http://192.168.1.86:84/blog/list-test
 
 /**
  * Modify term name to title case (capitalize each word)
