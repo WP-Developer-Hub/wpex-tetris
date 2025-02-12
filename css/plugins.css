@@ -42,33 +42,6 @@
 /*  Tinymce Styles
 /*--------------------------*/
 
-/*---------- marctv-quicktags ----------*/
-#wp-comment-editor-container {
-    margin-bottom: 10px;
-}
-#wp-comment-editor-container .quicktags-toolbar {
-    background: #111;
-    border:none;
-    border-radius:var(--radius-inputs) var(--radius-inputs) 0 0;
-}
-#qt_comment_toolbar input[type="button"] {
-    background:transparent;
-    font-size: 18px;
-    min-width:35px;
-    color:#aaa;
-    border:none;
-    appearance:none;
-    border:1px solid var(--universal-accent-color);
-}
-#qt_comment_toolbar input[type="button"]:hover, #qt_comment_toolbar input[type="button"]:active {
-    background:var(--universal-accent-color);
-    color: var(--universal-accent-color-text-color);
-}
-#comment-form-comment textarea {
-    margin-top: -25px !important;
-    top: -25px !important;
-    min-height: 200px !important;
-}
 #comment-form-comment .comment-form-cookies-consent {
     display: flex !important;
 }
