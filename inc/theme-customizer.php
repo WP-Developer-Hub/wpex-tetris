@@ -17,14 +17,19 @@ require_once get_template_directory() . '/inc/class-wpx-customizer-controls/clas
 function universal_customizer_settings($wp_customize) {
     // Accent Color Setting and Control
     $wp_customize->add_setting('universal_accent_color', array(
-        'default' => '#0073e6',
+        'default' => array('#0073e6', '1', '1', '40', '-20'),
         'transport' => 'refresh',
-        'sanitize_callback' => 'sanitize_hex_color'
+        'sanitize_callback' => 'sanitize_text_field'
     ));
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'universal_accent_color', array(
+    $wp_customize->add_control(new WPX_Color_Picker_Control($wp_customize, 'universal_accent_color', array(
         'label' => __('Accent Color', 'tetris'),
         'section' => 'colors',
-        'mode' => 'full',
+        'type' => 'text',
+        'input_attrs' => array(
+            'step' => 1,
+            'min' => -50,
+            'max' => 50,
+        ),
     )));
 
     // Title & Tagline Visibility

@@ -52,7 +52,20 @@ function wpex_setup() {
     // Global content width var
     global $content_width;
     $content_width = 970;
-    
+    // Get accent color from theme customizer (default value if not set)
+    $universal_accent_color = explode(',', get_theme_mod('universal_accent_color', '#0073e6, #fff, #0073e7, #fff, #0073e8, #fff'));
+
+    // Check if the array has the expected number of elements
+    if ( count($universal_accent_color) < 6 ) {
+        // Ensure there are enough colors, filling with defaults if necessary
+        $universal_accent_color = array_pad($universal_accent_color, 6, '#fff');
+    }
+
+    // Initialize the variables with fallbacks if empty
+    $accent_color = !empty($universal_accent_color[0]) ? $universal_accent_color[0] : '#0073e6';
+    $accent_color_light = !empty($universal_accent_color[4]) ? $universal_accent_color[4] : $accent_color;
+    $accent_color_dark = !empty($universal_accent_color[2]) ? $universal_accent_color[2] : $accent_color;
+
     // Define an array of universal colors with names and corresponding colors
     $universal_colors = array(
         array(
@@ -63,7 +76,17 @@ function wpex_setup() {
         array(
             'name'  => __('Accent Color', 'tetris'),
             'slug'  => 'accent_color',
-            'color' => get_theme_mod('universal_accent_color', '#0073e6'), // Use theme mod or default color
+            'color' => $accent_color, // Use theme mod or default color
+        ),
+        array(
+            'name'  => __('Accent Color Light', 'tetris'),
+            'slug'  => 'accent_color_light',
+            'color' => $accent_color_light, // Use theme mod or default color
+        ),
+        array(
+            'name'  => __('Accent Color Dark', 'tetris'),
+            'slug'  => 'accent_color_dark',
+            'color' => $accent_color_dark, // Use theme mod or default color
         ),
         array(
             'name'  => __('Black', 'tetris'),
@@ -207,8 +230,8 @@ function wpex_setup() {
 
     // Add support for link color
     add_theme_support('link-color', array(
-        'color' => get_theme_mod('universal_accent_color', '#0073e6'),
-        'hover_color' => get_theme_mod('universal_accent_color', '#0073e6'),
+        'color' => $accent_color,
+        'hover_color' => $accent_color_light,
     ));
 
     // Add support for border

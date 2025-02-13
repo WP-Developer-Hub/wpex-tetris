@@ -133,6 +133,63 @@
   background-color: #005a87;
 }
 
+.wpx-range-group,
+.wpx-color-picker-group {
+  gap: 20px;
+  width: 100%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 100%;
+}
+
+.wpx-range-group {
+  gap: 4px;
+}
+
+.wpx-color-picker-group .wpx-color-picker-display {
+  width: 100%;
+  color: #fff;
+  height: 25px;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  background-color: #005a87;
+  grid-template-columns: 100%;
+  transition: background-color 250ms linear, color 250ms linear
+}
+
+.wpx-color-picker-group .wpx-range-value {
+  width: 100%;
+  display: grid;
+  color: #2c3338;
+  accent-color: #0073aa;
+  justify-content: space-between;
+  grid-template-columns: auto auto auto;
+}
+
+.wpx-color-picker-group .wpx-range-input {
+  width: 100%;
+  accent-color: #0073aa;
+  transition: accent-color 100ms ease;
+}
+
+.wpx-color-picker-group .wpx-range-input:hover {
+  accent-color: #005a87;
+}
+
+.wpx-color-picker-group .wpx-range-input:focus {
+  accent-color: #135e96;
+}
+
+.wpx-color-picker-group .wpx-swap-control {
+  gap: 10px;
+  width: 100%;
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 1fr auto;
+}
+
 .wpx_date_input::-webkit-datetime-edit-hour-field:focus,
 .wpx_date_input::-webkit-datetime-edit-minute-field:focus,
 .wpx_date_input::-webkit-datetime-edit-second-field:focus,

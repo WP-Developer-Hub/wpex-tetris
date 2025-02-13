@@ -261,111 +261,43 @@ if ( ! function_exists( 'wpx_custom_link_pages' ) ) {
 }
 
 /**
- * Convert hexadecimal color code to RGBA format.
- *
- * @param string $color The hexadecimal color code.
- * @param mixed $opacity Optional opacity value (default: false).
- * @return string The formatted RGBA color string.
- */
-if ( ! function_exists( 'universal_hex2rgba' ) ) {
-    function universal_hex2rgba($color, $opacity = false) {
-        $default = 'rgb(0,0,0)'; // Default color if no color provided
-    
-        // Return default color if no color provided
-        if(empty($color))
-            return $default;
-    
-        // Sanitize $color by removing "#" if provided
-        if ($color[0] == '#' ) {
-            $color = substr( $color, 1 );
-        }
-    
-        // Check if color has 6 or 3 characters and extract individual RGB values
-        if (strlen($color) == 6) {
-            $hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
-        } elseif ( strlen( $color ) == 3 ) {
-            $hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
-        } else {
-            return $default;
-        }
-    
-        // Convert hexadecimal values to decimal
-        $rgb =  array_map('hexdec', $hex);
-    
-        // Format color string based on opacity setting
-        if($opacity){
-            if($opacity== 1){
-                $opacity = 1.0;
-            }
-            $output = 'rgba('.implode(",",$rgb).','.$opacity.')';
-        } else {
-            $output = 'rgb('.implode(",",$rgb).')';
-        }
-    
-        // Return formatted color string
-        return $output;
-    }
-}
-
-/**
- * Determine if a color is light or dark.
- *
- * @param string $color The color code.
- * @return string|false The color code for text color (black or white) or false if no color provided.
- */
-if ( ! function_exists( 'universal_is_light_color' ) ) {
-    function universal_is_light_color($color) {
-        $default = 'rgb(0,0,0)'; // Default color if no color provided
-    
-        // Return false if no color provided
-        if (empty($color))
-            return false;
-    
-        // Sanitize $color by removing "#" if provided
-        if ($color[0] == '#') {
-            $color = substr($color, 1);
-        }
-    
-        // Check if color has 6 or 3 characters and extract individual RGB values
-        if (strlen($color) == 6) {
-            $hex = array($color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5]);
-        } elseif (strlen($color) == 3) {
-            $hex = array($color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2]);
-        } else {
-            return false;
-        }
-    
-        // Convert hexadecimal values to decimal
-        $rgb = array_map('hexdec', $hex);
-    
-        // Calculate perceived brightness
-        $brightness = ($rgb[0] * 299 + $rgb[1] * 587 + $rgb[2] * 114) / 1000;
-    
-        // Determine text color based on brightness
-        return $brightness > 128 ? "#000000" : "#FFFFFF";
-    }
-}
-
-/**
  * Generate dynamic CSS variables based on theme customizer settings.
  *
  * @return string The generated CSS string.
  */
 if ( ! function_exists( 'universal_dynamic_css' ) ) {
     function universal_dynamic_css() {
-        // Get background color, accent color, accent color text color, and max width from theme customizer
-        $universal_accent_color = get_theme_mod('universal_accent_color', '#0073e6');
-        $universal_accent_color_alt = universal_hex2rgba($universal_accent_color, 0.75);
-        $universal_accent_color_text_color = universal_is_light_color($universal_accent_color);
+        // Get accent color from theme customizer (default value if not set)
+        $universal_accent_color = explode(',', get_theme_mod('universal_accent_color', '#0073e6, #fff, #0073e7, #fff, #0073e8, #fff'));
+
+        // Check if the array has the expected number of elements
+        if ( count($universal_accent_color) < 6 ) {
+            // Ensure there are enough colors, filling with defaults if necessary
+            $universal_accent_color = array_pad($universal_accent_color, 6, '#fff');
+        }
+
+        // Initialize the variables with fallbacks if empty
+        $accent_color = !empty($universal_accent_color[0]) ? $universal_accent_color[0] : '#0073e6';
+        $accent_color_text = !empty($universal_accent_color[1]) ? $universal_accent_color[1] : '#fff';
+
+        $accent_color_light = !empty($universal_accent_color[4]) ? $universal_accent_color[4] : $accent_color;
+        $accent_color_text_light = !empty($universal_accent_color[5]) ? $universal_accent_color[5] : $accent_color_text;
+
+        $accent_color_dark = !empty($universal_accent_color[2]) ? $universal_accent_color[2] : $accent_color;
+        $accent_color_text_dark = !empty($universal_accent_color[3]) ? $universal_accent_color[3] : $accent_color_text;
 
         // Generate dynamic CSS with root variables
         $css = ":root {
-            --universal-accent-color: {$universal_accent_color};
-            --universal-accent-color-alt: {$universal_accent_color_alt};
-            --universal-accent-color-text-color: {$universal_accent_color_text_color};
+            caret-color: {$accent_color};
+            --universal-accent-color: {$accent_color};
+            --universal-accent-color-dark: {$accent_color_dark};
+            --universal-accent-color-light: {$accent_color_light};
+            --universal-accent-color-text: {$accent_color_text};
+            --universal-accent-color-text-dark: {$accent_color_text_dark};
+            --universal-accent-color-text-light: {$accent_color_text_light};
         }";
 
-        // Return generated CSS string
+        // Return the generated CSS string
         return $css;
     }
 }
