@@ -525,6 +525,7 @@ label:has(input[type="checkbox"]):only-child { margin-bottom: unset }
 textarea {
   max-width: var(--width-textarea);
   height: var(--height-textarea);
+  resize: vertical;
 }
 
 textarea:read-only,
