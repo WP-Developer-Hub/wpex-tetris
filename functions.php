@@ -363,10 +363,10 @@ function wpex_esc_title() {
  * @since 1.0.0
  */
 function wpex_new_excerpt_more($more) {
-    global $post;
-    return '...';
+    return '';
 }
 add_filter( 'excerpt_more', 'wpex_new_excerpt_more' );
+add_filter( 'the_content_more_link', 'wpex_new_excerpt_more' );
 
 /**
  * Creates custom excerpts
@@ -375,19 +375,19 @@ add_filter( 'excerpt_more', 'wpex_new_excerpt_more' );
  */
 if ( ! function_exists( 'wpex_excerpt' ) ) {
     function wpex_excerpt( $length = '20', $readmore = false ) {
-        $output = '<div class="u-wrap-text u-trim" style="--u-line-clamp: ' . $length . '">';
         global $post;
-        $id = $post->ID;
-        $length = apply_filters( 'wpex_excerpt_length', $length * 10 );
-        if ( has_excerpt( $id ) ) {
-            $output .= wp_trim_words( strip_tags( strip_shortcodes( get_the_excerpt( $id ) ) ), $length);
+        $output = '<div class="u-wrap-text u-trim" style="--u-line-clamp: ' . $length . '">';
+        $length = apply_filters('wpex_excerpt_length', $length * 10);
+        if (has_excerpt($post->ID)) {
+            $output .= wp_trim_words(strip_tags(strip_shortcodes($post->post_excerpt)), $length);
         } else {
-            $output .= wp_trim_words( strip_tags( strip_shortcodes( get_the_content( $id ) ) ), $length);
+            $output .= wp_trim_words(strip_tags(strip_shortcodes($post->post_content)), $length);
         }
         $output .= '</div>';
-        if ( $readmore == true ) {
-            $readmore_link = '<span class="wpex-readmore"><a href="'. get_permalink( $id ) .'#post-entry" title="'. __( 'continue reading', 'tetris' ) .'" rel="bookmark" class="u-block u-block-100 u-ta-c u-link-button u-tt-all-caps u-fs-16">'. __( 'Read more', 'tetris' ) .'</a></span>';
-            $output .= apply_filters( 'wpex_readmore_link', $readmore_link );
+        if ($readmore == true) {
+            $jump_point = strpos($post->post_content, '<!--more-->') !== false ? '#more-' . $post->ID : '#post-entry';
+            $readmore_link = '<span class="wpex-readmore"><a href="' . get_permalink($post->ID) . $jump_point . '" title="'. __( 'Continue reading', 'tetris' ) .'" rel="bookmark" class="u-block u-block-100 u-ta-c u-link-button u-tt-all-caps u-fs-16">'. __( 'Read more', 'tetris' ) .'</a></span>';
+            $output .= $readmore_link;
         }
         return $output;
     }
