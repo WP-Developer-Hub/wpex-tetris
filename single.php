@@ -40,7 +40,7 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
 
             <?php if ( !empty( get_the_content() ) ) : ?>
             <?php echo wpx_spacer(); ?>
-                <div class="entry">
+                <div id="post-entry" class="entry">
                     <div id="inner-post" class="inner-post">
                         <?php the_content(); // This is your main post content output ?>
                     </div><!-- .inner-post -->
