@@ -358,15 +358,13 @@ function wpex_esc_title() {
 }
 
 /**
- * Change default read more
+ * Kill dafault read more link
  *
- * @since 1.0.0
+ * @since 7.1.0
  */
-function wpex_new_excerpt_more($more) {
-    return '';
-}
-add_filter( 'excerpt_more', 'wpex_new_excerpt_more' );
-add_filter( 'the_content_more_link', 'wpex_new_excerpt_more' );
+
+add_filter('excerpt_more','__return_false', PHP_INT_MAX);
+add_filter('the_content_more_link','__return_false', PHP_INT_MAX);
 
 /**
  * Creates custom excerpts
