@@ -448,22 +448,5 @@ function wpex_pagination() {
 function ps_remove_avatar_srcset( $avatar, $id_or_email, $size, $default, $alt ) {
     return preg_replace('/(\ssrcset=)/', 'src=', $avatar);
 }
-add_filter('get_avatar', 'ps_remove_avatar_srcset', 10, 999999);http://192.168.1.86:84/blog/list-test
-
-/**
- * Modify term name to title case (capitalize each word)
- *
- * @param WP_Term $term    The term object being retrieved.
- * @param string  $taxonomy The taxonomy associated with the term.
- * @return WP_Term         The modified term object.
- */
-function ucfletter_tags($term, $taxonomy) {
-    // Check if term object and name are valid
-    if (isset($term->name) && is_string($term->name)) {
-        // Transform term name to title case
-        $term->name = ucfirst($term->name);
-    }
-    return $term;
-}
-add_filter('get_term', 'ucfletter_tags', 10, 2);
+add_filter('get_avatar', 'ps_remove_avatar_srcset', 10, 999999);
 
