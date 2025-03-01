@@ -85,7 +85,7 @@ function wpex_comments_output($comment, $args, $depth) {
                     ?>
                 </div>
             </div><!-- /comment-details -->
-        </li><!-- /comment -->
+        </div><!-- /comment -->
 <?php
 } //end wpex_comments_output()
 ?>
