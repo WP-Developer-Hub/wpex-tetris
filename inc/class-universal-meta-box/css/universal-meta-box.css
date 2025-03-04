@@ -1,0 +1,36 @@
+.universal-meta-table .square {
+    min-width: 40px;
+    text-align: center;
+    vertical-align: middle;
+}
+.universal-meta-table .button-link-delete {
+    border-color: #d63638 !important;
+}
+.universal-group {
+    display: flex;
+}
+.universal-group .universal-media-button {
+    border-radius: 0;
+    margin-right: -1px;
+}
+.universal-group .widefat {
+    transition: all 1s ease-in-out 0s;
+}
+.universal-media-button {
+    text-align: left;
+    padding: 10px !important;
+}
+.universal-media-button .dashicons {
+    vertical-align: middle;
+}
+.universal-media-button .universal-media-button_icon {
+    margin-right: 5px;
+}
+#universal-media-uploader .media-sidebar {
+    display: none;
+}
+#universal-media-uploader .media-toolbar,
+#universal-media-uploader .uploader-inline,
+#universal-media-uploader .attachments-wrapper .attachments {
+    right: 0;
+}
