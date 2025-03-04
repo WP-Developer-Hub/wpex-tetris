@@ -18,8 +18,10 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
             <?php get_template_part( 'formats/format', get_post_format() ); ?>
 			<!--  Show header on all post formats except quotes -->
             <header id="post-header">
-                <h1><?php the_title(); ?></h1>
-                <?php echo wpx_spacer(); ?>
+                <?php if (!empty(the_title())) : ?>
+                    <h1><?php the_title(); ?></h1>
+                    <?php echo wpx_spacer(); ?>
+                <?php endif; ?>
                 <ul class="single-post-meta clearfix">
                     <li class="single-post-meta-divider">
                         <strong><?php _e('Posted on', 'tetris'); ?>:</strong>
