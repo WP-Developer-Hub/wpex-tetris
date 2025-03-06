@@ -23,6 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <?php echo wpx_spacer('', '30'); ?>
         <?php else : ?>
             <?php echo wpex_get_post_media_placeholder(); ?>
+            <?php echo wpx_spacer('', '30'); ?>
         <?php endif; ?>
     <?php endif; ?>
 <?php else : ?>
