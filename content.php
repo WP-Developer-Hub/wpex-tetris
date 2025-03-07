@@ -19,7 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
         <div class="entry-text clearfix">
             <header class="u-wrap-text">
                 <h2>
-                    <a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>"><?php the_title(); ?></a>
+                    <a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>">
+                        <?php echo !empty(get_the_title()) ? get_the_title() : __('Untitled Post', 'tetris') . ' ' . get_the_ID(); ?>
+                    </a>
                 </h2>
             </header>
         <?php if(!post_password_required()):?>

@@ -626,7 +626,7 @@ if ( ! function_exists( 'wpex_remove_protected_text' ) ) {
     function wpex_remove_protected_text() {
         return '%s'; // No need for translation
     }
-    add_filter( 'protected_title_format', 'wpex_remove_protected_text' );
+    add_filter( 'protected_title_format', 'wpex_remove_protected_text', PHP_INT_MAX);
 }
 
 /**

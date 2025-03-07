@@ -347,7 +347,7 @@ add_action( 'after_setup_theme', 'wpex_setup' );
  * @since 1.2.0
  */
 function wpex_get_esc_title() {
-    return esc_attr( the_title_attribute( 'echo=0' ) );
+    return esc_attr(!empty(get_the_title()) ? the_title_attribute( 'echo=0' ) : __('Untitled Post', 'tetris') . ' ' . get_the_ID() );
 }
 
 /**
