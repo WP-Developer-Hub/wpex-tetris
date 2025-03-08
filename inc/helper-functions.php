@@ -478,7 +478,11 @@ if ( !function_exists('wpx_comments_popup_link') ) {
             if (comments_open() || (!comments_open() && '0' != get_comments_number())) {
                 echo '<li class="comment-scroll single-post-meta-divider">';
                 echo '<strong>' . __('With', 'tetris') . ': </strong>';
-                echo comments_popup_link($no_comments_text, $one_comment_text, $multiple_comments_text, 'comments-link', '');
+                if ( post_password_required() ) {
+                    echo comments_number($no_comments_text, $one_comment_text, $multiple_comments_text, 'comments-link', '');;
+                } else {
+                    echo comments_popup_link($no_comments_text, $one_comment_text, $multiple_comments_text, 'comments-link', '');
+                }
                 echo '</li>';
             }
         } else {
