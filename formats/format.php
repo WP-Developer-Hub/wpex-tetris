@@ -23,6 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <?php echo wpx_spacer('', '30'); ?>
         <?php else : ?>
             <?php echo wpex_get_post_media_placeholder(); ?>
+            <?php echo wpex_get_password_protected_label(); ?>
             <?php echo wpx_spacer('', '30'); ?>
         <?php endif; ?>
     <?php endif; ?>
@@ -36,6 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 ?>
             <?php else : ?>
                 <?php echo wpex_get_post_media_placeholder(); ?>
+                <?php echo wpex_get_password_protected_label(); ?>
             <?php endif; ?>
             <?php if ( get_theme_mod('universal_toggle_recent_post_badge', 'true')) : echo wpx_recent_post_badge(get_the_ID(), get_theme_mod('universal_recent_post_keep_badge_for', 7)); endif; ?>
         </a>
