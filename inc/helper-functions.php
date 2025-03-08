@@ -651,6 +651,7 @@ if ( ! function_exists( 'wpex_get_post_media_placeholder' ) ) {
 
         if ( post_password_required() ) {
             $output .= '<span class="dashicons dashicons-lock"></span>';
+            $output .= '<span class="screen-reader-text" aria-hidden="true">' . __( 'Password Protected', 'tetris' ) . '</span>';
         } else {
             $output .= '<span class="' . universal_get_post_format_icon_classes( get_post_format() ) . '"></span>';
         }
@@ -660,14 +661,5 @@ if ( ! function_exists( 'wpex_get_post_media_placeholder' ) ) {
 
         // Return the generated HTML
         return $output;
-    }
-}
-
-// Returns a screen-reader-friendly label for password-protected posts
-if ( ! function_exists( 'wpex_get_password_protected_label' ) ) {
-    function wpex_get_password_protected_label() {
-        if ( post_password_required() ) {
-            return '<span class="screen-reader-text" aria-hidden="true">' . __( 'Password Protected', 'tetris' ) . '</span>';
-        }
     }
 }
