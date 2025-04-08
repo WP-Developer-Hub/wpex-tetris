@@ -24,6 +24,10 @@ if ( have_posts()) : while (have_posts() ) : the_post(); ?>
     <div id="single-page-content" class="container clearfix">
         <!-- Page wrapper with post_class() applied -->
         <div id="page" <?php post_class('entry'); ?>>
+            <h1 class="screen-reader-text">
+                <?php echo sprintf( __( '%1$s page For %2$s', 'tetris' ), get_the_title(), get_bloginfo('name') ); ?>
+            </h1>
+            <h2 class="screen-reader-text"><?php the_title(); ?></h2>
             <div id="inner-page" class="u-pos-rel inner-post">
                 <?php the_content(); ?>
             </div><!-- .inner-post -->
