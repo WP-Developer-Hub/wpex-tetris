@@ -199,7 +199,7 @@ a:hover { cursor: pointer }
 #author-title { margin-top: 10px; }
 #single-author { margin-bottom: 30px; }
 #single-author h4 { font-size: 1.143em; center repeat-x; margin-bottom: 20px; }
-#single-author h4 span { background: #fff; padding-right: 15px; }
+#single-author h4 span { padding-right: 15px; }
 #author-image img { display: block; max-width: unset;}
 #author-bio p:last-child { margin: 0 }
  
