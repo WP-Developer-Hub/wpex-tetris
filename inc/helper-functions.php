@@ -676,7 +676,7 @@ if ( ! function_exists( 'wpex_get_post_media_placeholder' ) ) {
  */
 if ( !function_exists('wpex_get_post_date') ) {
     function wpex_get_post_date() {
-        $html = '<strong>' . esc_html__( 'Posted on', 'tetris' ) . ':</strong>';
+        $html = '<strong>' . esc_html__( 'Posted on', 'tetris' ) . ':</strong> ';
         $html .= '<time datetime="' . esc_attr( get_the_date( 'c' ) ) . '">';
         $html .= esc_html( get_the_date() );
         $html .= '</time>';
