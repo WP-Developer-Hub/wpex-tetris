@@ -663,3 +663,37 @@ if ( ! function_exists( 'wpex_get_post_media_placeholder' ) ) {
         return $output;
     }
 }
+
+/**
+ * Outputs the post date in a formatted HTML string.
+ *
+ * The function returns a strong tag with the text "Posted on:"
+ * followed by a time tag containing the post date.
+ * The time tag includes a datetime attribute for accessibility and SEO.
+ *
+ * @return string The generated HTML for the post date.
+ */
+
+function wpex_get_post_date() {
+    $html = '<strong>' . esc_html__( 'Posted on', 'tetris' ) . ':</strong>';
+    $html .= '<time datetime="' . esc_attr( get_the_date( 'c' ) ) . '">';
+    $html .= esc_html( get_the_date() );
+    $html .= '</time>';
+    return $html;
+}
+
+/**
+ * Outputs the post author link in a formatted HTML string.
+ *
+ * The function returns a strong tag with the text "By:"
+ * followed by the author's posts link.
+ * Allows for easy translation and filter customization.
+ *
+ * @return string The generated HTML for the post author link.
+ */
+function wpex_get_post_author() {
+    $html  = '<strong>' . esc_html__( 'By', 'tetris' ) . ':</strong> ';
+    $html .= get_the_author_posts_link();
+    return $html;
+}
+

@@ -21,13 +21,8 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                 <h1><?php echo !empty(get_the_title()) ? get_the_title() : __('Untitled Post', 'tetris') . ' ' . get_the_ID(); ?></h1>
                 <?php echo wpx_spacer(); ?>
                 <ul class="single-post-meta clearfix">
-                    <li class="single-post-meta-divider">
-                        <strong><?php _e('Posted on', 'tetris'); ?>:</strong>
-                        <time datetime="<?php echo esc_attr(get_the_date('c')); ?>">
-                            <?php echo esc_html(get_the_date()); ?>
-                        </time>
-                    </li>
-                    <li class="single-post-meta-divider" ><strong><?php _e('By', 'tetris'); ?>:</strong> <?php the_author_posts_link(); ?></li>
+                    <li class="single-post-meta-divider"><?php echo apply_filters('wpex_get_post_date', wpex_get_post_date()); ?></li>
+                    <li class="single-post-meta-divider" ><?php echo wpex_get_post_author(); ?></li>
                     <?php if (has_category()) : ?>
                         <li class="single-post-meta-divider">
                             <strong><?php _e('Under', 'tetris'); ?>:</strong>

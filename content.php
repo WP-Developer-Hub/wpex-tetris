@@ -32,13 +32,8 @@ if ( ! defined( 'ABSPATH' ) ) {
             <p><?php echo __( 'This content is protected. Log in or enter the password to view the full content.', 'tetris' ); ?></p>
         <?php endif;?>
         <ul class="entry-meta">
-            <li>
-                <strong><?php _e('Posted on', 'tetris'); ?>:</strong>
-                <time datetime="<?php echo esc_attr(get_the_date('c')); ?>">
-                    <?php echo esc_html(get_the_date()); ?>
-                </time>
-            </li>
-            <li><strong><?php _e('By', 'tetris'); ?>:</strong> <?php the_author_posts_link(); ?></li>
+            <li><?php echo apply_filters('wpex_get_post_date', wpex_get_post_date()); ?></li>
+            <li><?php echo wpex_get_post_author(); ?></li>
             <?php wpx_comments_popup_link(); ?>
         </ul><!-- /entry-meta -->
     </div><!-- /entry-text -->
