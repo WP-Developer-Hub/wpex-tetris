@@ -476,7 +476,8 @@ if ( !function_exists('wpx_comments_popup_link') ) {
             }
 
             if (comments_open() || (!comments_open() && '0' != get_comments_number())) {
-                echo '<li class="comment-scroll single-post-meta-divider">';
+                $class = is_single() ? 'single-post-meta-divider' : '';
+                echo '<li' . ($class ? ' class="' . esc_attr($class) . '"' : '') . '>';
                 echo '<strong>' . __('With', 'tetris') . ': </strong>';
                 if ( post_password_required() ) {
                     echo comments_number($no_comments_text, $one_comment_text, $multiple_comments_text, 'comments-link', '');;
@@ -673,13 +674,14 @@ if ( ! function_exists( 'wpex_get_post_media_placeholder' ) ) {
  *
  * @return string The generated HTML for the post date.
  */
-
-function wpex_get_post_date() {
-    $html = '<strong>' . esc_html__( 'Posted on', 'tetris' ) . ':</strong>';
-    $html .= '<time datetime="' . esc_attr( get_the_date( 'c' ) ) . '">';
-    $html .= esc_html( get_the_date() );
-    $html .= '</time>';
-    return $html;
+if ( !function_exists('wpex_get_post_date') ) {
+    function wpex_get_post_date() {
+        $html = '<strong>' . esc_html__( 'Posted on', 'tetris' ) . ':</strong>';
+        $html .= '<time datetime="' . esc_attr( get_the_date( 'c' ) ) . '">';
+        $html .= esc_html( get_the_date() );
+        $html .= '</time>';
+        return $html;
+    }
 }
 
 /**
@@ -691,9 +693,10 @@ function wpex_get_post_date() {
  *
  * @return string The generated HTML for the post author link.
  */
-function wpex_get_post_author() {
-    $html  = '<strong>' . esc_html__( 'By', 'tetris' ) . ':</strong> ';
-    $html .= get_the_author_posts_link();
-    return $html;
+if ( !function_exists('wpex_get_post_author') ) {
+    function wpex_get_post_author() {
+        $html  = '<strong>' . esc_html__( 'By', 'tetris' ) . ':</strong> ';
+        $html .= get_the_author_posts_link();
+        return $html;
+    }
 }
-
