@@ -676,11 +676,12 @@ if ( ! function_exists( 'wpex_get_post_media_placeholder' ) ) {
  */
 if ( !function_exists('wpex_get_post_date') ) {
     function wpex_get_post_date() {
-        $html = '<strong>' . esc_html__( 'Posted on', 'tetris' ) . ':</strong> ';
-        $html .= '<time datetime="' . esc_attr( get_the_date( 'c' ) ) . '">';
-        $html .= esc_html( get_the_date() );
-        $html .= '</time>';
-        return $html;
+        $show_modified_date = get_theme_mod('universal_toggle_show_post_modified_date', true);
+        $date = $show_modified_date ? get_the_modified_date() : get_the_date();
+        $date_c = $show_modified_date ? get_the_modified_date('c') : get_the_date('c');
+        $is_edited = (get_the_date('Y-m-d') !== get_the_modified_date('Y-m-d'));
+        $label = ($show_modified_date && $is_edited ? __('Edited on', 'tetris') : __('Posted on', 'tetris'));
+        return '<strong>' . $label . ':</strong> <time datetime="' . esc_attr($date_c) . '">' . esc_html($date) . '</time>';
     }
 }
 

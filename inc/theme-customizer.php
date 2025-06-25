@@ -57,6 +57,28 @@ function universal_customizer_settings($wp_customize) {
         'description' => __('This panel contains various settings for customizing the theme.', 'tetris'),
     ));
 
+    // General Settings Section
+    $wp_customize->add_section('universal_other_settings_section', array(
+        'title' => __('Other Settings', 'tetris'),
+        'priority' => 99,
+        'panel' => 'universal_theme_settings_panel',
+        'description' => __('This section contains   settings for your theme.', 'tetris'),
+    ));
+
+    // Toggle Show Modified Date
+    $wp_customize->add_setting('universal_toggle_show_post_modified_date', array(
+        'default' => false, // Use boolean, not string
+        'transport' => 'refresh',
+        'sanitize_callback' => 'rest_sanitize_boolean', // Or 'absint' if not available
+    ));
+    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_show_post_modified_date', array(
+            'label' => __('Toggle Show Modified Date', 'tetris'),
+            'description' => __('Enable or disable the display of the modified date on posts.', 'tetris'),
+            'section' => 'universal_other_settings_section',
+            'type' => 'checkbox',
+        )
+    ));
+
     // Grid Settings Section
     $wp_customize->add_section('universal_grid_item_settings_section', array(
         'title' => __('Grid Item Settings', 'tetris'),
