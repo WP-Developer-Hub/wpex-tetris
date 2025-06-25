@@ -57,12 +57,12 @@ function universal_customizer_settings($wp_customize) {
         'description' => __('This panel contains various settings for customizing the theme.', 'tetris'),
     ));
 
-    // General Settings Section
+    // Other Settings Section
     $wp_customize->add_section('universal_other_settings_section', array(
         'title' => __('Other Settings', 'tetris'),
         'priority' => 99,
         'panel' => 'universal_theme_settings_panel',
-        'description' => __('This section contains   settings for your theme.', 'tetris'),
+         'description' => __('This section contains miscellaneous settings related to the theme.', 'tetris'),
     ));
 
     // Toggle Show Modified Date
