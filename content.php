@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <p><?php echo __( 'This content is protected. Log in or enter the password to view the full content.', 'tetris' ); ?></p>
         <?php endif;?>
         <ul class="entry-meta">
-            <li><?php echo apply_filters('wpex_get_post_date', wpex_get_post_date()); ?></li>
+            <li><?php echo wpex_get_post_date(); ?></li>
             <li><?php echo wpex_get_post_author(); ?></li>
             <?php wpx_comments_popup_link(); ?>
         </ul><!-- /entry-meta -->

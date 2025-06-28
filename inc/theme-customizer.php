@@ -58,25 +58,28 @@ function universal_customizer_settings($wp_customize) {
     ));
 
     // Other Settings Section
-    $wp_customize->add_section('universal_other_settings_section', array(
-        'title' => __('Other Settings', 'tetris'),
-        'priority' => 99,
+    $wp_customize->add_section('universal_general_settings_section', array(
+        'title' => __('General Settings', 'tetris'),
+        'priority' => 30,
         'panel' => 'universal_theme_settings_panel',
-         'description' => __('This section contains miscellaneous settings related to the theme.', 'tetris'),
+        'description' => __('This section contains General settings.', 'tetris'),
     ));
 
-    // Toggle Show Modified Date
-    $wp_customize->add_setting('universal_toggle_show_post_modified_date', array(
-        'default' => false, // Use boolean, not string
-        'transport' => 'refresh',
-        'sanitize_callback' => 'rest_sanitize_boolean', // Or 'absint' if not available
+    // Date Display Options
+    $wp_customize->add_setting('universal_date_display_option', array(
+        'default' => 'date',
+        'sanitize_callback' => 'sanitize_text_field',
     ));
-    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_show_post_modified_date', array(
-            'label' => __('Toggle Show Modified Date', 'tetris'),
-            'description' => __('Enable or disable the display of the modified date on posts.', 'tetris'),
-            'section' => 'universal_other_settings_section',
-            'type' => 'checkbox',
-        )
+
+    $wp_customize->add_control('universal_date_display_option', array(
+        'label' => __('Choose Post Date Type', 'tetris'),
+        'description' => __('Select which date to display.', 'tetris'),
+        'section' => 'universal_general_settings_section',
+        'type' => 'select',
+        'choices' => array(
+            'date' => __('Published Date', 'tetris'),
+            'modified_date'=> __('Modified Date', 'tetris'),
+        ),
     ));
 
     // Grid Settings Section
