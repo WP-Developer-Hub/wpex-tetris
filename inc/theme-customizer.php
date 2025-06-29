@@ -15,6 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once get_template_directory() . '/inc/class-wpx-customizer-controls/class-wpx-customizer-controls.php';
 
 function universal_customizer_settings($wp_customize) {
+    
+    // Divider Setting
+    $wp_customize->add_setting('universal_divider', array(
+        'sanitize_callback' => '__return_true',
+    ));
+
     // Accent Color Setting and Control
     $wp_customize->add_setting('universal_accent_color', array(
         'default' => array('#0073e6', '1', '1', '40', '-20'),
@@ -102,12 +108,9 @@ function universal_customizer_settings($wp_customize) {
         'type' => 'radio',
     )));
 
-    $wp_customize->add_setting('wpx_divider', array(
-        'sanitize_callback' => '__return_true',
-    ));
-
-    $wp_customize->add_control(new WPX_Divider($wp_customize, 'wpx_divider', array(
+    $wp_customize->add_control(new WPX_Divider($wp_customize, 'universal_aspect_ratio_divider', array(
         'section' => 'universal_grid_item_settings_section',
+        'settings' => 'universal_divider',
     )));
 
     // Toggle Recent Post Badge
@@ -143,17 +146,9 @@ function universal_customizer_settings($wp_customize) {
         ),
     ));
 
-    // Toggle Read More Link
-    $wp_customize->add_setting('universal_toggle_read_more_link', array(
-        'default' => 'true',
-        'transport' => 'refresh',
-        'sanitize_callback' => 'sanitize_text_field',
-    ));
-    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_read_more_link', array(
-       'label' => __('Toggle Read More Link', 'tetris'),
-       'description' => __('Enable or disable the read more link below the post excerpt on the grid item.', 'tetris'),
-       'section' => 'universal_grid_item_settings_section',
-       'type' => 'checkbox',
+    $wp_customize->add_control(new WPX_Divider($wp_customize, 'universal_recent_post_badge_divider', array(
+        'section' => 'universal_grid_item_settings_section',
+        'settings' => 'universal_divider',
     )));
 
     // Excerpt Length
@@ -175,6 +170,19 @@ function universal_customizer_settings($wp_customize) {
             'inputmode' => 'numeric',
         ),
     ));
+
+    // Toggle Read More Link
+    $wp_customize->add_setting('universal_toggle_read_more_link', array(
+        'default' => 'true',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_read_more_link', array(
+       'label' => __('Toggle Read More Link', 'tetris'),
+       'description' => __('Enable or disable the read more link below the post excerpt on the grid item.', 'tetris'),
+       'section' => 'universal_grid_item_settings_section',
+       'type' => 'checkbox',
+    )));
 
     // Post Page Settings Section
     $wp_customize->add_section('universal_single_post_page_settings_section', array(
