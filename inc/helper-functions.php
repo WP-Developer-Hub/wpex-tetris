@@ -676,11 +676,36 @@ if ( ! function_exists( 'wpex_get_post_media_placeholder' ) ) {
  */
 if ( !function_exists('wpex_get_post_date') ) {
     function wpex_get_post_date() {
-        $html = '<strong>' . esc_html__( 'Posted on', 'tetris' ) . ':</strong> ';
-        $html .= '<time datetime="' . esc_attr( get_the_date( 'c' ) ) . '">';
-        $html .= esc_html( get_the_date() );
-        $html .= '</time>';
-        return $html;
+        $date_style = get_theme_mod( 'universal_date_display_option', 'date' );
+
+        $original_date = get_the_date();
+        $original_date_c = get_the_date('c');
+        $modified_date = get_the_modified_date();
+        $modified_date_c = get_the_modified_date('c');
+
+        $date_c = '';
+        $post_date = '';
+        $show_modified_date = false;
+        $is_edited =( get_the_date('Y-m-d') !== get_the_modified_date('Y-m-d'));
+
+        switch ($date_style) {
+            case 'modified_date':
+                $show_modified_date = true;
+                $date_c = $modified_date_c;
+                $post_date = $modified_date;
+                break;
+            case 'date':
+            default:
+                $date_c = $original_date_c;
+                $post_date = $original_date;
+                break;
+        }
+
+        $post_date_label = ($show_modified_date && $is_edited ? __('Edited on', 'tetris') : __('Posted on', 'tetris'));
+
+        $output = '<strong>' . esc_html($post_date_label) . ':</strong> <time datetime="' . esc_attr($date_c) . '" itemprop="datePublished">' . esc_html($post_date) . '</time>';
+
+        return $output;
     }
 }
 

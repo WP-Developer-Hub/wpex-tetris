@@ -21,7 +21,7 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                 <h1><?php echo !empty(get_the_title()) ? get_the_title() : __('Untitled Post', 'tetris') . ' ' . get_the_ID(); ?></h1>
                 <?php echo wpx_spacer(); ?>
                 <ul class="single-post-meta clearfix">
-                    <li class="single-post-meta-divider"><?php echo apply_filters('wpex_get_post_date', wpex_get_post_date()); ?></li>
+                    <li class="single-post-meta-divider"><?php echo wpex_get_post_date(); ?></li>
                     <li class="single-post-meta-divider" ><?php echo wpex_get_post_author(); ?></li>
                     <?php if (has_category()) : ?>
                         <li class="single-post-meta-divider">

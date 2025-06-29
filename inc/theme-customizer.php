@@ -15,6 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once get_template_directory() . '/inc/class-wpx-customizer-controls/class-wpx-customizer-controls.php';
 
 function universal_customizer_settings($wp_customize) {
+    
+    // Divider Setting
+    $wp_customize->add_setting('universal_divider', array(
+        'sanitize_callback' => '__return_true',
+    ));
+
     // Accent Color Setting and Control
     $wp_customize->add_setting('universal_accent_color', array(
         'default' => array('#0073e6', '1', '1', '40', '-20'),
@@ -57,6 +63,30 @@ function universal_customizer_settings($wp_customize) {
         'description' => __('This panel contains various settings for customizing the theme.', 'tetris'),
     ));
 
+    // General Settings Section
+    $wp_customize->add_section('universal_general_settings_section', array(
+        'title' => __('General Settings', 'tetris'),
+        'priority' => 30,
+        'panel' => 'universal_theme_settings_panel',
+        'description' => __('This section contains General settings.', 'tetris'),
+    ));
+
+    // Date Display Options
+    $wp_customize->add_setting('universal_date_display_option', array(
+        'default' => 'date',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('universal_date_display_option', array(
+        'label' => __('Choose Post Date Type', 'tetris'),
+        'description' => __('Select which date to display.', 'tetris'),
+        'section' => 'universal_general_settings_section',
+        'type' => 'select',
+        'choices' => array(
+            'date' => __('Published Date', 'tetris'),
+            'modified_date'=> __('Modified Date', 'tetris'),
+        ),
+    ));
+
     // Grid Settings Section
     $wp_customize->add_section('universal_grid_item_settings_section', array(
         'title' => __('Grid Item Settings', 'tetris'),
@@ -76,6 +106,11 @@ function universal_customizer_settings($wp_customize) {
         'description' => __('Select the aspect ratio for grid item images. Choose "auto" for the default or "1:1" for a square aspect ratio.', 'tetris'),
         'section' => 'universal_grid_item_settings_section',
         'type' => 'radio',
+    )));
+
+    $wp_customize->add_control(new WPX_Divider($wp_customize, 'universal_aspect_ratio_divider', array(
+        'section' => 'universal_grid_item_settings_section',
+        'settings' => 'universal_divider',
     )));
 
     // Toggle Recent Post Badge
@@ -111,17 +146,9 @@ function universal_customizer_settings($wp_customize) {
         ),
     ));
 
-    // Toggle Read More Link
-    $wp_customize->add_setting('universal_toggle_read_more_link', array(
-        'default' => 'true',
-        'transport' => 'refresh',
-        'sanitize_callback' => 'sanitize_text_field',
-    ));
-    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_read_more_link', array(
-       'label' => __('Toggle Read More Link', 'tetris'),
-       'description' => __('Enable or disable the read more link below the post excerpt on the grid item.', 'tetris'),
-       'section' => 'universal_grid_item_settings_section',
-       'type' => 'checkbox',
+    $wp_customize->add_control(new WPX_Divider($wp_customize, 'universal_recent_post_badge_divider', array(
+        'section' => 'universal_grid_item_settings_section',
+        'settings' => 'universal_divider',
     )));
 
     // Excerpt Length
@@ -143,6 +170,19 @@ function universal_customizer_settings($wp_customize) {
             'inputmode' => 'numeric',
         ),
     ));
+
+    // Toggle Read More Link
+    $wp_customize->add_setting('universal_toggle_read_more_link', array(
+        'default' => 'true',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_read_more_link', array(
+       'label' => __('Toggle Read More Link', 'tetris'),
+       'description' => __('Enable or disable the read more link below the post excerpt on the grid item.', 'tetris'),
+       'section' => 'universal_grid_item_settings_section',
+       'type' => 'checkbox',
+    )));
 
     // Post Page Settings Section
     $wp_customize->add_section('universal_single_post_page_settings_section', array(
@@ -171,7 +211,6 @@ function universal_customizer_settings($wp_customize) {
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field',
     ));
-
     $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_post_tags', array(
         'label' => __('Toggle Post Tags', 'tetris'),
         'description' => __('Enable or disable the post tags on single post pages.', 'tetris'),
@@ -185,7 +224,6 @@ function universal_customizer_settings($wp_customize) {
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field',
     ));
-
     $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_post_author_box', array(
         'label' => __('Toggle Post Author Box', 'tetris'),
         'description' => __('Enable or disable the author box on single post pages.', 'tetris'),
