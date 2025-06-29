@@ -703,7 +703,7 @@ if ( !function_exists('wpex_get_post_date') ) {
 
         $post_date_label = ($show_modified_date && $is_edited ? __('Edited on', 'tetris') : __('Posted on', 'tetris'));
 
-        $output = '<strong>' . esc_html($post_date_label) . ':</strong> <time datetime="' . esc_attr($date_c) . '" itemprop="datePublished">' . esc_html($post_date) . '</time>';
+        $output = '<strong>' . esc_html($post_date_label) . ':</strong> <time datetime="' . esc_attr($date_c) . '">' . esc_html($post_date) . '</time>';
 
         return $output;
     }
