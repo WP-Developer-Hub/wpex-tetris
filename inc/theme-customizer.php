@@ -57,7 +57,7 @@ function universal_customizer_settings($wp_customize) {
         'description' => __('This panel contains various settings for customizing the theme.', 'tetris'),
     ));
 
-    // Other Settings Section
+    // General Settings Section
     $wp_customize->add_section('universal_general_settings_section', array(
         'title' => __('General Settings', 'tetris'),
         'priority' => 30,
@@ -70,7 +70,6 @@ function universal_customizer_settings($wp_customize) {
         'default' => 'date',
         'sanitize_callback' => 'sanitize_text_field',
     ));
-
     $wp_customize->add_control('universal_date_display_option', array(
         'label' => __('Choose Post Date Type', 'tetris'),
         'description' => __('Select which date to display.', 'tetris'),
@@ -101,6 +100,14 @@ function universal_customizer_settings($wp_customize) {
         'description' => __('Select the aspect ratio for grid item images. Choose "auto" for the default or "1:1" for a square aspect ratio.', 'tetris'),
         'section' => 'universal_grid_item_settings_section',
         'type' => 'radio',
+    )));
+
+    $wp_customize->add_setting('wpx_divider', array(
+        'sanitize_callback' => '__return_true',
+    ));
+
+    $wp_customize->add_control(new WPX_Divider($wp_customize, 'wpx_divider', array(
+        'section' => 'universal_grid_item_settings_section',
     )));
 
     // Toggle Recent Post Badge
@@ -196,7 +203,6 @@ function universal_customizer_settings($wp_customize) {
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field',
     ));
-
     $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_post_tags', array(
         'label' => __('Toggle Post Tags', 'tetris'),
         'description' => __('Enable or disable the post tags on single post pages.', 'tetris'),
@@ -210,7 +216,6 @@ function universal_customizer_settings($wp_customize) {
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field',
     ));
-
     $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_post_author_box', array(
         'label' => __('Toggle Post Author Box', 'tetris'),
         'description' => __('Enable or disable the author box on single post pages.', 'tetris'),

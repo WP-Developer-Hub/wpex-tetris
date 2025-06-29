@@ -48,9 +48,11 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
             <label class="wpx-control" tabindex="<?php echo esc_attr( $this->instance_number ); ?>">
                 <div class="wpx-toggle-control">
                     <div class="wpx-control-info">
-                        <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+                        <?php if ( $this->label ) : ?>
+                            <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+                        <?php endif; ?>
                         <?php if ( $this->description ) : ?>
-                            <p class="description"><?php echo esc_html( $this->description ); ?></p>
+                            <span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
                         <?php endif; ?>
                     </div>
                     <input type="checkbox" <?php $this->link(); ?> value="1" <?php checked( $this->value(), 1 ); ?> />
@@ -60,7 +62,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
             <?php
         }
     }
-    
+
     class WPX_Ratio_Control extends WPX_Customize_Control {
         public $type = 'radio'; // Define the type of control
 
@@ -77,8 +79,8 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
             <div class="wpx-control">
               <div class="wpx-ratio-control">
                 <div class="wpx-control-info">
-                  <span class="customize-control-title">Select Grid Thumbnail Aspect Ratio</span>
-                  <p class="description">Choose the aspect ratio for the post thumbnail on single post pages.</p>
+                   <span class="customize-control-title"><?php echo __('Select Grid Thumbnail Aspect Ratio', 'tetris'); ?></span>
+                   <span class="description customize-control-description"><?php echo __('Choose the aspect ratio for the post thumbnail on single post pages.', 'tetris'); ?></span>
                 </div>
                 <div class="wpx-ratio-group">
                   <!-- Square Ratio Option -->
@@ -118,7 +120,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                 <label id="_customize-label-<?php echo esc_attr($this->id); ?>" for="<?php echo esc_attr($this->id); ?>" class="customize-control-title"><?php echo esc_html($this->label); ?></label>
             <?php endif; ?>
             <?php if (!empty($this->description)) : ?>
-                <p id="_customize-description-<?php echo esc_attr($this->id); ?>" class="description customize-control-description"><?php echo esc_html($this->description); ?></p>
+                <span id="_customize-description-<?php echo esc_attr($this->id); ?>" class="description customize-control-description"><?php echo esc_html($this->description); ?></span>
             <?php endif; ?>
                 <?php
                 // Determine the input type
@@ -189,9 +191,9 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                     <?php endif; ?>
 
                     <?php if (!empty($this->description)) : ?>
-                        <p id="_customize-description-<?php echo esc_attr($this->id); ?>" class="description customize-control-description">
+                        <span id="_customize-description-<?php echo esc_attr($this->id); ?>" class="description customize-control-description">
                             <?php echo esc_html($this->description); ?>
-                        </p>
+                        </span>
                     <?php endif; ?>
 
                     <div class="wpx-color-picker-group">
@@ -284,6 +286,16 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
             </script>
 
             <?php
+        }
+    }
+
+    class WPX_Divider extends WPX_Customize_Control {
+        public $type = 'info_box';
+
+        public function render_content() {
+        ?>
+            <hr class="wpx-divider">
+        <?php
         }
     }
 }
