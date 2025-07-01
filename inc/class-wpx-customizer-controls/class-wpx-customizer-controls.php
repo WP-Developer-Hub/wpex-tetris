@@ -103,17 +103,22 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 
     }
 
-    class WPX_Wide_Fat_Control extends WPX_Customize_Control {
-        public $type = 'text'; // Default type, can be overridden
+    class WPX_Extended_Date_Time_Control extends WPX_Customize_Control {
+        public $type = 'date';
+        public $min = '';
+        public $max = '';
 
-        // Enqueue styles for the custom control
+        public function __construct( $manager, $id, $args = array() ) {
+            parent::__construct( $manager, $id, $args );
+            $this->min = isset( $args['min'] ) ? 'min="' . esc_attr($args['min']) . '"' : '';
+            $this->max = isset( $args['max'] ) ? 'max="' . esc_attr($args['max']) . '"' : '';
+        }
+
         public function enqueue() {
-            // Assuming the CSS file is in the 'class-wpx-customizer-controls' directory
             $css_url = $this->get_wpx_resource_url() . 'css/wp-customizer-controls.css';
             wp_enqueue_style( 'wpx-customize-controls', $css_url, array(), $this->wpxCustomControlsCssVersion );
         }
 
-        // Render the control's content
         public function render_content() {
             ?>
             <?php if (!empty($this->label)) : ?>
@@ -122,30 +127,27 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
             <?php if (!empty($this->description)) : ?>
                 <span id="_customize-description-<?php echo esc_attr($this->id); ?>" class="description customize-control-description"><?php echo esc_html($this->description); ?></span>
             <?php endif; ?>
-                <?php
-                // Determine the input type
-                switch ($this->type) {
-                    case 'date':
-                        $input_type = 'date';
-                        break;
-                    case 'time':
-                        $input_type = 'time';
-                        break;
-                    case 'datetime-local':
-                        $input_type = 'datetime-local';
-                        break;
-                    case 'month':
-                        $input_type = 'month';
-                        break;
-                    case 'week':
-                        $input_type = 'week';
-                        break;
-                    default:
-                        $input_type = 'date';
-                        break;
-                }
-                ?>
-            <input id="_customize-input-<?php echo esc_attr($this->id); ?>" type="<?php echo esc_attr($input_type); ?>" class="widefat wpx_date_input" <?php $this->link(); ?> value="<?php echo esc_attr($this->value()); ?>"/>
+
+            <?php
+            switch ($this->type) {
+                case 'time':
+                    $input_type = 'time';
+                    break;
+                case 'datetime-local':
+                    $input_type = 'datetime-local';
+                    break;
+                case 'month':
+                    $input_type = 'month';
+                    break;
+                case 'week':
+                    $input_type = 'week';
+                    break;
+                default:
+                    $input_type = 'date';
+                    break;
+            }
+            ?>
+            <input id="_customize-input-<?php echo esc_attr($this->id); ?>" type="<?php echo esc_attr($input_type); ?>" class="widefat wpx_date_input" <?php $this->link(); ?> value="<?php echo esc_attr($this->value()); ?>" <?php echo $this->min; ?> <?php echo $this->max; ?>/>
             <?php
         }
     }

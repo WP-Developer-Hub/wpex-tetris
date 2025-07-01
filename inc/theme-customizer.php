@@ -245,11 +245,11 @@ function universal_customizer_settings($wp_customize) {
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field',
     ));
-    $wp_customize->add_control(new WPX_Wide_Fat_Control($wp_customize, 'universal_footer_start_date', array(
-       'label' => __('Start Date', 'tetris'),
-       'description' => __('Select the date you started.', 'tetris'),
-       'section' => 'universal_footer_settings_section',
-        'type' => 'date',
+    $wp_customize->add_control(new WPX_Extended_Date_Time_Control($wp_customize, 'universal_footer_start_date', array(
+        'label' => __('Start Date', 'tetris'),
+        'description' => __('Select the date you started.', 'tetris'),
+        'section' => 'universal_footer_settings_section',
+        'max' => date('Y-m-d'),
     )));
 
     // Copyright Layout
@@ -266,4 +266,3 @@ function universal_customizer_settings($wp_customize) {
     ));
 }
 add_action('customize_register', 'universal_customizer_settings');
-
