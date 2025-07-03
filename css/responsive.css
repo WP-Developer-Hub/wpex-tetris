@@ -16,7 +16,7 @@
     .author-inner { flex-direction: column }
 }
 @media only screen and (min-width:768px) and (max-width:959px) {
-    #post { width: calc(100% - 250px) }
+    .has-sidebar{ width: calc(100% - 250px) }
 	#sidebar { width: 190px }
 	.sidebar-bg { background-image: url("../images/sidebar-bg-tablet.png") }
 	.children li.depth-2,
@@ -31,7 +31,7 @@
 	.search-entry-text { width: 240px }
 }
 @media only screen and (max-width:767px) {
-	#post { float: none; width: 100% }
+	.has-sidebar{ float: none; width: 100% }
     #sidebar { float: none; width: 100%; padding-bottom: 20px !important; }
     #sidebar .widget_search { margin-bottom: 10px }
     #sidebar .sidebar-widgets { display: none }

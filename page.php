@@ -23,7 +23,7 @@ get_header();
 if ( have_posts()) : while (have_posts() ) : the_post(); ?>
     <div id="single-page-content" class="container clearfix">
         <!-- Page wrapper with post_class() applied -->
-        <div id="page" <?php post_class('entry'); ?>>
+        <article id="page" <?php post_class('entry clearfix'); ?>>
             <h1 class="screen-reader-text">
                 <?php echo sprintf( __( '%1$s page For %2$s', 'tetris' ), get_the_title(), get_bloginfo('name') ); ?>
             </h1>
@@ -31,7 +31,7 @@ if ( have_posts()) : while (have_posts() ) : the_post(); ?>
             <div id="inner-page" class="u-pos-rel inner-post">
                 <?php the_content(); ?>
             </div><!-- .inner-post -->
-        </div><!-- .entry -->
+        </article><!-- .entry -->
     </div><!-- #single-page-content -->
 <?php endwhile; else: ?>
     <?php get_template_part( 'addons/addon-error-message' ); ?>
