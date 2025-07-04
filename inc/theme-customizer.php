@@ -123,7 +123,6 @@ function universal_customizer_settings($wp_customize) {
        'label' => __('Toggle Recent Post Badge', 'tetris'),
        'description' => __('Enable or disable the "New" badge on the top of the post thumbnail in grid items, positioned at the bottom-right corner.', 'tetris'),
        'section' => 'universal_grid_item_settings_section',
-       'type' => 'checkbox',
     )));
 
     // Recent Post Badge Age
@@ -181,7 +180,6 @@ function universal_customizer_settings($wp_customize) {
        'label' => __('Toggle Read More Link', 'tetris'),
        'description' => __('Enable or disable the read more link below the post excerpt on the grid item.', 'tetris'),
        'section' => 'universal_grid_item_settings_section',
-       'type' => 'checkbox',
     )));
 
     // Post Page Settings Section
@@ -202,7 +200,6 @@ function universal_customizer_settings($wp_customize) {
         'label' => __('Toggle Post Thumbnail', 'tetris'),
         'description' => __('Enable or disable the post thumbnail on single post pages.', 'tetris'),
         'section' => 'universal_single_post_page_settings_section',
-        'type' => 'checkbox',
     )));
 
     // Toggle Post Tags
@@ -215,7 +212,6 @@ function universal_customizer_settings($wp_customize) {
         'label' => __('Toggle Post Tags', 'tetris'),
         'description' => __('Enable or disable the post tags on single post pages.', 'tetris'),
         'section' => 'universal_single_post_page_settings_section',
-        'type' => 'checkbox',
     )));
 
     // Toggle Post Author Box
@@ -228,7 +224,6 @@ function universal_customizer_settings($wp_customize) {
         'label' => __('Toggle Post Author Box', 'tetris'),
         'description' => __('Enable or disable the author box on single post pages.', 'tetris'),
         'section' => 'universal_single_post_page_settings_section',
-        'type' => 'checkbox',
     )));
 
     // Footer Settings Section
