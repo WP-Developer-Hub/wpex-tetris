@@ -225,6 +225,27 @@ function universal_customizer_settings($wp_customize) {
        'section' => 'universal_grid_item_settings_section',
     )));
 
+    // Grid Settings Section
+    $wp_customize->add_section('universal_page_settings_section', array(
+        'title' => __('Page Settings', 'tetris'),
+        'priority' => 30,
+        'panel' => 'universal_theme_settings_panel',
+        'description' => __('This section contains settings related to Page.', 'tetris'),
+    ));
+
+    // Toggle Page Sidebar
+    $wp_customize->add_setting('universal_toggle_page_sidebar', array(
+        'default' => 'false',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_page_sidebar', array(
+        'label' => __('Toggle Page Sidebar', 'tetris'),
+        'description' => __('Enable or disable the sidebar on all page.', 'tetris'),
+        'section' => 'universal_page_settings_section',
+        
+    )));
+
     // Post Page Settings Section
     $wp_customize->add_section('universal_single_post_page_settings_section', array(
         'title' => __('Single Post Settings', 'tetris'),
