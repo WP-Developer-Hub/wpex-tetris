@@ -23,14 +23,14 @@ if ( ! function_exists( 'universal_display_media' ) ) {
         // Get post format (if supported)
         $post_format = get_post_format($post_id);
 
-        // $attachment_ids now contains the IDs based on the post format or condition
-        $attachment_ids = '';
+        // Determine the meta key part
+        $meta_key_part = (($post_format === 'gallery') ? 'image' : $post_format);
 
-        // Check if $post_format is not empty
-        if (!empty($post_format)) {
-            // Get the attachment IDs from post meta
-            $attachment_ids = get_post_meta($post_id, ('universal_local_' . ($post_format == "gallery" ? 'image' : $post_format) . '_attachment_ids'), true);
-        }
+        // Build the full meta key
+        $meta_key = ('universal_local_' . $meta_key_part . '_attachment_ids');
+
+        // Use a one-liner for the assignment
+        $attachment_ids = (!empty($post_format) ? get_post_meta($post_id, $meta_key, true) : '');
 
         $container = '';
         if ( !post_password_required($post_id) ) {
@@ -53,12 +53,11 @@ if ( ! function_exists( 'universal_display_media' ) ) {
         
                     $container .= gallery_shortcode($gallery_attr);
                 } else {
-                    if($post_format === 'audio'){
-                        $container .= '<div id="post-audio">';
-                    }else{
-                        $class = $item_count > 1 ?? 'class="u-media-16-9"';
-                        $container .= '<div id="post-media" ' . $class . '>';
-                    }
+                    $is_audio = ($post_format === 'audio');
+                    $id = ($is_audio ? 'post-audio' : 'post-media');
+
+                    $class_attr = ((!$is_audio && $item_count > 1) ? ' class="u-media-16-9"' : '');
+                    $container .= ('<div id="' . $id . '"' . $class_attr . '>');
 
                     // Determine if tracklist should be displayed based on the count of attachment IDs
                     $display_tracklist = ($item_count > 1);
@@ -369,10 +368,7 @@ if ( ! function_exists( 'universal_theme_custom_logo' ) ) {
 if ( ! function_exists( 'universal_search_filter_item_class' ) ) {
     function universal_search_filter_item_class($passed_string = false) {
         $post_format = (isset($_GET['post_format']) ? $_GET['post_format'] : 'all');
-
-        if ($passed_string == $post_format) {
-            return ' u-link-button-selected';
-        }
+        return (($passed_string == $post_format) ? ' u-link-button-selected' : '');
     }
 }
 
@@ -600,12 +596,9 @@ if ( ! function_exists( 'wpx_recent_post_badge' ) ) {
     function wpx_recent_post_badge($id, $number_of_days = 7, $pos = "br", $is_wide = false) {
         $post_date = get_the_date( 'U', $id );
         $current_date = current_time( 'timestamp' );
-        $date_diff = $current_date - $post_date;
         $classes = $is_wide ? 'u-block u-block-100 u-margin-0' : 'u-badge-' . $pos .' u-pos-abs';
-
-        if ( $date_diff < $number_of_days * DAY_IN_SECONDS ) {
-            return ' <span class="u-badge '. $classes .' u-fs-14 u-ta-c">' . __( 'New', 'tetris' ) . '</span>';
-        }
+        $is_recent = ($current_date - $post_date) < ($number_of_days * DAY_IN_SECONDS);
+        return $is_recent ? ' <span class="u-badge ' . $classes . ' u-fs-14 u-ta-c">' . __( 'New', 'tetris' ) . '</span>': '';
     }
 }
 
