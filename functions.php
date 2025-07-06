@@ -36,12 +36,11 @@ require_once $dir .'/inc/theme-customizer.php' ;
 require_once $dir .'/inc/scripts.php' ;
 require_once $dir .'/inc/widget-areas.php' ;
 require_once $dir .'/inc/helper-functions.php' ;
-if ( !is_admin() ) {
-    require_once $dir .'/inc/comments.php' ;
-    require_once $dir .'/inc/universal-menu-walker-2-0.php' ;
-}
-if ( is_admin() ) {
-    require_once $dir .'/inc/class-universal-meta-box/universal-meta-box.php' ;
+if (!is_admin()) {
+    require_once $dir .'/inc/comments.php';
+    require_once $dir .'/inc/universal-menu-walker-2-0.php';
+} else {
+    require_once $dir .'/inc/class-universal-meta-box/universal-meta-box.php';
 }
 
 /**
@@ -378,11 +377,11 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
         global $post;
         $output = '<div class="u-wrap-text u-trim" style="--u-line-clamp: ' . $length . '">';
         $length = apply_filters('wpex_excerpt_length', $length * 10);
-        if (has_excerpt($post->ID)) {
-            $output .= wp_trim_words(strip_tags(strip_shortcodes($post->post_excerpt)), $length);
-        } else {
-            $output .= wp_trim_words(strip_tags(strip_shortcodes($post->post_content)), $length);
-        }
+
+        // Get excerpt if available, otherwise use content
+        $text = has_excerpt($post->ID) ? $post->post_excerpt : $post->post_content;
+        $output .= wp_trim_words(strip_tags(strip_shortcodes($text)), $length);
+
         $output .= '</div>';
         if ($readmore == true) {
             $jump_point = strpos($post->post_content, '<!--more-->') !== false ? '#more-' . $post->ID : '#post-entry';
