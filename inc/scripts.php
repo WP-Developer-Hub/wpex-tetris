@@ -23,9 +23,11 @@ if ( ! function_exists( 'wpex_load_scripts' ) ) {
         *******************/
         $dir = get_template_directory_uri().'/css';
  
+        // Enqueue Dashicons only for users without plugin activation capability (non-admins)
         if (!current_user_can('activate_plugins')) {
             wp_enqueue_style('dashicons');
         }
+
         // Layout
         wp_enqueue_style( 'layout-ufg', $dir . '/ufg.css' );
  

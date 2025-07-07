@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 $classes = get_theme_mod('universal_aspect_ratio', 'u-media-1-1') !== "none" ? 'u-media-1-1' : '';
                 the_post_thumbnail('wpex-entry', ['alt'=> the_title_attribute(['echo' => false]), 'class' => $classes]);
             } else {
-                echo wpx_get_post_media_placeholder();
+                echo wpex_get_post_media_placeholder();
             }
 
             if ( get_theme_mod('universal_toggle_recent_post_badge', 'true') ) {
