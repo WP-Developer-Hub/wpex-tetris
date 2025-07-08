@@ -1,10 +1,21 @@
+:root {
+  --wpx-grey: #a8a8a5;
+  --wpx-grey-dark: #8a8a8a;
+  --wpx-white: #fff;
+  --wpx-blue: #0073aa;
+  --wpx-blue-dark: #005a87;
+  --wpx-blue-mid: #135e96;
+  --wpx-text: #2c3338;
+  --wpx-shadow: rgba(0, 0, 0, 0.1);
+}
+
 /* General Customizer Control Styles */
 .wpx-control {
   display: block;
   margin-top: 10px;
 }
 
-/* Divider*/
+/* Divider */
 .wpx-divider {
   margin-bottom: 0;
 }
@@ -40,8 +51,8 @@
   font-size: 36px;
   align-items: center;
   justify-content: center;
-  background-color: #a8a8a5;
-  border: 1px groove #a8a8a5;
+  background-color: var(--wpx-grey);
+  border: 1px groove var(--wpx-grey);
   transition: background-color 100ms ease, border 100ms ease;
 }
 
@@ -75,8 +86,8 @@
   position: relative;
   border-radius: 30px;
   display: inline-block;
-  border: 1px groove #a8a8a5;
-  background-color: #a8a8a5;
+  background-color: var(--wpx-grey);
+  border: 1px groove var(--wpx-grey);
   transition: background-color 100ms ease, border 100ms ease;
 }
 
@@ -87,17 +98,17 @@
   height: 22px;
   border-radius: 50%;
   position: absolute;
-  background-color: #fff;
   transition: transform 100ms ease;
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: var(--wpx-white);
+  box-shadow: 0 0 1px 1px var(--wpx-shadow);
 }
 
 /* Checked State */
 .wpx-control input[type="radio"]:checked+.wpx-ratio-card,
 .wpx-control input[type="checkbox"]:checked+.wpx-toggle-switch {
-  color: white;
-  border-color: #0073aa;
-  background-color: #0073aa;
+  color: var(--wpx-white);
+  border-color: var(--wpx-blue);
+  background-color: var(--wpx-blue);
 }
 
 .wpx-control input[type="checkbox"]:checked+.wpx-toggle-switch::before {
@@ -107,35 +118,35 @@
 /* Focus State */
 .wpx-control input[type="radio"]:hover+.wpx-ratio-card,
 .wpx-control input[type="checkbox"]:hover+.wpx-toggle-switch {
-  border-color: #135e96;
-  background-color: #135e96;
+  border-color: var(--wpx-blue-mid);
+  background-color: var(--wpx-blue-mid);
 }
 
 /* Hover State */
 .wpx-control input[type="radio"]:hover+.wpx-ratio-card,
 .wpx-control input[type="checkbox"]:hover+.wpx-toggle-switch {
-  border-color: #8a8a8a;
-  background-color: #8a8a8a;
+  border-color: var(--wpx-grey-dark);
+  background-color: var(--wpx-grey-dark);
 }
 
 .wpx-control input[type="radio"]:checked:hover+.wpx-ratio-card,
 .wpx-control input[type="checkbox"]:checked:hover+.wpx-toggle-switch {
-  border-color: #135e96;
-  background-color: #135e96;
+  border-color: var(--wpx-blue-mid);
+  background-color: var(--wpx-blue-mid);
 }
 
 /* Focus and Hover State */
 .wpx-control input[type="radio"]:focus:hover+.wpx-ratio-card,
 .wpx-control input[type="checkbox"]:focus:hover+.wpx-toggle-switch {
-  border-color: #005a87;
-  background-color: #005a87;
+  border-color: var(--wpx-blue-dark);
+  background-color: var(--wpx-blue-dark);
 }
 
 /* Active State */
 .wpx-control input[type="radio"]:active+.wpx-ratio-card,
 .wpx-control input[type="checkbox"]:active+.wpx-toggle-switch {
-  border-color: #005a87;
-  background-color: #005a87;
+  border-color: var(--wpx-blue-dark);
+  background-color: var(--wpx-blue-dark);
 }
 
 .wpx-range-group,
@@ -154,37 +165,37 @@
 
 .wpx-color-picker-group .wpx-color-picker-display {
   width: 100%;
-  color: #fff;
   height: 25px;
   display: grid;
   align-items: center;
   justify-items: center;
-  background-color: #005a87;
+  color: var(--wpx-white);
   grid-template-columns: 100%;
-  transition: background-color 250ms linear, color 250ms linear
+  background-color: var(--wpx-blue-dark);
+  transition: background-color 250ms linear, color 250ms linear;
 }
 
 .wpx-color-picker-group .wpx-range-value {
   width: 100%;
   display: grid;
-  color: #2c3338;
-  accent-color: #0073aa;
+  color: var(--wpx-text);
+  accent-color: var(--wpx-blue);
   justify-content: space-between;
   grid-template-columns: auto auto auto;
 }
 
 .wpx-color-picker-group .wpx-range-input {
   width: 100%;
-  accent-color: #0073aa;
+  accent-color: var(--wpx-blue);
   transition: accent-color 100ms ease;
 }
 
 .wpx-color-picker-group .wpx-range-input:hover {
-  accent-color: #005a87;
+  accent-color: var(--wpx-blue-dark);
 }
 
 .wpx-color-picker-group .wpx-range-input:focus {
-  accent-color: #135e96;
+  accent-color: var(--wpx-blue-mid);
 }
 
 .wpx-color-picker-group .wpx-swap-control {
@@ -203,9 +214,9 @@
 .wpx_date_input::-webkit-datetime-edit-week-field:focus,
 .wpx_date_input::-webkit-datetime-edit-month-field:focus,
 .wpx_date_input::-webkit-datetime-edit-year-field:focus  {
-  color: #fff;
-  border-color: #0073aa;
-  background-color: #0073aa;
+  color: var(--wpx-white);
+  border-color: var(--wpx-blue);
+  background-color: var(--wpx-blue);
 }
 
 .wpx_date_input::-moz-datetime-edit-hour-field:focus,
@@ -218,15 +229,15 @@
 .wpx_date_input::-moz-datetime-edit-week-field:focus,
 .wpx_date_input::-moz-datetime-edit-month-field:focus,
 .wpx_date_input::-moz-datetime-edit-year-field:focus  {
-  color: #fff;
-  border-color: #0073aa;
-  background-color: #0073aa;
+  color: var(--wpx-white);
+  border-color: var(--wpx-blue);
+  background-color: var(--wpx-blue);
 }
 
 ::selection{
-  color: #fff;
-  border-color: #0073aa;
-  background-color: #0073aa;
+  color: var(--wpx-white);
+  border-color: var(--wpx-blue);
+  background-color: var(--wpx-blue);
 }
 
 /* date, datetime-local, datetime, month, time & week patches */
