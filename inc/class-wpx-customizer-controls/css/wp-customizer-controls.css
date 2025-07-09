@@ -245,11 +245,11 @@
   appearance: none !important;
 }
 
-.wpex_upsell_section {
+.wpex_link_section {
   display: block !important;
 }
 
-.wpex_upsell_section .accordion-section-title {
+.wpex_link_section .accordion-section-title {
   display: block;
   text-decoration: none;
   color: var(--wpx-white) !important;
@@ -257,22 +257,27 @@
   background-color: var(--wpx-blue) !important;
 }
 
-.wpex_upsell_section .accordion-section-title .accordion-trigger {
+.wpex_link_section .accordion-section-title .accordion-trigger {
  color: inherit !important;
 }
 
-.wpex_upsell_section .accordion-section-title:hover {
+.wpex_link_section .accordion-section-title:hover {
   border-color: var(--wpx-blue-dark) !important;
   background-color: var(--wpx-blue-dark) !important;
 }
 
-.wpex_upsell_section .accordion-trigger {
+.wpex_link_section .accordion-section-title::focus {
+  border-color: var(--wpx-blue-mid) !important;
+  background-color: var(--wpx-blue-mid) !important;
+}
+
+.wpex_link_section .accordion-trigger {
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.wpex_upsell_section .accordion-section-title:after {
+.wpex_link_section .accordion-section-title:after {
   display: none !important;
 }
