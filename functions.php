@@ -36,6 +36,8 @@ require_once $dir .'/inc/theme-customizer.php' ;
 require_once $dir .'/inc/scripts.php' ;
 require_once $dir .'/inc/widget-areas.php' ;
 require_once $dir .'/inc/helper-functions.php' ;
+require_once $dir .'/inc/updates.php';
+
 if (!is_admin()) {
     require_once $dir .'/inc/comments.php';
     require_once $dir .'/inc/universal-menu-walker-2-0.php';
