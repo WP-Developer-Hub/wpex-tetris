@@ -33,6 +33,40 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
             return esc_url_raw($url);
         }
     }
+    
+    class WPX_Customize_Section extends WP_Customize_Section {
+        // Base class for extending WP_Customize_Control
+        
+        protected $wpxCustomSectionsCssVersion = '1.3';  // CSS version for custom controls
+        protected $wpxCustomSectionsJsVersion = '1.2';   // JS version for custom controls
+        protected static $tabindex_counter = 1;  // Static counter for tabindex
+
+        /**
+         * Get the resource URL.
+         *
+         * @return string The URL to the resource.
+         */
+        protected function get_wpx_resource_url() {
+            // Get the filesystem path of the current directory
+            $current_dir_path = wp_normalize_path(dirname(__FILE__));
+            
+            // Normalize the path of ABSPATH and the current directory
+            $root_path = wp_normalize_path(untrailingslashit(ABSPATH));
+            
+            // Replace the root path with the site URL
+            $url = str_replace(
+                $root_path,
+                home_url(),
+                $current_dir_path
+            );
+
+            // Append './' to the URL if it's not already included
+            $url = trailingslashit($url) . './';
+
+            // Return the URL, ensuring it's properly escaped
+            return esc_url_raw($url);
+        }
+    }
 
     class WPX_Toggle_Switch_Control extends WPX_Customize_Control {
         public $type = 'checkbox'; // Define the type of control
@@ -298,6 +332,43 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
         ?>
             <hr class="wpx-divider">
         <?php
+        }
+    }
+
+    class WPX_Upsell_Section extends WPX_Customize_Section {
+        /**
+         * The type of control being rendered
+         */
+        public $type = 'wpex-upsell-upsell';
+        /**
+         * The Upsell URL
+         */
+        public $url = '';
+        /**
+         * The Dashicon
+         */
+        public $dashicon = '';
+        /**
+         * Enqueue our scripts and styles
+         */
+        public function enqueue() {
+            $css_url = $this->get_wpx_resource_url() . 'css/wp-customizer-controls.css';
+            wp_enqueue_style( 'wpx-customize-controls', $css_url, array(), $this->wpxCustomControlsCssVersion );
+        }
+        /**
+         * Render the section, and the controls that have been added to it.
+         */
+        protected function render() {
+            ?>
+            <li id="accordion-section-<?php echo esc_attr($this->id); ?>" class="wpex_upsell_section accordion-section control-section-<?php echo esc_attr($this->id); ?>">
+                <a href="<?php echo esc_url($this->url); ?>" target="_blank" type="button" class="accordion-section-title" aria-expanded="false">
+                    <h3 class="accordion-trigger">
+                        <?php echo esc_html($this->title); ?>
+                        <span class="dashicons <?php echo esc_attr($this->dashicon); ?>"></span>
+                    </h3>
+                </a>
+            </li>
+            <?php
         }
     }
 }
