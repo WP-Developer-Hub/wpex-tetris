@@ -15,8 +15,6 @@ jobs:
       - name: WordPress Release Creator
         uses: aether-wp/create-public-release@v0.6.3
         with:
-          # Optional: customize these as needed
-          # path: 'wpex-tetris' # Path to your theme/plugin folder (default is repo root)
-          # main_file: 'style.css' # For themes, or main plugin file for plugins
+          path: 'wpex-tetris'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
