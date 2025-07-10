@@ -9,6 +9,9 @@ jobs:
   release:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write   # <-- This is important for creating releases
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -16,7 +19,6 @@ jobs:
       - name: Install zip and jq
         run: sudo apt-get update && sudo apt-get install -y zip jq
 
-      # Move all files except .git and .github into a folder for zipping
       - name: Prepare theme folder
         run: |
           mkdir wpex-tetris
@@ -32,7 +34,7 @@ jobs:
       - name: Get latest release tag
         id: get_release
         env:
-          GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           latest_tag=$(curl -s -H "Authorization: token $GH_TOKEN" https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r .tag_name)
           echo "LATEST_TAG=$latest_tag" >> $GITHUB_ENV
@@ -43,7 +45,7 @@ jobs:
       - name: Create GitHub Release if version changed
         id: create_release
         env:
-          GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [ "v$THEME_VERSION" != "$LATEST_TAG" ]; then
             gh release create "v$THEME_VERSION" wpex-tetris.zip \
