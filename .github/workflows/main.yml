@@ -3,7 +3,7 @@ name: Release Theme
 on:
   push:
     branches:
-      - master
+      - master   # or 'main' if that's your default branch
 
 jobs:
   release:
@@ -16,6 +16,7 @@ jobs:
       - name: Install zip and jq
         run: sudo apt-get update && sudo apt-get install -y zip jq
 
+      # Move all files except .git and .github into a folder for zipping
       - name: Prepare theme folder
         run: |
           mkdir wpex-tetris
@@ -30,8 +31,10 @@ jobs:
 
       - name: Get latest release tag
         id: get_release
+        env:
+          GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         run: |
-          latest_tag=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r .tag_name)
+          latest_tag=$(curl -s -H "Authorization: token $GH_TOKEN" https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r .tag_name)
           echo "LATEST_TAG=$latest_tag" >> $GITHUB_ENV
 
       - name: Zip theme folder
@@ -40,10 +43,8 @@ jobs:
       - name: Create GitHub Release if version changed
         id: create_release
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         run: |
-          THEME_VERSION=${THEME_VERSION}
-          LATEST_TAG=${LATEST_TAG}
           if [ "v$THEME_VERSION" != "$LATEST_TAG" ]; then
             gh release create "v$THEME_VERSION" wpex-tetris.zip \
               --title="v$THEME_VERSION" \
