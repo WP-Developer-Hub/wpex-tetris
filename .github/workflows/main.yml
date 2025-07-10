@@ -14,7 +14,5 @@ jobs:
 
       - name: WordPress Release Creator
         uses: aether-wp/create-public-release@v0.6.3
-        with:
-          path: 'wpex-tetris'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
