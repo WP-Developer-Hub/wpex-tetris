@@ -1,0 +1,22 @@
+name: Release Theme
+
+on:
+  push:
+    branches:
+      - master   # or 'main' if that's your default branch
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: WordPress Release Creator
+        uses: aether-wp/create-public-release@v0.6.3
+        with:
+          # Optional: customize these as needed
+          # path: 'wpex-tetris' # Path to your theme/plugin folder (default is repo root)
+          # main_file: 'style.css' # For themes, or main plugin file for plugins
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
