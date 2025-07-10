@@ -13,8 +13,37 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: WordPress Release Creator
-        uses: aether-wp/create-public-release@v0.6.3
-        with:
-          name: 'WordPress Theme Release'                # Optional: custom release name
-          token: ${{ secrets.GITHUB_TOKEN }}             # Required: GitHub token for authentication
+      - name: Install zip and jq
+        run: sudo apt-get update && sudo apt-get install -y zip jq
+
+      - name: Get theme version from style.css
+        id: get_version
+        run: |
+          version=$(grep -i "^Version:" wpex-tetris/style.css | head -n1 | awk '{print $2}')
+          echo "THEME_VERSION=$version" >> $GITHUB_ENV
+
+      - name: Get latest release tag
+        id: get_release
+        run: |
+          latest_tag=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r .tag_name)
+          echo "LATEST_TAG=$latest_tag" >> $GITHUB_ENV
+
+      - name: Zip theme folder
+        run: zip -r wpex-tetris.zip wpex-tetris
+
+      - name: Create GitHub Release if version changed
+        id: create_release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          THEME_VERSION=${THEME_VERSION}
+          LATEST_TAG=${LATEST_TAG}
+          if [ "v$THEME_VERSION" != "$LATEST_TAG" ]; then
+            gh release create "v$THEME_VERSION" wpex-tetris.zip \
+              --title="v$THEME_VERSION" \
+              --notes="Automated release for version $THEME_VERSION"
+            echo "RELEASE_CREATED=true" >> $GITHUB_ENV
+          else
+            echo "No new release needed."
+            echo "RELEASE_CREATED=false" >> $GITHUB_ENV
+          fi
