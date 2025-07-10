@@ -16,7 +16,5 @@ jobs:
       - name: WordPress Release Creator
         uses: aether-wp/create-public-release@v0.6.3
         with:
-          path: 'wpex-tetris'                       # Path to your theme folder
-          name: 'WordPress Theme Release'           # Name for the GitHub release (optional)
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub token for authentication
+          name: 'WordPress Theme Release'                # Optional: custom release name
+          token: ${{ secrets.GITHUB_TOKEN }}             # Required: GitHub token for authentication
