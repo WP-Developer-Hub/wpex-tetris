@@ -335,11 +335,11 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
         }
     }
 
-    class WPX_Upsell_Section extends WPX_Customize_Section {
+    class WPX_Link_Section extends WPX_Customize_Section {
         /**
          * The type of control being rendered
          */
-        public $type = 'wpex-upsell-upsell';
+        public $type = 'wpex-link-section';
         /**
          * The Upsell URL
          */
@@ -347,7 +347,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
         /**
          * The Dashicon
          */
-        public $dashicon = '';
+        public $dashicon = 'dashicons-admin-links';
         /**
          * Enqueue our scripts and styles
          */
@@ -360,7 +360,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
          */
         protected function render() {
             ?>
-            <li id="accordion-section-<?php echo esc_attr($this->id); ?>" class="wpex_upsell_section accordion-section control-section-<?php echo esc_attr($this->id); ?>">
+            <li id="accordion-section-<?php echo esc_attr($this->id); ?>" class="wpex_link_section accordion-section control-section-<?php echo esc_attr($this->id); ?>">
                 <a href="<?php echo esc_url($this->url); ?>" target="_blank" type="button" class="accordion-section-title" aria-expanded="false">
                     <h3 class="accordion-trigger">
                         <?php echo esc_html($this->title); ?>
