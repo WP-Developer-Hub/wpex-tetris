@@ -1,8 +1,53 @@
+
 # WP Tetris Plus
-**Maintained by [WP-Developer-Hub](https://github.com/WP-Developer-Hub/wpex-tetris)**
+**Maintained by [@DJABHipHop](https://github.com/BAProductions) under the [WP-Developer-Hub](https://github.com/WP-Developer-Hub/)** brand
 **Latest update:** July 9, 2025
 
 This repo keeps Tetris Free (by WPExplorer) modern, lightweight, and standards-compliant, with enhancements from my Universal Theme.
+
+## Instructions for wpex-tetris Users
+
+### Existing Users (Upgrading or Fixing on PHP 8+)
+If you are using the old Tetris theme ([wpexplorer/wpex-tetris](https://github.com/wpexplorer/wpex-tetris)) and your site is broken after upgrading to PHP 8 or newer:
+
+1. **Backup Your Site:**
+   Always backup your site and database before making changes.
+
+2. **Remove or Rename the Old Theme:**
+   - Connect to your website via FTP.
+   - Download a copy of the old `wpex-tetris` theme folder for backup, or simply rename the folder (e.g., `wpex-tetris-old`).
+   - Optionally, open `style.css` in the theme folder and rename the theme there as well to avoid conflicts.
+
+3. **Install the New Theme:**
+   - Download the latest release of the new theme from:
+     [https://github.com/WP-Developer-Hub/wpex-tetris/releases](https://github.com/WP-Developer-Hub/wpex-tetris/releases)
+   - Upload and activate this new theme in your WordPress dashboard.
+
+4. **Install the Migration Tool:**
+   - Download the migration tool from:
+     [https://github.com/WP-Developer-Hub/wpex-tetris-migration-tool](https://github.com/WP-Developer-Hub/wpex-tetris-migration-tool)
+   - Install and activate the plugin.
+
+5. **Run the Migration Tool:**
+   - Follow the on-screen instructions in the migration tool to migrate your content and settings.
+
+---
+
+### Existing Users (PHP 7.x or Old Theme Still Works)
+If you are **not** on PHP 8 or newer and the old theme is still working:
+
+- You only need to install the migration tool if you want to migrate to the new theme.
+- The old theme may continue to work, but it is **strongly recommended** to upgrade for security and future compatibility[2][3][5][8].
+
+---
+
+### New Users (Fresh Install)
+If you are a new user (not upgrading from the old theme):
+
+- Simply install the new theme from [WP-Developer-Hub/wpex-tetris releases](https://github.com/WP-Developer-Hub/wpex-tetris/releases).
+- You do **not** need the migration tool.
+
+---
 
 ## Key Features
 ## Options (via Customizer)
@@ -78,3 +123,5 @@ By default, **pages do not have a sidebar or title** for a clean look.
 - Gallery/caption styles are minimal for flexibility and performance.
 - Modern enhancements include background effects, text truncation, and responsive layouts.
 - Customize further as needed!
+- If you are on PHP 8 or newer and this is a fresh install, install both the theme and tools; otherwise, install the tool only.
+
