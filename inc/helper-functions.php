@@ -584,21 +584,37 @@ if ( ! function_exists('universal_get_post_format_icon_classes') ) {
 }
 
 /**
- * Display a "New" badge for recent posts.
+ * Display a "New" or "Sticky" badge for posts.
  *
- * This function checks if a post is published within a specific number of days
- * (default is 7 days) from the current date and appends a "New" badge if it is.
+ * This function checks if a post is considered "recent" (published within a configurable number of days, default 7).
+ * If the post is recent, it displays a "New" badge. If not, but the post is sticky, it displays a "Sticky" badge.
+ * If neither condition is met, no badge is shown.
  *
- * @param int $id The post ID to check the publication date.
- * @return string|void The "New" badge HTML if the post is recent, otherwise nothing.
+ * @param int    $id       The post ID to check.
+ * @param string $pos      Badge position class suffix (default: "br").
+ * @param bool   $is_wide  Whether to use the wide badge style.
+ * @return string          The badge HTML if applicable, otherwise an empty string.
  */
-if ( ! function_exists( 'wpx_recent_post_badge' ) ) {
-    function wpx_recent_post_badge($id, $number_of_days = 7, $pos = "br", $is_wide = false) {
-        $post_date = get_the_date( 'U', $id );
-        $current_date = current_time( 'timestamp' );
-        $classes = $is_wide ? 'u-block u-block-100 u-margin-0' : 'u-badge-' . $pos .' u-pos-abs';
+if (!function_exists('wpx_post_badge')) {
+    function wpx_post_badge($id, $pos = "br", $is_wide = false) {
+        $post_date = get_the_date('U', $id);
+        $current_date = current_time('timestamp');
+        $number_of_days = get_theme_mod('universal_recent_post_keep_badge_for', 7);
+        $classes = $is_wide ? 'u-block u-block-100 u-margin-0' : 'u-badge-' . $pos . ' u-pos-abs';
+
+        $is_sticky = is_sticky($id);
         $is_recent = ($current_date - $post_date) < ($number_of_days * DAY_IN_SECONDS);
-        return $is_recent ? ' <span class="u-badge ' . $classes . ' u-fs-14 u-ta-c">' . __( 'New', 'tetris' ) . '</span>': '';
+
+        if ($is_recent && $is_sticky) {
+            $label = __('New & Featured', 'tetris');
+        } elseif ($is_recent) {
+            $label = __('New', 'tetris');
+        } elseif ($is_sticky) {
+            $label = __('Featured', 'tetris');
+        } else {
+            $label = '';
+        }
+        return !empty($label) ? ' <span class="u-badge ' . $classes . ' u-fs-14 u-ta-c">' . $label . '</span>' : '';
     }
 }
 

@@ -32,15 +32,15 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="blog-entry-thumbnail" >
         <a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>" class="u-link-img u-pos-rel">
             <?php
-            if ( has_post_thumbnail() && !post_password_required() ) {
+            if (has_post_thumbnail() && !post_password_required()) {
                 $classes = get_theme_mod('universal_aspect_ratio', 'u-media-1-1') !== "none" ? 'u-media-1-1' : '';
                 the_post_thumbnail('wpex-entry', ['alt'=> the_title_attribute(['echo' => false]), 'class' => $classes]);
             } else {
                 echo wpex_get_post_media_placeholder();
             }
 
-            if ( get_theme_mod('universal_toggle_recent_post_badge', 'true') ) {
-                echo wpx_recent_post_badge(get_the_ID(), get_theme_mod('universal_recent_post_keep_badge_for', 7));
+            if (get_theme_mod('universal_toggle_post_badge', 'true')) {
+                echo wpx_post_badge(get_the_ID());
             }
             ?>
         </a>
