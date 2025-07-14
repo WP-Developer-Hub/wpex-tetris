@@ -129,6 +129,39 @@ function universal_customizer_settings($wp_customize) {
         ),
     ));
 
+    // Sidebar Settings Section
+    $wp_customize->add_section('universal_sidebar_settings_section', array(
+        'title' => __('Sidebar Settings', 'tetris'),
+        'priority' => 30,
+        'panel' => 'universal_theme_settings_panel',
+        'description' => __('Options for sidebar display and behavior.', 'tetris'),
+    ));
+
+    // Hide Search Box in Sidebar
+    $wp_customize->add_setting('universal_hide_sidebar_search', array(
+        'default' => false,
+        'sanitize_callback' => 'wp_validate_boolean',
+    ));
+    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_hide_sidebar_search', array(
+        'label' => __('Hide Search Box in Sidebar', 'tetris'),
+        'description' => __('Toggle to remove the search box from the sidebar area.', 'tetris'),
+        'section' => 'universal_sidebar_settings_section',
+        'settings' => 'universal_hide_sidebar_search',
+    )));
+
+    // Hide Sidebar Widgets on Mobile Devices
+    $wp_customize->add_setting('universal_hide_sidebar_mobile', array(
+        'default' => true,
+        'sanitize_callback' => 'wp_validate_boolean',
+    ));
+    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_hide_sidebar_mobile', array(
+        'label' => __('Hide Widgets on Mobile', 'tetris'),
+        'description' => __('Toggle to hide all sidebar widgets on screens 767px wide or less. Useful for a cleaner mobile layout.', 'tetris'),
+        'section' => 'universal_sidebar_settings_section',
+        'settings' => 'universal_hide_sidebar_mobile',
+    )));
+
+
     // Grid Settings Section
     $wp_customize->add_section('universal_grid_item_settings_section', array(
         'title' => __('Grid Item Settings', 'tetris'),
