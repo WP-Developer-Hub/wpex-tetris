@@ -235,10 +235,7 @@ function wpex_setup() {
     add_theme_support('appearance-tools');
 
     // Add support for link color
-    add_theme_support('link-color', array(
-        'color' => $accent_color,
-        'hover_color' => $accent_color_light,
-    ));
+    add_theme_support('link-color', array('color' => $accent_color, 'hover_color' => $accent_color_light));
 
     // Add support for border
     add_theme_support('border', $universal_colors);
@@ -351,7 +348,7 @@ add_action( 'after_setup_theme', 'wpex_setup' );
  * @since 1.2.0
  */
 function wpex_get_esc_title() {
-    return esc_attr(!empty(get_the_title()) ? the_title_attribute( 'echo=0' ) : __('Untitled Post', 'tetris') . ' ' . get_the_ID() );
+    return esc_attr(!empty(get_the_title()) ? the_title_attribute('echo=0') : __('Untitled Post', 'tetris') . ' ' . get_the_ID());
 }
 
 /**
