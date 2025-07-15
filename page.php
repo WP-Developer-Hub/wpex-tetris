@@ -20,7 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 
-$show_sidebar = get_theme_mod('universal_toggle_page_sidebar', true);
+$hide_sidebar = get_post_meta(get_the_ID(), 'wpex_enable_sidebar', true);
+$show_sidebar = (get_theme_mod('universal_toggle_page_sidebar', true) !== $hide_sidebar);
 
 if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
     <div id="single-page-content" class="container clearfix<?php echo ( $show_sidebar ? ' has-sidebar-bg' : '' ); ?>">
