@@ -57,20 +57,22 @@ if (!class_exists('WPEX_Sidebar_Metabox')) {
          * Render metabox content.
          */
         public function render_metabox( $post ) {
-            wp_nonce_field( basename(__FILE__), 'wpex_sidebar_nonce');
+            wp_nonce_field( basename(__FILE__), 'wpex_sidebar_nonce' );
 
-            $value = get_post_meta($post->ID, 'wpex_enable_sidebar', true) ?? WPEX_DEFAULT_SIDEBAR_BEHAVIOR;
+            $saved_value = WPEX_DEFAULT_SIDEBAR_BEHAVIOR ? '0' : '1';
+            $value = get_post_meta($post->ID, 'wpex_enable_sidebar', true);
 
             ?>
-                <label for="wpex_enable_sidebar" class="wpx-control">
-                    <div class="wpx-toggle-control">
-                        <div class="wpx-control-info">
-                            <?php echo esc_html__('Toggle Sidebar on this Page', 'tetris'); ?>
-                        </div>
-                        <input type="checkbox" name="wpex_enable_sidebar" id="wpex_enable_sidebar" value="0" <?php checked($value, 0); ?> />
-                        <span class="wpx-toggle-switch"></span>
+            <label for="wpex_enable_sidebar" class="wpx-control">
+                <div class="wpx-toggle-control">
+                    <div class="wpx-control-info">
+                        <?php echo esc_html__('Toggle Sidebar on this Page', 'tetris'); ?>
                     </div>
-                </label>
+                    <input type="checkbox" name="wpex_enable_sidebar" id="wpex_enable_sidebar" value="<?php echo esc_attr($saved_value); ?>" <?php checked($value, $saved_value); ?>
+                    />
+                    <span class="wpx-toggle-switch"></span>
+                </div>
+            </label>
             <?php
         }
 
