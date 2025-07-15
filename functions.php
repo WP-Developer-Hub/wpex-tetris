@@ -45,6 +45,9 @@ if (!is_admin()) {
     require_once $dir .'/inc/comments.php';
     require_once $dir .'/inc/universal-menu-walker-2-0.php';
 } else {
+    if(get_theme_mod('universal_toggle_page_sidebar', true)) {
+        require_once $dir .'/inc/wpex-sidebar-metabox.php';
+    }
     require_once $dir .'/inc/class-universal-meta-box/universal-meta-box.php';
 }
 
