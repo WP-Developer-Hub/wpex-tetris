@@ -75,9 +75,7 @@ if (!class_exists('WPEX_Theme_Auto_Updates')) {
                 }
             }
             // Fallback to source zip
-            if (empty($package_url) && isset($release->zipball_url)) {
-                $package_url = $release->zipball_url;
-            }
+            if (empty($package_url) && isset($release->zipball_url)) {$package_url = $release->zipball_url;}
             error_log('[Updater] Latest GitHub version: ' . $release->tag_name . ' | Package: ' . $package_url);
             return (object) array(
                 'version' => ltrim($release->tag_name, 'v'),
@@ -88,9 +86,7 @@ if (!class_exists('WPEX_Theme_Auto_Updates')) {
 
         private function is_api_error( $response ) {
             $is_error = ($response === false);
-            if ($is_error) {
-                error_log('[Updater] API response is error/false.');
-            }
+            if ($is_error) {error_log('[Updater] API response is error/false.');}
             return $is_error;
         }
 
