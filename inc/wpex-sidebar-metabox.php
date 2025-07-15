@@ -60,15 +60,15 @@ if (!class_exists('WPEX_Sidebar_Metabox')) {
             wp_nonce_field( basename(__FILE__), 'wpex_sidebar_nonce' );
 
             $saved_value = WPEX_DEFAULT_SIDEBAR_BEHAVIOR ? 0 : 1;
-            $value = get_post_meta($post->ID, 'wpex_enable_sidebar', true);
+            $value = get_post_meta($post->ID, 'wpex_toggle_sidebar', true);
 
             ?>
-            <label for="wpex_enable_sidebar" class="wpx-control">
+            <label for="wpex_toggle_sidebar" class="wpx-control">
                 <div class="wpx-toggle-control">
                     <div class="wpx-control-info">
                         <?php echo esc_html__('Toggle Sidebar on this Page', 'tetris'); ?>
                     </div>
-                    <input type="checkbox" name="wpex_enable_sidebar" id="wpex_enable_sidebar" value="<?php echo esc_attr($saved_value); ?>" <?php checked($value, $saved_value); ?>
+                    <input type="checkbox" name="wpex_toggle_sidebar" id="wpex_toggle_sidebar" value="<?php echo esc_attr($saved_value); ?>" <?php checked($value, $saved_value); ?>
                     />
                     <span class="wpx-toggle-switch"></span>
                 </div>
@@ -78,6 +78,12 @@ if (!class_exists('WPEX_Sidebar_Metabox')) {
 
         /**
          * Save metabox data.
+         *
+         * The 'wpex_toggle_sidebar' meta stores an override that inverts
+         * the WPEX_DEFAULT_SIDEBAR_BEHAVIOR setting (e.g. ON → OFF or OFF → ON).
+         *
+         * If the checkbox is checked, save the inverse value.
+         * If not checked, remove the meta to follow the global setting.
          */
         public function save_sidebar_meta($post_id) {
 
@@ -97,10 +103,10 @@ if (!class_exists('WPEX_Sidebar_Metabox')) {
             }
 
             // Update meta
-            if (isset($_POST['wpex_enable_sidebar'])) {
-                update_post_meta($post_id, 'wpex_enable_sidebar', WPEX_DEFAULT_SIDEBAR_BEHAVIOR ? 0 : 1);
+            if ( isset($_POST['wpex_toggle_sidebar']) ) {
+                update_post_meta( $post_id, 'wpex_toggle_sidebar', WPEX_DEFAULT_SIDEBAR_BEHAVIOR ? 0 : 1 );
             } else {
-                update_post_meta($post_id, 'wpex_enable_sidebar', WPEX_DEFAULT_SIDEBAR_BEHAVIOR);
+                 update_post_meta( $post_id, 'wpex_toggle_sidebar', WPEX_DEFAULT_SIDEBAR_BEHAVIOR );
             }
         }
     }
