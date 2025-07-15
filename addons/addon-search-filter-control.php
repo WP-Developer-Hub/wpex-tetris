@@ -62,7 +62,7 @@ if ($post_formats && is_array($post_formats[0])) {
     <div class="u-margin-top-10 u-grid u-grid-col-s u-flex-gap-10 u-tt-all-uppercase ufc_search">
         <a href="<?php echo esc_url($all_link_url); ?>" class="u-link-button u-flex u-flex-row u-flex-nowrap u-ai-c u-jc-sb<?php echo universal_search_filter_item_class('all'); ?>">
             <span><?php echo __('All', 'tetris'); ?></span>
-            <?php echo '&nbsp;<span>(' . esc_html($total_post_count->found_posts) . ')</span>';?>
+            &nbsp;<span>(<?php echo esc_html($total_post_count->found_posts); ?>)</span>
         </a>
         <?php
         // Loop through each post format to display links with counts
@@ -71,7 +71,7 @@ if ($post_formats && is_array($post_formats[0])) {
             $post_format_url = add_query_arg('post_format', $post_format_slug, $all_link_url); ?>
             <a href="<?php echo esc_url($post_format_url); ?>" class="u-link-button u-flex u-flex-row u-flex-nowrap u-ai-c u-jc-sb<?php echo universal_search_filter_item_class($post_format_slug); ?>">
                 <span><?php echo ucfirst(esc_html($post_format)); ?></span>
-                <?php echo '&nbsp;<span>(' . esc_html($format_counts[$post_format_slug]) . ')</span>'; ?>
+                &nbsp;<span>(<?php echo esc_html($format_counts[$post_format_slug]); ?>)</span>
             </a>
         <?php
         }
