@@ -24,9 +24,7 @@ if ( ! function_exists( 'wpex_load_scripts' ) ) {
         $dir = get_template_directory_uri().'/css';
  
         // Enqueue Dashicons only for users without plugin activation capability (non-admins)
-        if (!current_user_can('activate_plugins')) {
-            wp_enqueue_style('dashicons');
-        }
+        if (!current_user_can('activate_plugins')) {wp_enqueue_style('dashicons');}
 
         // Layout
         wp_enqueue_style( 'layout-ufg', $dir . '/ufg.css' );
@@ -50,9 +48,7 @@ if ( ! function_exists( 'wpex_load_scripts' ) ) {
         wp_enqueue_style( 'opensans', '//fonts.googleapis.com/css2?family=Open+Sans:400italic,600italic,700italic,400,300,600,700&subset=latin,cyrillic-ext,cyrillic,greek-ext,greek,vietnamese,latin-ext&family=Major+Mono+Display', 'style' );
  
         // Comment replies
-        if ( is_single() || is_page()) {
-            wp_enqueue_script( 'comment-reply' );
-        }
+        if ( is_single() || is_page()) {wp_enqueue_script( 'comment-reply' );}
     }
   
     add_action( 'wp_enqueue_scripts','wpex_load_scripts' );
@@ -70,9 +66,7 @@ if ( ! function_exists( 'wp_load_player_scripts' ) ) {
  
 if ( ! function_exists( 'universal_mejs_add_container_class' ) ) {
     function universal_mejs_add_container_class() {
-        if ( ! wp_script_is( 'mediaelement', 'done' ) ) {
-            return;
-        }
+        if (!wp_script_is('mediaelement', 'done')) {return;}
         ?>
         <script>
         (function() {
