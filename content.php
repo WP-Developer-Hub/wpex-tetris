@@ -24,13 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     </a>
                 </h2>
             </header>
-        <?php if(!post_password_required()):?>
-            <?php if(!trim(str_replace('&nbsp;','',strip_tags(wpex_excerpt()))) == ''):
-                echo wpex_excerpt(get_theme_mod('universal_excerpt_length', 20), get_theme_mod('universal_toggle_read_more_link', true));
-            endif;?>
-        <?php else : ?>
-            <p><?php echo __( 'This content is protected. Log in or enter the password to view the full content.', 'tetris' ); ?></p>
-        <?php endif;?>
+            <?php echo wpex_excerpt(get_theme_mod('universal_excerpt_length', 20), get_theme_mod('universal_toggle_read_more_link', true)); ?>
         <ul class="entry-meta">
             <li><?php echo wpex_get_post_date(); ?></li>
             <li><?php echo wpex_get_post_author(); ?></li>

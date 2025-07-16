@@ -375,17 +375,22 @@ add_filter('the_content_more_link','__return_false', PHP_INT_MAX);
  * @since 1.0.0
  */
 if ( ! function_exists( 'wpex_excerpt' ) ) {
-    function wpex_excerpt( $length = '20', $readmore = false ) {
+    function wpex_excerpt( $length = 20, $readmore = false ) {
         global $post;
-        $output = '<div class="u-wrap-text u-trim" style="--u-line-clamp: ' . $length . '">';
-        $length = apply_filters('wpex_excerpt_length', $length * 10);
-
-        // Get excerpt if available, otherwise use content
+        // Get excerpt or content
         $text = has_excerpt($post->ID) ? $post->post_excerpt : $post->post_content;
-        $output .= wp_trim_words(strip_tags(strip_shortcodes($text)), $length);
+        $trimmed_text = trim(str_replace('&nbsp;', '', strip_tags(strip_shortcodes($text))));
 
+        $output = '<div class="u-wrap-text u-trim" style="--u-line-clamp: ' . intval($length) . '">';
+        if ( ! post_password_required() && $trimmed_text !== '' ) {
+            $length = apply_filters('wpex_excerpt_length', intval($length));
+            $output .= wp_trim_words($trimmed_text, $length);
+        } else {
+            $output .= __( 'This content is protected. Log in or enter the password to view the full content.', 'tetris' );
+        }
         $output .= '</div>';
-        if ($readmore == true) {
+
+        if ( ! post_password_required() && $trimmed_text !== '' && $readmore ) {
             $jump_point = strpos($post->post_content, '<!--more-->') !== false ? '#more-' . $post->ID : '#post-entry';
             $readmore_link = '<span class="wpex-readmore"><a href="' . get_permalink($post->ID) . $jump_point . '" title="'. __( 'Continue reading', 'tetris' ) .'" rel="bookmark" class="u-block u-block-100 u-ta-c u-link-button u-tt-all-caps u-fs-16">'. __( 'Read more', 'tetris' ) .'</a></span>';
             $output .= $readmore_link;
