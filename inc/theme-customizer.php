@@ -106,7 +106,7 @@ function universal_customizer_settings($wp_customize) {
 
     // Aspect Ratio Setting
     $wp_customize->add_setting('universal_aspect_ratio', array(
-        'default' => 'u-media-1-1', // Default to 1:1 aspect ratio
+        'default' => '1:1',
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field',
     ));

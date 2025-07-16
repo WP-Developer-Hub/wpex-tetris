@@ -119,13 +119,13 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
                 <div class="wpx-ratio-group">
                   <!-- Square Ratio Option -->
                   <label for="<?php echo esc_attr($this->id); ?>-1-1">
-                    <input type="radio" id="<?php echo esc_attr($this->id); ?>-1-1" name="<?php echo esc_attr($this->id); ?>" <?php $this->link(); ?> value="1-1" <?php checked($this->value(), '1:1'); ?> />
+                    <input type="radio" id="<?php echo esc_attr($this->id); ?>-1-1" name="<?php echo esc_attr($this->id); ?>" <?php $this->link(); ?> value="1:1" <?php checked($this->value(), '1:1'); ?> />
                     <span class="wpx-ratio-card"></span>
                     <span class="description wpx-ratio-title">1:1</span>
                   </label>
                   <!-- Rectangular Ratio Option -->
                   <label for="<?php echo esc_attr($this->id); ?>-none">
-                    <input type="radio" id="<?php echo esc_attr($this->id); ?>-none" name="<?php echo esc_attr($this->id); ?>" <?php $this->link(); ?> value="none" <?php checked($this->value(), 'none'); ?> />
+                    <input type="radio" id="<?php echo esc_attr($this->id); ?>-none" name="<?php echo esc_attr($this->id); ?>" <?php $this->link(); ?> value="9:16" <?php checked($this->value(), '9:16'); ?> />
                     <span class="wpx-ratio-card" style="height: 175px;"></span>
                     <span class="description wpx-ratio-title">9:16</span>
                   </label>
