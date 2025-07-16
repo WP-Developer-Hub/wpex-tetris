@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>" class="u-link-img u-pos-rel">
             <?php
             if (has_post_thumbnail() && !post_password_required()) {
-                $classes = get_theme_mod('universal_aspect_ratio', 'u-media-1-1') !== "none" ? 'u-media-1-1' : '';
+                $classes = get_theme_mod('universal_aspect_ratio', '1:1') === "1:1" ? 'u-media-1-1' : '';
                 the_post_thumbnail('wpex-entry', ['alt'=> the_title_attribute(['echo' => false]), 'class' => $classes]);
             } else {
                 echo wpex_get_post_media_placeholder();
