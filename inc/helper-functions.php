@@ -47,7 +47,7 @@ if ( ! function_exists( 'universal_display_media' ) ) {
                         'size' => 'wpex-post',
                         'columns' => $column_count,
                         'ids' => $attachment_ids,
-                        'link' => 'attachment',
+                        'link' => get_theme_mod('universal_gallery_link_type', 'attchments'),
                         'type' => 'slideshow',
                     );
         

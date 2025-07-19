@@ -199,6 +199,28 @@ function universal_customizer_settings($wp_customize) {
         'description' => __('This section contains settings related to single post pages.', 'tetris'),
     ));
 
+    // Gallery Image Link Type Option (for lightbox behavior)
+    $wp_customize->add_setting('universal_gallery_link_type', array(
+        'default' => 'attachment',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('universal_gallery_link_type', array(
+        'label' => __('Gallery Link Type', 'tetris'),
+        'description' => __('Select whether gallery images should link to file (for lightbox), attachment page, or none.', 'tetris'),
+        'section' => 'universal_single_post_page_settings_section',
+        'type' => 'select',
+        'choices' => array(
+            'none' => __('None'),
+            'file' => __('Media File'),
+            'attachment' => __('Attachment Page'),
+        ),
+    ));
+
+    $wp_customize->add_control(new WPX_Divider($wp_customize, 'universal_gallery_link_type_divider', array(
+        'section' => 'universal_grid_item_settings_section',
+        'settings' => 'universal_divider',
+    )));
+
     // Toggle Post Thumbnail
     $wp_customize->add_setting('universal_toggle_post_thumbnail', array(
         'default' => 'true',
