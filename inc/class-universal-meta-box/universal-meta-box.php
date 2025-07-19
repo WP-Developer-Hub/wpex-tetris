@@ -2,7 +2,7 @@
 /**
  * Universal_Meta_Box
  *
- * Implements a custom meta box for handling oEmbed and local media settings.
+ * Implements a custom meta box for handling local media only for post formats like Audio & Video, Gallery & Image.
  *
  * @package Universal_Theme
  */
@@ -27,14 +27,19 @@ if(!class_exists("Universal_Meta_Box")) {
          * Adds the custom meta box to the post editor screen.
          */
         public function add_meta_box() {
-            add_meta_box(
-                'universal_meta_box',
-                __('Universal Media', 'tetris'),
-                array($this, 'render_meta_box_content'),
-                'post',
-                'normal',
-                'high'
-            );
+            $post_types = get_post_types(array('public' => true), 'names');
+            foreach($post_types as $post_type) {
+                if(post_type_supports($post_type, 'post-formats')) {
+                    add_meta_box(
+                        'universal_meta_box',
+                        __('Universal Media', 'tetris'),
+                        array($this, 'render_meta_box_content'),
+                        $post_type,
+                        'normal',
+                        'high'
+                    );
+                }
+            }
         }
 
         /**
