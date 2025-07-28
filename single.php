@@ -49,12 +49,15 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                 ?>
             <?php endif; ?>
 
-            <?php
-            if (get_theme_mod('universal_toggle_post_tags', true) && !empty(get_the_tags())) {
-                echo wpx_spacer();
-                the_tags( '<div id="post-tags" class="u-flex u-flex-wrap u-flex-gap-5">', '', '</div>' );
-            }
-            ?>
+            <?php if (get_theme_mod('universal_toggle_post_tags', true) && !empty(get_the_tags())) : ?>
+                <div aria-labelledby="post-tags-heading">
+                    <h4 id="post-tags-heading" class="screen-reader-text"><?php echo __('Post Tags', 'tetris'); ?></h4>
+                    <?php
+                        echo wpx_spacer();
+                        the_tags( '<div id="post-tags" class="u-flex u-flex-wrap u-flex-gap-5">', '', '</div>' );
+                    ?>
+                </div>
+            <?php endif; ?>
 
             <?php if ( get_theme_mod( 'universal_toggle_post_author_box', true ) ) : ?>
             <div id="single-author" >
