@@ -161,7 +161,7 @@ if ( ! function_exists( 'universal_custom_paginate_comments_links' ) ) {
         if ( $total_pages > 1 && get_option( 'page_comments' ) ) {
             // Initialize pagination HTML structure
             $pagination_html = '<div id="comment-nav-' . esc_attr($id) . '" class="page-pagination site-navigation comment-navigation">';
-            $pagination_html .= '<h1 class="screen-reader-text">' . __('Comment Navigation','tetris') . '</h1>';
+            $pagination_html .= '<h4 class="screen-reader-text">' . __('Comment Navigation','tetris') . '</h4>';
             $pagination_html .= '<div class="page-pagination-inner clearfix">';
 
             // page indicator
