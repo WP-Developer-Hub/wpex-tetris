@@ -22,7 +22,7 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && !pi
 }
 ?>
 <div id="commentsbox" class="boxframe">
-	<div id="comments" class="comments-area clearfix">
+	<section id="comments" class="comments-area clearfix">
 		<?php if ( have_comments() ) : ?>
 			<h3 class="comments-title widget-title"><span><?php comments_popup_link(__('Leave a comment', 'tetris'), __('1 Comment', 'tetris'), __('% Comments', 'tetris'), 'comments-link', __('Comments closed', 'tetris')); ?></span></h3>
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
@@ -40,5 +40,5 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && !pi
 		<?php comment_form( array(
 			'title_reply' => '<span class="widget-title">'. __( 'Leave a Reply', 'tetris' ) .'</span>'
 		) ); ?>
-	</div><!-- #comments -->
+	</section><!-- #comments -->
 </div><!-- #commentsbox -->
