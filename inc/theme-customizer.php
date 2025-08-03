@@ -63,9 +63,9 @@ function universal_customizer_settings($wp_customize) {
         'description' => __('This panel contains various settings for customizing the theme.', 'tetris'),
     ));
 
-    $wp_customize->add_section( new WPX_Link_Section($wp_customize, 'upsell_section',
+    $wp_customize->add_section(new WPX_Link_Section($wp_customize, 'upsell_section',
         array(
-            'title' => __( 'WP Developer Hub', 'tetris' ),
+            'title' => __('WP Developer Hub', 'tetris'),
             'url' => 'https://github.com/WP-Developer-Hub/',
             'priority' => 0,
             'panel' => 'universal_theme_settings_panel',
@@ -210,9 +210,9 @@ function universal_customizer_settings($wp_customize) {
         'section' => 'universal_single_post_page_settings_section',
         'type' => 'select',
         'choices' => array(
-            'none' => __('None'),
-            'file' => __('Media File'),
-            'attachment' => __('Attachment Page'),
+            'none' => __('None', 'tetris'),
+            'file' => __('Media File', 'tetris'),
+            'attachment' => __('Attachment Page', 'tetris'),
         ),
     ));
 
