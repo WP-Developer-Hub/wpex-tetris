@@ -19,7 +19,7 @@ if (!class_exists('Universal_Menu_Walker_2_0')) {
             $indent = str_repeat( "\t", $depth );
     
             // Use a unique ID for each submenu
-            $submenu_id = 'sub-menu-' . $depth;
+            $submenu_id = 'mobile-sub-menu-' . $depth;
     
             // Open the submenu container
             $output .= "$indent<ul class=\"sub-menu sub-menu-level-$depth\" id=\"$submenu_id\">\n";
@@ -30,7 +30,7 @@ if (!class_exists('Universal_Menu_Walker_2_0')) {
             $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
     
             // Get the menu item ID and classes
-            $menu_item_id = 'menu-item-' . ($item->ID + 1);
+            $menu_item_id = 'mobile-menu-item-' . $item->ID;
             $classes = empty( $item->classes ) ? array() : (array) $item->classes;
     
             // Add necessary classes
