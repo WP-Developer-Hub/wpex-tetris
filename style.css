@@ -144,14 +144,15 @@ a:hover { cursor: pointer }
 #mobile-navigation #main-toggle { padding: 10px 5px; line-height: 50px; color: var(--universal-accent-color-text); background: var(--universal-accent-color); list-style: none }
 #mobile-navigation .dashicons { display: flex; justify-content: center; align-items: center; width: 50px; height: 50px; font-size: 50px; line-height: 50px }
 #mobile-navigation .menu-summary-name { font-size: 35px; margin-left: 5px;}
-#mobile-navigation summary { display: flex; background: #000; list-style: none }
+#mobile-navigation summary { display: flex; padding: 25px 0; background: #000; width: 100%; list-style: none }
+#mobile-navigation summary::marker { display: none }
 #mobile-navigation summary::-webkit-details-marker { display: none }
 #mobile-navigation li,
 #mobile-navigation ul { margin: 0; padding: 0; list-style: none }
 #mobile-navigation li { font-size: 24px; border-bottom: 1px solid #555 }
 #mobile-navigation .menu-toggle summary { border-bottom: 1px solid #555 }
 #mobile-navigation li a { display: flex; margin: 0; padding: 25px; color: #fff; text-decoration: none}
-#mobile-navigation details details { display: flex; background-color: #212121 }
+#mobile-navigation details details { background-color: #212121 }
 #mobile-navigation details[open] > summary .toggle-icon {transform: rotate(90deg); }
 #mobile-navigation li:hover,
 #mobile-navigation li:active,
