@@ -1,5 +1,5 @@
 <?php
-if ( class_exists( 'WP_Customize_Control' ) ) {
+if (class_exists('WP_Customize_Control') && !class_exists('wpx-WPX_Customize_Control')) {
     class WPX_Customize_Control extends WP_Customize_Control {
         // Base class for extending WP_Customize_Control
         
