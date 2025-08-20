@@ -63,7 +63,7 @@ if(!class_exists("Universal_Meta_Box")) {
                             <span class="dashicons dashicons-format-audio"></span>
                             <span class="dashicons dashicons-format-video"></span>
                             <span class="dashicons dashicons-format-gallery"></span>
-                            <?php _e('Use the Audio, Video, or Gallery formats to display the appropriate local media above the theme. Choosing Standard post will display the post thumbnail above the theme is the option to show post thumbnail in single.php is enabled.', 'tetris'); ?>
+                            <?php _e('Use the Audio, Video, or Gallery post formats in the post formats metabox to display the corresponding local media above the post title on single posts. Choosing the Standard post format will display the post thumbnail above the post title, if the theme option to show post thumbnails in the single post template is enabled.', 'tetris'); ?>
                         </td>
                     </tr>
                 </tbody>
