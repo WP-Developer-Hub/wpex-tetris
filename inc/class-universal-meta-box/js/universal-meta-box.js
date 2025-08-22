@@ -6,6 +6,8 @@ Object.defineProperty(String.prototype, 'universal_capitalize', {
 });
 
 jQuery(document).ready(function($) {
+    var l10n = wp.media.view.l10n;
+
     function initializeClearButtons() {
         if ($('#universal_local_audio_attachment_ids').val()) {
             $('#universal_local_media_clear_all_audio').fadeIn();
@@ -24,31 +26,25 @@ jQuery(document).ready(function($) {
         var idsValue = $(inputFieldId);
 
         function getMediaUploaderState(ids, type) {
+            const value = ids.val();
             switch (type) {
                 case 'video':
-                    wp.media.view.l10n.createNewVideoPlaylist = "Arrange Videos File";
-                    wp.media.view.l10n.insertVideoPlaylist = "Update Videos Playlist";
-                    return ids.val() ? 'video-playlist-edit' : 'video-playlist-library';
+                    l10n.insertVideoPlaylist = value ? l10n.updateVideoPlaylist : l10n.createNewVideoPlaylist;
+                    return value ? 'video-playlist-edit' : 'video-playlist-library';
                 case 'audio':
-                    wp.media.view.l10n.createNewPlaylist = "Arrange Audios File";
-                    wp.media.view.l10n.insertPlaylist = "Update Audios Playlist";
-                    return ids.val() ? 'playlist-edit' : 'playlist-library';
+                    l10n.insertPlaylist = value ? l10n.updatePlaylist : l10n.createNewPlaylist;
+                    return value ? 'playlist-edit' : 'playlist-library';
                 case 'image':
-                    wp.media.view.l10n.createNewGallery = "Arrange Images File";
-                    wp.media.view.l10n.insertGallery = "Update Image Gallery";
-                    return ids.val() ? 'gallery-edit' : 'gallery-library';
+                    l10n.insertGallery = value ? l10n.updateGallery : l10n.createNewGallery;
+                    return value ? 'gallery-edit' : 'gallery-library';
                 default:
                     return 'library';
             }
         }
 
         var mediaUploader = wp.media.frames.file_frame = wp.media({
-            button: {
-                text: 'Add ' + mediaType.universal_capitalize() + ' To ' + cType.universal_capitalize()
-            },
             frame: "post",
             state: getMediaUploaderState(idsValue, mediaType),
-            states: 'media-uploader',
             library: {
                 type: mediaType
             },
