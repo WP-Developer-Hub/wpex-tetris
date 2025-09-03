@@ -48,7 +48,7 @@ if ( ! function_exists( 'wpex_load_scripts' ) ) {
         wp_enqueue_style( 'opensans', '//fonts.googleapis.com/css2?family=Open+Sans:400italic,600italic,700italic,400,300,600,700&subset=latin,cyrillic-ext,cyrillic,greek-ext,greek,vietnamese,latin-ext&family=Major+Mono+Display', 'style' );
  
         // Comment replies
-        if ( is_single() || is_page()) {wp_enqueue_script( 'comment-reply' );}
+        if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {wp_enqueue_script( 'comment-reply' );}
     }
   
     add_action( 'wp_enqueue_scripts','wpex_load_scripts' );
