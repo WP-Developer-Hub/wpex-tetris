@@ -54,64 +54,20 @@ if ( ! function_exists( 'wpex_load_scripts' ) ) {
     add_action( 'wp_enqueue_scripts','wpex_load_scripts' );
 }
  
-if ( ! function_exists( 'wp_load_player_scripts' ) ) {
-    function wp_load_player_scripts() {
-        // Enqueue Universal player stylesheet
-        wp_enqueue_style( 'universal-player', get_template_directory_uri() . '/css/universal-player.css', array(
-            'wp-mediaelement',
-        ), '1.0' );
+if ( ! function_exists( 'wpex_enqueue_mediaelement_fix' ) ) {
+    function wpex_enqueue_mediaelement_fix() {
+        if ( wp_script_is( 'mediaelement', 'enqueued' ) ) {
+            $dir = get_template_directory_uri();
+
+            // Enqueue Universal player stylesheet
+            wp_enqueue_style( 'universal-player', $dir . '/css/universal-player.css', array(
+                'wp-mediaelement',
+            ), '1.0');
+
+            wp_enqueue_script( 'wp-mediaelement-fix', $dir . '/js/wp-mediaelement-fix.js', array(
+                'wp-mediaelement'
+            ), '1.0', true );
+        }
     }
-    add_action('wp_footer', 'wp_load_player_scripts');
-}
- 
-if ( ! function_exists( 'universal_mejs_add_container_class' ) ) {
-    function universal_mejs_add_container_class() {
-        if (!wp_script_is('mediaelement', 'done')) {return;}
-        ?>
-        <script>
-        (function() {
-            var settings = window._wpmejsSettings || {};
-            settings.features = settings.features || mejs.MepDefaults.features;
-            MediaElementPlayer.prototype.buildexampleclass = function( player ) {
-                player.container.addClass( 'universal-mejs-container u-media-16-9' );
-            };
-        })();
-     
-        // Function to handle fullscreen changes
-        jQuery(document).ready(function($) {
-            function handleFullscreenChange() {
-                if (document.fullscreenElement) {
-                    $('video').css('max-height', 'none');
-                } else {
-                    $('video').css('max-height', '512px');
-                }
-            }
-     
-            // Attach event listener to fullscreen changes
-            $(document).on('fullscreenchange webkitfullscreenchange mozfullscreenchange msfullscreenchange', handleFullscreenChange);
-     
-            // Initial setup to ensure the max-height is set correctly on load
-            handleFullscreenChange();
-     
-            // Make sure all instances wp-video & wp-playlist in inner-post 512px.
-            function wrapMediaElements() {
-               $('.wp-video, .wp-playlist').each(function() {
-                   if (!$(this).closest('#post-media').length) {
-                       if (!$(this).closest('.post-media').length) {
-                            if (!$(this).hasClass('wp-audio-playlist')) {
-                                var $wrapper = $('<div class="post-media"></div>');
-                                $(this).wrap($wrapper);
-                            }
-                            $(this).css('width', '100%');
-                       }
-                    }
-               });
-            }
-     
-            wrapMediaElements();
-        });
-        </script>
-        <?php
-    }
-    add_action('wp_print_footer_scripts', 'universal_mejs_add_container_class');
+    add_action('wp_footer', 'wpex_enqueue_mediaelement_fix');
 }
