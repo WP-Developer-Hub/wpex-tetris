@@ -141,8 +141,8 @@ if(!class_exists("Universal_Meta_Box")) {
             }
 
             wp_enqueue_media();
-            wp_enqueue_style('universal-meta-box-css', $this->get_resource_url() . 'css/universal-meta-box.css', '1.0', true);
-            wp_enqueue_script('universal-meta-box-js', $this->get_resource_url() . 'js/universal-meta-box.js', array('jquery'), '1.0', true);
+            wp_enqueue_style('universal-meta-box-css', $this->get_resource_url() . '/css/universal-meta-box.css', '1.0', true);
+            wp_enqueue_script('universal-meta-box-js', $this->get_resource_url() . '/js/universal-meta-box.js', array('jquery'), '1.0', true);
         }
 
         /**
