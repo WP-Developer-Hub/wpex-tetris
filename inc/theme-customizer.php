@@ -80,6 +80,23 @@ function universal_customizer_settings($wp_customize) {
         'description' => __('This section contains General settings.', 'tetris'),
     ));
 
+    // Toggle & Set Fixed Maximum Width For Theme Wrapper
+    $wp_customize->add_setting('universal_toggle_fixed_max_width', array(
+        'default' => array('960', '0'),
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control(new WPX_Size_Control($wp_customize, 'universal_toggle_fixed_max_width', array(
+        'label' => __('Toggle fixed Maximum Width', 'tetris'),
+        'description' => __('Enable or disable a fixed maximum width for larger screens. Use the input to set the desired maximum width.', 'tetris'),
+        'section' => 'universal_general_settings_section',
+        'type' => 'number',
+        'input_attrs' => array(
+            'step' => 1,
+            'min'  => 960
+        ),
+    )));
+
     // Date Display Options
     $wp_customize->add_setting('universal_date_display_option', array(
         'default' => 'date',

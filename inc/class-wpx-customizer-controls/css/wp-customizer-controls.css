@@ -198,6 +198,7 @@
   accent-color: var(--wpx-blue-mid);
 }
 
+.wpx-input-group,
 .wpx-color-picker-group .wpx-swap-control {
   gap: 10px;
   width: 100%;
