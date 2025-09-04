@@ -325,6 +325,87 @@ if (class_exists('WP_Customize_Control') && !class_exists('wpx-WPX_Customize_Con
         }
     }
 
+    class WPX_Size_Control extends WPX_Customize_Control {
+        public $type = 'number';
+        public $min = '';
+        public $max = '';
+        public $step = '';
+
+        public function enqueue() {
+            $css_url = $this->get_wpx_resource_url() . 'css/wp-customizer-controls.css';
+            $js_url = $this->get_wpx_resource_url() . 'js/wp-customizer-controls.js';
+            wp_enqueue_style( 'wpx-customize-controls', $css_url, array(), $this->wpxCustomControlsCssVersion );
+            wp_enqueue_script('wpx-customize-controls-js', $js_url, array(), $this->wpxCustomControlsJsVersion);
+        }
+
+        public function render_content() {
+            $min = isset($this->input_attrs['min']) ? $this->input_attrs['min'] : '';
+            $max = isset($this->input_attrs['max']) ? $this->input_attrs['max'] : '';
+            $step = isset($this->input_attrs['step']) ? $this->input_attrs['step'] : '';
+
+            $default = array_pad(!empty($this->setting->default) ? $this->setting->default : [], 2, '');
+
+            // Ensure $value is a proper array
+            $value = is_string($this->value()) ? explode(',', $this->value()) : [];
+            $value = array_pad($value, 10, '');
+
+            $fixed_size = !empty($value[0]) ? (int) $value[0] : (int) $default[0];
+            $use_fixed_size = !empty($value[1]) ? (int) $value[1] : (int) $default[1];
+            ?>
+            <div class="wpx-control wpx-size-control" tabindex="<?php echo esc_attr($this->instance_number); ?>">
+                <div class="wpx-control-info">
+                    <?php if (!empty($this->label)) : ?>
+                        <label for="<?php echo esc_attr($this->id); ?>" class="customize-control-title">
+                            <?php echo esc_html($this->label); ?>
+                        </label>
+                    <?php endif; ?>
+
+                    <?php if (!empty($this->description)) : ?>
+                        <span id="_customize-description-<?php echo esc_attr($this->id); ?>" class="description customize-control-description">
+                            <?php echo esc_html($this->description); ?>
+                        </span>
+                    <?php endif; ?>
+                    <div class="widefat wpx-input-group">
+                        <input id="<?php echo esc_attr($this->id ); ?>_fixed_size"
+                            type="number"
+                            autocomplete="off"
+                            disabled='disabled'
+                            value="<?php echo esc_attr($fixed_size); ?>"
+                            min="<?php echo esc_attr($min); ?>"
+                            max="<?php echo esc_attr($max); ?>"
+                            step="<?php echo esc_attr($step); ?>"
+                            value="<?php echo esc_attr($lightness_value); ?>"
+                            pattern="[0-9]*"
+                            inputmode="numeric"
+                            class="widefat" />
+
+                        <label class="wpx-toggle-control">
+                            <span class="screen-reader-text">
+                                <?php echo __('Use Fixed Size', 'tetris'); ?>
+                            </span>
+                            <input type="checkbox" id="<?php echo esc_attr($this->id); ?>_use_fixed_size" value="1" <?php checked($use_fixed_size, 1); ?> />
+                            <span class="wpx-toggle-switch"></span>
+                        </label>
+                    </div>
+
+                    <input id="<?php echo esc_attr($this->id); ?>"
+                        type="hidden"
+                        <?php echo esc_attr($this->link()); ?>
+                        value="<?php echo esc_attr($value); ?>" />
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                (function($) {
+                    $(function() {
+                        $("<?php echo esc_js('#' . $this->id); ?>").wpxSizeControl();
+                    });
+                })(jQuery);
+            </script>
+            <?php
+        }
+    }
+
     class WPX_Divider extends WPX_Customize_Control {
         public $type = 'info_box';
 
