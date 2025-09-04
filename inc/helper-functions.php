@@ -270,12 +270,22 @@ if ( ! function_exists( 'universal_dynamic_css' ) ) {
     function universal_dynamic_css() {
         // Get accent color from theme customizer (default value if not set)
         $universal_accent_color = explode(',', get_theme_mod('universal_accent_color', '#0073e6, #fff, #0073e7, #fff, #0073e8, #fff'));
+        $toggle_fixed_max_width = explode(',', get_theme_mod('universal_toggle_fixed_max_width', '960, 0'));
 
         // Check if the array has the expected number of elements
         if ( count($universal_accent_color) < 6 ) {
             // Ensure there are enough colors, filling with defaults if necessary
             $universal_accent_color = array_pad($universal_accent_color, 6, '#fff');
         }
+
+        // Check if the array has the expected number of elements
+        if ( count($toggle_fixed_max_width) < 2 ) {
+            // Ensure there are enough colors, filling with defaults if necessary
+            $toggle_fixed_max_width = array_pad($toggle_fixed_max_width, 2, '960');
+            
+        }
+
+        $theme_width = ($toggle_fixed_max_width[1] ? $toggle_fixed_max_width[0] . 'px' : 'calc(100% - 200px)');
 
         // Initialize the variables with fallbacks if empty
         $accent_color = !empty($universal_accent_color[0]) ? $universal_accent_color[0] : '#0073e6';
@@ -296,6 +306,7 @@ if ( ! function_exists( 'universal_dynamic_css' ) ) {
             --universal-accent-color-text: {$accent_color_text};
             --universal-accent-color-text-dark: {$accent_color_text_dark};
             --universal-accent-color-text-light: {$accent_color_text_light};
+            --universal-theme-width: {$theme_width};
         }";
 
         // Return the generated CSS string
