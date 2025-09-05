@@ -286,7 +286,7 @@ function universal_customizer_settings($wp_customize) {
     ));
     $wp_customize->add_control('universal_copyright_layout', array(
         'label' => __('Copyright Info Layout', 'tetris'),
-        'description' => __('You can use placeholders like [site_name], [started_date], [current_date], [copyright_symbol], and [dash] to dynamically layout the copyright. P.S placeholders like [started_date], [current_date] will only toggle the year.', 'tetris'),
+        'description' => __('You can use placeholders like [site_name], [started_date], [current_date], [copyright_symbol], [registered_symbol], [trademark_symbol], and [dash] to dynamically layout the copyright. P.S placeholders like [started_date], [current_date] will only toggle the year.', 'tetris'),
         'section' => 'universal_footer_settings_section',
         'type' => 'textarea',
     ));
