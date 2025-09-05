@@ -53,7 +53,7 @@ var { font-weight: bold; color: var(--universal-accent-color-light);}
 .gallery-caption {}
 .textwidget,
 .entry .inner-post { display: grid; gap: 20px; grid-template-columns: 100% }
-.entry .inner-post p { overflow-wrap: break-word; word-break: break-all; hyphens: auto; }
+.entry .inner-post p { overflow-wrap: break-word; word-break: break-word; hyphens: auto; }
 .entry ul,
 .entry ol { margin-left: 15px; }
 .entry ul { list-style: disc }
@@ -252,7 +252,7 @@ h5.widget-title {font-weight: bold;}
 
 /* Widgets
 ----------------------------------------------------------- */
-.tagcloud a { float: left; display: block; font-size: 1.2em !important; text-transform: lowercase; line-height: 1.2em !important; margin-bottom: 7px; margin-right: 7px; padding: 7px 15px; margin-right: 5px; margin-bottom: 5px; border-radius: 2px; word-break: break-all; background: var(--universal-accent-color); color: var(--universal-accent-color-text) !important; transition: background 250ms linear, color 250ms linear }
+.tagcloud a { float: left; display: block; font-size: 1.2em !important; text-transform: lowercase; line-height: 1.2em !important; margin-bottom: 7px; margin-right: 7px; padding: 7px 15px; margin-right: 5px; margin-bottom: 5px; border-radius: 2px; word-break: break-word; background: var(--universal-accent-color); color: var(--universal-accent-color-text) !important; transition: background 250ms linear, color 250ms linear }
 .tagcloud a:hover { background: var(--universal-accent-color-dark); color: var(--universal-accent-color-text-dark) !important; }
 .widget_media_image .wp-caption,
 .widget_media_image .wp-caption img { width: 100%; margin: 0 auto; padding: 0; }
