@@ -114,6 +114,8 @@ if ( ! function_exists( 'universal_get_copyright_info' ) ) {
     
         // Replace placeholders with dynamic content
         $message = str_replace('[copyright_symbol]', '&copy;', $message);
+        $message = str_replace('[registered_symbol]', '&reg;', $message);
+        $message = str_replace('[trademark_symbol]', '&trade;', $message);
         $message = str_replace('[site_name]', $site_name, $message);
         $message = str_replace('[started_date]', $started_date, $message);
     
