@@ -699,6 +699,8 @@ if ( !function_exists('wpex_get_post_date') ) {
         $show_modified_date = false;
         $is_edited =( get_the_date('Y-m-d') !== get_the_modified_date('Y-m-d'));
 
+        $post_date_link = get_day_link(get_the_time('Y'), get_the_time('m'), get_the_time('d'));
+
         switch ($date_style) {
             case 'modified_date':
                 $show_modified_date = true;
@@ -714,8 +716,7 @@ if ( !function_exists('wpex_get_post_date') ) {
 
         $post_date_label = ($show_modified_date && $is_edited ? __('Edited on', 'tetris') : __('Posted on', 'tetris'));
 
-        $output = '<strong>' . esc_html($post_date_label) . ':</strong> <time datetime="' . esc_attr($date_c) . '">' . esc_html($post_date) . '</time>';
-
+        $output = '<strong>' . esc_html($post_date_label) . ':</strong> <a href="' . $post_date_link . '"><time datetime="' . esc_attr($date_c) . '">' . esc_html($post_date) . '</time></a>';
         return $output;
     }
 }
