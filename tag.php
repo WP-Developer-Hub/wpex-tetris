@@ -23,11 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header(); ?>
 
-	<?php if ( ! is_home() ) : ?>
-		<header class="page-heading clearfix">
-            <h1 id="archive-title"><?php _e( 'Post\'s For', 'tetris' ); ?>: &quot;<?php single_tag_title(); ?>&quot;</h1>
-		</header>
-	<?php endif; ?>
+<?php get_template_part( 'addons/addon-template-title' ); ?>
 
 <?php if ( have_posts() ) : ?>
 

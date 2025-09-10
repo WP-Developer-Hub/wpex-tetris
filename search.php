@@ -22,9 +22,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header(); ?>
-    <header class="page-heading clearfix">
-        <h1 id="archive-title"><?php _e( 'Search Results For', 'tetris' ); ?>: &quot;<?php the_search_query(); ?>&quot;</h1>
-    </header>
+
+    <?php get_template_part( 'addons/addon-template-title' ); ?>
+
     <header class="page-heading search-heading clearfix">
         <?php get_search_form(); ?>
     </header>
