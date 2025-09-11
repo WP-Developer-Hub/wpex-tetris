@@ -689,7 +689,7 @@ if ( !function_exists('wpex_get_post_date') ) {
     function wpex_get_post_date() {
         $date_style = get_theme_mod( 'universal_date_display_option', 'date' );
 
-        $link_title_prefix = __('Posts Made on', 'tetris'). ' ';
+        $link_aria_prefix = __('View All Posts Made on', 'tetris'). ' ';
 
         $original_date = get_the_date();
         $original_date_c = get_the_date('c');
@@ -719,8 +719,13 @@ if ( !function_exists('wpex_get_post_date') ) {
         $post_date_label = ($show_modified_date && $is_edited ? __('Edited on', 'tetris') : __('Posted on', 'tetris'));
 
         $output = '<strong>' . esc_html($post_date_label) . ':</strong> ';
-        $output .= '<a class="post-date-link u-text-medium" href="' . $post_date_link;
-        $output .= '" title="' . esc_attr($link_title_prefix . $post_date) . '" rel="bookmark">';
+        $output .= '<a class="post-date-link u-text-medium" href="' . $post_date_link . '" rel="bookmark"';
+
+        if ( is_single() ) {
+            $output .= ' aria-label="' . esc_attr($link_aria_prefix . $original_date) . '"';
+        }
+
+        $output .= '>';
         $output .= '<time datetime="' . esc_attr($date_c) . '">' . esc_html($post_date) . '</time>';
         $output .= '</a>';
 
