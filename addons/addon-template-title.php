@@ -40,12 +40,14 @@ if (!defined('ABSPATH')) { return; }
                     : sprintf(__('%s In: <time datetime="%s">%s</time>', 'tetris'), $prefix, esc_attr($archive_year_datetime), esc_html($archive_year));
                 break;
             case is_tax():
-                echo sprintf(__('%s', 'tetris'), single_term_title('', false));
+                echo esc_html(single_term_title('', false));
+                break;
+            case is_post_type_archive():
+                echo esc_html(post_type_archive_title('', false));
                 break;
             case is_category():
                 echo esc_html(single_cat_title('', false));
                 break;
-
             case is_home() && get_the_title(get_option('page_on_front')):
                 echo esc_html(get_bloginfo('description'));
                 break;
