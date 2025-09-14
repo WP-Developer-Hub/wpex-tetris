@@ -61,9 +61,10 @@ if (!class_exists('Universal_Menu_Walker_2_0')) {
     
             // Add link and toggle if item has children
             if ( $args->walker->has_children ) {
-                $output .= '<details class="menu-toggle u-cf">';
-                $output .= '<summary class="u-flex u-ai-c" aria-expanded="false">';
-                $output .= '<span aria-hidden="true" class="toggle-icon dashicons dashicons-arrow-right u-di-fix u-select-none u-focus-none"></span>';
+                $name_attr = ' name="' . esc_attr( $item->menu_item_parent ) . '"';
+                $output .= '<details class="menu-toggle u-cf"' . $name_attr . '>';
+                $output .= '<summary>';
+                $output .= '<span class="toggle-icon dashicons dashicons-arrow-right"></span>';
                 $output .= '<span class="menu-item-title">' . $a_tag . '</span>';
                 $output .= '</summary>';
             } else {
