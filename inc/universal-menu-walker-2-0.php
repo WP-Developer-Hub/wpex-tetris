@@ -61,7 +61,7 @@ if (!class_exists('Universal_Menu_Walker_2_0')) {
     
             // Add link and toggle if item has children
             if ( $args->walker->has_children ) {
-                $name_attr = ' name="' . esc_attr( $item->menu_item_parent ) . '"';
+                $name_attr = ' name="mobile-sub-menu-' . esc_attr( $item->menu_item_parent ) . '"';
                 $output .= '<details class="menu-toggle u-cf"' . $name_attr . '>';
                 $output .= '<summary>';
                 $output .= '<span class="toggle-icon dashicons dashicons-arrow-right"></span>';
