@@ -332,6 +332,7 @@
 /* Text Color*/
 .u-text-dark { color: #000; }
 .u-text-light { color: #fff; }
+.u-text-medium { color: #666; }
 .u-text-accent { color: var(--universal-accent-color); }
 
 /* Reset Margin */
