@@ -278,14 +278,10 @@ if ( ! function_exists( 'universal_dynamic_css' ) ) {
             $universal_accent_color = array_pad($universal_accent_color, 6, '#fff');
         }
 
-        // Check if the array has the expected number of elements
+        // Check if the array has the expected number of elements and pad if not
         if ( count($toggle_fixed_max_width) < 2 ) {
-            // Ensure there are enough colors, filling with defaults if necessary
             $toggle_fixed_max_width = array_pad($toggle_fixed_max_width, 2, '960');
-            
         }
-
-        $theme_width = ($toggle_fixed_max_width[1] ? $toggle_fixed_max_width[0] . 'px' : 'calc(100% - 200px)');
 
         // Initialize the variables with fallbacks if empty
         $accent_color = !empty($universal_accent_color[0]) ? $universal_accent_color[0] : '#0073e6';
@@ -296,6 +292,8 @@ if ( ! function_exists( 'universal_dynamic_css' ) ) {
 
         $accent_color_dark = !empty($universal_accent_color[2]) ? $universal_accent_color[2] : $accent_color;
         $accent_color_text_dark = !empty($universal_accent_color[3]) ? $universal_accent_color[3] : $accent_color_text;
+
+        $theme_width = ($toggle_fixed_max_width[1] ? $toggle_fixed_max_width[0] . 'px' : 'calc(100% - 200px)');
 
         // Generate dynamic CSS with root variables
         $css = ":root {
