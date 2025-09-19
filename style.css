@@ -28,7 +28,7 @@ body { background-color: #ddd; font: 14px/1.8 'Open Sans',Helvetica,Arial,sans-s
 body a { color: var(--universal-accent-color); transition: color 250ms linear }
 body a:hover { text-decoration: underline; color: var(--universal-accent-color); }
 img { max-width: 100%; height: auto; }
-#wrap { width: calc(100% - 200px); margin: 0 auto; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
+#wrap { width: var(--universal-theme-width); margin: 0 auto; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
 .container { background: #fff; padding: 30px; margin-top: 10px; box-shadow: var(--u-box-shadow)}
 .has-sidebar { float: left; width: calc(100% - 300px); }
 #sidebar { float: right; width: 250px; font-size: 0.929em; }
