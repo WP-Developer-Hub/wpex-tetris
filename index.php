@@ -23,19 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header(); ?>
 
-    <header class="page-heading clearfix">
-        <h1>
-            <?php
-                if ( is_category() ) {
-                    single_cat_title();
-                } elseif ( is_home() && get_the_title( get_option('page_on_front') ) ) {
-                    bloginfo('description');
-                } else {
-                    the_archive_title();
-                }
-            ?>
-        </h1>
-    </header>
+<?php get_template_part( 'addons/addon-template-title' ); ?>
 
 <?php if ( have_posts() ) : ?>
 
