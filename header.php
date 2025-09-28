@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div id="logo" class="u-flex u-ai-c u-block-100 clearfix">
                 <?php universal_theme_custom_logo(); ?>
             </div><!-- /logo -->
-            <nav id="navigation" class="u-flex u-ai-c clearfix">
+            <nav id="navigation" class="u-flex u-ai-c clearfix" aria-label="<?php echo esc_attr__('Main Navigation', 'tetris'); ?>">
                 <?php wp_nav_menu( array(
                     'container' => false,
                     'fallback_cb' => false,
@@ -44,17 +44,19 @@ if ( ! defined( 'ABSPATH' ) ) {
                 )); ?>
             </nav><!-- #navigation -->
         </header><!-- #header -->
-        <details id="mobile-navigation">
-            <summary id="main-toggle" class="menu-toggle u-jc-sb"><span class="menu-summary-name u-tt-all-uppercase"><?php echo esc_html('Menu', 'tetris')?></span>  <span class="dashicons dashicons-menu"></span> </summary>
-            <?php
-                wp_nav_menu(array(
-                    'container' => false,
-                    'fallback_cb'=> false,
-                    'sort_column' => 'menu_order',
-                    'theme_location' => 'main_menu',
-                    'walker' => new universal_menu_walker_2_0(),
-                ));
-            ?>
+        <details id="mobile-navigation" aria-label="<?php echo esc_attr__('Main Navigation', 'tetris'); ?>">
+            <summary id="main-toggle" class="menu-toggle u-jc-sb"><span class="menu-summary-name u-tt-all-uppercase"> <?php echo esc_html('Menu', 'tetris')?></span> <span class="dashicons dashicons-menu"></span> </summary>
+            <nav class="clearfix">
+                <?php
+                    wp_nav_menu(array(
+                        'container' => false,
+                        'fallback_cb'=> false,
+                        'sort_column' => 'menu_order',
+                        'theme_location' => 'main_menu',
+                        'walker' => new universal_menu_walker_2_0(),
+                    ));
+                ?>
+            </nav>
         </details>
     </div><!-- #header-wrap -->
  
