@@ -44,15 +44,27 @@ if (!class_exists('Universal_Menu_Walker_2_0')) {
             // Build the menu item output
             $output .= $indent . '<li id="' . esc_attr( $menu_item_id ) . '" class="' . implode( ' ', $classes ) . '">';
     
+            $class_attr = 'class="u-flex"';
+    
             // Add link and toggle if item has children
             if ( $args->walker->has_children ) {
+                // Prepare target attribute if set
+                $target_attr = !empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
+
+                // Prepare rel attribute if set
+                $rel_attr = !empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
+
                 $output .= '<details class="menu-toggle u-cf">';
-                $output .= '<summary>';
-                $output .= '<span class="toggle-icon dashicons dashicons-arrow-right"></span>';
-                $output .= '<span class="menu-item-title"><a href="' . esc_url( $item->url ) . '">' . esc_html( $item->title ) . '</a></span>';
+                $output .= '<summary class="u-flex u-ai-c">';
+                $output .= '<span aria-hidden="true" class="toggle-icon dashicons dashicons-arrow-right u-di-fix u-select-none u-focus-none"></span>';
+                // Output menu item with optional target and rel
+                $output .= '<span class="menu-item-title" tabindex="0">'
+                         . '<a href="' . esc_url($item->url) . '"' . $target_attr . $rel_attr . $class_attr .'>'
+                         . esc_html($item->title)
+                         . '</a></span>';
                 $output .= '</summary>';
             } else {
-                $output .= '<a href="' . esc_url( $item->url ) . '">' . esc_html( $item->title ) . '</a>';
+                $output .= '<a href="' . esc_url( $item->url ) . '" name="' . esc_attr( sanitize_title($item->title) ) . '"' . $class_attr . '">' . esc_html( $item->title ) . '</a>';
             }
         }
     

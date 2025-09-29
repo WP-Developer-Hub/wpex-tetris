@@ -349,3 +349,7 @@
 .u-padding-0-r { padding-right: 0 !important; }
 .u-padding-0-b { padding-bottom: 0 !important; }
 
+.u-pe-none { pointer-events:none; }
+.u-di-fix { display: flex; align-items: center; justify-content: center; }
+.u-focus-none { user-focus:none; -webkit-user-focus:none; -moz-user-focus:none; -ms-user-focus:none; }
+.u-select-none { user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; }
