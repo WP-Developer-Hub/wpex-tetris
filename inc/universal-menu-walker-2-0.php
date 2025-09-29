@@ -44,27 +44,30 @@ if (!class_exists('Universal_Menu_Walker_2_0')) {
             // Build the menu item output
             $output .= $indent . '<li id="' . esc_attr( $menu_item_id ) . '" class="' . implode( ' ', $classes ) . '">';
     
+            // Prepare Class attribute
             $class_attr = 'class="u-flex"';
+    
+            // Prepare target attribute if set
+            $target_attr = !empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
+    
+            // Prepare rel attribute if set
+            $rel_attr = !empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
+    
+            // Build link once
+            $a_tag = '<a href="' . esc_url($item->url) . '" name="' . esc_attr(sanitize_title($item->title)) . '" ' .
+                     $target_attr . ' ' . $rel_attr . ' ' . $class_attr . '>' .
+                     esc_html($item->title) .
+                     '</a>';
     
             // Add link and toggle if item has children
             if ( $args->walker->has_children ) {
-                // Prepare target attribute if set
-                $target_attr = !empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
-
-                // Prepare rel attribute if set
-                $rel_attr = !empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
-
                 $output .= '<details class="menu-toggle u-cf">';
-                $output .= '<summary class="u-flex u-ai-c">';
+                $output .= '<summary class="u-flex u-ai-c" aria-expanded="false">';
                 $output .= '<span aria-hidden="true" class="toggle-icon dashicons dashicons-arrow-right u-di-fix u-select-none u-focus-none"></span>';
-                // Output menu item with optional target and rel
-                $output .= '<span class="menu-item-title" tabindex="0">'
-                         . '<a href="' . esc_url($item->url) . '"' . $target_attr . $rel_attr . $class_attr .'>'
-                         . esc_html($item->title)
-                         . '</a></span>';
+                $output .= '<span class="menu-item-title">' . $a_tag . '</span>';
                 $output .= '</summary>';
             } else {
-                $output .= '<a href="' . esc_url( $item->url ) . '" name="' . esc_attr( sanitize_title($item->title) ) . '"' . $class_attr . '">' . esc_html( $item->title ) . '</a>';
+                $output .= $a_tag;
             }
         }
     
