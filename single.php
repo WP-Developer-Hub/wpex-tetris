@@ -33,21 +33,19 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                 </ul><!-- .meta -->
             </header><!-- #post-header -->
 
-            <?php if ( !empty( get_the_content() ) ) : ?>
-            <?php echo wpx_spacer(); ?>
-                <div id="post-entry" class="entry">
-                    <div id="inner-post" class="u-pos-rel inner-post">
-                        <?php the_content(); // This is your main post content output ?>
-                    </div><!-- .inner-post -->
-                </div><!-- .entry -->
+            <?php if (!empty(trim(apply_filters('the_content', get_the_content())))) : echo wpx_spacer(); ?>
+                    <div id="post-entry" class="entry">
+                        <div id="inner-post" class="u-pos-rel inner-post">
+                            <?php the_content(); // This is your main post content output ?>
+                        </div><!-- .inner-post -->
+                    </div><!-- .entry -->
             <?php endif; ?>
 
-            <?php if (strpos($post->post_content, '<!--nextpage-->') !== false) : ?>
-                <?php
-                    echo wpx_spacer();
-                    echo wpx_custom_link_pages();
-                ?>
-            <?php endif; ?>
+            <?php
+                if (strpos($post->post_content, '<!--nextpage-->') !== false) :
+                    echo wpx_spacer() . wpx_custom_link_pages();
+                endif;
+            ?>
 
             <?php if (get_theme_mod('universal_toggle_post_tags', true) && !empty(get_the_tags())) : ?>
                 <section aria-labelledby="post-tags-heading">
