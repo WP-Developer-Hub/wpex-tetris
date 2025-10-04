@@ -45,7 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             </nav><!-- #navigation -->
         </header><!-- #header -->
         <details id="mobile-navigation" aria-label="<?php echo esc_attr__('Main Navigation', 'tetris'); ?>">
-            <summary id="main-toggle" class="menu-toggle u-jc-sb"><span class="menu-summary-name u-tt-all-uppercase"> <?php echo esc_html('Menu', 'tetris')?></span> <span class="dashicons dashicons-menu"></span> </summary>
+            <summary id="main-toggle" class="menu-toggle u-flex u-jc-sb"><span class="menu-summary-name u-tt-all-uppercase u-focus-none"> <?php echo esc_html('Menu', 'tetris')?></span> <span class="dashicons dashicons-menu u-di-fix u-select-none u-focus-none" aria-hidden="true"></span></summary>
             <nav class="clearfix">
                 <?php
                     wp_nav_menu(array(
