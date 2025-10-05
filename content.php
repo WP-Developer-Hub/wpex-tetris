@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <header class="u-wrap-text">
                 <h2>
                     <a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>">
-                        <?php echo !empty(get_the_title()) ? get_the_title() : __('Untitled Post', 'tetris') . ' ' . get_the_ID(); ?>
+                        <?php echo wpex_get_title(); ?>
                     </a>
                 </h2>
             </header>
