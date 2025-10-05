@@ -349,7 +349,7 @@ add_action( 'after_setup_theme', 'wpex_setup' );
  */
 
 function wpex_get_placeholder_title($post_ID) {
-    return sprintf(__('Untitled Post %d', 'tetris'), $post_ID);
+    return apply_filters('the_title', sprintf(__('Untitled Post %d', 'tetris'), $post_ID), $post_ID);
 }
 
 /**
@@ -359,8 +359,8 @@ function wpex_get_placeholder_title($post_ID) {
  */
 
 function wpex_get_title() {
-    $post_title = get_the_title();
-    return esc_html(!empty($post_title) ? $post_title : wpex_get_placeholder_title(get_the_ID()));
+    $post_ID = get_the_ID();
+    return (!empty(get_post($post_ID)->post_title) ? get_the_title($post_ID) : wpex_get_placeholder_title($post_ID));
 }
 
 /**
@@ -369,7 +369,9 @@ function wpex_get_title() {
  * @since 1.2.0
  */
 function wpex_get_esc_title() {
-    return esc_attr(!empty(get_the_title()) ? the_title_attribute('echo=0') : wpex_get_placeholder_title(get_the_ID()));
+    $post_ID = get_the_ID();
+    $raw_title = get_post($post_ID)->post_title;
+    return esc_attr(!empty($raw_title) ? the_title_attribute('echo=0') : wpex_get_placeholder_title($post_ID));
 }
 
 /**
