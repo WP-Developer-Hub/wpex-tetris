@@ -610,7 +610,7 @@ if ( ! function_exists( 'wpex_remove_protected_text' ) ) {
 if ( ! function_exists( 'wpex_get_post_media_placeholder' ) ) {
     function wpex_get_post_media_placeholder() {
         // Start the HTML output
-        $output = '<div class="u-media-'. esc_attr(is_single() ? '16-9' : '1-1') .' u-media-missing-img u-flex u-ai-center u-jc-center" title="' . esc_attr(get_the_title()) . '">';
+        $output = '<div class="u-media-'. esc_attr(is_single() ? '16-9' : '1-1') .' u-media-missing-img u-flex u-ai-c u-jc-c" title="' . esc_attr(get_the_title()) . '">';
 
         if ( post_password_required() ) {
             $output .= '<span class="dashicons dashicons-lock"></span>';
