@@ -153,7 +153,7 @@ a:hover { cursor: pointer }
 #mobile-navigation .menu-toggle summary { border-bottom: 2px solid #555 }
 #mobile-navigation summary { padding: 15px 0; background: #000; width: 100%; list-style: none }
 #mobile-navigation details details { background-color: #212121 }
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: no-preference) {
   #mobile-navigation details > summary .toggle-icon { transition: transform 250ms linear 0s }
 }
 #mobile-navigation details[open] > summary .toggle-icon { transform: rotate(90deg) }
