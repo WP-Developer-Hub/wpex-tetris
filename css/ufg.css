@@ -3,7 +3,9 @@
 /* Author: DJABHipHop */
 
 :root {
-  --u-pos-transition: top 250ms linear 0ms, right 250ms linear 0ms, bottom 250ms linear 0ms, left 250ms linear 0ms;
+  --u-tb: 250ms linear 0ms;
+  --u-detial-transition: height var(--u-tb), content-visibility var(--u-tb) allow-discrete;
+  --u-pos-transition: top var(--u-tb), right var(--u-tb), bottom var(--u-tb), left var(--u-tb);
 }
 
 /* Flex and Grid Utilities */
@@ -359,3 +361,9 @@
 .u-di-fix { display: flex; align-items: center; justify-content: center; }
 .u-focus-none { user-focus:none; -webkit-user-focus:none; -moz-user-focus:none; -ms-user-focus:none; }
 .u-select-none { user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; }
+
+@media (prefers-reduced-motion: reduce) {
+    ::details-content { height: 0; overflow: clip; transition: var(--u-detial-transition); }
+    /* Browser supports interpolate-size */
+    @supports (interpolate-size: allow-keywords) { :root { interpolate-size: allow-keywords; } [open]::details-content { height: auto;} }
+}
