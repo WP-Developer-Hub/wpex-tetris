@@ -365,5 +365,8 @@
 @media (prefers-reduced-motion: reduce) {
     ::details-content { height: 0; overflow: clip; transition: var(--u-detial-transition); }
     /* Browser supports interpolate-size */
-    @supports (interpolate-size: allow-keywords) { :root { interpolate-size: allow-keywords; } [open]::details-content { height: auto;} }
+    @supports (interpolate-size: allow-keywords) {
+      :root { interpolate-size: allow-keywords; }
+      [open]::details-content { height: auto;}
+    }
 }
