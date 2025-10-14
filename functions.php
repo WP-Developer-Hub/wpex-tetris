@@ -277,9 +277,6 @@ function wpex_setup() {
     add_theme_support('widgets-block-editor');
     add_theme_support('wp-block-styles');
 
-    // Add support for post formats (optional)
-    add_theme_support('post-formats', array('gallery', 'audio', 'video', 'link',));
-
     // Add support for customize selective refresh widgets
     add_theme_support('customize-selective-refresh-widgets');
 
