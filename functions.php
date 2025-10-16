@@ -415,7 +415,7 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
 
         if ( ! post_password_required() && $trimmed_text !== '' && $readmore ) {
             $jump_point = strpos($post->post_content, '<!--more-->') !== false ? '#more-' . $post->ID : '#post-entry';
-            $readmore_link = '<span class="wpex-readmore"><a href="' . get_permalink($post->ID) . $jump_point . '" title="'. __( 'Continue reading', 'tetris' ) .'" rel="bookmark" class="u-block u-block-100 u-ta-c u-link-button u-tt-all-caps u-fs-16">'. __( 'Read more', 'tetris' ) .'</a></span>';
+            $readmore_link = '<span class="wpex-readmore"><a href="' . get_permalink($post->ID) . $jump_point . '" title="'. __( 'Continue reading', 'tetris' ) .'" rel="bookmark" class="u-block u-block-100 u-ta-c u-link-button u-tt-all-caps u-fs-16" role="button" tabindex="0">'. __( 'Read more', 'tetris' ) .'</a></span>';
             $output .= $readmore_link;
         }
         return $output;
