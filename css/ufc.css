@@ -470,6 +470,7 @@ input[type=reset],
 input[type=submit],
 input[type=button],
 input::file-selector-button {
+  width: fit-content;
   border-color: var(--co-btn-bg);
   background-color: var(--co-btn-bg);
   color: var(--co-btn-text);
