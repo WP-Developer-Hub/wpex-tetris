@@ -362,13 +362,11 @@
 .u-focus-none { user-focus:none; -webkit-user-focus:none; -moz-user-focus:none; -ms-user-focus:none; }
 .u-select-none { user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; }
 
-.u-wide kbd,
 .u-wide button,
 .u-wide .u-link-button,
 .u-wide input[type=reset],
 .u-wide input[type=submit],
-.u-wide input[type=button],
-.u-wide input::file-selector-button {
+.u-wide input[type=button] {
   width: 100%;
 }
 
