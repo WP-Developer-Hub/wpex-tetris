@@ -75,7 +75,7 @@ function universal_customizer_settings($wp_customize) {
     // General Settings Section
     $wp_customize->add_section('universal_general_settings_section', array(
         'title' => __('General Settings', 'tetris'),
-        'priority' => 30,
+        'priority' => 0,
         'panel' => 'universal_theme_settings_panel',
         'description' => __('This section contains General settings.', 'tetris'),
     ));
@@ -132,7 +132,7 @@ function universal_customizer_settings($wp_customize) {
     // Grid Settings Section
     $wp_customize->add_section('universal_grid_item_settings_section', array(
         'title' => __('Grid Item Settings', 'tetris'),
-        'priority' => 30,
+        'priority' => 10,
         'panel' => 'universal_theme_settings_panel',
         'description' => __('This section contains settings related to grid layout.', 'tetris'),
     ));
@@ -194,7 +194,7 @@ function universal_customizer_settings($wp_customize) {
 
     // Excerpt Length
     $wp_customize->add_setting('universal_excerpt_length', array(
-        'default' => 20,
+        'default' => 30,
         'transport' => 'refresh',
         'sanitize_callback' => 'absint',
     ));
@@ -227,7 +227,7 @@ function universal_customizer_settings($wp_customize) {
     // Post Page Settings Section
     $wp_customize->add_section('universal_single_post_page_settings_section', array(
         'title' => __('Single Post Settings', 'tetris'),
-        'priority' => 30,
+        'priority' => 20,
         'panel' => 'universal_theme_settings_panel',
         'description' => __('This section contains settings related to single post pages.', 'tetris'),
     ));
@@ -293,7 +293,7 @@ function universal_customizer_settings($wp_customize) {
     // Footer Settings Section
     $wp_customize->add_section('universal_footer_settings_section', array(
         'title' => __('Footer Settings', 'tetris'),
-        'priority' => 30,
+        'priority' => PHP_INT_MAX,
         'panel' => 'universal_theme_settings_panel',
         'description' => __('This section contains settings for customizing the footer.', 'tetris'),
     ));

@@ -9,7 +9,7 @@
  * @since     1.0.0
  */ ?>
 
-<aside id="sidebar" class="clearfix">
+<aside id="sidebar" class="u-wide clearfix">
     <?php if ( ! get_theme_mod( 'universal_hide_sidebar_search', false ) ) : ?>
         <section class="sidebar-box widget_search clearfix">
             <h4 class="screen-reader-text"><?php _e('Search', 'tetris'); ?></h4>
