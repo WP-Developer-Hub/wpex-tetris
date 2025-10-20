@@ -31,7 +31,7 @@ function wpex_comments_output($comment, $args, $depth) {
                         <?php comment_text() ?>
                     </div><!-- /comment-text -->
                 </div><!-- /comment-content -->
-                <div class="reply u-block-100 u-flex u-flex-row u-ai-c u-jc-e">
+                <div class="reply u-block-100 u-flex u-flex-row u-ai-c u-jc-fe">
                     <?php
                     // Display reply link
                     comment_reply_link(array_merge($args, array(

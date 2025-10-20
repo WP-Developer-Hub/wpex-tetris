@@ -280,9 +280,6 @@ function wpex_setup() {
     add_theme_support('widgets-block-editor');
     add_theme_support('wp-block-styles');
 
-    // Add support for post formats (optional)
-    add_theme_support('post-formats', array('gallery', 'audio', 'video', 'link',));
-
     // Add support for customize selective refresh widgets
     add_theme_support('customize-selective-refresh-widgets');
 
@@ -346,12 +343,35 @@ function wpex_setup() {
 add_action( 'after_setup_theme', 'wpex_setup' );
 
 /**
- * Returns escaped post title
+ * Returns post placeholder title
+ *
+ * @since 8.6.0
+ */
+
+function wpex_get_placeholder_title($post_ID) {
+    return apply_filters('the_title', sprintf(__('Untitled Post %d', 'tetris'), $post_ID), $post_ID);
+}
+
+/**
+ * Returns post title with placeholder if title is missing
+ *
+ * @since 8.6.0
+ */
+
+function wpex_get_title() {
+    $post_ID = get_the_ID();
+    return (!empty(get_post($post_ID)->post_title) ? get_the_title($post_ID) : wpex_get_placeholder_title($post_ID));
+}
+
+/**
+ * Returns escaped post title with placeholder if title is missing
  *
  * @since 1.2.0
  */
 function wpex_get_esc_title() {
-    return esc_attr(!empty(get_the_title()) ? the_title_attribute('echo=0') : __('Untitled Post', 'tetris') . ' ' . get_the_ID());
+    $post_ID = get_the_ID();
+    $raw_title = get_post($post_ID)->post_title;
+    return esc_attr(!empty($raw_title) ? the_title_attribute('echo=0') : wpex_get_placeholder_title($post_ID));
 }
 
 /**
@@ -383,19 +403,22 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
         // Get excerpt or content
         $text = has_excerpt($post->ID) ? $post->post_excerpt : $post->post_content;
         $trimmed_text = trim(str_replace('&nbsp;', '', strip_tags(strip_shortcodes($text))));
+        $spacer = wpx_spacer('#eee');
 
         $output = '<div class="u-wrap-text u-trim" style="--u-line-clamp: ' . intval($length) . '">';
-        if ( ! post_password_required() && $trimmed_text !== '' ) {
+        if ( ! post_password_required() && !empty( $trimmed_text ) ) {
+            $output .= $spacer;
             $length = apply_filters('wpex_excerpt_length', intval($length * 10));
             $output .= wp_trim_words($trimmed_text, $length);
         } else {
+            $output .= post_password_required() ?? $spacer;
             $output .= post_password_required() ? __( 'This content is protected. Log in or enter the password to view the full content.', 'tetris' ) : '';
         }
         $output .= '</div>';
 
         if ( ! post_password_required() && $trimmed_text !== '' && $readmore ) {
             $jump_point = strpos($post->post_content, '<!--more-->') !== false ? '#more-' . $post->ID : '#post-entry';
-            $readmore_link = '<span class="wpex-readmore"><a href="' . get_permalink($post->ID) . $jump_point . '" title="'. __( 'Continue reading', 'tetris' ) .'" rel="bookmark" class="u-block u-block-100 u-ta-c u-link-button u-tt-all-caps u-fs-16">'. __( 'Read more', 'tetris' ) .'</a></span>';
+            $readmore_link = '<span class="wpex-readmore"><a href="' . get_permalink($post->ID) . $jump_point . '" title="'. __( 'Continue reading', 'tetris' ) .'" rel="bookmark" class="u-block u-block-100 u-ta-c u-link-button u-tt-all-caps u-fs-16" role="button" tabindex="0">'. __( 'Read more', 'tetris' ) .'</a></span>';
             $output .= $readmore_link;
         }
         return $output;
@@ -460,4 +483,3 @@ function ps_remove_avatar_srcset( $avatar, $id_or_email, $size, $default, $alt )
     return preg_replace('/(\ssrcset=)/', 'src=', $avatar);
 }
 add_filter('get_avatar', 'ps_remove_avatar_srcset', 10, 999999);
-

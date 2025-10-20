@@ -56,7 +56,7 @@ if ( ! function_exists( 'wpex_load_scripts' ) ) {
  
 if ( ! function_exists( 'wpex_enqueue_mediaelement_fix' ) ) {
     function wpex_enqueue_mediaelement_fix() {
-        if ( wp_script_is( 'mediaelement', 'enqueued' ) ) {
+        if ( wp_script_is( 'mediaelement', 'enqueued' ) && !is_customize_preview() ) {
             $dir = get_template_directory_uri();
 
             // Enqueue Universal player stylesheet
