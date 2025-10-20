@@ -198,11 +198,11 @@
 .u-jc-sb {justify-content: space-between;}
 
 /* Justify Items (for grid items) */
-.u-ji-e {justify-content: end;}
-.u-ji-s {justify-content: start;}
-.u-ji-c {justify-content: center;}
-.u-ji-fe {justify-content: flex-end;}
-.u-ji-fs {justify-content: flex-start;}
+.u-ji-e {justify-items: end;}
+.u-ji-s {justify-items: start;}
+.u-ji-c {justify-items: center;}
+.u-ji-fe {justify-items: flex-end;}
+.u-ji-fs {justify-items: flex-start;}
 .u-ji-se {justify-items: space-evenly;}
 .u-ji-sa {justify-items: space-around;}
 .u-ji-sb {justify-items: space-between;}
