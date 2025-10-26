@@ -56,7 +56,7 @@ if (!class_exists('Universal_Menu_Walker_2_0')) {
             // Build link once
             $a_tag = '<a href="' . esc_url($item->url) . '" name="' . esc_attr(sanitize_title($item->title)) . '" ' .
                      $target_attr . ' ' . $rel_attr . ' ' . $class_attr . '>' .
-                     esc_html($item->title) .
+                     $item->title .
                      '</a>';
     
             // Add link and toggle if item has children
