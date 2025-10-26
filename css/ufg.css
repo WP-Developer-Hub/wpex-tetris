@@ -98,10 +98,8 @@
 .u-grid-col-8 {grid-template-columns: repeat(8, 1fr);}
 .u-grid-col-9 {grid-template-columns: repeat(9, 1fr);}
 .u-grid-col-10 {grid-template-columns: repeat(10, 1fr);}
-
 .u-grid-col-s {grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));}
 .u-grid-col-auto {grid-template-columns: repeat(auto-fill, minmax(var(--u-post-item-min-width), 1fr));}
-
 .u-grid-wsb {grid-template-columns: auto var(--u-post-sb-width);}
 
 /* Grid Rows */
@@ -141,6 +139,7 @@
 .u-grid-gap-20 {grid-gap:20px;}
 .u-grid-gap {grid-gap: var(--grid-gap);}
 
+/* Masonry Grid Crap */
 .u-masonry {columns: 240px;}
 
 .u-masonry-brake {break-inside: avoid;}
@@ -215,6 +214,7 @@
 .u-pos-sta {position: static !important; transition: var(--u-pos-transition);}
 .u-pos-sti {position: sticky !important; transition: var(--u-pos-transition);}
 
+/* Text Alignment */
 .u-ta-l {text-align: left !important;}
 .u-ta-c {text-align: center !important;}
 .u-ta-r {text-align: right !important;}
@@ -227,15 +227,19 @@
 .u-fw-thick {font-weight: 700 !important;}
 .u-fw-ultra-thick {font-weight: 900 !important;}
 
+/* Text Trimming Add --u-line-clamp As Inline Style To Make Work*/
 .u-trim {display: -webkit-box; -webkit-line-clamp: var(--u-line-clamp, 1); -webkit-box-orient: vertical; overflow: hidden; line-break: anywhere; }
 
-.u-wrap-text {overflow-wrap: break-word; word-break: break-word; hyphens: auto;}
-.u-wrap-text-any {overflow-wrap: anywhere; word-break: break-word; hyphens: auto;}
-.u-wrap-text-all {overflow-wrap: break-word; word-break: break-all; hyphens: auto;}
+/* Text Wrapping */
+.u-wrap-text {overflow-wrap: none !important; word-break: none !important; hyphens: none !important;}
+.u-wrap-text {overflow-wrap: break-word !important; word-break: break-word !important; hyphens: auto !important;}
+.u-wrap-text-any {overflow-wrap: anywhere !important; word-break: break-word !important; hyphens: auto !important;}
+.u-wrap-text-all {overflow-wrap: break-word !important; word-break: break-all !important; hyphens: auto !important;}
 
-.u-tt-all-caps {text-transform: capitalize;}
-
-.u-tt-all-uppercase {text-transform: uppercase;}
+/* Text Transform */
+.u-tt-all-caps {text-transform: capitalize !important;}
+.u-tt-all-uppercase {text-transform: uppercase !important;}
+.u-tt-all-lowercase {text-transform: lowercase !important;}
 
 .u-margin-none {margin: 0px !important;}
 .u-margin-top-10 {margin-top: 10px !important;}
@@ -244,7 +248,7 @@
 .u-margin-bottom-30 {margin-bottom: 30px !important;}
 
 .u-padding-5 {padding: 5px !important;}
-.u-padding-10 {padding: 10px!important;}
+.u-padding-10 {padding: 10px !important;}
 
 .u-fit-all .post-thumbnail iframe {object-fit:contain; max-height: none !important;}
 
@@ -259,9 +263,7 @@
 
 /* Spacers - Horizontal */
 .u-spacer-h {margin-top: 12px; margin-bottom: 12px; height: 1px;}
-
 .u-spacer-h-l {height: 1px;}
-
 .u-spacer-text::after {content:"-"; display: flex; height: 1px; width: 100%;}
 
 /* Light Spacer */
@@ -278,8 +280,8 @@
 .u-spacer-dark,
 .u-spacer-text-dark::after {background: #555;}
 
+/* Border */
 .u-border-light {border: 1px solid #ccc;}
-
 .u-border-dark {border: 1px solid #555;}
 
 .u-error-message {font-size: 105px; text-align: center; font-weight: bold;}
@@ -289,8 +291,10 @@
 .u-additional-text {font-size: 65px; color: #999;  font-weight: lighter; text-align: center;}
 .u-search {width:100%;}
 
+/* Reset List Style */
 .u-list {list-style:none;}
 
+/* Make it Fit */
 .u-fit{object-fit: cover !important; object-view-box: none !important; object-position: top center !important;}
 
 .u-fake-form {padding: 20px !important;}
@@ -298,8 +302,10 @@
 
 .u-spacer-128 {height: 128px; width: 128px;}
 
+/* Requird Text */
 .required {color:red; vertical-align: middle;}
 
+/* Common Font Sizes */
 .u-fs-12 {font-size: 12px !important;}
 .u-fs-14 {font-size: 14px !important;}
 .u-fs-16 {font-size: 16px !important;}
@@ -310,11 +316,13 @@
 .u-fs-30 {font-size: 30px !important;}
 .u-fs-50 {font-size: 50px !important;}
 
+/* Responsive Image */
 .u-image {width: 100%; max-width: 100%; height: auto; max-height: 100%;}
 
 .u-c-1200 {width: 1200px;}
 .u-c-auto {margin: 0 auto;}
 
+/* Common Media Aspect Ratios */
 .u-media-1-1,
 .size-thumbnail,
 .attachment-thumbnail {aspect-ratio:1/1 !important; object-fit: cover; object-position: top center;}
@@ -331,10 +339,12 @@
 .u-media-4-5 {aspect-ratio:4/5 !important; width: 100% !important; object-fit: cover; object-position: top center;}
 .u-media-9-21 {aspect-ratio:9/21 !important; width: 100% !important; object-fit: cover; object-position: top center;}
 
+/* Missing Image */
 .u-media-missing-img { width: 100% !important; background-color: #212121; position: relative; }
 .u-media-missing-img .dashicons,
 .u-media-missing-img .dashicons::before { display: flex; align-items: center; justify-content: center; color: white; font-size: 96px; width: 100%; height: 100%;}
 
+/* Image With Link */
 .u-link-img { text-decoration: none !important; color: white !important;}
 
 /* Text Color*/
@@ -357,11 +367,11 @@
 .u-padding-0-r { padding-right: 0 !important; }
 .u-padding-0-b { padding-bottom: 0 !important; }
 
+/* Mic Rules */
 .u-pe-none { pointer-events:none; }
 .u-di-fix { display: flex; align-items: center; justify-content: center; }
 .u-focus-none { user-focus:none; -webkit-user-focus:none; -moz-user-focus:none; -ms-user-focus:none; }
 .u-select-none { user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; }
-
 .u-wide button,
 .u-wide .u-link-button,
 .u-wide input[type=reset],
@@ -370,6 +380,40 @@
   width: 100%;
 }
 
+/* Width Utilities */
+.u-w-a { width: auto !important; } /* Width set to auto */
+.u-w-f { width: fit-content !important; } /* Width shrinks to fit content */
+.u-w-mx { width: max-content !important; } /* Width expands to largest content */
+.u-w-mn { width: min-content !important; } /* Width shrinks to smallest possible */
+
+/* Height Utilities */
+.u-h-a { height: auto !important; } /* Height set to auto */
+.u-h-f { height: fit-content !important; } /* Height shrinks to fit content */
+.u-h-mx { height: max-content !important; } /* Height expands to largest content */
+.u-h-mn { height: min-content !important; } /* Height shrinks to smallest possible */
+
+/* Overflow all directions */
+.u-overflow-visible { overflow: visible !important; }
+.u-overflow-hidden { overflow: hidden !important; }
+.u-overflow-clip { overflow: clip !important; }
+.u-overflow-scroll { overflow: scroll !important; }
+.u-overflow-auto { overflow: auto !important; }
+
+/* Overflow horizontal (x-axis) only */
+.u-overflow-x-visible { overflow-x: visible !important; }
+.u-overflow-x-hidden { overflow-x: hidden !important; }
+.u-overflow-x-clip { overflow-x: clip !important; }
+.u-overflow-x-scroll { overflow-x: scroll !important; }
+.u-overflow-x-auto { overflow-x: auto !important; }
+
+/* Overflow vertical (y-axis) only */
+.u-overflow-y-visible { overflow-y: visible !important; }
+.u-overflow-y-hidden { overflow-y: hidden !important; }
+.u-overflow-y-clip { overflow-y: clip !important; }
+.u-overflow-y-scroll { overflow-y: scroll !important; }
+.u-overflow-y-auto { overflow-y: auto !important; }
+
+/*  Details Animrtions Only Works On Chrome ATM */
 @supports (interpolate-size: allow-keywords) {
     @media (prefers-reduced-motion: no-preference) {
       :root { interpolate-size: allow-keywords; }
