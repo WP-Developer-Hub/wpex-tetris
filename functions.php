@@ -475,8 +475,3 @@ function wpex_pagination() {
         return $pagination_html;
     }
 }
-
-function ps_remove_avatar_srcset( $avatar, $id_or_email, $size, $default, $alt ) {
-    return preg_replace('/(\ssrcset=)/', 'src=', $avatar);
-}
-add_filter('get_avatar', 'ps_remove_avatar_srcset', 10, 999999);
