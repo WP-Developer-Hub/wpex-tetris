@@ -83,6 +83,7 @@ function universal_customizer_settings($wp_customize) {
     // Date Display Options
     $wp_customize->add_setting('universal_date_display_option', array(
         'default' => 'date',
+        'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field',
     ));
     $wp_customize->add_control('universal_date_display_option', array(
@@ -93,6 +94,38 @@ function universal_customizer_settings($wp_customize) {
         'choices' => array(
             'date' => __('Published Date', 'tetris'),
             'modified_date'=> __('Modified Date', 'tetris'),
+        ),
+    ));
+
+    // Toggle Ago Format
+    $wp_customize->add_setting('universal_toggle_auto_ago_format', array(
+        'default' => 'false',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_auto_ago_format', array(
+        'label' => __('Toggle Automatic Time Ago Format', 'tetris'),
+        'description' => __('Enable to display dates in a "time ago" format for recent posts/dates, otherwise display standard full date format.', 'tetris'),
+        'section' => 'universal_general_settings_section',
+    )));
+
+    // Toggle Ago Format Delay
+    $wp_customize->add_setting('universal_toggle_auto_ago_format_delay', array(
+        'default' => 7,
+        'transport' => 'refresh',
+        'sanitize_callback' => 'absint',
+    ));
+    $wp_customize->add_control('universal_toggle_auto_ago_format_delay', array(
+        'label' => __('Keep Badge For', 'tetris'),
+        'description' => __('Specify the number of days before the "Automatic ago formating" kick in. Min 7 days, Max 356 days.', 'tetris'),
+        'section' => 'universal_general_settings_section',
+        'type' => 'number',
+        'input_attrs' => array(
+            'step' => 1,
+            'min' => 7,
+            'max' => 356,
+            'pattern' => '[0-9]*',
+            'inputmode' => 'numeric',
         ),
     ));
 
@@ -152,6 +185,7 @@ function universal_customizer_settings($wp_customize) {
             'pattern' => '[0-9]*',
             'inputmode' => 'numeric',
         ),
+
     ));
 
     $wp_customize->add_control(new WPX_Divider($wp_customize, 'universal_recent_post_badge_divider', array(

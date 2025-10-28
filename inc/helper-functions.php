@@ -638,42 +638,49 @@ if ( ! function_exists( 'wpex_get_post_media_placeholder' ) ) {
  */
 if ( !function_exists('wpex_get_post_date') ) {
     function wpex_get_post_date() {
-        $date_style = get_theme_mod( 'universal_date_display_option', 'date' );
+        $date_style = get_theme_mod('universal_date_display_option', 'date');
+        $auto_ago_delay = get_theme_mod('universal_toggle_auto_ago_format_delay', 7);
+        $auto_ago_format = get_theme_mod('universal_toggle_auto_ago_format', 'true');
 
+        $post_date_label = __('Posted on', 'tetris');
+        $post_modified_date_label = __('Edited on', 'tetris');
         $link_aria_prefix = __('View All Posts Made on', 'tetris'). ' ';
 
-        $original_date = get_the_date();
-        $original_date_c = get_the_date('c');
-        $modified_date = get_the_modified_date();
-        $modified_date_c = get_the_modified_date('c');
-
         $date_c = '';
+        $post_time = '';
         $post_date = '';
         $show_modified_date = false;
-        $is_edited =( get_the_date('Y-m-d') !== get_the_modified_date('Y-m-d'));
+        $is_edited = (get_the_date('Y-m-d') !== get_the_modified_date('Y-m-d'));
 
         $post_date_link = get_day_link(get_the_time('Y'), get_the_time('m'), get_the_time('d'));
 
         switch ($date_style) {
             case 'modified_date':
                 $show_modified_date = true;
-                $date_c = $modified_date_c;
-                $post_date = $modified_date;
+                $date_c = get_the_modified_date('c');
+                $post_date = get_the_modified_date('');
+                $post_timestamp = get_the_modified_date('U');
                 break;
             case 'date':
             default:
-                $date_c = $original_date_c;
-                $post_date = $original_date;
+                $date_c = get_the_date('c');
+                $post_date = get_the_date('');
+                $post_timestamp = get_the_date('U');
                 break;
         }
+        if ($auto_ago_format && ((current_time('timestamp') - $post_timestamp) > ($auto_ago_delay * DAY_IN_SECONDS))) {
+            $post_date_label = __('Posted', 'tetris');
+            $post_modified_date_label = __('Edited', 'tetris');
+            $post_date = human_time_diff($post_timestamp, $now) . ' ' . __('ago', 'tetris');
+        }
 
-        $post_date_label = ($show_modified_date && $is_edited ? __('Edited on', 'tetris') : __('Posted on', 'tetris'));
+        $post_date_label = ($show_modified_date && $is_edited ? $post_modified_date_label : $post_date_label);
 
         $output = '<strong>' . esc_html($post_date_label) . ':</strong> ';
         $output .= '<a class="post-date-link u-text-medium" href="' . $post_date_link . '" rel="bookmark"';
 
         if ( is_single() ) {
-            $output .= ' aria-label="' . esc_attr($link_aria_prefix . $original_date) . '"';
+            $output .= ' aria-label="' . esc_attr($link_aria_prefix . get_the_date('', $id)) . '"';
         }
 
         $output .= '>';
