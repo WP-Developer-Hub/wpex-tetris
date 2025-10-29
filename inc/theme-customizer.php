@@ -111,7 +111,7 @@ function universal_customizer_settings($wp_customize) {
 
     // Toggle Ago Format Delay
     $wp_customize->add_setting('universal_toggle_auto_ago_format_delay', array(
-        'default' => 7,
+        'default' => 30,
         'transport' => 'refresh',
         'sanitize_callback' => 'absint',
     ));
@@ -122,7 +122,7 @@ function universal_customizer_settings($wp_customize) {
         'type' => 'number',
         'input_attrs' => array(
             'step' => 1,
-            'min' => 7,
+            'min' => 0,
             'max' => 356,
             'pattern' => '[0-9]*',
             'inputmode' => 'numeric',
