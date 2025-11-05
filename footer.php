@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div id="footer-wrap">
 		<footer id="footer">
-			<div id="footer-widgets" class="u-flex u-flex-wrap u-grid-gap u-wide" style="--u-post-item-min-width: 300px; --grid-gap: 40px;">
+			<div id="footer-widgets" class="u-flex u-flex-wrap u-grid-gap u-wide ufc_dark" style="--u-post-item-min-width: 300px; --grid-gap: 40px;">
 				<div class="footer-box u-col-1">
 					<?php dynamic_sidebar('footer-one'); ?>
 				</div><!-- /footer-box -->
