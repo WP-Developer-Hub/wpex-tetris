@@ -766,9 +766,13 @@ input[type=week] {
 ::-webkit-calendar-picker-indicator {
   mask-size: 20px;
   background: none;
-  mask-position: center right;
+  color: currentcolor;
   mask-repeat: no-repeat;
+  background-repeat: no-repeat;
+  mask-position: center right;
   background-color: currentcolor;
+  display: inline-block !important;
+  background-position: center right;
   mask-image: var(--co-picker-indicator-icon);
 }
 
@@ -784,7 +788,15 @@ input[type="week"]::-webkit-calendar-picker-indicator {
 
 input[type="time"]::-webkit-calendar-picker-indicator {
   mask-image: var(--co-picker-indicator-time-icon);
-  mask-image: ;
+}
+
+input[list]::not([type="date"], [type="datetime-local"], [type="month"], [type="time"], [type="week"])::-webkit-calendar-picker-indicator  {
+  visibility: hidden;
+}
+
+input[list].ufc_show_indicator::-webkit-calendar-picker-indicator,
+.ufc_show_indicator input[list]::-webkit-calendar-picker-indicator {
+  visibility: visible;
 }
 
 kbd {
