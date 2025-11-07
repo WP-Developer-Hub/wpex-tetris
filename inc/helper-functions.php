@@ -680,7 +680,7 @@ if ( !function_exists('wpex_get_post_date') ) {
         $output .= '<a class="post-date-link u-text-medium" href="' . $post_date_link . '" rel="bookmark"';
 
         if ( is_single() ) {
-            $output .= ' aria-label="' . esc_attr($link_aria_prefix . get_the_date('', $id)) . '"';
+            $output .= ' aria-label="' . esc_attr($link_aria_prefix . get_the_date('')) . '"';
         }
 
         $output .= '>';
