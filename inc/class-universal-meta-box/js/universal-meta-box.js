@@ -43,7 +43,7 @@ jQuery(document).ready(function($) {
         }
 
         var mediaUploader = wp.media.frames.file_frame = wp.media({
-            frame: "post",
+            frame: 'post',
             state: getMediaUploaderState(idsValue, mediaType),
             library: {
                 type: mediaType
