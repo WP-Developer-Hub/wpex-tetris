@@ -39,14 +39,16 @@ if ( ! function_exists( 'universal_display_media' ) ) {
 
                 if ($post_format === 'gallery' || $post_format === 'image') {
                     $container .= '<div id="post-gallery" class="u-media-16-9">';
-                    $column_count = $post_format === 'image' ?  1 : (($item_count > 4) ? 4 : $item_count / 1.5);
-                    // Display a gallery of images
+                    $column_count = $post_format === 'image' ? 1 : (($item_count > 4) ? 4 : $item_count / 1.5);
+                    $image_ids = $post_format === 'image' ? explode(',', $attachment_ids)[0] : $attachment_ids;
+
+                    // Display a gallery of images no mater the count
                     $gallery_attr = array(
                         'order' => 'ASC',
                         'orderby' => 'post__in',
                         'size' => 'wpex-post',
                         'columns' => $column_count,
-                        'ids' => $attachment_ids,
+                        'ids' => $image_ids,
                         'link' => get_theme_mod('universal_gallery_link_type', 'attchments'),
                         'type' => 'slideshow',
                     );
@@ -680,7 +682,7 @@ if ( !function_exists('wpex_get_post_date') ) {
         $output .= '<a class="post-date-link u-text-medium" href="' . $post_date_link . '" rel="bookmark"';
 
         if ( is_single() ) {
-            $output .= ' aria-label="' . esc_attr($link_aria_prefix . get_the_date('', $id)) . '"';
+            $output .= ' aria-label="' . esc_attr($link_aria_prefix . get_the_date('')) . '"';
         }
 
         $output .= '>';
