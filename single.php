@@ -57,18 +57,18 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                 </section>
             <?php endif; ?>
 
-            <?php if ( get_theme_mod( 'universal_toggle_post_author_box', true ) ) : ?>
-            <section id="single-author" >
-                <h4 id="author-title" class="heading widget-title"><span><?php the_author_posts_link(); ?></span></h4>
-                <div class="author-inner u-flex u-flex-gap-10">
-                    <div id="author-image">
-                       <a href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' )); ?>"><?php echo get_avatar( get_the_author_meta('user_email'), '150', '', __('Post Author\'s Avatar', 'tetris'), array('class' => '', 'force_display' => true)); ?></a>
-                    </div><!-- #author-image -->
-                    <div id="author-bio" class="u-block u-block-100 u-wrap-text">
-                        <?php the_author_meta('description'); ?>
-                    </div><!-- #author-bio -->
-                </div>
-            </section><!-- #single-author -->
+            <?php if (get_theme_mod('universal_toggle_post_author_box', true) && wpex_post_type_supports(get_the_ID(), 'author')) : ?>
+                <section id="single-author" >
+                    <h4 id="author-title" class="heading widget-title"><span><?php the_author_posts_link(); ?></span></h4>
+                    <div class="author-inner u-flex u-flex-gap-10">
+                        <div id="author-image">
+                           <a href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' )); ?>"><?php echo get_avatar(get_the_author_meta('user_email'), '150', '', __('Post Author\'s Avatar', 'tetris'), array('class' => '', 'force_display' => true)); ?></a>
+                        </div><!-- #author-image -->
+                        <div id="author-bio" class="u-block u-block-100 u-wrap-text">
+                            <?php the_author_meta('description'); ?>
+                        </div><!-- #author-bio -->
+                    </div>
+                </section><!-- #single-author -->
             <?php endif; ?>
 
 			<?php comments_template(); ?>

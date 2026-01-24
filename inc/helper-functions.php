@@ -706,23 +706,35 @@ if ( !function_exists('wpex_get_post_date') ) {
  */
 if ( ! function_exists( 'wpex_get_post_author' ) ) {
     function wpex_get_post_author($post_id = null) {
-        // Get current post ID if not provided
-        if (!$post_id) {
-            $post_id = get_the_ID();
-        }
-
-        // Only show if post supports 'author'
-        if (!post_type_supports(get_post_type($post_id), 'author')) {
-            return '';
-        }
-
+        $html = '';
+        $post_id = $post_id ? $post_id : get_the_ID();
         $class = is_single($post_id) ? ' class="single-post-meta-divider"' : '';
-
-        $html  = '<li' . $class . '>';
-        $html .= '<strong>' . esc_html__('By', 'tetris') . ':</strong>';
-        $html .= get_the_author_posts_link();
-        $html .= '</li>';
+        
+        if (wpex_post_type_supports($post_id, 'author')) {
+            $html .= '<li' . $class . '>';
+            $html .= '<strong>' . esc_html__('By', 'tetris') . ': </strong>';
+            $html .= get_the_author_posts_link();
+            $html .= '</li>';
+        }
 
         return $html;
+    }
+}
+
+/**
+ * Determines whether a post supports a specific WordPress feature.
+ *
+ * @param int $post_id The ID of the post to check.
+ * @param string $feature The feature name to test (e.g. 'editor', 'thumbnail').
+ *
+ * @return bool True if the post type supports the feature, false otherwise or
+ * if the post is invalid or missing.
+ */
+if ( !function_exists('wpex_post_type_supports') ) {
+    function wpex_post_type_supports($post_id, $feature) {
+        if (empty($post_id) || !get_post($post_id)) {
+            return false;
+        }
+        return post_type_supports(get_post_type($post_id), $feature);
     }
 }
