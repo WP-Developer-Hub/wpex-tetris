@@ -696,16 +696,33 @@ if ( !function_exists('wpex_get_post_date') ) {
 /**
  * Outputs the post author link in a formatted HTML string.
  *
- * The function returns a strong tag with the text "By:"
- * followed by the author's posts link.
- * Allows for easy translation and filter customization.
+ * The function returns a <li> element with an optional class, containing
+ * a <strong> tag with the text "By:" followed by the author's posts link.
+ * Only displays if the post type supports the 'author' feature.
  *
+ * @param int|null $post_id Optional. Post ID. Defaults to current post.
+ * @param string $class Optional. Additional class for the <li> element.
  * @return string The generated HTML for the post author link.
  */
-if ( !function_exists('wpex_get_post_author') ) {
-    function wpex_get_post_author() {
-        $html  = '<strong>' . esc_html__( 'By', 'tetris' ) . ':</strong> ';
+if ( ! function_exists( 'wpex_get_post_author' ) ) {
+    function wpex_get_post_author($post_id = null) {
+        // Get current post ID if not provided
+        if (!$post_id) {
+            $post_id = get_the_ID();
+        }
+
+        // Only show if post supports 'author'
+        if (!post_type_supports(get_post_type($post_id), 'author')) {
+            return '';
+        }
+
+        $class = is_single($post_id) ? ' class="single-post-meta-divider"' : '';
+
+        $html  = '<li' . $class . '>';
+        $html .= '<strong>' . esc_html__('By', 'tetris') . ':</strong>';
         $html .= get_the_author_posts_link();
+        $html .= '</li>';
+
         return $html;
     }
 }

@@ -22,7 +22,7 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                 <?php echo wpx_spacer(); ?>
                 <ul class="single-post-meta clearfix">
                     <li class="single-post-meta-divider"><?php echo wpex_get_post_date(); ?></li>
-                    <li class="single-post-meta-divider" ><?php echo wpex_get_post_author(); ?></li>
+                    <?php echo wpex_get_post_author(get_the_ID()); ?>
                     <?php if (has_category()) : ?>
                         <li class="single-post-meta-divider">
                             <strong><?php _e('Under', 'tetris'); ?>:</strong>
