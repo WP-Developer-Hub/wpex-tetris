@@ -195,9 +195,9 @@ a:hover { cursor: pointer }
  
 /* Single Post
 ----------------------------------------------------------- */
-#post-thumbnail { height: 512px; padding: 0; overflow: hidden; }
+#post-thumbnail { height: 512px; padding: 0; overflow: hidden; background-size: cover; background-position: center }
 #post-thumbnail img,
-#post-media img { height: 512px; object-fit: contain; object-position: center center;}
+#post-media img { height: 512px; object-fit: contain; object-position: center center; }
 #post-thumbnail img { -webkit-backdrop-filter: blur(50px); backdrop-filter: blur(50px); background: rgba(0, 0, 0, 0.5); }
 #post-gallery { container: wpx-gallery / inline-size; }
 #post-header h1 { margin: 0; font-size: 2.000em; }
