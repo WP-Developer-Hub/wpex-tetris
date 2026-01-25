@@ -57,7 +57,7 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                 </section>
             <?php endif; ?>
 
-            <?php if (get_theme_mod('universal_toggle_post_author_box', true) && wpex_post_type_supports(get_the_ID(), 'author')) : ?>
+            <?php if (get_theme_mod('universal_toggle_post_author_box', true) && wpex_post_type_supports('author')) : ?>
                 <section id="single-author" >
                     <h4 id="author-title" class="heading widget-title"><span><?php the_author_posts_link(); ?></span></h4>
                     <div class="author-inner u-flex u-flex-gap-10">

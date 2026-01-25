@@ -84,6 +84,7 @@ if ( ! function_exists( 'universal_display_media' ) ) {
             }
         } else {
             $container .= wpex_get_post_media_placeholder();
+            $container .= wpx_spacer('', '30');
         }
         return $container;
     }
@@ -705,12 +706,11 @@ if ( !function_exists('wpex_get_post_date') ) {
  * @return string The generated HTML for the post author link.
  */
 if ( ! function_exists( 'wpex_get_post_author' ) ) {
-    function wpex_get_post_author($post_id = null) {
+    function wpex_get_post_author() {
         $html = '';
-        $post_id = $post_id ? $post_id : get_the_ID();
-        $class = is_single($post_id) ? ' class="single-post-meta-divider"' : '';
+        $class = is_single() ? ' class="single-post-meta-divider"' : '';
         
-        if (wpex_post_type_supports($post_id, 'author')) {
+        if (wpex_post_type_supports('author')) {
             $html .= '<li' . $class . '>';
             $html .= '<strong>' . esc_html__('By', 'tetris') . ': </strong>';
             $html .= get_the_author_posts_link();
@@ -722,19 +722,15 @@ if ( ! function_exists( 'wpex_get_post_author' ) ) {
 }
 
 /**
- * Determines whether a post supports a specific WordPress feature.
+ * Determines whether the current post supports a specific WordPress feature.
  *
- * @param int $post_id The ID of the post to check.
+ * Returns true if the feature is empty.
+ *
  * @param string $feature The feature name to test (e.g. 'editor', 'thumbnail').
- *
- * @return bool True if the post type supports the feature, false otherwise or
- * if the post is invalid or missing.
+ * @return bool True if the current post type supports the feature, false otherwise.
  */
-if ( !function_exists('wpex_post_type_supports') ) {
-    function wpex_post_type_supports($post_id, $feature) {
-        if (empty($post_id) || !get_post($post_id)) {
-            return false;
-        }
-        return post_type_supports(get_post_type($post_id), $feature);
+if ( ! function_exists( 'wpex_post_type_supports' ) ) {
+    function wpex_post_type_supports($feature = null) {
+        return empty($feature) ? true : post_type_supports(get_post_type(), $feature);
     }
 }
