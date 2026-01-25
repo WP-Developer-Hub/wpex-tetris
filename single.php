@@ -12,11 +12,14 @@
 get_header();
 
 if ( have_posts()) : while ( have_posts()) : the_post(); ?>
-	<div id="single-post-content" class="sidebar-bg container clearfix">
-		<article id="post" <?php post_class('has-sidebar clearfix'); ?>>
+    <div id="single-post-content" class="sidebar-bg container clearfix">
+        <article id="post" <?php post_class('has-sidebar clearfix'); ?>>
             <!--  Display media -->
-            <?php get_template_part( 'formats/format', get_post_format() ); ?>
-			<!--  Show header on all post formats except quotes -->
+            <?php 
+                $format = wpex_post_type_supports('post-formats') ?  get_post_format() : '';
+                get_template_part('formats/format', $format);
+            ?>
+            <!--  Show header on all post formats except quotes -->
             <header id="post-header">
                 <h1><?php echo wpex_get_title(); ?></h1>
                 <?php echo wpx_spacer(); ?>
@@ -71,13 +74,13 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                 </section><!-- #single-author -->
             <?php endif; ?>
 
-			<?php comments_template(); ?>
+            <?php comments_template(); ?>
 
-		</article><!-- post -->
-		
-		<?php get_sidebar(); ?>
-		
-	</div><!-- #single-post-content -->
+        </article><!-- post -->
+        
+        <?php get_sidebar(); ?>
+        
+    </div><!-- #single-post-content -->
 
 <?php endwhile; endif; ?>
 
