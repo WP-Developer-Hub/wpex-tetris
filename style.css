@@ -27,7 +27,10 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 body { background-color: #ddd; font: 14px/1.8 'Open Sans',Helvetica,Arial,sans-serif; color: #666; -webkit-text-size-adjust: 100%; }
 body a { color: var(--universal-accent-color); transition: color 250ms linear }
 body a:hover { text-decoration: underline; color: var(--universal-accent-color); }
-img { max-width: 100%; height: auto; }
+img,
+svg,
+video,
+picture { display: block; height: auto; max-width: 100%; }
 #wrap { width: calc(100% - 200px); margin: 0 auto; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
 .container { background: #fff; padding: 30px; margin-top: 10px; box-shadow: var(--u-box-shadow)}
 .has-sidebar { float: left; width: calc(100% - 300px); }
@@ -82,7 +85,7 @@ iframe { width: 100% !important; }
 /* Typography
 ----------------------------------------------------------- */
 h1, h2, h3, h4, h5, h6 { font-weight: 600; font-family: 'Open Sans',Helvetica,Arial,Helvetica,sans-serif; }
-h1, h2, h3, h4, h5, h6 { color: #000 }
+h1, h2, h3, h4, h5, h6,
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: #000 }
 h1 a:hover,
 h2 a:hover,
@@ -118,7 +121,7 @@ a:hover { cursor: pointer }
 ----------------------------------------------------------- */
 #header { position: relative; background: #111; box-shadow: var(--u-box-shadow); padding: 30px; }
 #logo a h1 { font-weight: 700; margin: 0; text-decoration: none; color: #fff; padding: 40px; text-transform: uppercase; letter-spacing: 1px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
-#logo img { max-width: 100%; max-height: 128px }
+#logo img { max-height: 128px }
 #logo h1, #text-logo { font-size: 2.286em; line-height: 1em; margin: 0; }
  
 /* Navigation
@@ -214,8 +217,8 @@ a:hover { cursor: pointer }
 #single-author { margin-bottom: 30px; }
 #single-author h4 { font-size: 1.143em; center repeat-x; margin-bottom: 20px; }
 #single-author h4 span { padding-right: 15px; }
-#author-image img { display: block; max-width: unset;}
-#author-bio p:last-child { margin: 0 }
+#author-image img { aspect-ratio: 1/1; object-fit: cover }
+#author-bio p:last-child { margin: 0; text-box-trim: trim-both; }
  
 /* Pagination
 ----------------------------------------------------------- */
@@ -416,7 +419,7 @@ h3#reply-title span { padding-right: 15px; }
 .gallery-item,
 .wp-caption { max-width: 100% !important; text-align: center; position: relative; overflow: hidden; }
 .gallery-item img,
-.wp-caption img { display: block; margin: 0; padding: 0; border: 0 none; max-width: 100%; }
+.wp-caption img { display: block; margin: 0; padding: 0; border: 0 none; }
 .gallery-item .wp-caption-text,
 .wp-caption .wp-caption-dd,
 .wp-caption .wp-caption-text { color: #fff; width: 100%; max-width: 100%; font-size: 0.986em; line-height: 27px; padding: 0; margin: 0; text-wrap: balance; background-color: rgba(0, 0, 0, 0.5); position: absolute; bottom: 0; backdrop-filter: blur(5px); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; }
