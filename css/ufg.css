@@ -413,6 +413,12 @@
 .u-overflow-y-scroll { overflow-y: scroll !important; }
 .u-overflow-y-auto { overflow-y: auto !important; }
 
+/* Text Box Trim Rules*/
+.u-text-bt-none { text-box-trim: none; }
+.u-text-bt-end { text-box-trim: trim-end; }
+.u-text-bt-both { text-box-trim: trim-both; }
+.u-text-bt-start { text-box-trim: trim-start; }
+
 /*  Details Animrtions Only Works On Chrome ATM */
 @supports (interpolate-size: allow-keywords) {
     @media (prefers-reduced-motion: no-preference) {
