@@ -400,24 +400,28 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
         // Get excerpt or content
         $text = has_excerpt($post->ID) ? $post->post_excerpt : $post->post_content;
         $trimmed_text = trim(str_replace('&nbsp;', '', strip_tags(strip_shortcodes($text))));
-        $spacer = wpx_spacer('#eee');
+        $is_empty = empty( $trimmed_text );
 
-        $output = '<div class="u-wrap-text u-trim" style="--u-line-clamp: ' . intval($length) . '">';
-        if ( ! post_password_required() && !empty( $trimmed_text ) ) {
-            $output .= $spacer;
+        $spacer = wpx_spacer('#eee');
+        $output = !post_password_required() && $is_empty ? '' : $spacer;
+        $classes = !post_password_required() && $is_empty ? 'u-none' : 'u-wrap-text u-trim';
+
+        $output .= '<div class="' . $classes . '" style="--u-line-clamp: ' . intval($length) . '">';
+        if ( ! post_password_required() && ! $is_empty ) {
             $length = apply_filters('wpex_excerpt_length', intval($length * 10));
             $output .= wp_trim_words($trimmed_text, $length);
         } else {
-            $output .= post_password_required() ?? $spacer;
             $output .= post_password_required() ? __( 'This content is protected. Log in or enter the password to view the full content.', 'tetris' ) : '';
         }
         $output .= '</div>';
 
-        if ( ! post_password_required() && $trimmed_text !== '' && $readmore ) {
+        if ( ! post_password_required() && !$is_empty && $readmore ) {
             $jump_point = strpos($post->post_content, '<!--more-->') !== false ? '#more-' . $post->ID : '#post-entry';
             $readmore_link = '<span class="wpex-readmore"><a href="' . get_permalink($post->ID) . $jump_point . '" title="'. __( 'Continue reading', 'tetris' ) .'" rel="bookmark" class="u-block u-block-100 u-ta-c u-link-button u-tt-all-caps u-fs-16" role="button" tabindex="0">'. __( 'Read more', 'tetris' ) .'</a></span>';
             $output .= $readmore_link;
         }
+        $output .= $spacer;
+
         return $output;
     }
 }

@@ -16,9 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?> 
 <article <?php post_class('blog-entry clearfix'); ?>>
         <?php get_template_part('formats/format'); ?>
-        <div class="entry-text clearfix">
+        <div class="entry-text clearfix u-grid u-grid-gap-10">
             <header class="u-wrap-text">
-                <h2>
+                <h2 class="u-text-bt-both">
                     <a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>">
                         <?php echo wpex_get_title(); ?>
                     </a>
