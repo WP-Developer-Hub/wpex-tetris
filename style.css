@@ -204,13 +204,13 @@ a:hover { cursor: pointer }
 #post-media img { height: 512px; object-fit: contain; object-position: center center; }
 #post-thumbnail img { -webkit-backdrop-filter: blur(50px); backdrop-filter: blur(50px); background: rgba(0, 0, 0, 0.5); }
 #post-gallery { container: wpx-gallery / inline-size; }
-#post-header h1 { margin: 0; font-size: 2.000em; }
-.single-post-meta { color: #999; font-size: 0.929em; margin-top: 10px; }
+#post-header h1 { margin: 0; padding: 5px 0; font-size: 2.000em; }
+.single-post-meta { color: #999; font-size: 0.929em; padding: 5px 0; }
 .single-post-meta li { display: inline; margin-right: 5px; }
 .single-post-meta strong { font-weight: 600; color: #111; }
 .single-post-meta li:last-child { margin-right: 0; padding-right: 0; background: none; }
 .single-post-meta-divider:not(:last-child)::after {content: "|"; margin-left: 5px;}
-#post .entry .inner-post { margin: 20px 0 }
+#post .entry .inner-post { margin: 10px 0 }
 #post-tags { margin-top: 20px; margin-bottom: 20px; white-space: wrap }
 #post-tags a {  background: var(--universal-accent-color); color: var(--universal-accent-color-text);border-radius: 2px; font-size: 1.2em; text-transform: lowercase; padding: 2px 12px; transition: background 250ms linear 0s, color 250ms linear 0s; }
 #post-tags a:hover { background: var(--universal-accent-color-dark); color: var(--universal-accent-color-text-dark); text-decoration: none; }
@@ -375,7 +375,7 @@ h3.comments-title span { padding-right: 15px; }
 .comment-author .author a:visited { font-size: 0.98em; font-weight: 600 }
 .comment-content { margin-top: 5px; display: block; width: 100%; flex-grow: 1;}
 .comment-content p:last-child { margin: 0 }
-.comment-date { font-size: 0.8em; font-weight: normal; }
+.comment-date { font-size: 0.8em; font-weight: normal; margin-top: 4px; }
 .comment-date a { color: #888 }
 .comment-text {}
 .reply { margin-top: 10px; padding-top: 5px; border-top: solid 1px #eee }
