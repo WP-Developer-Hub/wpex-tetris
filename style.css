@@ -299,7 +299,7 @@ h5.widget-title {font-weight: bold;}
 #footer .widget_links li a { padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #333; }
 
 #wp-calendar { font-size: 0.786em }
-.wp-calendar-nav { display: grid; grid-template-columns: auto 1fr auto; }
+.wp-calendar-nav { display: grid; grid-template-columns: auto 1fr auto; border-top-width: 0 !important; }
 .wp-calendar-nav,
 #wp-calendar caption { background: #111214; color: #fff; padding: 10px; text-align: center; font-weight: bold; }
 .wp-calendar-nav-prev,
