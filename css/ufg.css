@@ -419,6 +419,15 @@
 .u-text-bt-both { text-box-trim: trim-both; }
 .u-text-bt-start { text-box-trim: trim-start; }
 
+/* Text Box Edge Rules*/
+.u-tbe-a { text-box-edge: auto; }
+.u-tbe-ca { text-box-edge: cap alphabetic; }
+.u-tbe-ct { text-box-edge: cap text; }
+.u-tbe-ea { text-box-edge: ex alphabetic; }
+.u-tbe-et { text-box-edge: ex text; }
+.u-tbe-ta { text-box-edge: text alphabetic; }
+.u-tbe-t { text-box-edge: text; }
+
 /*  Details Animrtions Only Works On Chrome ATM */
 @supports (interpolate-size: allow-keywords) {
     @media (prefers-reduced-motion: no-preference) {
