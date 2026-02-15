@@ -18,7 +18,7 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
             <?php get_template_part('formats/format', get_post_format()); ?>
             <!--  Show header on all post formats except quotes -->
             <header id="post-header">
-                <h1 class="u-text-bt-both"><?php echo wpex_get_title(); ?></h1>
+                <h1 class="u-text-bt-both u-tbe-et"><?php echo wpex_get_title(); ?></h1>
                 <?php echo wpx_spacer(); ?>
                 <ul class="single-post-meta clearfix u-text-bt-both">
                     <li class="single-post-meta-divider"><?php echo wpex_get_post_date(); ?></li>
