@@ -30,8 +30,13 @@ body a:hover { text-decoration: underline; color: var(--universal-accent-color);
 img,
 svg,
 video,
+audio,
 picture { display: block; height: auto; max-width: 100%; }
 picture { width: fit-content; }
+video { background: #000; color-scheme: dark; }
+audio::-webkit-media-controls-panel { background: #000; }
+audio { height: revert; width: 100%; color-scheme: dark; background: #000; }
+
 #wrap { width: calc(100% - 200px); margin: 0 auto; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
 .container { background: #fff; padding: 30px; margin-top: 10px; box-shadow: var(--u-box-shadow)}
 .has-sidebar { float: left; width: calc(100% - 300px); }
