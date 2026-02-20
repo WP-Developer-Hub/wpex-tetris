@@ -232,7 +232,7 @@
 .u-trim {display: -webkit-box; -webkit-line-clamp: var(--u-line-clamp, 1); -webkit-box-orient: vertical; overflow: hidden; line-break: anywhere; }
 
 /* Text Wrapping */
-.u-wrap-text {overflow-wrap: none !important; word-break: none !important; hyphens: none !important;}
+.u-wrap-text-none {overflow-wrap: none !important; word-break: none !important; hyphens: none !important;}
 .u-wrap-text {overflow-wrap: break-word !important; word-break: break-word !important; hyphens: auto !important;}
 .u-wrap-text-any {overflow-wrap: anywhere !important; word-break: break-word !important; hyphens: auto !important;}
 .u-wrap-text-all {overflow-wrap: break-word !important; word-break: break-all !important; hyphens: auto !important;}
