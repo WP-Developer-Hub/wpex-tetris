@@ -12,17 +12,17 @@
 get_header();
 
 if ( have_posts()) : while ( have_posts()) : the_post(); ?>
-	<div id="single-post-content" class="sidebar-bg container clearfix">
-		<article id="post" <?php post_class('has-sidebar clearfix'); ?>>
+    <div id="single-post-content" class="sidebar-bg container clearfix">
+        <article id="post" <?php post_class('has-sidebar clearfix'); ?>>
             <!--  Display media -->
-            <?php get_template_part( 'formats/format', get_post_format() ); ?>
-			<!--  Show header on all post formats except quotes -->
+            <?php get_template_part('formats/format', get_post_format()); ?>
+            <!--  Show header on all post formats except quotes -->
             <header id="post-header">
-                <h1><?php echo wpex_get_title(); ?></h1>
+                <h1 class="u-text-bt-both u-tbe-et"><?php echo wpex_get_title(); ?></h1>
                 <?php echo wpx_spacer(); ?>
-                <ul class="single-post-meta clearfix">
+                <ul class="single-post-meta clearfix u-text-bt-both">
                     <li class="single-post-meta-divider"><?php echo wpex_get_post_date(); ?></li>
-                    <li class="single-post-meta-divider" ><?php echo wpex_get_post_author(); ?></li>
+                    <?php echo wpex_get_post_author(get_the_ID()); ?>
                     <?php if (has_category()) : ?>
                         <li class="single-post-meta-divider">
                             <strong><?php _e('Under', 'tetris'); ?>:</strong>
@@ -57,27 +57,27 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                 </section>
             <?php endif; ?>
 
-            <?php if ( get_theme_mod( 'universal_toggle_post_author_box', true ) ) : ?>
-            <section id="single-author" >
-                <h4 id="author-title" class="heading widget-title"><span><?php the_author_posts_link(); ?></span></h4>
-                <div class="author-inner u-flex u-flex-gap-10">
-                    <div id="author-image">
-                       <a href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' )); ?>"><?php echo get_avatar( get_the_author_meta('user_email'), '150', '', __('Post Author\'s Avatar', 'tetris'), array('class' => '', 'force_display' => true)); ?></a>
-                    </div><!-- #author-image -->
-                    <div id="author-bio" class="u-block u-block-100 u-wrap-text">
-                        <?php the_author_meta('description'); ?>
-                    </div><!-- #author-bio -->
-                </div>
-            </section><!-- #single-author -->
+            <?php if (get_theme_mod('universal_toggle_post_author_box', true) && wpex_post_type_supports('author')) : ?>
+                <section id="single-author" >
+                    <h4 id="author-title" class="heading widget-title"><span><?php the_author_posts_link(); ?></span></h4>
+                    <div class="author-inner u-flex u-flex-gap-10">
+                        <div id="author-image">
+                           <a href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' )); ?>"><?php echo get_avatar(get_the_author_meta('user_email'), '150', '', __('Post Author\'s Avatar', 'tetris'), array('class' => '', 'force_display' => true)); ?></a>
+                        </div><!-- #author-image -->
+                        <div id="author-bio" class="u-block u-block-100 u-wrap-text u-text-bt-both">
+                            <?php the_author_meta('description'); ?>
+                        </div><!-- #author-bio -->
+                    </div>
+                </section><!-- #single-author -->
             <?php endif; ?>
 
-			<?php comments_template(); ?>
+            <?php comments_template(); ?>
 
-		</article><!-- post -->
-		
-		<?php get_sidebar(); ?>
-		
-	</div><!-- #single-post-content -->
+        </article><!-- post -->
+        
+        <?php get_sidebar(); ?>
+        
+    </div><!-- #single-post-content -->
 
 <?php endwhile; endif; ?>
 

@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------
 Theme Name: Tetris
-Version: 9.2.0
+Version: 9.3.1
 Description: Premium WordPress theme by WPExplorer & now maintained by DJABHipHop
 Author: WPExplorer, DJABHipHop
 Author URI: https://github.com/WP-Developer-Hub/
@@ -27,8 +27,16 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 body { background-color: #ddd; font: 14px/1.8 'Open Sans',Helvetica,Arial,sans-serif; color: #666; -webkit-text-size-adjust: 100%; }
 body a { color: var(--universal-accent-color); transition: color 250ms linear }
 body a:hover { text-decoration: underline; color: var(--universal-accent-color); }
-img { max-width: 100%; height: auto; }
-#wrap { width: var(--universal-theme-width); margin: 0 auto; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
+img,
+svg,
+video,
+audio,
+picture { display: block; height: auto; max-width: 100%; }
+picture { width: fit-content; }
+video { background: #000; color-scheme: dark; }
+audio { height: revert; width: 100%; color-scheme: dark; }
+
+#wrap { width: calc(100% - 200px); margin: 0 auto; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
 .container { background: #fff; padding: 30px; margin-top: 10px; box-shadow: var(--u-box-shadow)}
 .has-sidebar { float: left; width: calc(100% - 300px); }
 #sidebar { float: right; width: 250px; font-size: 0.929em; }
@@ -82,7 +90,7 @@ iframe { width: 100% !important; }
 /* Typography
 ----------------------------------------------------------- */
 h1, h2, h3, h4, h5, h6 { font-weight: 600; font-family: 'Open Sans',Helvetica,Arial,Helvetica,sans-serif; }
-h1, h2, h3, h4, h5, h6 { color: #000 }
+h1, h2, h3, h4, h5, h6,
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: #000 }
 h1 a:hover,
 h2 a:hover,
@@ -118,7 +126,7 @@ a:hover { cursor: pointer }
 ----------------------------------------------------------- */
 #header { position: relative; background: #111; box-shadow: var(--u-box-shadow); padding: 30px; }
 #logo a h1 { font-weight: 700; margin: 0; text-decoration: none; color: #fff; padding: 40px; text-transform: uppercase; letter-spacing: 1px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
-#logo img { max-width: 100%; max-height: 128px }
+#logo img { max-height: 128px }
 #logo h1, #text-logo { font-size: 2.286em; line-height: 1em; margin: 0; }
  
 /* Navigation
@@ -180,33 +188,33 @@ a:hover { cursor: pointer }
 .blog-entry .entry-text { padding: 20px; font-size: 13px; }
 .blog-entry p { font-size: 1em }
 .blog-entry p:last-child { margin: 0 }
-.blog-entry h2 { margin: 0 0 10px; font-size: 1.143em; }
+.blog-entry h2 { font-size: 1.143em; }
 .blog-entry img,
 .blog-entry .u-media-missing-img { box-shadow: var(--u-box-shadow); filter: brightness(0.9); transition: filter 250ms ease-in-out }
 .blog-entry img:hover,
 .blog-entry .u-media-missing-img:hover { filter: brightness(1.0); }
-.blog-entry .entry-meta { margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; font-size: 0.857em; }
+.blog-entry .entry-meta { font-size: 0.857em; }
 .blog-entry .entry-meta strong { font-weight: 600; color: #000; margin-right: 2px; }
 .blog-entry-thumbnail img { display: block; width: 100%; }
 .blog-entry-thumbnail a,
 .blog-entry-thumbnail img { display: block }
 .blog-entry-thumbnail img,
-.blog-entry a {cursor: pointer !important;}
+.blog-entry a { cursor: pointer !important; }
  
 /* Single Post
 ----------------------------------------------------------- */
-#post-thumbnail { height: 512px; padding: 0; overflow: hidden; }
+#post-thumbnail { height: 512px; padding: 0; overflow: hidden; background-size: cover; background-position: center }
 #post-thumbnail img,
-#post-media img { height: 512px; object-fit: contain; object-position: center center;}
+#post-media img { height: 512px; object-fit: contain; object-position: center center; }
 #post-thumbnail img { -webkit-backdrop-filter: blur(50px); backdrop-filter: blur(50px); background: rgba(0, 0, 0, 0.5); }
 #post-gallery { container: wpx-gallery / inline-size; }
-#post-header h1 { margin: 0; font-size: 2.000em; }
-.single-post-meta { color: #999; font-size: 0.929em; margin-top: 10px; }
+#post-header h1 { margin: 0; padding: 10px 0 5px 0; font-size: 2.000em; }
+.single-post-meta { color: #999; font-size: 0.929em; padding: 5px 0; }
 .single-post-meta li { display: inline; margin-right: 5px; }
 .single-post-meta strong { font-weight: 600; color: #111; }
 .single-post-meta li:last-child { margin-right: 0; padding-right: 0; background: none; }
 .single-post-meta-divider:not(:last-child)::after {content: "|"; margin-left: 5px;}
-#post .entry .inner-post { margin: 20px 0 }
+#post .entry .inner-post { margin: 10px 0 }
 #post-tags { margin-top: 20px; margin-bottom: 20px; white-space: wrap }
 #post-tags a {  background: var(--universal-accent-color); color: var(--universal-accent-color-text);border-radius: 2px; font-size: 1.2em; text-transform: lowercase; padding: 2px 12px; transition: background 250ms linear 0s, color 250ms linear 0s; }
 #post-tags a:hover { background: var(--universal-accent-color-dark); color: var(--universal-accent-color-text-dark); text-decoration: none; }
@@ -214,8 +222,8 @@ a:hover { cursor: pointer }
 #single-author { margin-bottom: 30px; }
 #single-author h4 { font-size: 1.143em; center repeat-x; margin-bottom: 20px; }
 #single-author h4 span { padding-right: 15px; }
-#author-image img { display: block; max-width: unset;}
-#author-bio p:last-child { margin: 0 }
+#author-image img { aspect-ratio: 1/1; object-fit: cover }
+#author-bio p:last-child { margin: 0; text-box-trim: trim-both; }
  
 /* Pagination
 ----------------------------------------------------------- */
@@ -299,7 +307,7 @@ h5.widget-title {font-weight: bold;}
 #footer .widget_links li a { padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #333; }
 
 #wp-calendar { font-size: 0.786em }
-.wp-calendar-nav { display: grid; grid-template-columns: auto 1fr auto; }
+.wp-calendar-nav { display: grid; grid-template-columns: auto 1fr auto; border-top-width: 0 !important; }
 .wp-calendar-nav,
 #wp-calendar caption { background: #111214; color: #fff; padding: 10px; text-align: center; font-weight: bold; }
 .wp-calendar-nav-prev,
@@ -371,7 +379,7 @@ h3.comments-title span { padding-right: 15px; }
 .comment-author .author a:visited { font-size: 0.98em; font-weight: 600 }
 .comment-content { margin-top: 5px; display: block; width: 100%; flex-grow: 1;}
 .comment-content p:last-child { margin: 0 }
-.comment-date { font-size: 0.8em; font-weight: normal; }
+.comment-date { font-size: 0.8em; font-weight: normal; margin-top: 4px; }
 .comment-date a { color: #888 }
 .comment-text {}
 .reply { margin-top: 10px; padding-top: 5px; border-top: solid 1px #eee }
@@ -416,7 +424,7 @@ h3#reply-title span { padding-right: 15px; }
 .gallery-item,
 .wp-caption { max-width: 100% !important; text-align: center; position: relative; overflow: hidden; }
 .gallery-item img,
-.wp-caption img { display: block; margin: 0; padding: 0; border: 0 none; max-width: 100%; }
+.wp-caption img { display: block; margin: 0; padding: 0; border: 0 none; }
 .gallery-item .wp-caption-text,
 .wp-caption .wp-caption-dd,
 .wp-caption .wp-caption-text { color: #fff; width: 100%; max-width: 100%; font-size: 0.986em; line-height: 27px; padding: 0; margin: 0; text-wrap: balance; background-color: rgba(0, 0, 0, 0.5); position: absolute; bottom: 0; backdrop-filter: blur(5px); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; }
