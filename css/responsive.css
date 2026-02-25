@@ -44,6 +44,7 @@
 	#error-page-text { font-size: 14px }
 	#author-image { margin-bottom: 10px }
 	#author-bio { width: 100% }
+    .comment-date { margin-top: 0; }
 	.comment-details { margin-left: 0 }
 	.comment-details:after,
     .comment-reply-link:first-child:before { display: none }
