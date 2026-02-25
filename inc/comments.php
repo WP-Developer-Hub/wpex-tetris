@@ -23,11 +23,11 @@ function wpex_comments_output($comment, $args, $depth) {
                     <?php echo get_avatar($comment, '50', '', __('Comment Author\'s Avatar', 'tetris'), array('force_display' => true)); ?>
                 </div><!-- /comment-avatar -->
                 <div class="comment-author vcard u-grid u-grid-gap-0">
-                <?php printf('<span class="author" title="%s">%s</span>', esc_attr(get_comment_author()), get_comment_author_link()); ?>
-                <a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>" class="comment-date"><time datetime="<?php echo get_comment_date( 'c' ); ?>"><?php echo get_comment_date(); ?></time></a>
+                <?php printf('<span class="author u-text-bt-both" title="%s">%s</span>', esc_attr(get_comment_author()), get_comment_author_link()); ?>
+                <a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>" class="comment-date"><time datetime="<?php echo get_comment_date( 'c' ); ?>" class="u-text-bt-both"><?php echo get_comment_date(); ?></time></a>
                 </div><!-- /comment-meta -->
                 <div class="comment-content">
-                    <div class="comment-text u-wrap-text">
+                    <div class="comment-text u-wrap-text u-text-bt-both">
                         <?php comment_text() ?>
                     </div><!-- /comment-text -->
                 </div><!-- /comment-content -->

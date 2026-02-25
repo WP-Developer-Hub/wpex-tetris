@@ -9,6 +9,7 @@
 }
 
 /* Flex and Grid Utilities */
+.u-none {display: none;}
 .u-block {display: block;}
 .u-block-100 {width: 100% !important}
 .u-max-100 {max-width: 100%}
@@ -231,7 +232,7 @@
 .u-trim {display: -webkit-box; -webkit-line-clamp: var(--u-line-clamp, 1); -webkit-box-orient: vertical; overflow: hidden; line-break: anywhere; }
 
 /* Text Wrapping */
-.u-wrap-text {overflow-wrap: none !important; word-break: none !important; hyphens: none !important;}
+.u-wrap-text-none {overflow-wrap: none !important; word-break: none !important; hyphens: none !important;}
 .u-wrap-text {overflow-wrap: break-word !important; word-break: break-word !important; hyphens: auto !important;}
 .u-wrap-text-any {overflow-wrap: anywhere !important; word-break: break-word !important; hyphens: auto !important;}
 .u-wrap-text-all {overflow-wrap: break-word !important; word-break: break-all !important; hyphens: auto !important;}
@@ -412,6 +413,21 @@
 .u-overflow-y-clip { overflow-y: clip !important; }
 .u-overflow-y-scroll { overflow-y: scroll !important; }
 .u-overflow-y-auto { overflow-y: auto !important; }
+
+/* Text Box Trim Rules*/
+.u-text-bt-none { text-box-trim: none; }
+.u-text-bt-end { text-box-trim: trim-end; }
+.u-text-bt-both { text-box-trim: trim-both; }
+.u-text-bt-start { text-box-trim: trim-start; }
+
+/* Text Box Edge Rules*/
+.u-tbe-a { text-box-edge: auto; }
+.u-tbe-ca { text-box-edge: cap alphabetic; }
+.u-tbe-ct { text-box-edge: cap text; }
+.u-tbe-ea { text-box-edge: ex alphabetic; }
+.u-tbe-et { text-box-edge: ex text; }
+.u-tbe-ta { text-box-edge: text alphabetic; }
+.u-tbe-t { text-box-edge: text; }
 
 /*  Details Animrtions Only Works On Chrome ATM */
 @supports (interpolate-size: allow-keywords) {
