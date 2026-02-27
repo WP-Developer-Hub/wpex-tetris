@@ -54,15 +54,22 @@ if (!class_exists('Universal_Menu_Walker_2_0')) {
             $rel_attr = !empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
     
             // Build link once
-            $a_tag = '<a href="' . esc_url($item->url) . '" name="' . esc_attr(sanitize_title($item->title)) . '" ' .
-                     $target_attr . ' ' . $rel_attr . ' ' . $class_attr . '>' .
-                     $item->title .
-                     '</a>';
-    
+            $a_tag = sprintf(
+                '<a href="%s" name="%s" aria-label="%s" %s %s %s role="button">%s</a>',
+                esc_url($item->url),
+                esc_attr(sanitize_title($item->title)),
+                sprintf(esc_attr__('Visit %s', 'tetris'), sanitize_title($item->title)),
+                $target_attr, $rel_attr, $class_attr,
+                $item->title
+            );
+
+
             // Add link and toggle if item has children
             if ( $args->walker->has_children ) {
                 $output .= '<details class="menu-toggle u-cf">';
-                $output .= '<summary class="u-flex u-ai-c" aria-expanded="false">';
+                $output .= '<summary class="u-flex u-ai-c" aria-label="';
+                $output .= sprintf(esc_attr__('Toggle submenu for %s', 'tetris'), sanitize_title($item->title));
+                $output .= '" aria-expanded="false">';
                 $output .= '<span aria-hidden="true" class="toggle-icon dashicons dashicons-arrow-right u-di-fix u-select-none u-focus-none"></span>';
                 $output .= '<span class="menu-item-title">' . $a_tag . '</span>';
                 $output .= '</summary>';
