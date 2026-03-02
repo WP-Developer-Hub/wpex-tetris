@@ -20,14 +20,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 
-$toggle_sidebar = get_theme_mod('universal_toggle_page_sidebar', true);
-$wpex_toggle_sidebar = get_post_meta(get_the_ID(), 'wpex_toggle_sidebar', true);
-$show_sidebar = $toggle_sidebar ? ($toggle_sidebar !== $wpex_toggle_sidebar) : $toggle_sidebar;
+$toggle_sidebar = wpex_get_sidebar_status();
 
 if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-    <div id="single-page-content" class="container clearfix<?php echo ( $show_sidebar ? ' has-sidebar-bg' : '' ); ?>">
+    <div id="single-page-content" class="container clearfix<?php echo ( $toggle_sidebar ? ' has-sidebar-bg' : '' ); ?>">
         <!-- Page wrapper with post_class() applied -->
-        <article id="page" <?php post_class( 'entry' . ( $show_sidebar ? ' has-sidebar' : '' ) . ' clearfix' ); ?>>
+        <article id="page" <?php post_class( 'entry' . ( $toggle_sidebar ? ' has-sidebar' : '' ) . ' clearfix' ); ?>>
             <h1 class="screen-reader-text">
                 <?php echo sprintf( __( '%1$s page For %2$s', 'tetris' ), get_the_title(), get_bloginfo('name') ); ?>
             </h2>
@@ -36,7 +34,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
             </div><!-- .inner-post -->
         </article><!-- #page -->
 
-        <?php if ( $show_sidebar ) { get_sidebar(); } ?>
+        <?php if ( $toggle_sidebar ) { get_sidebar(); } ?>
 
     </div><!-- #single-page-content -->
 <?php endwhile; else: ?>
