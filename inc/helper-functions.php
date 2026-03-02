@@ -734,3 +734,25 @@ if ( ! function_exists( 'wpex_post_type_supports' ) ) {
         return empty($feature) ? true : post_type_supports(get_post_type(), $feature);
     }
 }
+
+/**
+ * Get sidebar visibility status for current post.
+ *
+ * @return bool True if sidebar should be shown.
+ */
+if ( ! function_exists( 'wpex_get_sidebar_status' ) ) {
+    function wpex_get_sidebar_status() {
+        switch( get_post_meta( get_the_ID(), 'wpex_toggle_sidebar', true ) ?: 'default' ) {
+            case 'always_on':
+                return true;
+                break;
+            case 'always_off':
+                return false;
+                break;
+            default:
+                return get_theme_mod( 'universal_toggle_page_sidebar', true );
+                break;
+        }
+    }
+}
+

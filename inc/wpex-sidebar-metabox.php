@@ -22,95 +22,66 @@ if (!class_exists('WPEX_Sidebar_Metabox')) {
     class WPEX_Sidebar_Metabox {
         public function __construct() {
             add_action('save_post', [$this, 'save_sidebar_meta']);
-            add_action('add_meta_boxes', [$this, 'register_sidebar_metabox']);
-            add_action('admin_enqueue_scripts', [$this, 'enqueue_metabox_styles']);
-            add_action( 'after_setup_theme', function() {
-                if (!defined('WPEX_DEFAULT_SIDEBAR_BEHAVIOR')) {
-                    define('WPEX_DEFAULT_SIDEBAR_BEHAVIOR', get_theme_mod( 'universal_toggle_page_sidebar', true));
-                }
-            });
-
+            add_action('page_attributes_misc_attributes', [$this, 'register_sidebar_setting']);
         }
 
-        public function enqueue_metabox_styles($hook) {
-            if ($hook === 'post.php' || $hook === 'post-new.php') {
-                wp_enqueue_style('wpex-metabox-styles', get_template_directory_uri() . '/inc/class-wpx-customizer-controls/css/wp-customizer-controls.css', [], null
-                );
+        public function register_sidebar_setting($post) {
+            if (!get_post_type_object($post->post_type)->public) {
+                return;
             }
-        }
 
-        /**
-         * Register the metabox.
-         */
-        public function register_sidebar_metabox() {
-            add_meta_box(
-                'wpex_sidebar_metabox',
-                'Sidebar Settings',
-                [$this, 'render_metabox'],
-                'page',
-                'side',
-                'default'
-            );
-        }
-
-        /**
-         * Render metabox content.
-         */
-        public function render_metabox( $post ) {
-            wp_nonce_field( basename(__FILE__), 'wpex_sidebar_nonce' );
-
-            $saved_value = WPEX_DEFAULT_SIDEBAR_BEHAVIOR ? 0 : 1;
+            wp_nonce_field('wpex_sidebar_nonce', 'wpex_sidebar_nonce');
+            
             $value = get_post_meta($post->ID, 'wpex_toggle_sidebar', true);
-
+            // Fallback to global if no post meta
+            if (empty($value)) {
+                $value = 'default';
+            }
             ?>
-            <label for="wpex_toggle_sidebar" class="wpx-control">
-                <div class="wpx-toggle-control">
-                    <div class="wpx-control-info">
-                        <?php echo esc_html__('Toggle Sidebar on this Page', 'tetris'); ?>
-                    </div>
-                    <input type="checkbox" name="wpex_toggle_sidebar" id="wpex_toggle_sidebar" value="<?php echo esc_attr($saved_value); ?>" <?php checked($value, $saved_value); ?>
-                    />
-                    <span class="wpx-toggle-switch"></span>
-                </div>
-            </label>
+            <div class="main">
+                <p class="post-attributes-label-wrapper">
+                    <label for="wpex_toggle_sidebar">
+                        <strong><?php _e('Sidebar Visibility Settings', 'tetris'); ?></strong>
+                    </label>
+                </p>
+                <select name="wpex_toggle_sidebar" id="wpex_toggle_sidebar" class="widefat">
+                    <option value="default" <?php selected($value, 'default'); ?>>
+                        <?php _e('Default (Global)', 'tetris'); ?>
+                    </option>
+                    <option value="always_on" <?php selected($value, 'always_on'); ?>>
+                        <?php _e('Always Visible', 'tetris'); ?>
+                    </option>
+                    <option value="always_off" <?php selected($value, 'always_off'); ?>>
+                        <?php _e('Always Hidden', 'tetris'); ?>
+                    </option>
+                </select>
+            </div>
             <?php
         }
 
-        /**
-         * Save metabox data.
-         *
-         * The 'wpex_toggle_sidebar' meta stores an override that inverts
-         * the WPEX_DEFAULT_SIDEBAR_BEHAVIOR setting (e.g. ON → OFF or OFF → ON).
-         *
-         * If the checkbox is checked, save the inverse value.
-         * If not checked, remove the meta to follow the global setting.
-         */
         public function save_sidebar_meta($post_id) {
-
             // Verify nonce
-            if (!isset($_POST['wpex_sidebar_nonce']) || !wp_verify_nonce($_POST['wpex_sidebar_nonce'], basename(__FILE__))) {
+            if (!isset($_POST['wpex_sidebar_nonce']) || !wp_verify_nonce($_POST['wpex_sidebar_nonce'], 'wpex_sidebar_nonce')) {
                 return;
             }
 
             // Check autosave
-            if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-                return;
-            }
+            if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
 
             // Check permissions
-            if ( ! current_user_can( 'edit_page', $post_id ) ) {
-                return;
-            }
+            if (!current_user_can('edit_page', $post_id)) return;
 
-            // Update meta
-            if ( isset($_POST['wpex_toggle_sidebar']) ) {
-                update_post_meta( $post_id, 'wpex_toggle_sidebar', WPEX_DEFAULT_SIDEBAR_BEHAVIOR ? 0 : 1 );
+            // Delete autosave/post revisions
+            if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) return;
+
+            // Save actual SELECTED VALUE
+            if (isset($_POST['wpex_toggle_sidebar'])) {
+                $selected_value = sanitize_text_field($_POST['wpex_toggle_sidebar']);
+                update_post_meta($post_id, 'wpex_toggle_sidebar', $selected_value);
             } else {
-                 update_post_meta( $post_id, 'wpex_toggle_sidebar', WPEX_DEFAULT_SIDEBAR_BEHAVIOR );
+                delete_post_meta($post_id, 'wpex_toggle_sidebar');
             }
         }
     }
-
     new WPEX_Sidebar_Metabox();
 }
-
