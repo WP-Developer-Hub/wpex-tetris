@@ -115,31 +115,31 @@ function universal_customizer_settings($wp_customize) {
     ));
 
     // Toggle Ago Format
-    $wp_customize->add_setting('universal_toggle_auto_ago_format', array(
+    $wp_customize->add_setting('universal_toggle_ago_format', array(
         'default' => 'false',
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field',
     ));
-    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_auto_ago_format', array(
-        'label' => __('Toggle Automatic Time Ago Format', 'tetris'),
-        'description' => __('Enable to display dates in a "time ago" format for recent posts/dates, otherwise display standard full date format.', 'tetris'),
-        'section' => 'universal_general_settings_section',
+    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_ago_format', array(
+        'label' => __('Toggle Time Ago Format', 'tetris'),
+        'description' => __('Enable "time ago". Recent: "2 days ago". Older: "'. get_option('date_format') .'" after X days.', 'tetris'),
+         'section' => 'universal_general_settings_section',
     )));
 
     // Toggle Ago Format Delay
-    $wp_customize->add_setting('universal_toggle_auto_ago_format_delay', array(
+    $wp_customize->add_setting('universal_auto_toggle_full_date_delay', array(
         'default' => 30,
         'transport' => 'refresh',
         'sanitize_callback' => 'absint',
     ));
-    $wp_customize->add_control('universal_toggle_auto_ago_format_delay', array(
-        'label' => __('Keep Badge For', 'tetris'),
-        'description' => __('Specify the number of days before the "Automatic ago formating" kick in. Min 7 days, Max 356 days.', 'tetris'),
+    $wp_customize->add_control('universal_auto_toggle_full_date_delay', array(
+        'label' => __('Keep Ago Time For', 'tetris'),
+        'description' => __('Specify days before switch form "ago formatting" to the full date. Min 30, Max 356.', 'tetris'),
         'section' => 'universal_general_settings_section',
         'type' => 'number',
         'input_attrs' => array(
             'step' => 1,
-            'min' => 0,
+            'min' => 30,
             'max' => 356,
             'pattern' => '[0-9]*',
             'inputmode' => 'numeric',
