@@ -555,29 +555,32 @@ if ( ! function_exists('universal_get_post_format_icon_classes') ) {
  * If the post is recent, it displays a "New" badge. If not, but the post is sticky, it displays a "Sticky" badge.
  * If neither condition is met, no badge is shown.
  *
- * @param int    $id       The post ID to check.
- * @param string $pos      Badge position class suffix (default: "br").
- * @param bool   $is_wide  Whether to use the wide badge style.
- * @return string          The badge HTML if applicable, otherwise an empty string.
+ * @param string $pos Badge position class suffix (default: "br").
+ * @param bool $is_wide Whether to use the wide badge style.
+ * @return string The badge HTML if applicable, otherwise an empty string.
  */
 if (!function_exists('wpx_post_badge')) {
-    function wpx_post_badge($id, $pos = "br", $is_wide = false) {
-        $post_date = get_the_date('U', $id);
+    function wpx_post_badge($pos = "br", $is_wide = false) {
+        $post_date = get_the_date('U');
         $current_date = current_time('timestamp');
-        $number_of_days = get_theme_mod('universal_recent_post_keep_badge_for', 7);
+        $post_modfid_date = get_the_modified_date('U');
+        $date_style = get_theme_mod('universal_date_display_option', 'date') == "modified_date";
         $classes = $is_wide ? 'u-block u-block-100 u-margin-0' : 'u-badge-' . $pos . ' u-pos-abs';
+        $number_of_days = (get_theme_mod('universal_recent_post_keep_badge_for', 7) * DAY_IN_SECONDS);
 
-        $is_sticky = is_sticky($id);
-        $is_recent = ($current_date - $post_date) < ($number_of_days * DAY_IN_SECONDS);
+        $is_sticky = is_sticky();
+        $is_recent = ($current_date - $post_date) < $number_of_days;
+        $is_edited = ($date_style && wpex_is_post_modified() && (($current_date - $post_modfid_date) < $number_of_days));
 
-        if ($is_recent && $is_sticky) {
-            $label = __('New & Featured', 'tetris');
-        } elseif ($is_recent) {
-            $label = __('New', 'tetris');
-        } elseif ($is_sticky) {
-            $label = __('Featured', 'tetris');
-        } else {
-            $label = '';
+        switch (true) {
+            case ($is_recent):
+                $label = $is_sticky ? __('New & Featured', 'tetris') : __('New', 'tetris');
+                break;
+            case ($is_edited):
+                $label = $is_sticky ? __('Updated & Featured', 'tetris') : __('Updated', 'tetris');
+                break;
+            default:
+                $label = $is_sticky ? __('Featured', 'tetris') : '' ;
         }
         return !empty($label) ? ' <span class="u-badge ' . $classes . ' u-fs-14 u-ta-c">' . $label . '</span>' : '';
     }
@@ -662,7 +665,7 @@ if ( !function_exists('wpex_get_post_date') ) {
         $post_time = '';
         $post_date = '';
         $show_modified_date = false;
-        $is_edited = (get_the_date('Y-m-d') !== get_the_modified_date('Y-m-d'));
+        $is_edited = wpex_is_post_modified();
 
         $post_date_link = get_day_link(get_the_time('Y'), get_the_time('m'), get_the_time('d'));
 
@@ -723,6 +726,22 @@ if ( ! function_exists( 'wpex_get_post_author' ) ) {
         }
 
         return $html;
+    }
+}
+
+/**
+ * Checks if the post has been edited since it was first published.
+ *
+ * Compares the original post date with the last modified date (Y-m-d format).
+ * Returns true when they differ, false when they are the same.
+ *
+ * @since 7.1.0
+ *
+ * @return bool True if the post has been edited, false otherwise.
+ */
+if ( ! function_exists( 'wpex_is_post_modified' ) ) {
+    function wpex_is_post_modified() {
+        return ( get_the_date( 'Y-m-d' ) !== get_the_modified_date( 'Y-m-d' ) );
     }
 }
 
