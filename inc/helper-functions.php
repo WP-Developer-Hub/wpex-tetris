@@ -641,9 +641,9 @@ if ( ! function_exists( 'wpex_get_post_media_placeholder' ) ) {
  */
 if ( !function_exists('wpex_get_post_date') ) {
     function wpex_get_post_date() {
+        $ago_format = get_theme_mod('universal_toggle_ago_format', 'true');
         $date_style = get_theme_mod('universal_date_display_option', 'date');
-        $auto_ago_delay = get_theme_mod('universal_toggle_auto_ago_format_delay', 7);
-        $auto_ago_format = get_theme_mod('universal_toggle_auto_ago_format', 'true');
+        $date_delay = get_theme_mod('universal_auto_toggle_full_date_delay', 30);
 
         $post_date_label = __('Posted on', 'tetris');
         $post_modified_date_label = __('Edited on', 'tetris');
@@ -671,7 +671,8 @@ if ( !function_exists('wpex_get_post_date') ) {
                 $post_timestamp = get_the_date('U');
                 break;
         }
-        if ($auto_ago_format && ((current_time('timestamp') - $post_timestamp) > ($auto_ago_delay * DAY_IN_SECONDS))) {
+
+        if ($ago_format && ((current_time('timestamp') - $post_timestamp) < ($date_delay * DAY_IN_SECONDS))) {
             $post_date_label = __('Posted', 'tetris');
             $post_modified_date_label = __('Edited', 'tetris');
             $post_date = human_time_diff($post_timestamp, $now) . ' ' . __('ago', 'tetris');
@@ -680,13 +681,8 @@ if ( !function_exists('wpex_get_post_date') ) {
         $post_date_label = ($show_modified_date && $is_edited ? $post_modified_date_label : $post_date_label);
 
         $output = '<strong>' . esc_html($post_date_label) . ':</strong> ';
-        $output .= '<a class="post-date-link u-text-medium" href="' . $post_date_link . '" rel="bookmark"';
-
-        if ( is_single() ) {
-            $output .= ' aria-label="' . esc_attr($link_aria_prefix . get_the_date('')) . '"';
-        }
-
-        $output .= '>';
+        $output .= '<a class="post-date-link u-text-medium" href="' . $post_date_link . '" rel="bookmark" ';
+        $output .= 'aria-label="' . esc_attr($link_aria_prefix . get_the_date('')) . '">';
         $output .= '<time datetime="' . esc_attr($date_c) . '">' . esc_html($post_date) . '</time>';
         $output .= '</a>';
 
