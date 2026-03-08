@@ -41,11 +41,12 @@ if ( ! defined('WP_DEBUG') || ! WP_DEBUG ) {
     require_once $dir . '/inc/updates.php';
 }
 
-if (!is_admin()) {
+if (is_admin()) {
+    require_once $dir .'/inc/wpex-sidebar-metabox.php';
+    require_once $dir .'/inc/class-universal-meta-box/universal-meta-box.php';
+} else {
     require_once $dir .'/inc/comments.php';
     require_once $dir .'/inc/universal-menu-walker-2-0.php';
-} else {
-    require_once $dir .'/inc/class-universal-meta-box/universal-meta-box.php';
 }
 
 /**
