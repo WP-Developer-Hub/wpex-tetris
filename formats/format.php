@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php echo wpx_spacer('', '30'); ?>
     <?php endif; ?>
 <?php else : ?>
-    <div class="blog-entry-thumbnail" >
+    <div class="blog-entry-thumbnail">
         <a href="<?php the_permalink(); ?>" title="<?php wpex_esc_title(); ?>" class="u-link-img u-pos-rel">
             <?php
             if (has_post_thumbnail() && !post_password_required()) {
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             }
 
             if (get_theme_mod('universal_toggle_post_badge', 'true')) {
-                echo wpx_post_badge(get_the_ID());
+                echo wpx_post_badge();
             }
             ?>
         </a>
