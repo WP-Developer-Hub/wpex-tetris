@@ -568,7 +568,7 @@ if (!function_exists('wpx_post_badge')) {
                 $label = $is_sticky ? __('New & Featured', 'tetris') : __('New', 'tetris');
                 break;
             case ($is_edited):
-                $label = $is_sticky ? __('Updated & Featured', 'tetris') : __('Updated', 'tetris');
+                $label = $is_sticky ? __('Edited & Featured', 'tetris') : __('Edited', 'tetris');
                 break;
             default:
                 $label = $is_sticky ? __('Featured', 'tetris') : '' ;
@@ -649,7 +649,7 @@ if ( !function_exists('wpex_get_post_date') ) {
         $date_delay = get_theme_mod('universal_auto_toggle_full_date_delay', 30);
 
         $post_date_label = __('Posted on', 'tetris');
-        $post_modified_date_label = __('Edited on', 'tetris');
+        $post_modified_date_label = __('Updated on', 'tetris');
         $link_aria_prefix = __('View All Posts Made on', 'tetris'). ' ';
 
         $date_c = '';
@@ -677,7 +677,7 @@ if ( !function_exists('wpex_get_post_date') ) {
 
         if ($ago_format && ((current_time('timestamp') - $post_timestamp) < ($date_delay * DAY_IN_SECONDS))) {
             $post_date_label = __('Posted', 'tetris');
-            $post_modified_date_label = __('Edited', 'tetris');
+            $post_modified_date_label = __('Updated', 'tetris');
             $post_date = human_time_diff($post_timestamp, $now) . ' ' . __('ago', 'tetris');
         }
 
