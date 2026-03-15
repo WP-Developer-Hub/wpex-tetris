@@ -64,9 +64,8 @@ html body dialog[open],
 html body dialog.showModal,
 html body [popover]:popover-open { border-radius: 2px !important; }
 html body dialog::backdrop { -webkit-backdrop-filter: blur(5px) !important; backdrop-filter: blur(5px) !important; background: rgba(0, 0, 0, 0.5) !important; }
-dialog, [popover] { width: 90%; max-width: 840px; min-height: 420px; padding: 15px; border: none; background: #fff; box-shadow: var(--u-box-shadow) }
+dialog, [popover] { width: max-content; height: max-content; padding: 15px; border: none; background: #fff; box-shadow: var(--u-box-shadow) }
 dialog[open] { z-index: 99999 !important; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) }
-[popover] { width: max-content; max-width: max-content; min-height: max-content }
 
 .sticky {}
 .gallery-caption {}
