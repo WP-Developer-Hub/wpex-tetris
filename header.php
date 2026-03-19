@@ -45,7 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             </nav><!-- #navigation -->
         </header><!-- #header -->
         <details id="mobile-navigation">
-            <summary id="main-toggle" class="menu-toggle u-flex u-jc-sb" role="button" aria-label="<?php echo esc_attr__('Main Navigation', 'tetris'); ?>">
+            <summary id="main-toggle" class="menu-toggle u-flex u-jc-sb" aria-label="<?php echo esc_attr__('Main Navigation', 'tetris'); ?>">
                 <span class="menu-summary-name u-tt-all-uppercase u-focus-none">
                     <?php echo esc_html('Menu', 'tetris')?>
                 </span>

@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------
 Theme Name: Tetris
-Version: 9.3.2
+Version: 9.4.0
 Description: Premium WordPress theme by WPExplorer & now maintained by DJABHipHop
 Author: WPExplorer, DJABHipHop
 Author URI: https://github.com/WP-Developer-Hub/
@@ -58,9 +58,13 @@ address { letter-spacing: 1px; }
 mark { background-color: var(--universal-accent-color-light); color: var(--universal-accent-color-text-light); display: inline-block; padding: 0 8px; }
 var { font-weight: bold; color: var(--universal-accent-color-light);}
 
-html body dialog, html body dialog[open], html body dialog.showModal { border-radius: 2px !important; }
+html body dialog,
+html body [popover],
+html body dialog[open],
+html body dialog.showModal,
+html body [popover]:popover-open { border-radius: 2px !important; }
 html body dialog::backdrop { -webkit-backdrop-filter: blur(5px) !important; backdrop-filter: blur(5px) !important; background: rgba(0, 0, 0, 0.5) !important; }
-dialog { width: 90%; max-width: 840px; min-height: 420px; padding: 15px; border: none; background: #fff; box-shadow: var(--u-box-shadow) }
+dialog, [popover] { width: max-content; height: max-content; padding: 15px; border: none; background: #fff; box-shadow: var(--u-box-shadow) }
 dialog[open] { z-index: 99999 !important; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) }
 
 .sticky {}

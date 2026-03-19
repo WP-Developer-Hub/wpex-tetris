@@ -31,6 +31,7 @@ if (!class_exists('Universal_Menu_Walker_2_0')) {
     
             // Get the menu item ID and classes
             $menu_item_id = 'mobile-menu-item-' . $item->ID;
+            $menu_item_link_id = 'mobile-menu-item-link-' . $item->ID;
             $classes = empty( $item->classes ) ? array() : (array) $item->classes;
     
             // Add necessary classes
@@ -55,9 +56,9 @@ if (!class_exists('Universal_Menu_Walker_2_0')) {
     
             // Build link once
             $a_tag = sprintf(
-                '<a href="%s" name="%s" aria-label="%s" %s %s %s role="button">%s</a>',
+                '<a href="%s" id="%s" aria-label="%s" %s %s %s role="button">%s</a>',
                 esc_url($item->url),
-                esc_attr(sanitize_title($item->title)),
+                esc_attr($menu_item_link_id),
                 sprintf(esc_attr__('Visit %s', 'tetris'), sanitize_title($item->title)),
                 $target_attr, $rel_attr, $class_attr,
                 $item->title
