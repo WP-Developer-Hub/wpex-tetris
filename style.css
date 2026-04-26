@@ -136,7 +136,7 @@ a:hover { cursor: pointer }
 /* Navigation
 ----------------------------------------------------------- */
 #navigation { max-width: 100%; font-size: 18px }
-#navigation ul { display: flex; justify-content: center; align-items: center; list-style: none; width: max-content; padding: 0 border-radius: 20px; }
+#navigation ul { display: flex; justify-content: center; align-items: center; list-style: none; width: max-content; padding: 0; border-radius: 20px; }
 #navigation ul li { margin: 0 4px; border-radius: 2px; transition: background 250ms linear 0s }
 #navigation ul li { display: block; position: relative; min-width: 100px }
 #navigation a { display: block; color: #fff; text-align: center; text-decoration: none; vertical-align: middle; padding: 6px 6px; cursor: pointer; transition: color 250ms linear 0s }
