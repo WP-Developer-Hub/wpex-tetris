@@ -77,7 +77,7 @@ function universal_customizer_settings($wp_customize) {
         'title' => __('General Settings', 'tetris'),
         'priority' => 0,
         'panel' => 'universal_theme_settings_panel',
-        'description' => __('This section contains General settings.', 'tetris'),
+        'description' => __('This section contains all the common settings.', 'tetris'),
     ));
 
     // Date Display Options
@@ -134,7 +134,7 @@ function universal_customizer_settings($wp_customize) {
         'title' => __('Grid Item Settings', 'tetris'),
         'priority' => 10,
         'panel' => 'universal_theme_settings_panel',
-        'description' => __('This section contains settings related to grid layout.', 'tetris'),
+        'description' => __('This section contains the settings related to grid Item.', 'tetris'),
     ));
 
     // Aspect Ratio Setting
@@ -226,11 +226,11 @@ function universal_customizer_settings($wp_customize) {
     )));
 
     // Post Page Settings Section
-    $wp_customize->add_section('universal_single_post_page_settings_section', array(
-        'title' => __('Single Post Settings', 'tetris'),
+    $wp_customize->add_section('universal_post_settings_section', array(
+        'title' => __('Post Settings', 'tetris'),
         'priority' => 20,
         'panel' => 'universal_theme_settings_panel',
-        'description' => __('This section contains settings related to single post pages.', 'tetris'),
+        'description' => __('This section contains all the settings related to single blog posts.', 'tetris'),
     ));
 
     // Gallery Image Link Type Option (for lightbox behavior)
@@ -240,8 +240,8 @@ function universal_customizer_settings($wp_customize) {
     ));
     $wp_customize->add_control('universal_gallery_link_type', array(
         'label' => __('Gallery Link Type', 'tetris'),
-        'description' => __('Select whether gallery images should link to file (for lightbox), attachment page, or none.', 'tetris'),
-        'section' => 'universal_single_post_page_settings_section',
+        'description' => __('Select whether gallery images should link to file (for lightbox), attachment page, or none this applies to the gallery displayed above the post title in single blog posts when the post format  gallery/image is selected and the universal media metabox is used.', 'tetris'),
+        'section' => 'universal_post_settings_section',
         'type' => 'select',
         'choices' => array(
             'none' => __('None', 'tetris'),
@@ -251,7 +251,7 @@ function universal_customizer_settings($wp_customize) {
     ));
 
     $wp_customize->add_control(new WPX_Divider($wp_customize, 'universal_gallery_link_type_divider', array(
-        'section' => 'universal_single_post_page_settings_section',
+        'section' => 'universal_post_settings_section',
         'settings' => 'universal_divider',
     )));
 
@@ -263,8 +263,8 @@ function universal_customizer_settings($wp_customize) {
     ));
     $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_post_thumbnail', array(
         'label' => __('Toggle Post Thumbnail', 'tetris'),
-        'description' => __('Enable or disable the post thumbnail on single post pages.', 'tetris'),
-        'section' => 'universal_single_post_page_settings_section',
+        'description' => __('Enable or disable the post thumbnail on single blog posts.', 'tetris'),
+        'section' => 'universal_post_settings_section',
     )));
 
     // Toggle Post Tags
@@ -275,8 +275,8 @@ function universal_customizer_settings($wp_customize) {
     ));
     $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_post_tags', array(
         'label' => __('Toggle Post Tags', 'tetris'),
-        'description' => __('Enable or disable the post tags on single post pages.', 'tetris'),
-        'section' => 'universal_single_post_page_settings_section',
+        'description' => __('Enable or disable the post tags on single blog posts.', 'tetris'),
+        'section' => 'universal_post_settings_section',
     )));
 
     // Toggle Post Author Box
@@ -287,8 +287,8 @@ function universal_customizer_settings($wp_customize) {
     ));
     $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_post_author_box', array(
         'label' => __('Toggle Post Author Box', 'tetris'),
-        'description' => __('Enable or disable the author box on single post pages.', 'tetris'),
-        'section' => 'universal_single_post_page_settings_section',
+        'description' => __('Enable or disable the author box on single blog posts.', 'tetris'),
+        'section' => 'universal_post_settings_section',
     )));
 
     // Footer Settings Section
@@ -296,7 +296,7 @@ function universal_customizer_settings($wp_customize) {
         'title' => __('Footer Settings', 'tetris'),
         'priority' => PHP_INT_MAX,
         'panel' => 'universal_theme_settings_panel',
-        'description' => __('This section contains settings for customizing the footer.', 'tetris'),
+        'description' => __('This section contains the settings for customizing the footer.', 'tetris'),
     ));
 
     // Started Date
