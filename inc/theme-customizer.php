@@ -193,6 +193,18 @@ function universal_customizer_settings($wp_customize) {
         'settings' => 'universal_divider',
     )));
 
+    // Toggle Post Excerpt
+    $wp_customize->add_setting('universal_toggle_excrept', array(
+        'default' => 'true',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_excrept', array(
+        'label' => __('Toggle Post Excerpt', 'tetris'),
+        'description' => __('Enable or disable the post excerpt displayed on grid items. When enabled, the excerpt appears below the post title in the grid layout.', 'tetris'),
+        'section' => 'universal_grid_item_settings_section',
+    )));
+
     // Excerpt Length
     $wp_customize->add_setting('universal_excerpt_length', array(
         'default' => 30,
