@@ -251,7 +251,7 @@ function universal_customizer_settings($wp_customize) {
     ));
 
     $wp_customize->add_control(new WPX_Divider($wp_customize, 'universal_gallery_link_type_divider', array(
-        'section' => 'universal_grid_item_settings_section',
+        'section' => 'universal_single_post_page_settings_section',
         'settings' => 'universal_divider',
     )));
 
