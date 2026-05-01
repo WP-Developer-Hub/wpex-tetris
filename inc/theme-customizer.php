@@ -296,7 +296,7 @@ function universal_customizer_settings($wp_customize) {
         'title' => __('Footer Settings', 'tetris'),
         'priority' => PHP_INT_MAX,
         'panel' => 'universal_theme_settings_panel',
-        'description' => __('This section contains the settings for customizing the footer.', 'tetris'),
+        'description' => __('This section contains all the settings for customizing the footer.', 'tetris'),
     ));
 
     // Started Date
