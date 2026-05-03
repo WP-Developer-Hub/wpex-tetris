@@ -3,14 +3,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tetris WordPress Theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-03 13:44-0400\n"
-"PO-Revision-Date: 2016-04-19 14:34-0800\n"
-"Last-Translator: AJ Clarke <wpexplorer@gmail.com>\n"
+"POT-Creation-Date: 2026-05-03 13:39-0400\n"
+"PO-Revision-Date: 2026-05-03 13:41-0400\n"
+"Last-Translator: \n"
 "Language-Team: WPExplorer.com\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_n;_nx\n"
 "X-Poedit-Basepath: .\n"
 "X-Generator: Poedit 3.9\n"
@@ -33,8 +34,8 @@ msgstr ""
 
 #: ../addons/addon-error-message.php:10
 msgid ""
-"Unfortunately, nothing matched your search. Please try different keywords "
-"or adjust the post format filter."
+"Unfortunately, nothing matched your search. Please try different keywords or "
+"adjust the post format filter."
 msgstr ""
 
 #: ../addons/addon-error-message.php:13
@@ -57,20 +58,19 @@ msgstr ""
 
 #: ../addons/addon-error-message.php:22
 msgid ""
-"Unfortunately, no posts were found with this tag. Try using a different "
-"tag."
+"Unfortunately, no posts were found with this tag. Try using a different tag."
 msgstr ""
 
 #: ../addons/addon-error-message.php:25
 msgid ""
-"Unfortunately, there is no content available on this page. Please check "
-"back later or go to the homepage."
+"Unfortunately, there is no content available on this page. Please check back "
+"later or go to the homepage."
 msgstr ""
 
 #: ../addons/addon-error-message.php:28
 msgid ""
-"Unfortunately, there are no posts available at the moment. Please check "
-"back later."
+"Unfortunately, there are no posts available at the moment. Please check back "
+"later."
 msgstr ""
 
 #: ../addons/addon-search-filter-control.php:64
@@ -96,8 +96,7 @@ msgstr ""
 msgid "%s This Month"
 msgstr ""
 
-#: ../addons/addon-template-title.php:33
-#: ../addons/addon-template-title.php:40
+#: ../addons/addon-template-title.php:33 ../addons/addon-template-title.php:40
 #, php-format
 msgid "%s In: <time datetime=\"%s\">%s</time>"
 msgstr ""
@@ -254,11 +253,11 @@ msgstr ""
 
 #: ../inc/class-universal-meta-box/universal-meta-box.php:66
 msgid ""
-"Use the Audio, Video, or Gallery post formats in the post formats metabox "
-"to display the corresponding local media above the post title on single "
-"posts. Choosing the Standard post format will display the post thumbnail "
-"above the post title, if the theme option to show post thumbnails in the "
-"single post template is enabled."
+"Use the Audio, Video, or Gallery post formats in the post formats metabox to "
+"display the corresponding local media above the post title on single posts. "
+"Choosing the Standard post format will display the post thumbnail above the "
+"post title, if the theme option to show post thumbnails in the single post "
+"template is enabled."
 msgstr ""
 
 #: ../inc/class-wpx-customizer-controls/class-wpx-customizer-controls.php:116
@@ -435,8 +434,8 @@ msgstr ""
 
 #: ../inc/theme-customizer.php:120
 msgid ""
-"Specify days before switch form \"ago formatting\" to the full date. Min "
-"30, Max 356."
+"Specify days before switch form \"ago formatting\" to the full date. Min 30, "
+"Max 356."
 msgstr ""
 
 #: ../inc/theme-customizer.php:134
@@ -463,9 +462,9 @@ msgstr ""
 
 #: ../inc/theme-customizer.php:166
 msgid ""
-"Enable or disable the badge displayed on post thumbnails in grid items. "
-"The badge appears at the bottom-right corner and can be used for labels "
-"such as \"New\", \"Feature\", or others."
+"Enable or disable the badge displayed on post thumbnails in grid items. The "
+"badge appears at the bottom-right corner and can be used for labels such as "
+"\"New\", \"Feature\", or others."
 msgstr ""
 
 #: ../inc/theme-customizer.php:177
@@ -474,8 +473,8 @@ msgstr ""
 
 #: ../inc/theme-customizer.php:178
 msgid ""
-"Specify the number of days the \"New\" post badge should be visable for "
-"the posts grid. Min 7 days, Max 28 days."
+"Specify the number of days the \"New\" post badge should be visable for the "
+"posts grid. Min 7 days, Max 28 days."
 msgstr ""
 
 #: ../inc/theme-customizer.php:203
@@ -492,8 +491,7 @@ msgstr ""
 
 #: ../inc/theme-customizer.php:224
 msgid ""
-"Enable or disable the read more link below the post excerpt on the grid "
-"item."
+"Enable or disable the read more link below the post excerpt on the grid item."
 msgstr ""
 
 #: ../inc/theme-customizer.php:230
@@ -510,10 +508,10 @@ msgstr ""
 
 #: ../inc/theme-customizer.php:243
 msgid ""
-"Select whether gallery images should link to file (for lightbox), "
-"attachment page, or none this applies to the gallery displayed above the "
-"post title in single blog posts when the post format  gallery/image is "
-"selected and the universal media metabox is used."
+"Select whether gallery images should link to file (for lightbox), attachment "
+"page, or none this applies to the gallery displayed above the post title in "
+"single blog posts when the post format  gallery/image is selected and the "
+"universal media metabox is used."
 msgstr ""
 
 #: ../inc/theme-customizer.php:248
@@ -590,10 +588,9 @@ msgstr ""
 
 #: ../inc/widget-areas.php:31
 msgid ""
-"Widgets in this area are used on the 404 error page below the error "
-"message. Please note that adding more than one widget may confuse the "
-"user. Also, don't forget to add a title, as the title acts as the screen "
-"reader text."
+"Widgets in this area are used on the 404 error page below the error message. "
+"Please note that adding more than one widget may confuse the user. Also, "
+"don't forget to add a title, as the title acts as the screen reader text."
 msgstr ""
 
 #: ../inc/widget-areas.php:38
