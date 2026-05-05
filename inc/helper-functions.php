@@ -759,6 +759,7 @@ if ( ! function_exists( 'wpx_get_404_image_html' ) ) {
             'post_status' => 'inherit',
             'post_mime_type' => 'image',
             'post_type' => 'attachment',
+            'meta_query' => [['key' => '_wpx_show_on_404', 'value' => '1']],
         ));
 
         $image_html = '';

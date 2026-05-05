@@ -45,6 +45,7 @@ if (!is_admin()) {
     require_once $dir .'/inc/comments.php';
     require_once $dir .'/inc/universal-menu-walker-2-0.php';
 } else {
+    require_once $dir .'/inc/wpx-submitbox-misc-actions.php';
     require_once $dir .'/inc/class-universal-meta-box/universal-meta-box.php';
 }
 
