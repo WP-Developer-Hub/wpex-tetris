@@ -37,6 +37,18 @@ function universal_customizer_settings($wp_customize) {
             'max' => 50,
         ),
     )));
+    
+    $wp_customize->register_control_type( 'WPEX_Media_Control' );
+    $wp_customize->add_setting('universal_404_image', array(
+        'default' => '',
+        'sanitize_callback' => 'absint',
+    ));
+    $wp_customize->add_control(new WPEX_Media_Control($wp_customize, 'universal_404_image', array(
+        'label' => __('404 Image', 'tetris'),
+        'description' => __('Select the image you wanna display on your 404 below the missing page text.', 'tetris'),
+        'mime_type' => 'image',
+        'section' => 'colors',
+    )));
 
     // Title & Tagline Visibility
     $wp_customize->add_setting('universal_title_tagline_visibility', array(
