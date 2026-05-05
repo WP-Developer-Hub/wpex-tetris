@@ -267,12 +267,9 @@ h5.widget-title {font-weight: bold;}
 .taglist li a,
 .sidebar-box { margin-bottom: 30px; font-size: 14px !important;}
 .sidebar-box .heading { margin-top: 0 }
-#error-widget-box a,
-#sidebar a { color: #666 }
-#error-widget-box .wp-calendar-table,
+#sidebar a,{ color: #666 }
 #sidebar .wp-calendar-table { background: #fff }
 #sidebar {--co-textfld-bg: #fff;}
-#error-widget-box a:hover,
 #sidebar a:hover { color: var(--universal-accent-color); text-decoration: none; }
 
 /* Widgets
@@ -407,12 +404,11 @@ h3#reply-title span { padding-right: 15px; }
  
 /* 404 Page
 ----------------------------------------------------------- */
-#error-page-title { font-size: 5.714em; text-align: center; font-weight: bold; background: none; line-height: 1em; border: none; margin: 0 0 10px; color: #000; }
-#error-page-title span { margin-right: 7px }
-#error-page-text { text-align: center; font-size: 1.143em; }
-#error-widget-box { width: 58%; max-width: 100%; margin-top: 10px; }
-#error-widget-box .error-widget{ padding: 0; margin: 0; }
-#error-widget-box .error-widget:not(:first-child) { margin-top: 10px; }
+#error-page { min-height: 500px; }
+#error-page-title { font-size: 10em; text-align: center; font-weight: bold; background: none; line-height: 1em; border: none; color: #000; margin-top: 30px; }
+#error-page-text { text-align: center; font-size: 1.5em; }
+#error-widget-box { max-width: 100%; }
+#error-widget-box img { width: 400px; }
 
 /* WordPress
 ----------------------------------------------------------- */

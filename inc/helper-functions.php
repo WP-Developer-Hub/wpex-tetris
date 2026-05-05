@@ -749,3 +749,26 @@ if ( ! function_exists( 'wpex_post_type_supports' ) ) {
         return empty($feature) ? true : post_type_supports(get_post_type(), $feature);
     }
 }
+
+if ( ! function_exists( 'wpx_get_404_image_html' ) ) {
+    function wpx_get_404_image_html() {
+        $images = get_posts(array(
+            'fields' => 'ids',
+            'orderby' => 'rand',
+            'posts_per_page' => 1,
+            'post_status' => 'inherit',
+            'post_mime_type' => 'image',
+            'post_type' => 'attachment',
+        ));
+
+        $image_html = '';
+
+        if (!empty($images)) {
+            $image_html .= '<div id="error-widget-box">';
+            $image_html .= wp_get_attachment_image($images[0], "large", false, array('class' => 'u-media-1-1'));
+            $image_html .= '</div>';
+        }
+        return $image_html;
+    }
+}
+?>

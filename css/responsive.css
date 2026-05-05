@@ -41,7 +41,7 @@
 	.entry blockquote { margin-left: 0; margin-right: 0; }
 	.sidebar-bg { background-image: none !important; margin-bottom: 0; }
 	#sidebar { width: 100%; background: #f9f9f9; margin-top: 30px; padding: 30px; border: 1px solid #ddd; }
-	#error-page-text { font-size: 14px }
+	#error-page-text { font-size: 1.25em; }
 	#author-image { margin-bottom: 10px }
 	#author-bio { width: 100% }
     .comment-date { margin-top: 0; }
