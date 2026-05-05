@@ -406,122 +406,80 @@ if (class_exists('WP_Customize_Control') && !class_exists('wpx-WPX_Customize_Con
         }
     }
 
-class WPEX_Media_Control extends WPEX_Customize_Media_Control {
-    public $type = 'wpex-media';
-    public $multiple = 'all';
+    class WPEX_Media_Control extends WPEX_Customize_Media_Control {
+        public $type = 'wpex-media';
+        public $multiple = 'all';
+
+        public function enqueue() {
+            parent::enqueue();
+
+            $js_url = $this->get_wpx_resource_url() . 'js/wp-customizer-media-controls.js';
+
+            wp_enqueue_script('wp-customize-media-controls-js', $js_url, array('jquery'), false, $this->wpxCustomControlsJsVersion);
+        }
+
+        public function to_json() {
+            parent::to_json();
+
+            $this->json['multiple'] = !empty($this->multiple);
     
-    public function enqueue() {
-        $js_url = $this->get_wpx_resource_url() . 'js/wp-customizer-media-controls.js';
+            $value = $this->value();
 
-        wp_enqueue_media();
-        wp_enqueue_script('wp-customize-media-controls-js', $js_url, array('jquery'), false, $this->wpxCustomControlsJsVersion);
-    }
+            // Current value → attachment(s)
+            if ($value && is_object($this->setting)) {
+                $ids = array_filter(array_map('trim', explode(',', $value)));
+                if ($ids) {
+                    $attachments = array();
 
-    public function to_json() {
-        parent::to_json();
+                    foreach ($ids as $id) {
+                        $attachments[] = wp_prepare_attachment_for_js($id);
+                    }
 
-        $this->json['label'] = html_entity_decode($this->label, ENT_QUOTES, get_bloginfo('charset'));
-        $this->json['mime_type'] = $this->mime_type;
-        $this->json['button_labels'] = wp_parse_args($this->button_labels, $this->get_default_button_labels());
-        $this->json['canUpload'] = current_user_can('upload_files');
-        $this->json['multiple'] = !empty($this->multiple);
-
-        $value = $this->value();
-
-        // Default attachment handling
-        if (is_object($this->setting) && $this->setting->default) {
-
-            $ext = wp_check_filetype($this->setting->default )['ext'];
-            $ext_types = wp_get_ext_types();
-            $type = (isset($ext_types['image']) && in_array($ext, $ext_types['image'], true))
-                ? 'image'
-                : 'document';
-
-            $default_attachment = array(
-                'id' => 0,
-                'url' => $this->setting->default,
-                'type' => $type,
-                'icon' => wp_mime_type_icon($type, '.svg'),
-                'title' => wp_basename($this->setting->default),
-            );
-
-            if ('image' === $type) {
-                $default_attachment['sizes'] = array(
-                    'full' => array(
-                        'url' => $this->setting->default,
-                    ),
-                );
-            }
-
-            $this->json['defaultAttachment'] = $default_attachment;
-        }
-
-        // Current value → attachment(s)
-        if ($value && is_object( $this->setting)) {
-            if ($this->setting->default && $value === $this->setting->default) {
-                $this->json['attachments'] = $this->json['defaultAttachment'];
-
-            } elseif ($value) {
-                $attachments = array();
-
-                foreach ($value as $id) {
-                    $attachments[] = wp_prepare_attachment_for_js($id);
+                    $this->json['attachments'] = $attachments;
                 }
-
-                $this->json['attachments'] = $attachments;
             }
         }
-    }
 
-    public function content_template() {
-        ?>
-        <#
-        var descriptionId = _.uniqueId( 'customize-media-control-description-' );
-        var describedByAttr = data.description ? ' aria-describedby="' + descriptionId + '" ' : '';
-        #>
+        public function content_template() {
+            ?>
+            <#
+            var descriptionId = _.uniqueId( 'customize-media-control-description-' );
+            var describedByAttr = data.description ? ' aria-describedby="' + descriptionId + '" ' : '';
+            #>
 
-        <# if ( data.label ) { #>
-            <span class="customize-control-title">{{ data.label }}</span>
-        <# } #>
-
-        <div class="customize-control-notifications-container"></div>
-
-        <# if ( data.description ) { #>
-            <span id="{{ descriptionId }}" class="description customize-control-description">
-                {{{ data.description }}}
-            </span>
-        <# } #>
-
-        <div class="actions">
-            <# if ( data.canUpload ) { #>
-                <button type="button" class="button remove-button wpex-remove-button">
-                    {{ data.button_labels.remove }}
-                </button>
-
-                <button type="button" class="button upload-button control-focus wpex-change-button" {{{ describedByAttr }}}>
-                    {{ data.button_labels.change }}
-                </button>
+            <# if ( data.label ) { #>
+                <span class="customize-control-title">{{ data.label }}</span>
             <# } #>
 
-        </div>
+            <div class="customize-control-notifications-container"></div>
 
-        <div class="attachment-media-view">
-            <# if ( data.canUpload ) { #>
-                <button type="button" class="wpex-upload-button upload-button button" {{{ describedByAttr }}}>
-                    {{ data.button_labels.select }}
-                </button>
+            <# if ( data.description ) { #>
+                <span id="{{ descriptionId }}" class="description customize-control-description">
+                    {{{ data.description }}}
+                </span>
             <# } #>
 
             <div class="actions">
-                <# if ( data.defaultAttachment ) { #>
-                    <button type="button" class="button default-button wpex-default-button">
-                        {{ data.button_labels['default'] }}
+                <# if ( data.canUpload ) { #>
+                    <button type="button" class="button remove-button wpex-remove-button ">
+                        {{ data.button_labels.remove }}
+                    </button>
+
+                    <button type="button" class="button upload-button control-focus wpex-upload-button " {{{ describedByAttr }}}>
+                        {{ data.button_labels.change }}
+                    </button>
+                <# } #>
+
+            </div>
+
+            <div class="attachment-media-view">
+                <# if ( data.canUpload ) { #>
+                    <button type="button" class="upload-button button wpex-upload-button" {{{ describedByAttr }}}>
+                        {{ data.button_labels.select }}
                     </button>
                 <# } #>
             </div>
-        
-        </div>
-        <?php
+            <?php
+        }
     }
-}
 }
