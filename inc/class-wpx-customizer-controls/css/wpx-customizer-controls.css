@@ -11,8 +11,8 @@
 
 /* General Customizer Control Styles */
 .wpx-control {
-  display: block;
-  margin-top: 10px;
+    display: block;
+    margin-top: 10px;
 }
 
 /* Divider */
@@ -115,38 +115,40 @@
   transform: translateX(28px);
 }
 
-/* Focus State */
-.wpx-control input[type="radio"]:hover+.wpx-ratio-card,
-.wpx-control input[type="checkbox"]:hover+.wpx-toggle-switch {
-  border-color: var(--wpx-blue-mid);
-  background-color: var(--wpx-blue-mid);
-}
-
-/* Hover State */
-.wpx-control input[type="radio"]:hover+.wpx-ratio-card,
-.wpx-control input[type="checkbox"]:hover+.wpx-toggle-switch {
-  border-color: var(--wpx-grey-dark);
-  background-color: var(--wpx-grey-dark);
-}
-
-.wpx-control input[type="radio"]:checked:hover+.wpx-ratio-card,
-.wpx-control input[type="checkbox"]:checked:hover+.wpx-toggle-switch {
-  border-color: var(--wpx-blue-mid);
-  background-color: var(--wpx-blue-mid);
-}
-
-/* Focus and Hover State */
-.wpx-control input[type="radio"]:focus:hover+.wpx-ratio-card,
-.wpx-control input[type="checkbox"]:focus:hover+.wpx-toggle-switch {
+/* Hover / Active (shortest selectors first) */
+.wpx-control input[type="radio"]:hover + .wpx-ratio-card,
+.wpx-control input[type="radio"]:active + .wpx-ratio-card,
+.wpx-control input[type="radio"]:focus:hover + .wpx-ratio-card,
+.wpx-control input[type="checkbox"]:hover + .wpx-toggle-switch,
+.wpx-control input[type="checkbox"]:active + .wpx-toggle-switch,
+.wpx-control input[type="checkbox"]:focus:hover + .wpx-toggle-switch {
   border-color: var(--wpx-blue-dark);
   background-color: var(--wpx-blue-dark);
 }
 
-/* Active State */
-.wpx-control input[type="radio"]:active+.wpx-ratio-card,
-.wpx-control input[type="checkbox"]:active+.wpx-toggle-switch {
-  border-color: var(--wpx-blue-dark);
-  background-color: var(--wpx-blue-dark);
+/* Focus / Checked Hover (longer selectors) */
+.wpx-control input[type="radio"]:focus + .wpx-ratio-card,
+.wpx-control input[type="checkbox"]:focus + .wpx-toggle-switch,
+.wpx-control input[type="radio"]:checked:hover + .wpx-ratio-card,
+.wpx-control input[type="checkbox"]:checked:hover + .wpx-toggle-switch {
+  border-color: var(--wpx-blue-mid);
+  background-color: var(--wpx-blue-mid);
+}
+
+.wpx-control input[type="range"] {
+  width: 100%;
+  accent-color: var(--wpx-blue);
+  transition: accent-color 100ms ease;
+}
+
+.wpx-control input[type="range"]:hover,
+.wpx-control input[type="range"]:active,
+.wpx-control input[type="range"]:focus:hover {
+  accent-color: var(--wpx-blue-dark);
+}
+
+.wpx-control input[type="range"]:focus {
+  accent-color: var(--wpx-blue-mid);
 }
 
 .wpx-range-group,
@@ -182,20 +184,6 @@
   accent-color: var(--wpx-blue);
   justify-content: space-between;
   grid-template-columns: auto auto auto;
-}
-
-.wpx-color-picker-group .wpx-range-input {
-  width: 100%;
-  accent-color: var(--wpx-blue);
-  transition: accent-color 100ms ease;
-}
-
-.wpx-color-picker-group .wpx-range-input:hover {
-  accent-color: var(--wpx-blue-dark);
-}
-
-.wpx-color-picker-group .wpx-range-input:focus {
-  accent-color: var(--wpx-blue-mid);
 }
 
 .wpx-color-picker-group .wpx-swap-control {

@@ -15,11 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once get_template_directory() . '/inc/class-wpx-customizer-controls/class-wpx-customizer-controls.php';
 
 function universal_customizer_settings($wp_customize) {
-    
     // Divider Setting
     $wp_customize->add_setting('universal_divider', array(
         'sanitize_callback' => '__return_true',
     ));
+
+    $wp_customize->register_control_type('WPX_Color_Picker_Control');
 
     // Accent Color Setting and Control
     $wp_customize->add_setting('universal_accent_color', array(
@@ -27,16 +28,7 @@ function universal_customizer_settings($wp_customize) {
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field'
     ));
-    $wp_customize->add_control(new WPX_Color_Picker_Control($wp_customize, 'universal_accent_color', array(
-        'label' => __('Accent Color', 'tetris'),
-        'section' => 'colors',
-        'type' => 'text',
-        'input_attrs' => array(
-            'step' => 1,
-            'min' => -50,
-            'max' => 50,
-        ),
-    )));
+    $wp_customize->add_control(new WPX_Color_Picker_Control($wp_customize, 'universal_accent_color', []));
 
     // Title & Tagline Visibility
     $wp_customize->add_setting('universal_title_tagline_visibility', array(
@@ -143,12 +135,7 @@ function universal_customizer_settings($wp_customize) {
         'transport' => 'refresh',
         'sanitize_callback' => 'sanitize_text_field',
     ));
-    $wp_customize->add_control(new WPX_Ratio_Control($wp_customize, 'universal_aspect_ratio', array(
-        'label' => __('Aspect Ratio', 'tetris'),
-        'description' => __('Select the aspect ratio for grid item images. Choose "auto" for the default or "1:1" for a square aspect ratio.', 'tetris'),
-        'section' => 'universal_grid_item_settings_section',
-        'type' => 'radio',
-    )));
+    $wp_customize->add_control(new WPX_Ratio_Control($wp_customize, 'universal_aspect_ratio', []));
 
     $wp_customize->add_control(new WPX_Divider($wp_customize, 'universal_aspect_ratio_divider', array(
         'section' => 'universal_grid_item_settings_section',
