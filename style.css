@@ -404,6 +404,7 @@ h3#reply-title span { padding-right: 15px; }
  
 /* 404 Page
 ----------------------------------------------------------- */
+#error-page { min-height: 500px; }
 #error-page-title { font-size: 18em; text-align: center; font-weight: bold; background: none; line-height: 1em; border: none; color: #000; transition: font-size 250ms linear }
 #error-page-text { text-align: center; font-size: 1.5em; transition: font-size 250ms linear }
 
