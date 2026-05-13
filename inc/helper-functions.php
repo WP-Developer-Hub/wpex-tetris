@@ -354,11 +354,11 @@ if ( ! function_exists( 'universal_get_title_tagline' ) ) {
 if ( ! function_exists( 'universal_theme_custom_logo' ) ) {
     function universal_theme_custom_logo() {
         $custom_logo_id = get_theme_mod('custom_logo');
-        $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
+        $logo = wp_get_attachment_image($custom_logo_id, 'full');
 
         if (has_custom_logo()) {
-            echo '<a href="' . esc_url(home_url('/')) . '" rel="home" class="u-flex u-flex-row u-ai-c"><img src="' . esc_url($logo[0]) . '" alt="' . get_bloginfo('name') . '" title="' . get_bloginfo('name') . '" loading="lazy">';
-            echo universal_get_title_tagline() . '</a>';
+            echo '<a href="' . esc_url(home_url('/')) . '" rel="home" class="u-flex u-flex-row u-ai-c">';
+            echo $logo . universal_get_title_tagline() . '</a>';
         } else {
             echo '<a href="' . esc_url(home_url('/')) . '">' . universal_get_title_tagline() . '</a>';
         }
