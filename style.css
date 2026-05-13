@@ -152,6 +152,12 @@ a:hover { cursor: pointer }
 #navigation .current-post-ancestor a,
 #navigation .current-page-ancestor a,
 #navigation .current-menu-item a { color: var(--universal-accent-color-text) }
+#navigation .current-post-ancestor:hover,
+#navigation .current-page-ancestor:hover,
+#navigation .current-menu-item:hover { background: var(--universal-accent-color-dark); }
+#navigation .current-post-ancestor a:hover,
+#navigation .current-page-ancestor a:hover,
+#navigation .current-menu-item a:hover { color: var(--universal-accent-color-text-light) }
  
 /* Style the navigation menu for mobile */
 #mobile-navigation { display: none; width: 100%; border-radius: 2px; font-size: 18px; background-color: #212121 }
