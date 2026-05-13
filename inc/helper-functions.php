@@ -312,7 +312,6 @@ if ( ! function_exists( 'universal_dynamic_css' ) ) {
 if ( ! function_exists( 'universal_theme_custom_logo' ) ) {
     function universal_theme_custom_logo() {
         $current_blog_id = get_current_blog_id();
-
         $switched_blog = false;
 
         if (is_multisite() && ! empty($current_blog_id) && get_current_blog_id() !== (int) $current_blog_id) {
@@ -321,13 +320,11 @@ if ( ! function_exists( 'universal_theme_custom_logo' ) ) {
         }
 
         $logo_id = get_theme_mod('custom_logo');
-        $logo_attr = ['class' => 'custom-logo', 'loading' => 'lazy'];
+        $logo_attr = ['class' => 'custom-logo', 'loading' => 'lazy', 'alt' => get_bloginfo('name', 'display')];
         $logo_attr = apply_filters('get_custom_logo_image_attributes', $logo_attr, $logo_id, $current_blog_id);
         $logo = wp_get_attachment_image($logo_id, 'full', false, $logo_attr);
 
-        $class = has_custom_logo() ? ' class="u-flex u-flex-row u-ai-c"' : '';
-
-        $html  = '<a href="' . esc_url(home_url('/')) . '" rel="home"' . $class . '>';
+        $html  = '<a href="' . esc_url(home_url('/')) . '" rel="home" class="custom-logo-link">';
 
         if (has_custom_logo()) {
             $html .= $logo;
