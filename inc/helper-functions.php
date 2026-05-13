@@ -309,61 +309,51 @@ if ( ! function_exists( 'universal_dynamic_css' ) ) {
 }
 
 /**
- * Get the title or tagline based on theme customizer settings.
- *
- * @return string The HTML for title or tagline.
- */
-if ( ! function_exists( 'universal_get_title_tagline' ) ) {
-    function universal_get_title_tagline() {
-        // Get the theme modification for title and tagline visibility
-        $visibility = get_theme_mod('universal_title_tagline_visibility', 'title_only');
-
-        // Define default output for title and tagline
-        $title = get_bloginfo('name');
-        $tagline = get_bloginfo('description');
-
-        // Define HTML start and end tags for the title and tagline
-        $title_start_tag = '<h1 class="u-fs-50">';
-        $tagline_start_tag = '<h1 class="u-fs-40">';
-        $end_tag = '</h1>';
-
-        // Initialize title and tagline output variables
-        $tt_output = '';
-
-        // Use a switch statement to adjust output based on visibility setting
-        switch ($visibility) {
-            case 'none':
-                return '';
-                break;
-            case 'tagline_only':
-                // Display tagline only
-                return $tagline_start_tag . $tagline . $end_tag;
-                break;
-            default:
-                // Display title only (default behavior)
-                return $title_start_tag . $title . $end_tag;
-                break;
-        }
-
-        // Return the combined HTML output
-        return $tt_output;
-    }
-}
-
-/**
- * Display the custom logo of the theme.
+ * Display the custom logo of the theme
+ * if logo is not set or missing
  */
 if ( ! function_exists( 'universal_theme_custom_logo' ) ) {
     function universal_theme_custom_logo() {
-        $custom_logo_id = get_theme_mod('custom_logo');
-        $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
+        // Init All Vars
+        global $blog_id;
+        $switched_blog = false;
+        $logo_id = get_theme_mod('custom_logo');
+        $blog_name = get_bloginfo('name', 'display');
+        $class = has_custom_logo() ? 'custom-logo-link' : 'blog-name-link';
+        $aria_label = esc_attr(sprintf(__('%s home', 'tetris'), $blog_name));
 
-        if (has_custom_logo()) {
-            echo '<a href="' . esc_url(home_url('/')) . '" rel="home" class="u-flex u-flex-row u-ai-c"><img src="' . esc_url($logo[0]) . '" alt="' . get_bloginfo('name') . '" title="' . get_bloginfo('name') . '" loading="lazy">';
-            echo universal_get_title_tagline() . '</a>';
-        } else {
-            echo '<a href="' . esc_url(home_url('/')) . '">' . universal_get_title_tagline() . '</a>';
+        // Add Multisite Support
+        if (is_multisite() && ! empty($blog_id) && get_current_blog_id() !== (int) $blog_id) {
+            switch_to_blog( $blog_id );
+            $switched_blog = true;
         }
+
+        // Init All Logo Attributes & Apply get_custom_logo_image_attributes Filter For Plugin To Use
+        $logo_attr = ['class' => 'custom-logo', 'loading' => 'lazy', 'alt' => $blog_name];
+        $logo_attr = apply_filters('get_custom_logo_image_attributes', $logo_attr, $logo_id, $blog_id);
+
+        // Retrive Custom Logo
+        $logo = wp_get_attachment_image($logo_id, 'full', false, $logo_attr);
+
+        // Init Opening A Tags
+        $html  = '<a href="' . esc_url(home_url('/')) . '" rel="home" class="' . $class . '" aria-label="'. $aria_label .'">';
+
+        // Show The Blog Name If Logo Is Missing
+        if (has_custom_logo()) {
+            $html .= $logo;
+        } else {
+            $html .= '<h1 class="u-fs-50">' . $blog_name . '</h1>';
+        }
+        // Init Closing A Tags
+        $html .= '</a>';
+
+        // Restore Current Blog Is $switched_blog = true;
+        if ($switched_blog) {
+            restore_current_blog();
+        }
+
+        // Apply the get_custom_logo Filterto the Custom Logo HTML For Plugin To Use
+        return apply_filters('get_custom_logo', $html, $blog_id);
     }
 }
 

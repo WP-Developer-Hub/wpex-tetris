@@ -30,24 +30,6 @@ function universal_customizer_settings($wp_customize) {
     ));
     $wp_customize->add_control(new WPX_Color_Picker_Control($wp_customize, 'universal_accent_color', []));
 
-    // Title & Tagline Visibility
-    $wp_customize->add_setting('universal_title_tagline_visibility', array(
-        'default' => 'title_only',
-        'transport' => 'refresh',
-        'sanitize_callback' => 'sanitize_text_field'
-    ));
-    $wp_customize->add_control('universal_title_tagline_visibility', array(
-        'label' => __('Site Title and Tagline Visibility', 'tetris'),
-        'description' => __('Choose whether the site title and tagline should be displayed.', 'tetris'),
-        'section' => 'title_tagline',
-        'type' => 'select',
-        'choices' => array(
-            'none' => __('None', 'tetris'),
-            'title_only' => __('Site Title Only', 'tetris'),
-            'tagline_only' => __('Tagline Only', 'tetris'),
-        ),
-    ));
-
     // Theme Settings Panel
     $wp_customize->add_panel('universal_theme_settings_panel', array(
         'title' => __('Theme Settings', 'tetris'),

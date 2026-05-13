@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div id="header-wrap" class="clearfix">
         <header id="header" class="u-flex u-ai-c u-jc-sb clearfix">
             <div id="logo" class="u-flex u-ai-c u-block-100 clearfix">
-                <?php universal_theme_custom_logo(); ?>
+                <?php echo universal_theme_custom_logo(); ?>
             </div><!-- /logo -->
             <nav id="navigation" class="u-flex u-ai-c clearfix" aria-label="<?php echo esc_attr__('Main Navigation', 'tetris'); ?>">
                 <?php wp_nav_menu( array(
