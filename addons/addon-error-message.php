@@ -1,8 +1,8 @@
-<div id="error-message" class="container u-flex u-flex-col u-ai-c clearfix">
+<div id="error-message" class="container u-flex u-flex-col u-grid-gap-20 u-ai-c u-jc-c">
     <h1 id="error-message-title" class="u-fs-30">
         <?php _e('Oops, We\'re Sorry', 'tetris'); ?>
     </h1>
-    <p id="error-message-text" class="u-fs-18 u-flex u-flex-col u-ai-c">
+    <p id="error-message-text" class="u-fs-18">
         <?php
             $error_message_text = '';
             switch (true) {
