@@ -146,13 +146,19 @@ a:hover { cursor: pointer }
 #navigation ul li:last-child() { border-bottom: none; }
 #navigation ul li:hover > ul { display: block; width: 100%; z-index: 999 }
 #navigation li:hover,
-#navigation .current-post-ancestor,
-#navigation .current-page-ancestor,
-#navigation .current-menu-item { background: var(--universal-accent-color); }
+#navigation .current-menu-item:hover,
+#navigation .current-post-ancestor:hover,
+#navigation .current-page-ancestor:hover { background: var(--universal-accent-color); }
 #navigation li:hover a,
+#navigation .current-menu-item:hover a,
+#navigation .current-post-ancestor:hover a,
+#navigation .current-page-ancestor:hover a { color: var(--universal-accent-color-text) }
+#navigation .current-menu-item,
+#navigation .current-post-ancestor,
+#navigation .current-page-ancestor { background: var(--universal-accent-color-dark); }
+#navigation .current-menu-item a,
 #navigation .current-post-ancestor a,
-#navigation .current-page-ancestor a,
-#navigation .current-menu-item a { color: var(--universal-accent-color-text) }
+#navigation .current-page-ancestor a { color: var(--universal-accent-color-text-dark) }
  
 /* Style the navigation menu for mobile */
 #mobile-navigation { display: none; width: 100%; border-radius: 2px; font-size: 18px; background-color: #212121 }
