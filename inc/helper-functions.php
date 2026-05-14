@@ -319,7 +319,7 @@ if ( ! function_exists( 'universal_theme_custom_logo' ) ) {
         $switched_blog = false;
         $logo_id = get_theme_mod('custom_logo');
         $blog_name = get_bloginfo('name', 'display');
-        $class = has_custom_logo() ? 'custom-logo-link' : 'blog-name-link';
+        $class = has_custom_logo() ? 'custom-logo-link' : 'blogname-link';
         $aria_label = esc_attr(sprintf(__('%s home', 'tetris'), $blog_name));
 
         // Add Multisite Support
@@ -342,7 +342,7 @@ if ( ! function_exists( 'universal_theme_custom_logo' ) ) {
         if (has_custom_logo()) {
             $html .= $logo;
         } else {
-            $html .= '<h1 class="u-fs-50">' . $blog_name . '</h1>';
+            $html .= '<h1 class="u-fs-50 blogname">' . $blog_name . '</h1>';
         }
         // Init Closing A Tags
         $html .= '</a>';

@@ -22,6 +22,13 @@ function universal_customizer_settings($wp_customize) {
 
     $wp_customize->register_control_type('WPX_Color_Picker_Control');
 
+    $wp_customize->get_setting('custom_logo')->transport = 'postMessage';
+    $wp_customize->selective_refresh->add_partial('custom_logo', array(
+        'render_callback' => function() {
+            return universal_theme_custom_logo();
+        },
+    ));
+
     // Accent Color Setting and Control
     $wp_customize->add_setting('universal_accent_color', array(
         'default' => array('#0073e6', '1', '1', '40', '-20'),
