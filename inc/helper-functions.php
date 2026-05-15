@@ -307,38 +307,51 @@ if ( ! function_exists( 'universal_dynamic_css' ) ) {
 }
 
 /**
- * Display the custom logo of the theme.
+ * Display the custom logo of the theme
+ * if logo is not set or missing
  */
 if ( ! function_exists( 'universal_theme_custom_logo' ) ) {
     function universal_theme_custom_logo() {
-        $current_blog_id = get_current_blog_id();
+        // Init All Vars
+        global $blog_id;
         $switched_blog = false;
+        $logo_id = get_theme_mod('custom_logo');
+        $blog_name = get_bloginfo('name', 'display');
+        $class = has_custom_logo() ? 'custom-logo-link' : 'blog-name-link';
+        $aria_label = esc_attr(sprintf(__('%s home', 'tetris'), $blog_name));
 
-        if (is_multisite() && ! empty($current_blog_id) && get_current_blog_id() !== (int) $current_blog_id) {
-            switch_to_blog($current_blog_id);
+        // Add Multisite Support
+        if (is_multisite() && ! empty($blog_id) && get_current_blog_id() !== (int) $blog_id) {
+            switch_to_blog( $blog_id );
             $switched_blog = true;
         }
 
-        $logo_id = get_theme_mod('custom_logo');
-        $logo_attr = ['class' => 'custom-logo', 'loading' => 'lazy', 'alt' => get_bloginfo('name', 'display')];
-        $logo_attr = apply_filters('get_custom_logo_image_attributes', $logo_attr, $logo_id, $current_blog_id);
+        // Init All Logo Attributes & Apply get_custom_logo_image_attributes Filter For Plugin To Use
+        $logo_attr = ['class' => 'custom-logo', 'loading' => 'lazy', 'alt' => $blog_name];
+        $logo_attr = apply_filters('get_custom_logo_image_attributes', $logo_attr, $logo_id, $blog_id);
+
+        // Retrive Custom Logo
         $logo = wp_get_attachment_image($logo_id, 'full', false, $logo_attr);
 
-        $html  = '<a href="' . esc_url(home_url('/')) . '" rel="home" class="custom-logo-link">';
+        // Init Opening A Tags
+        $html  = '<a href="' . esc_url(home_url('/')) . '" rel="home" class="' . $class . '" aria-label="'. $aria_label .'">';
 
+        // Show The Blog Name If Logo Is Missing
         if (has_custom_logo()) {
             $html .= $logo;
         } else {
-            $html .= '<h1 class="u-fs-50">' . get_bloginfo('name') . '</h1>';
+            $html .= '<h1 class="u-fs-50">' . $blog_name . '</h1>';
         }
-
+        // Init Closing A Tags
         $html .= '</a>';
 
+        // Restore Current Blog Is $switched_blog = true;
         if ($switched_blog) {
             restore_current_blog();
         }
 
-        return apply_filters('get_custom_logo', $html, $current_blog_id);
+        // Apply the get_custom_logo Filterto the Custom Logo HTML For Plugin To Use
+        return apply_filters('get_custom_logo', $html, $blog_id);
     }
 }
 
