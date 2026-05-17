@@ -120,15 +120,17 @@ if ( ! function_exists( 'universal_get_copyright_info' ) ) {
         $message = str_replace('[registered_symbol]', '&reg;', $message);
         $message = str_replace('[trademark_symbol]', '&trade;', $message);
         $message = str_replace('[site_name]', $site_name, $message);
-        $message = str_replace('[started_date]', $started_date, $message);
+        $message = str_replace('[current_date]', $current_year, $message);
     
         // Check if started date is not the same as current year and replace placeholders accordingly
-        if ($started_date == $current_year) {
-            $message = str_replace(['[dash]', '[current_date]'], ['', ''], $message);
+        if ($started_date >= $current_year) {
+            // FIXED: Pass arrays for what to find and what to replace, targeting $message correctly
+            $message = str_replace(['[started_date]', '[dash]'], ['', ''], $message);
         } else {
-            $message = str_replace(['[dash]', '[current_date]'], ['-', $current_year], $message);
+            $message = str_replace(['[started_date]', '[dash]'], [$started_date, '-'], $message);
         }
-      return rtrim($message);
+        
+        return rtrim($message);
     }
 }
 
