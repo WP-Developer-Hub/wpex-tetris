@@ -680,7 +680,7 @@ if ( !function_exists('wpex_get_post_date') ) {
         if ($ago_format && ((current_time('timestamp') - $post_timestamp) < ($date_delay * DAY_IN_SECONDS))) {
             $post_date_label = __('Posted', 'tetris');
             $post_modified_date_label = __('Updated', 'tetris');
-            $post_date = human_time_diff($post_timestamp, $now) . ' ' . __('ago', 'tetris');
+            $post_date = human_time_diff($post_timestamp) . ' ' . __('ago', 'tetris');
         }
 
         $post_date_label = ($show_modified_date && $is_edited ? $post_modified_date_label : $post_date_label);
