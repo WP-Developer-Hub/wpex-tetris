@@ -29,6 +29,13 @@ function universal_customizer_settings($wp_customize) {
         },
     ));
 
+    $wp_customize->selective_refresh->add_partial('universal_copyright_layout', array(
+        'selector' => '#copyright',
+        'render_callback' => function() {
+           return universal_get_copyright_info();
+        },
+    ));
+
     // Accent Color Setting and Control
     $wp_customize->add_setting('universal_accent_color', array(
         'default' => array('#0073e6', '1', '1', '40', '-20'),
