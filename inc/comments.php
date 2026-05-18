@@ -68,14 +68,14 @@ function wpex_comments_output($comment, $args, $depth) {
                         // Add Spam action link
                         if ($comment->user_id != $current_user_id && $post_author) {
                             $links .= '<span>';
-                            $links .= '<a href="' . esc_url($urls['spam']) . '" class="comment-reply-link" onclick="return confirm(\'' . esc_js(__('Are you sure you want to mark this comment as spam?', 'tetris')) . '\');">' . __('Spam', 'tetris') . '</a>';
+                            $links .= '<a href="' . esc_url($urls['spam']) . '" class="comment-action-link" onclick="return confirm(\'' . esc_js(__('Are you sure you want to mark this comment as spam?', 'tetris')) . '\');">' . __('Spam', 'tetris') . '</a>';
                             $links .= '</span>';
                         }
 
                         // Add Delete action link
                         if ($comment->user_id == $current_user_id || $post_author) {
                             $links .= '<span>';
-                            $links .= '<a href="' . esc_url($urls['trash']) . '" class="comment-reply-link" onclick="return confirm(\'' . esc_js(__('Are you sure you want to permanently delete this comment?', 'tetris')) . '\');">' . __('Delete', 'tetris') . '</a>';
+                            $links .= '<a href="' . esc_url($urls['trash']) . '" class="comment-action-link" onclick="return confirm(\'' . esc_js(__('Are you sure you want to permanently delete this comment?', 'tetris')) . '\');">' . __('Delete', 'tetris') . '</a>';
                             $links .= '</span>';
                         }
                     }

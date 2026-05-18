@@ -448,54 +448,20 @@ if ( ! function_exists( 'universal_gallery_defaults' ) ) {
  */
 if ( !function_exists('wpx_comments_popup_link') ) {
     function wpx_comments_popup_link() {
-        $no_comments_text = '';
-        $one_comment_text = '';
-        $multiple_comments_text = '';
+        $class = is_single() ? 'single-post-meta-divider' : '';
 
         // Check if comments are closed and the post type supports comments
-        if (post_type_supports(get_post_type(), 'comments')) {
-            if (comments_open()) {
-                // Comments are open
-                $no_comments_text = __('0 Comments', 'tetris');
-                $one_comment_text = __('1 Comment', 'tetris');
-                $multiple_comments_text = __('% Comments', 'tetris');
-            } else {
-                if ('0' != get_comments_number()) {
-                    // Comments are closed
-                    $no_comments_text = __('Comments closed', 'tetris');
-                    $one_comment_text = __('Comments closed', 'tetris');
-                    $multiple_comments_text = __('Comments closed', 'tetris');
-                }
-            }
-
+        if (wpex_post_type_supports('comments')) {
             if (comments_open() || (!comments_open() && '0' != get_comments_number())) {
-                $class = is_single() ? 'single-post-meta-divider' : '';
-                echo '<li' . ($class ? ' class="' . esc_attr($class) . '"' : '') . '>';
-                echo '<strong>' . __('With', 'tetris') . ': </strong>';
-                if ( post_password_required() ) {
-                    echo comments_number($no_comments_text, $one_comment_text, $multiple_comments_text, 'comments-link', '');;
-                } else {
-                    echo comments_popup_link($no_comments_text, $one_comment_text, $multiple_comments_text, 'comments-link', '');
+                if (!post_password_required()) {
+                    echo '<li' . ($class ? ' class="' . esc_attr($class) . '"' : '') . '>';
+                    echo '<strong>' . __('With', 'tetris') . ': </strong>';
+                    comments_popup_link();
+                    echo '</li>';
                 }
-                echo '</li>';
             }
-        } else {
-            echo '';
         }
     }
-}
-
-/**
- * Modify the CSS class of the edit comment link.
- *
- * @param string $output The original edit comment link HTML output.
- * @return string The modified edit comment link HTML output with the class changed.
- */
-if ( ! function_exists('wpx_change_edit_comment_link_class') ) {
-    function wpx_change_edit_comment_link_class($output) {
-        return str_replace( 'comment-edit-link', 'comment-reply-link', $output );
-    }
-    add_filter( 'edit_comment_link', 'wpx_change_edit_comment_link_class' );
 }
 
 /**
