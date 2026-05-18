@@ -64,11 +64,9 @@ if ( ! function_exists( 'wpex_enqueue_mediaelement_fix' ) ) {
                 'wp-mediaelement',
             ), '1.0');
 
-            if ( !is_customize_preview() ) {
-                wp_enqueue_script( 'wp-mediaelement-fix', $dir . '/js/wp-mediaelement-fix.js', array(
-                    'wp-mediaelement'
-                ), '1.0', true );
-            }
+            wp_enqueue_script( 'wp-mediaelement-fix', $dir . '/js/wp-mediaelement-fix.js', array(
+                'wp-mediaelement'
+            ), '1.0', true );
         }
     }
     add_action('wp_footer', 'wpex_enqueue_mediaelement_fix');
