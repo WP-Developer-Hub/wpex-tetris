@@ -38,8 +38,8 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && !pi
 			endif; ?>
 		<?php endif; ?>
 		<?php comment_form( array(
-			'title_reply_before' => '<h3 id="reply-title" class="comment-reply-title"><span class="widget-title">',
-			'title_reply_after' => '</span></h3>'
+			'title_reply_before' => '<h3 id="reply-title" class="comment-reply-title widget-title">',
+			'title_reply_after' => '</h3>'
 		) ); ?>
 	</section><!-- #comments -->
 </div><!-- #commentsbox -->
