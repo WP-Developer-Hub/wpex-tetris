@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php if (is_singular()) : ?>
     <?php if (get_theme_mod('universal_toggle_post_thumbnail', true) && wpex_post_type_supports('thumbnail')) : ?>
         <?php if (has_post_thumbnail() && !post_password_required()) : ?>
-                <div id="post-thumbnail" style="background-image: url('<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'thumbnail')); ?>');">
+                <div id="post-thumbnail" class="post-media" style="background-image: url('<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'thumbnail')); ?>');">
                     <?php the_post_thumbnail('wpex-post', array('alt' => the_title_attribute(array('echo' => false)), 'class' => 'u-media-16-9')); ?>
                 </div><!-- /blog-entry-thumbnail -->
         <?php else : ?>
