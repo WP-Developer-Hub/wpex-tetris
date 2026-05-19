@@ -24,7 +24,7 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && !pi
 <div id="commentsbox" class="boxframe">
 	<section id="comments" class="comments-area clearfix">
 		<?php if ( have_comments() ) : ?>
-			<h3 class="comments-title widget-title"><span><?php comments_popup_link(__('Leave a comment', 'tetris'), __('1 Comment', 'tetris'), __('% Comments', 'tetris'), 'comments-link', __('Comments closed', 'tetris')); ?></span></h3>
+			<h3 class="comments-title widget-title"><?php comments_popup_link(__('Leave a comment', 'tetris'), __('1 Comment', 'tetris'), __('% Comments', 'tetris'), 'comments-link', __('Comments closed', 'tetris')); ?></h3>
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
                 /* coment-nav-above */
                 echo universal_custom_paginate_comments_links('above');
@@ -39,7 +39,9 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && !pi
 		<?php endif; ?>
 		<?php comment_form( array(
 			'title_reply_before' => '<h3 id="reply-title" class="comment-reply-title widget-title">',
-			'title_reply_after' => '</h3>'
+			'title_reply_after' => '</h3>',
+			'cancel_reply_before' => '',
+			'cancel_reply_after' => '',
 		) ); ?>
 	</section><!-- #comments -->
 </div><!-- #commentsbox -->

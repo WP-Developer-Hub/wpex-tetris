@@ -182,6 +182,7 @@ meter,
 progress,
 output,
 .u-link-button,
+#cancel-comment-reply-link,
 input::file-selector-button {
   font: inherit;
   color: inherit;
@@ -213,6 +214,7 @@ input[type=week],
 button,
 .u-badge,
 .u-link-button,
+#cancel-comment-reply-link,
 input[type=reset],
 input[type=submit],
 input[type=button],
@@ -240,6 +242,7 @@ input[type=url]:focus,
 input[type=week]:focus,
 button:focus,
 .u-link-button:focus,
+#cancel-comment-reply-link:focus,
 input[type=reset]:focus,
 input[type=submit]:focus,
 input[type=button]:focus,
@@ -475,6 +478,7 @@ input[type=color]:focus:not([disabled]) {
 kbd,
 button,
 .u-link-button,
+#cancel-comment-reply-link,
 .u-badge,
 input[type=reset],
 input[type=submit],
@@ -491,6 +495,8 @@ button:hover,
 button:active,
 .u-link-button:hover,
 .u-link-button:active,
+#cancel-comment-reply-link:hover,
+#cancel-comment-reply-link:active,
 input[type=reset]:hover,
 input[type=reset]:active,
 input[type=submit]:hover,
@@ -507,6 +513,7 @@ input::file-selector-button:active {
 
 button:focus,
 .u-link-button:focus,
+#cancel-comment-reply-link:focus,
 .u-link-button-selected,
 input[type=reset]:focus,
 input[type=submit]:focus,
@@ -818,6 +825,12 @@ kbd {
   padding: calc(var(--padding-inputs) / 2);
   color: var(--universal-accent-color-text-light);
   background-color: var(--universal-accent-color-light);
+}
+
+#cancel-comment-reply-link {
+  font-size: 14px;
+  padding: 10px 15px;
+  margin: 5px 0 5px 5px;
 }
 
 .u-badge {

@@ -264,8 +264,7 @@ h3.widget-title,
 h4.widget-title,
 h5.widget-title {font-weight: bold;}
 .widget-title { gap: 0; display: flex; font-size: 18px; margin-bottom: 5px; flex-direction: row; align-items: center; justify-content: flex-start; }
-.widget-title::after { content: ""; height: 1px; flex-grow: 1; margin-top: 5px; margin-left: 5px; background: #C9C9C9; }
-.widget-title span { padding-right: 5px; }
+.widget-title::after {content: ""; height: 1px; flex-grow: 1; margin-top: 2.5px; margin-left: 10px; background: #C9C9C9; }
  
 /* Sidebar
 ----------------------------------------------------------- */
@@ -360,7 +359,6 @@ h5.widget-title {font-weight: bold;}
 ----------------------------------------------------------- */
 ,#commentsbox { padding-top: 40px }
 h3.comments-title { font-size: 1.143em; margin: 20px 0 }
-h3.comments-title span { padding-right: 15px; }
 .comment-details ul { margin: 0 }
 .comment-details ul li { border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 8px; padding-top: 8px; }
 .comment-details ul li:first-child { border-top: 1px solid rgba(0,0,0,0.1) }

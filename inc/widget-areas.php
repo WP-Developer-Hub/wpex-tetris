@@ -22,8 +22,8 @@ function wpex_widget_areas() {
 		'description'   => __( 'Widgets in this area are used on the main sidebar region.','tetris' ),
 		'before_widget' => '<section class="sidebar-box %2$s clearfix">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h4 class="widget-title"><span>',
-		'after_title'   => '</span></h4>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
 		'name'          => __( 'Footer 1','tetris'),
@@ -31,8 +31,8 @@ function wpex_widget_areas() {
 		'description'   => __( 'Widgets in this area are used in the first footer column','tetris' ),
 		'before_widget' => '<section class="footer-widget %2$s clearfix">',
 		'after_widget'  => '</section>',
-        'before_title'  => '<h4 class="widget-title"><span>',
-		'after_title'   => '</span></h4>',
+        'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
 		'name'          => __( 'Footer 2','tetris'),
@@ -40,8 +40,8 @@ function wpex_widget_areas() {
 		'description'   => __( 'Widgets in this area are used in the second footer column','tetris' ),
         'before_widget' => '<section class="footer-widget %2$s clearfix">',
         'after_widget'  => '</section>',
-        'before_title'  => '<h4 class="widget-title"><span>',
-        'after_title'   => '</span></h4>',
+        'before_title'  => '<h4 class="widget-title">',
+        'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
 		'name'         => __( 'Footer 3','tetris'),
@@ -49,8 +49,8 @@ function wpex_widget_areas() {
 		'description'   => __( 'Widgets in this area are used in the third footer column','tetris' ),
         'before_widget' => '<section class="footer-widget %2$s clearfix">',
         'after_widget'  => '</section>',
-        'before_title'  => '<h4 class="widget-title"><span>',
-        'after_title'   => '</span></h4>',
+        'before_title'  => '<h4 class="widget-title">',
+        'after_title'   => '</h4>',
 	) );
 }
 add_action( 'widgets_init', 'wpex_widget_areas' );
