@@ -93,8 +93,8 @@ function universal_customizer_settings($wp_customize) {
     ));
     $wp_customize->add_control(new WPX_Toggle_Switch_Control($wp_customize, 'universal_toggle_ago_format', array(
         'label' => __('Toggle Time Ago Format', 'tetris'),
-        'description' => __('Enable "time ago". Recent: "2 days ago". Older: "'. get_option('date_format') .'" after X days.', 'tetris'),
-         'section' => 'universal_general_settings_section',
+        'description' => sprintf(__('Enable "time ago". Recent: "2 days ago". Older: "%s" after X days.', 'tetris'), get_option('date_format')),
+        'section' => 'universal_general_settings_section',
     )));
 
     // Toggle Ago Format Delay
