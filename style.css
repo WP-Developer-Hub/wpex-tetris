@@ -160,7 +160,7 @@ a:hover { cursor: pointer }
 #navigation .current-page-ancestor a { color: var(--universal-accent-color-text-dark) }
  
 /* Style the navigation menu for mobile */
-#mobile-navigation { display: none; width: 100%; border-radius: 2px; font-size: 18px; background-color: #212121 }
+#mobile-navigation { display: none; width: 100%; border-radius: 2px; font-size: 18px; box-shadow: var(--u-box-shadow); background-color: #212121 }
 #mobile-navigation ul > { max-height: 300px; overflow-x: auto }
 #mobile-navigation .menu-toggle { padding: 0; list-style: none }
 #mobile-navigation #main-toggle { padding: 15px 10px; line-height: 50px; color: var(--universal-accent-color-text); background: var(--universal-accent-color); list-style: none }

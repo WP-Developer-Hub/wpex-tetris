@@ -2,6 +2,7 @@
 	#logo { display: flex; align-items: center; justify-content: center; margin-bottom: 10px }
     #logo a { flex-direction: column; gap: 0; padding: 0 }
 	#logo a h1 { padding: 5px 0 }
+    #header { box-shadow: none; }
     #nav-spacer,
     #navigation { display: none; }
     #mobile-navigation { display: block;}
