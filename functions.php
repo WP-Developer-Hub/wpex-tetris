@@ -281,7 +281,7 @@ function wpex_setup() {
     add_theme_support('customize-selective-refresh-widgets');
 
     // Add support for admin bar
-    add_theme_support('admin-bar');
+    add_theme_support('admin-bar', array('callback' => '__return_false'));
 
     // Add editor style
     add_editor_style('style.css');
