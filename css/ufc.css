@@ -162,9 +162,10 @@ textarea:read-only:not(label, button, input[type=button], input[type=submit], in
 .disabled,
 [roll="disabled"],
 :disabled::file-selector-button {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
   accent-color: var(--co-body-accent);
   opacity: var(--opacity-input-disabled);
-  cursor: not-allowed !important;
 }
 
 /* All elemenets regardless of types */
