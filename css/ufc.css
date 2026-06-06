@@ -620,6 +620,16 @@ select:open::picker-icon {
   transform: rotate(180deg);
 }
 
+option::checkmark {
+  content: "L";
+  line-height: 1;
+  font-size: 14px;
+  font-weight: 700;
+  display: inline-block;
+  font-family: monospace;
+  transform: rotate(35deg) scaleX(-1);
+}
+
 fieldset {width: 100%; display: grid; border: var(--width-input-border) solid var(--co-textfld-active-border); padding: var(--margin-label); margin-bottom: var(--margin-label); max-width: var(--width-inputs); gap: var(--margin-label) }
 form {width: 100%; display: grid; max-width: var(--width-inputs); gap: var(--margin-label) }
 #searchbar {width: unset;}
