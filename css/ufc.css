@@ -594,11 +594,12 @@ select,
 }
 
 select {
-  gaps: 0;
+  gap: 0;
   display: grid;
   align-items: center;
+  padding: 5px 5px 5px 10px;
   color:var(--co-textfld-text);
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 24px;
 }
 
 option  {
