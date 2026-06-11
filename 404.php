@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header(); ?>
 
-<div id="error-page" class="container u-flex u-flex-col u-grid-gap-10 u-ai-c u-jc-c clearfix">
+<div id="error-page" class="container u-flex u-flex-col u-grid-gap-20 u-ai-c u-jc-c">
     <h1 id="error-page-title" class="u-text-bt-both u-tbe-ca">404</h1>
     <p id="error-page-text">
     <?php _e('Unfortunately, the content you tried accessing could not be retrieved. Please visit the','tetris'); ?> <a href="<?php home_url() ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php _e('homepage','tetris'); ?></a>.

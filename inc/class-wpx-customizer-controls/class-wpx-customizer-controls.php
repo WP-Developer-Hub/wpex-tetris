@@ -33,12 +33,46 @@ if (class_exists('WP_Customize_Control') && !class_exists('wpx-WPX_Customize_Con
             return esc_url_raw($url);
         }
     }
-    
+
     class WPX_Customize_Section extends WP_Customize_Section {
         // Base class for extending WP_Customize_Control
         
         protected $wpxCustomSectionsCssVersion = '1.3';  // CSS version for custom controls
         protected $wpxCustomSectionsJsVersion = '1.2';   // JS version for custom controls
+        protected static $tabindex_counter = 1;  // Static counter for tabindex
+
+        /**
+         * Get the resource URL.
+         *
+         * @return string The URL to the resource.
+         */
+        protected function get_wpx_resource_url() {
+            // Get the filesystem path of the current directory
+            $current_dir_path = wp_normalize_path(dirname(__FILE__));
+            
+            // Normalize the path of ABSPATH and the current directory
+            $root_path = wp_normalize_path(untrailingslashit(ABSPATH));
+            
+            // Replace the root path with the site URL
+            $url = str_replace(
+                $root_path,
+                home_url(),
+                $current_dir_path
+            );
+
+            // Append './' to the URL if it's not already included
+            $url = trailingslashit($url) . './';
+
+            // Return the URL, ensuring it's properly escaped
+            return esc_url_raw($url);
+        }
+    }
+
+    class WPEX_Customize_Media_Control extends WP_Customize_Media_Control {
+        // Base class for extending WP_Customize_Control
+        
+        protected $wpxCustomMediaControlsCssVersion = '1.3';  // CSS version for custom controls
+        protected $wpxCustomMediaControlsJsVersion = '1.2';   // JS version for custom controls
         protected static $tabindex_counter = 1;  // Static counter for tabindex
 
         /**
@@ -368,6 +402,73 @@ if (class_exists('WP_Customize_Control') && !class_exists('wpx-WPX_Customize_Con
                     </h3>
                 </a>
             </li>
+            <?php
+        }
+    }
+
+    class WPEX_Media_Upload_Control extends WPEX_Customize_Media_Control {
+        /**
+         * Customize control type.
+         */
+        public $type = 'wpex_medis_uoload_control';
+
+        /**
+         * Enqueue scripts + pass data to JS
+         */
+        public function enqueue() {
+            $js_url = $this->get_wpx_resource_url() . 'js/wp-customizer-media-controls.js';
+
+            wp_enqueue_media();
+            wp_enqueue_script('wpx-customize-media-controls-js', $js_url, ['jquery', 'customize-controls', 'media-views'], $this->wpxCustomMediaControlsJsVersion);
+        }
+
+        public function to_json() {
+            parent::to_json();
+
+            $this->json['id'] = $this->id;
+            $this->json['value'] = $this->value();
+        }
+
+        public function render_content() {}
+
+        /**
+         * Render UI
+         */
+        public function content_template() {
+            ?>
+            <#
+            var id = data.id;
+            #>
+
+            <div class="customize-control-content">
+                <div class="customize-control-notifications-container"></div>
+
+                <# if ( data.label ) { #>
+                    <span class="customize-control-title">{{ data.label }}</span>
+                <# } #>
+
+                <# if ( data.description ) { #>
+                    <span class="description customize-control-description">
+                        {{ data.description }}
+                    </span>
+                <# } #>
+
+                <!-- REQUIRED: hidden field bound to setting -->
+                <input type="hidden" name="{{ data.id }}" id="{{ data.id }}-attachment_ids" value="{{ data.value }}" />
+
+                <?php if (current_user_can( 'upload_files')): ?>
+                    <div class="button-group widefat" style="display:flex;">
+                        <button type="button" class="button button-primary widefat wpex_add_media">
+                            {{ data.button_labels.select }}
+                        </button>
+
+                        <button type="button" class="button widefat wpex_remove_media" disabled>
+                            {{ data.button_labels.remove }}
+                        </button>
+                    </div>
+
+            <?php endif; ?>
+            </div>
             <?php
         }
     }

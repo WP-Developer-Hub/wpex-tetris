@@ -15,11 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once get_template_directory() . '/inc/class-wpx-customizer-controls/class-wpx-customizer-controls.php';
 
 function universal_customizer_settings($wp_customize) {
-    
     // Divider Setting
     $wp_customize->add_setting('universal_divider', array(
         'sanitize_callback' => '__return_true',
     ));
+
+    $wp_customize->register_control_type('WPEX_Media_Upload_Control');
 
     // Accent Color Setting and Control
     $wp_customize->add_setting('universal_accent_color', array(
@@ -36,6 +37,18 @@ function universal_customizer_settings($wp_customize) {
             'min' => -50,
             'max' => 50,
         ),
+    )));
+
+    $wp_customize->add_setting('universal_404_image', array(
+        'default' => '',
+        'transport' => 'refresh',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control(new WPEX_Media_Upload_Control($wp_customize, 'universal_404_image', array(
+        'label' => __('404 Image', 'tetris'),
+        'description' => __('Select the image you wanna display on your 404 below the missing page text.', 'tetris'),
+        'mime_type' => 'image',
+        'section' => 'colors',
     )));
 
     // Title & Tagline Visibility
@@ -70,6 +83,14 @@ function universal_customizer_settings($wp_customize) {
             'priority' => 0,
             'panel' => 'universal_theme_settings_panel',
         )
+    ));
+
+    // General Settings Section
+    $wp_customize->add_section('universal_404_settings_page_section', array(
+        'title' => __('404 Image', 'tetris'),
+        'priority' => 0,
+        'panel' => 'universal_theme_settings_panel',
+        'description' => __('This section contains all the common settings.', 'tetris'),
     ));
 
     // General Settings Section
