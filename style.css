@@ -63,6 +63,7 @@ dfn,
 mark { background-color: var(--universal-accent-color-light); color: var(--universal-accent-color-text-light); display: inline-block; padding: 0 8px; }
 dfn { font-family: monospace; text-transform: uppercase; }
 var { font-weight: bold; color: var(--universal-accent-color-light);}
+u { text-decoration: underline; text-decoration-color: var(--universal-accent-color-light); text-decoration-style: wavy; }
 
 html body dialog,
 html body [popover],
