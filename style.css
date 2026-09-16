@@ -59,7 +59,9 @@ blockquote p { display: inline; }
 pre, code { font-family: monospace; background: #212121; color: #aaa; padding: 20px; line-height: 25px; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; display: block; max-height: 350px; overflow: auto;}
 code { border-left: 5px solid var(--universal-accent-color-dark); }
 address { letter-spacing: 1px; }
+dfn,
 mark { background-color: var(--universal-accent-color-light); color: var(--universal-accent-color-text-light); display: inline-block; padding: 0 8px; }
+dfn { font-family: monospace; text-transform: uppercase; }
 var { font-weight: bold; color: var(--universal-accent-color-light);}
 
 html body dialog,
