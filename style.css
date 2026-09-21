@@ -65,7 +65,8 @@ dfn { font-family: monospace; text-transform: uppercase; }
 var { font-weight: bold; color: var(--universal-accent-color-light); }
 u,
 del,
-ins { text-decoration-color: var(--universal-accent-color); }
+ins,
+strike { text-decoration-color: var(--universal-accent-color); }
 u { text-decoration-style: wavy; }
 
 html body dialog,
