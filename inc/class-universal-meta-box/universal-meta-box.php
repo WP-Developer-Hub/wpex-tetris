@@ -123,8 +123,10 @@ if(!class_exists("Universal_Meta_Box")) {
          */
         private function save_media_library_meta($post_id, $type) {
             // Save/update 'universal_local_audio_attachment_ids'
+            $post_meta = sanitize_text_field(wp_unslash($_POST['universal_local_' . $type . '_attachment_ids']));
+
             if (isset($_POST['universal_local_' . $type . '_attachment_ids'])) {
-                update_post_meta($post_id, 'universal_local_' . $type . '_attachment_ids', sanitize_text_field($_POST['universal_local_' . $type . '_attachment_ids']));
+                update_post_meta($post_id, 'universal_local_' . $type . '_attachment_ids', $post_meta);
             } else {
                 delete_post_meta($post_id, 'universal_local_' . $type . '_attachment_ids');
             }
@@ -152,7 +154,9 @@ if(!class_exists("Universal_Meta_Box")) {
          */
         public function save_meta_box_data($post_id) {
             // Verify nonce
-            if (!isset($_POST['universal_meta_box_nonce']) || !wp_verify_nonce($_POST['universal_meta_box_nonce'], 'universal_meta_box_nonce')) {
+            $universal_nonce = sanitize_text_field(wp_unslash($_POST['universal_meta_box_nonce']));
+
+            if (!isset($universal_nonce) || !wp_verify_nonce($universal_nonce, 'universal_meta_box_nonce')) {
                 return;
             }
 
