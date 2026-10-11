@@ -304,7 +304,7 @@ if ( ! function_exists( 'universal_dynamic_css' ) ) {
         }";
 
         // Return the generated CSS string
-        return $css;
+        return esc_attr($css);
     }
 }
 
@@ -319,8 +319,8 @@ if ( ! function_exists( 'universal_theme_custom_logo' ) ) {
         $switched_blog = false;
         $logo_id = get_theme_mod('custom_logo');
         $blog_name = get_bloginfo('name', 'display');
-        $class = has_custom_logo() ? 'custom-logo-link' : 'blogname-link';
-        $aria_label = esc_attr(sprintf(__('%s home', 'tetris'), $blog_name));
+        $class = (has_custom_logo() ? 'custom-logo-link' : 'blogname-link');
+        $aria_label = sprintf(esc_attr__('%s home', 'tetris'), sanitize_title($blog_name));
 
         // Add Multisite Support
         if (is_multisite() && ! empty($blog_id) && get_current_blog_id() !== (int) $blog_id) {
@@ -329,20 +329,20 @@ if ( ! function_exists( 'universal_theme_custom_logo' ) ) {
         }
 
         // Init All Logo Attributes & Apply get_custom_logo_image_attributes Filter For Plugin To Use
-        $logo_attr = ['class' => 'custom-logo', 'loading' => 'lazy', 'alt' => $blog_name];
+        $logo_attr = ['class' => 'custom-logo', 'loading' => 'lazy', 'alt' => esc_attr($blog_name)];
         $logo_attr = apply_filters('get_custom_logo_image_attributes', $logo_attr, $logo_id, $blog_id);
 
         // Retrive Custom Logo
-        $logo = wp_get_attachment_image($logo_id, 'full', false, $logo_attr);
+        $logo = wp_get_attachment_image($logo_id, 'full', false, esc_attr($logo_attr));
 
         // Init Opening A Tags
-        $html  = '<a href="' . esc_url(home_url('/')) . '" rel="home" class="' . $class . '" aria-label="'. $aria_label .'">';
+        $html = '<a href="' . esc_url(home_url('/')) . '" rel="home" class="' . esc_attr($class) . '" aria-label="'. esc_attr($aria_label) .'">';
 
         // Show The Blog Name If Logo Is Missing
         if (has_custom_logo()) {
             $html .= $logo;
         } else {
-            $html .= '<h1 class="u-fs-50 blogname">' . $blog_name . '</h1>';
+            $html .= '<h1 class="u-fs-50 blogname">' . esc_attr($blog_name) . '</h1>';
         }
         // Init Closing A Tags
         $html .= '</a>';
@@ -353,7 +353,7 @@ if ( ! function_exists( 'universal_theme_custom_logo' ) ) {
         }
 
         // Apply the get_custom_logo Filterto the Custom Logo HTML For Plugin To Use
-        return apply_filters('get_custom_logo', $html, $blog_id);
+        return apply_filters('get_custom_logo', wp_kses_post($html), intval($blog_id));
     }
 }
 
