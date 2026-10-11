@@ -33,10 +33,9 @@ if ( ! function_exists( 'universal_display_media' ) ) {
         $attachment_ids = (!empty($post_format) ? get_post_meta($post_id, $meta_key, true) : '');
 
         $container = '';
-        if ( !post_password_required($post_id) ) {
+        if (!post_password_required($post_id)) {
             if (!empty($attachment_ids)) {
                 $item_count = count(explode(',', $attachment_ids));
-
                 if ($post_format === 'gallery' || $post_format === 'image') {
                     $container .= '<div id="post-gallery" class="post-media u-media-16-9">';
                     $column_count = $post_format === 'image' ? 1 : (($item_count > 4) ? 4 : $item_count / 1.5);
@@ -143,7 +142,7 @@ if ( ! function_exists( 'universal_get_copyright_info' ) ) {
  */
 if ( ! function_exists( 'wpx_page_indicator' ) ) {
     function wpx_page_indicator($paged, $pages) {
-        return'<div class="page-of-page"> <span class="inner">' . esc_html($paged) . ' ' . esc_html__('of', 'tetris') . ' ' . esc_html($pages) . '</span> </div>';
+        return'<div class="page-of-page"> <span class="inner">' . esc_html(intval($paged)) . ' ' . esc_html__('of', 'tetris') . ' ' . esc_html(intval($pages)) . '</span> </div>';
     }
 }
 
