@@ -238,7 +238,7 @@ if ( ! function_exists( 'wpx_custom_link_pages' ) ) {
         $pagination_html .= wpx_page_indicator($current_page, $total_pages);
 
         // Pagination links container
-        $pagination_html .= '<div class="pagination-links ufc_dark u-grid">';
+        $pagination_html .= '<div class="pagination-links ufc_dark u-flex">';
 
         // Generate pagination links
         $pagination_html .= wp_link_pages($args);
@@ -248,7 +248,8 @@ if ( ! function_exists( 'wpx_custom_link_pages' ) ) {
         for ( $i = 1; $i <= $total_pages; $i++ ) {
             $page_url = esc_url( get_permalink() . sprintf('/%d/', $i) );
             $selected = ($i === $current_page) ? ' selected="selected"' : '';
-            $pagination_html .= '<option value="' . $page_url . '"' . $selected . '> Page ' . esc_html($i) . '</option>';
+            $page_string = sprintf(esc_html__('Page %s', 'tetris'), esc_html($i));
+            $pagination_html .= '<option value="' . $page_url . '"' . $selected . '>' . $page_string . '</option>';
         }
         $pagination_html .= '</select>';
 
