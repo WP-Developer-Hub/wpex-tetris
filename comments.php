@@ -34,7 +34,7 @@ if ( post_password_required() || ( ! have_comments() && ! comments_open() && !pi
 			</ol><!-- /commentlist -->
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
                 /* coment-nav-below */
-                echo universal_custom_paginate_comments_links('below');
+                echo universal_custom_paginate_comments_links('below') . '<br>';
 			endif; ?>
 		<?php endif; ?>
 		<?php comment_form( array(
