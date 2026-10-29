@@ -76,7 +76,6 @@ if (!class_exists('WPEX_Theme_Auto_Updates')) {
             }
             // Fallback to source zip
             if (empty($package_url) && isset($release->zipball_url)) {$package_url = $release->zipball_url;}
-            error_log('[Updater] Latest GitHub version: ' . $release->tag_name . ' | Package: ' . $package_url);
             return (object) array(
                 'version' => ltrim($release->tag_name, 'v'),
                 'package' => $package_url,
@@ -98,10 +97,10 @@ if (!class_exists('WPEX_Theme_Auto_Updates')) {
             }
             $local_version = $this->get_local_version();
             if ( version_compare($release_info->version, $local_version, '>')) {
-                error_log('[Updater] Update available! Remote: ' . $release_info->version . ' Local: ' . $local_version);
+                error_log('[Updater] Update available! Remote.');
                 return $release_info;
             }
-            error_log('[Updater] No update available. Remote: ' . $release_info->version . ' Local: ' . $local_version);
+            error_log('[Updater] No update available. Remote.');
             return false;
         }
 
@@ -120,7 +119,6 @@ if (!class_exists('WPEX_Theme_Auto_Updates')) {
                     'package' => $info->package,
                     'url' => $info->url,
                 );
-                error_log('[Updater] Update array set in transient for ' . $theme_slug);
             } else {
                 error_log('[Updater] No update set in transient.');
             }
