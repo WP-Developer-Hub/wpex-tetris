@@ -77,22 +77,22 @@ function wpex_setup() {
         array(
             'name'  => __('Primary Color', 'tetris'),
             'slug'  => 'primary_color',
-            'color' => get_theme_mod('bgcolor', '#d3d3d3'), // Use theme mod or default color
+            'color' => esc_attr(get_theme_mod('bgcolor', '#d3d3d3')), // Use theme mod or default color
         ),
         array(
             'name'  => __('Accent Color', 'tetris'),
             'slug'  => 'accent_color',
-            'color' => $accent_color, // Use theme mod or default color
+            'color' => esc_attr($accent_color), // Use theme mod or default color
         ),
         array(
             'name'  => __('Accent Color Light', 'tetris'),
             'slug'  => 'accent_color_light',
-            'color' => $accent_color_light, // Use theme mod or default color
+            'color' => esc_attr($accent_color_light), // Use theme mod or default color
         ),
         array(
             'name'  => __('Accent Color Dark', 'tetris'),
             'slug'  => 'accent_color_dark',
-            'color' => $accent_color_dark, // Use theme mod or default color
+            'color' => esc_attr($accent_color_dark), // Use theme mod or default color
         ),
         array(
             'name'  => __('Black', 'tetris'),
@@ -314,7 +314,7 @@ function wpex_setup() {
                 <!-- /wp:shortcode --></div>
                 <!-- /wp:column --></div>
                 <!-- /wp:columns -->',
-            'categories'  => array('contact'),
+            'categories' => array('contact'),
         )
     );
 
@@ -327,7 +327,7 @@ function wpex_setup() {
 
     // Menu
     register_nav_menus ( array(
-        'main_menu'    => __( 'Main', 'tetris' ),
+        'main_menu' => __( 'Main', 'tetris' ),
     ) );
 
     // Add Post Formats Support
@@ -346,7 +346,7 @@ add_action( 'after_setup_theme', 'wpex_setup' );
  */
 
 function wpex_get_placeholder_title($post_ID) {
-    return apply_filters('the_title', sprintf(__('Untitled Post %d', 'tetris'), $post_ID), $post_ID);
+    return apply_filters('the_title', sprintf(/* translators: %s: Post ID. */ __('Untitled Post %d', 'tetris'), $post_ID), $post_ID);
 }
 
 /**
@@ -357,7 +357,7 @@ function wpex_get_placeholder_title($post_ID) {
 
 function wpex_get_title() {
     $post_ID = get_the_ID();
-    return (!empty(get_post($post_ID)->post_title) ? get_the_title($post_ID) : wpex_get_placeholder_title($post_ID));
+    return esc_html(!empty(get_post($post_ID)->post_title) ? get_the_title($post_ID) : wpex_get_placeholder_title($post_ID));
 }
 
 /**
@@ -406,7 +406,7 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
         $output = !post_password_required() && $is_empty ? '' : $spacer;
         $classes = !post_password_required() && $is_empty ? 'u-none' : 'u-wrap-text u-trim';
 
-        $output .= '<div class="' . $classes . '" style="--u-line-clamp: ' . intval($length) . '">';
+        $output .= '<div class="' . esc_attr($classes) . '" style="--u-line-clamp: ' . intval($length) . '">';
         if ( ! post_password_required() && ! $is_empty ) {
             $length = apply_filters('wpex_excerpt_length', intval($length * 10));
             $output .= wp_trim_words($trimmed_text, $length);
@@ -416,19 +416,19 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
         $output .= '</div>';
 
         if ( ! post_password_required() && !$is_empty && $readmore ) {
-            $jump_point = strpos($post->post_content, '<!--more-->') !== false ? '#more-' . $post->ID : '#post-entry';
-            $readmore_link = '<span class="wpex-readmore"><a href="' . get_permalink($post->ID) . $jump_point . '" title="'. __( 'Continue reading', 'tetris' ) .'" rel="bookmark" class="u-block u-block-100 u-ta-c u-link-button u-tt-all-caps u-fs-16" role="button" tabindex="0">'. __( 'Read more', 'tetris' ) .'</a></span>';
+            $jump_point = strpos($post->post_content, '<!--more-->') !== false ? '#more-' . intval($post->ID) : '#post-entry';
+            $readmore_link = '<span class="wpex-readmore"><a href="' . esc_url(get_permalink($post->ID) . $jump_point) . '" title="'. esc_attr__( 'Continue reading', 'tetris' ) .'" rel="bookmark" class="u-block u-block-100 u-ta-c u-link-button u-tt-all-caps u-fs-16" role="button" tabindex="0">'. esc_html__( 'Read more', 'tetris' ) .'</a></span>';
             $output .= $readmore_link;
         }
         $output .= $spacer;
 
-        return $output;
+        return wp_kses_post($output);
     }
 }
 
 if ( ! function_exists( 'wpex_excerpt' ) ) {
     function wpex_excerpt_length( $length ) {
-        return (get_theme_mod( 'universal_excerpt_length', 20 ) * 10);
+        return intval(get_theme_mod( 'universal_excerpt_length', 20 ) * 10);
     }
     add_filter( 'excerpt_length', 'wpex_excerpt_length', 10 );
 }
@@ -476,6 +476,6 @@ function wpex_pagination() {
         // Close page-pagination div
         $pagination_html .= '</div>';
 
-        return $pagination_html;
+        return wp_kses_post($pagination_html);
     }
 }

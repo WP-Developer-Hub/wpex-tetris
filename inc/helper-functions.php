@@ -27,7 +27,7 @@ if ( ! function_exists( 'universal_display_media' ) ) {
         $meta_key_part = (($post_format === 'gallery') ? 'image' : $post_format);
 
         // Build the full meta key
-        $meta_key = ('universal_local_' . $meta_key_part . '_attachment_ids');
+        $meta_key = ('universal_local_' . esc_attr($meta_key_part) . '_attachment_ids');
 
         // Use a one-liner for the assignment
         $attachment_ids = (!empty($post_format) ? get_post_meta($post_id, $meta_key, true) : '');
@@ -58,7 +58,7 @@ if ( ! function_exists( 'universal_display_media' ) ) {
                     $id = ($is_audio ? 'post-audio' : 'post-media');
 
                     $class_attr = ((!$is_audio && $item_count > 1) ? ' u-media-16-9' : '');
-                    $container .= ('<div id="' . $id . '" class="post-media' . $class_attr . '">');
+                    $container .= ('<div id="' . esc_attr($id) . '" class="post-media' . esc_attr($class_attr) . '">');
 
                     // Determine if tracklist should be displayed based on the count of attachment IDs
                     $display_tracklist = ($item_count > 1);
@@ -129,7 +129,7 @@ if ( ! function_exists( 'universal_get_copyright_info' ) ) {
             $message = str_replace(['[started_date]', '[dash]'], [$started_date, '-'], $message);
         }
         
-        return rtrim($message);
+        return wp_kses_post(rtrim($message));
     }
 }
 
@@ -197,7 +197,7 @@ if ( ! function_exists( 'universal_custom_paginate_comments_links' ) ) {
             // Close page-pagination div
             $pagination_html .= '</div>';
             
-            return $pagination_html;
+            return wp_kses_post($pagination_html);
         }
     }
 }
@@ -262,7 +262,7 @@ if ( ! function_exists( 'wpx_custom_link_pages' ) ) {
         // Close page-pagination div
         $pagination_html .= '</div>';
 
-        return $pagination_html; // Return the generated HTML
+        return wp_kses_post($pagination_html); // Return the generated HTML
     }
 }
 
@@ -342,7 +342,7 @@ if ( ! function_exists( 'universal_theme_custom_logo' ) ) {
         if (has_custom_logo()) {
             $html .= $logo;
         } else {
-            $html .= '<h1 class="u-fs-50 blogname">' . esc_attr($blog_name) . '</h1>';
+            $html .= '<h1 class="u-fs-50 blogname">' . esc_html($blog_name) . '</h1>';
         }
         // Init Closing A Tags
         $html .= '</a>';
@@ -364,8 +364,8 @@ if ( ! function_exists( 'universal_theme_custom_logo' ) ) {
  */
 if ( ! function_exists( 'universal_search_filter_item_class' ) ) {
     function universal_search_filter_item_class($passed_string = false) {
-        $post_format = (isset($_GET['post_format']) ? $_GET['post_format'] : 'all');
-        return (($passed_string == $post_format) ? ' u-link-button-selected' : '');
+        $post_format = (isset($_GET['post_format']) ? sanitize_text_field(wp_unslash($_GET['post_format'])) : 'all');
+        return esc_attr(($passed_string == $post_format) ? ' u-link-button-selected' : '');
     }
 }
 
@@ -381,7 +381,7 @@ if ( ! function_exists( 'universal_search_filter_item_class' ) ) {
 if ( ! function_exists( 'wpx_get_post_count' ) ) {
     function wpx_get_post_count(){
         $total_post_count = new WP_Query("s=$s&posts_per_page=-1&post_status=publish");
-        return $total_post_count->found_posts;
+        return intval($total_post_count->found_posts);
     }
 }
 
@@ -417,7 +417,7 @@ if ( ! function_exists( 'body_class_slugs' ) ) {
         }
 
         // Return the modified classes
-        return $classes;
+        return array_map('sanitize_html_class', $classes);
     }
     add_filter('body_class', 'body_class_slugs');
 }
@@ -454,7 +454,7 @@ if ( !function_exists('wpx_comments_popup_link') ) {
         if (wpex_post_type_supports('comments')) {
             if (comments_open() || (!comments_open() && '0' != get_comments_number())) {
                 if (!post_password_required()) {
-                    echo '<li' . ($class ? ' class="' . esc_attr($class) . '"' : '') . '>';
+                    echo '<li ' . ('class="u-count ' . esc_attr($class) . '"') . '>';
                     echo '<strong>' . __('With', 'tetris') . ': </strong>';
                     comments_popup_link();
                     echo '</li>';
@@ -470,8 +470,8 @@ if ( !function_exists('wpx_comments_popup_link') ) {
  * @param string $post_format The post format.
  * @return string The icon classes.
  */
-if ( ! function_exists('universal_get_post_format_icon_classes') ) {
-    function universal_get_post_format_icon_classes($post_format) {
+if ( ! function_exists('wpex_get_post_format_icon_classes') ) {
+    function wpex_get_post_format_icon_classes($post_format) {
         switch ($post_format) {
             case 'aside':
                 return 'posticons dashicons dashicons-format-aside';
@@ -531,7 +531,7 @@ if (!function_exists('wpx_post_badge')) {
             default:
                 $label = $is_sticky ? __('Featured', 'tetris') : '' ;
         }
-        return !empty($label) ? ' <span class="u-badge ' . $classes . ' u-fs-14 u-ta-c">' . $label . '</span>' : '';
+        return !empty($label) ? ' <span class="u-badge ' . esc_attr($classes) . ' u-fs-14 u-ta-c">' . esc_html($label) . '</span>' : '';
     }
 }
 
@@ -578,16 +578,16 @@ if ( ! function_exists( 'wpex_get_post_media_placeholder' ) ) {
 
         if ( post_password_required() ) {
             $output .= '<span class="dashicons dashicons-lock"></span>';
-            $output .= '<span class="screen-reader-text" aria-hidden="true">' . __( 'Password Protected', 'tetris' ) . '</span>';
+            $output .= '<span class="screen-reader-text" aria-hidden="true">' . esc_html__( 'Password Protected', 'tetris' ) . '</span>';
         } else {
-            $output .= '<span class="' . universal_get_post_format_icon_classes( get_post_format() ) . '"></span>';
+            $output .= '<span class="' . esc_attr(wpex_get_post_format_icon_classes(get_post_format())) . '"></span>';
         }
 
         // Close the div
         $output .= '</div>';
 
         // Return the generated HTML
-        return $output;
+        return wp_kses_post($output);
     }
 }
 
@@ -647,7 +647,7 @@ if ( !function_exists('wpex_get_post_date') ) {
         $output .= '<time datetime="' . esc_attr($date_c) . '">' . esc_html($post_date) . '</time>';
         $output .= '</a>';
 
-        return $output;
+        return wp_kses_post($output);
     }
 }
 
@@ -674,7 +674,7 @@ if ( ! function_exists( 'wpex_get_post_author' ) ) {
             $html .= '</li>';
         }
 
-        return $html;
+        return wp_kses_post($html);
     }
 }
 
