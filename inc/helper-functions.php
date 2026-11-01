@@ -129,7 +129,7 @@ if ( ! function_exists( 'universal_get_copyright_info' ) ) {
             $message = str_replace(['[started_date]', '[dash]'], [$started_date, '-'], $message);
         }
         
-        return wp_kses_post(rtrim($message));
+        return rtrim($message);
     }
 }
 
@@ -197,7 +197,7 @@ if ( ! function_exists( 'universal_custom_paginate_comments_links' ) ) {
             // Close page-pagination div
             $pagination_html .= '</div>';
             
-            return wp_kses_post($pagination_html);
+            return $pagination_html;
         }
     }
 }
@@ -245,24 +245,28 @@ if ( ! function_exists( 'wpx_custom_link_pages' ) ) {
 
         // Page Select Box
         $pagination_html .= '<select onchange="location = this.value;">';
-        for ( $i = 1; $i <= $total_pages; $i++ ) {
-            $page_url = esc_url( get_permalink() . sprintf('/%d/', $i) );
-            $selected = ($i === $current_page) ? ' selected="selected"' : '';
-            $page_string = sprintf(esc_html__('Page %s', 'tetris'), esc_html($i));
-            $pagination_html .= '<option value="' . $page_url . '"' . $selected . '>' . $page_string . '</option>';
+        for ($i = 1; $i <= $total_pages; $i++) {
+            $selected = selected($i, $current_page, false);
+            $page_url = esc_url(get_permalink() . sprintf('/%d/', $i));
+            $page_string = sprintf(
+                /* translators: %s: Page number. */
+                __('Page %s', 'tetris'),
+                $i
+            );
+            $pagination_html .= '<option value="' . $page_url . '"' . esc_attr($selected) . '>' . esc_html($page_string) . '</option>';
         }
         $pagination_html .= '</select>';
 
         // Close pagination-links div
         $pagination_html .= '</div>';
-        
+
         // Close page-pagination-inner div
         $pagination_html .= '</div>';
-        
+
         // Close page-pagination div
         $pagination_html .= '</div>';
 
-        return wp_kses_post($pagination_html); // Return the generated HTML
+        return $pagination_html; // Return the generated HTML
     }
 }
 
@@ -587,7 +591,7 @@ if ( ! function_exists( 'wpex_get_post_media_placeholder' ) ) {
         $output .= '</div>';
 
         // Return the generated HTML
-        return wp_kses_post($output);
+        return $output;
     }
 }
 
@@ -647,7 +651,7 @@ if ( !function_exists('wpex_get_post_date') ) {
         $output .= '<time datetime="' . esc_attr($date_c) . '">' . esc_html($post_date) . '</time>';
         $output .= '</a>';
 
-        return wp_kses_post($output);
+        return $output;
     }
 }
 

@@ -422,7 +422,7 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
         }
         $output .= $spacer;
 
-        return wp_kses_post($output);
+        return $output;
     }
 }
 
@@ -476,6 +476,6 @@ function wpex_pagination() {
         // Close page-pagination div
         $pagination_html .= '</div>';
 
-        return wp_kses_post($pagination_html);
+        return $pagination_html;
     }
 }
