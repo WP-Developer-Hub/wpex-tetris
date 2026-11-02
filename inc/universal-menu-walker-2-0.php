@@ -44,32 +44,41 @@ if (!class_exists('Universal_Menu_Walker_2_0')) {
     
             // Build the menu item output
             $output .= $indent . '<li id="' . esc_attr( $menu_item_id ) . '" class="' . implode( ' ', $classes ) . '">';
-    
+
             // Prepare Class attribute
             $class_attr = 'class="u-flex"';
-    
+
             // Prepare target attribute if set
             $target_attr = !empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
-    
+
             // Prepare rel attribute if set
             $rel_attr = !empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
-    
+
             // Build link once
             $a_tag = sprintf(
                 '<a href="%s" id="%s" aria-label="%s" %s %s %s role="button">%s</a>',
                 esc_url($item->url),
                 esc_attr($menu_item_link_id),
-                sprintf(esc_attr__('Visit %s', 'tetris'), sanitize_title($item->title)),
-                $target_attr, $rel_attr, $class_attr,
-                $item->title
+                sprintf(
+                    /* translators: %s: Menu item title */
+                    esc_attr__('Visit %s', 'tetris'),
+                    esc_attr($item->title)
+                ),
+                $target_attr,
+                $rel_attr,
+                $class_attr,
+                esc_html($item->title)
             );
-
 
             // Add link and toggle if item has children
             if ( $args->walker->has_children ) {
                 $output .= '<details class="menu-toggle u-cf">';
                 $output .= '<summary class="u-flex u-ai-c" aria-label="';
-                $output .= sprintf(esc_attr__('Toggle submenu for %s', 'tetris'), sanitize_title($item->title));
+                $output .= sprintf(
+                    /* translators: %s: Menu item title */
+                    esc_attr__('Toggle submenu for %s', 'tetris'),
+                    esc_attr($item->title)
+                );
                 $output .= '" aria-expanded="false">';
                 $output .= '<span aria-hidden="true" class="toggle-icon dashicons dashicons-arrow-right u-di-fix u-select-none u-focus-none"></span>';
                 $output .= '<span class="menu-item-title">' . $a_tag . '</span>';
