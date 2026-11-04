@@ -383,7 +383,8 @@ h3.comments-title { font-size: 1.143em; margin: 20px 0 }
 .children li.depth-9 { margin: 0 0 0px 65px }
 .children li.depth-10 { margin: 0 0 0px 65px }
 .comment-body { margin-bottom: 25px }
-.comment-details { position: relative; margin-left: 90px; background: #f9f9f9; padding: 20px 20px 10px 20px; display: flex; flex-wrap: wrap }
+.comment-details { position: relative; margin-left: 90px; background: #f9f9f9; padding: 20px; display: flex; flex-wrap: wrap }
+.comment-details:has(.comment-actions) { padding-bottom: 10px }
 .comment-details:after { content: ""; display: block; width: 20px; height: 20px; position: absolute; top: 0; left: -20px; background: url("images/comment-triangle.png") no-repeat }
 .comment-avatar { position: absolute; left: -90px; top: 0; overflow: hidden }
 .comment-avatar img { display: block }
