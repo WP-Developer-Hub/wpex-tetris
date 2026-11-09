@@ -244,34 +244,50 @@ function wpex_setup() {
     add_theme_support('featured-content');
 
     // Add support for starter content
-    add_theme_support('starter-content', array(
+    add_theme_support( 'starter-content', array(
         'widgets' => array(
-            'footer-widget-2' => array(
-               array(
-                   'pages' => array(
-                       'title' => 'Pages',
-                   ),
-               ),
+            'footer-one' => array(
+                array(
+                    'categories' => array(
+                        'title' => 'Categories',
+                    ),
+                ),
             ),
-            'footer-widget-1' => array(
-               array(
-                   'categories' => array(
-                       'title' => 'Categories',
-                   ),
-               ),
+            'footer-two' => array(
+                array(
+                    'pages' => array(
+                        'title' => 'Pages',
+                    ),
+                ),
             ),
-            'main-sidebar' => array(
-                'search' => array('search', array('title' => '')),
-                'tag_cloud' => array('tag_cloud', array('title' => 'Custom Tags')),
-                'archives' => array('archives', array('title' => 'Custom Archives')),
+            'sidebar' => array(
+                'archives' => array('archives', array('title' => 'Archives')),
             ),
-           'pages' => array(
-                'About',
-                'Blog',
-                'Contact',
-           ),
         ),
-    ));
+        'posts' => array(
+            'home' => array(
+                'post_type' => 'page',
+                'post_title' => 'Home',
+            ),
+            'about' => array(
+                'post_type' => 'page',
+                'post_title' => 'About',
+            ),
+            'contact' => array(
+                'post_type' => 'page',
+                'post_title' => 'Contact',
+            ),
+        ),
+        'nav_menus' => array(
+            'main_menu' => array(
+                'name' => 'Main Menu',
+                'items' => array(
+                    'page_about',
+                    'page_contact',
+                ),
+            ),
+        ),
+    ) );
 
     // Add support for widgets block editor and WP block styles
     add_theme_support('widgets-block-editor');
