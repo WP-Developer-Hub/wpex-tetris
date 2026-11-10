@@ -23,10 +23,7 @@ get_header();
 if ( have_posts()) : while (have_posts() ) : the_post(); ?>
     <div id="single-page-content" class="container clearfix">
         <!-- Page wrapper with post_class() applied -->
-        <article id="page" <?php post_class('entry clearfix'); ?>>
-            <h2 class="screen-reader-text">
-                <?php echo sprintf( __( '%1$s page For %2$s', 'tetris' ), get_the_title(), get_bloginfo('name') ); ?>
-            </h2>
+        <article id="page" <?php post_class('entry clearfix'); ?> aria-label="<?php echo esc_attr(sprintf(__('%1$s page For %2$s', 'tetris'), get_the_title(), get_bloginfo('name'))); ?>">
             <div id="inner-page" class="u-pos-rel inner-post">
                 <?php the_content(); ?>
             </div><!-- .inner-post -->
