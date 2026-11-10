@@ -48,7 +48,7 @@ p:empty, p:empty:before { display: none; }
 .clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
 .clear { clear: both }
 q,
-blockquote { position: relative; font-style: italic; font-weight: 600; color: #000; quotes: "\201C""\201D""\2018""\2019"; }
+blockquote { position: relative; font-style: italic; font-weight: 600; color: #000; quotes: "\201C""\201D""\2018""\2019"; display: contents; text-wrap: balance; }
 q:after,
 q:before,
 blockquote:after,
@@ -56,7 +56,7 @@ blockquote:before { color: #000; font-weight: 100; font-size: 2.5em; line-height
 q:after,
 blockquote:after { content: close-quote; padding-right: 0; }
 blockquote p { display: inline; }
-pre, code { font-family: monospace; background: #212121; color: #aaa; padding: 20px; line-height: 25px; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; display: block; max-height: 350px; overflow: auto;}
+pre, code { font-family: monospace; background: #212121; color: #aaa; padding: 20px; line-height: 25px; white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; display: block; max-height: 350px; overflow: auto; text-wrap: balance; }
 code { border-left: 5px solid var(--universal-accent-color-dark); }
 address { letter-spacing: 1px; }
 dfn,
