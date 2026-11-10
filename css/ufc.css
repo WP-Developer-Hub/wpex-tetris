@@ -589,7 +589,8 @@ select:not([multiple]) {
   padding-right: 0.5em;
 }
 
-fieldset {width: 100%; display: grid; border: var(--width-input-border) solid var(--co-textfld-active-border); padding: var(--margin-label); margin-bottom: var(--margin-label); max-width: var(--width-inputs); gap: var(--margin-label) }
+fieldset { width: 100%; display: grid; var(--width-inputs); gap: var(--margin-label) }
+fieldset:has(legend) { border: var(--width-input-border) solid var(--co-textfld-active-border); padding: var(--margin-label); margin-bottom: var(--margin-label); }
 form {width: 100%; display: grid; max-width: var(--width-inputs); gap: var(--margin-label) }
 #searchbar {width: unset;}
 #searchbar label {margin: unset;}
