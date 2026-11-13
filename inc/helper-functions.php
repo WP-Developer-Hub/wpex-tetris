@@ -513,7 +513,7 @@ if (!function_exists('wpx_post_badge')) {
         $post_date = get_the_date('U');
         $current_date = current_time('timestamp');
         $post_modfid_date = get_the_modified_date('U');
-        $date_style = get_theme_mod('universal_date_display_option', 'date') == "modified_date";
+        $date_style = get_theme_mod('universal_date_display_option', 'date') == "date";
         $classes = $is_wide ? 'u-block u-block-100 u-margin-0' : 'u-badge-' . $pos . ' u-pos-abs';
         $number_of_days = (get_theme_mod('universal_recent_post_keep_badge_for', 7) * DAY_IN_SECONDS);
 
