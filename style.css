@@ -60,7 +60,7 @@ pre, code { font-family: monospace; background: #212121; color: #aaa; padding: 2
 code { border-left: 5px solid var(--universal-accent-color-dark); }
 address { letter-spacing: 1px; }
 dfn,
-mark { background-color: var(--universal-accent-color-light); color: var(--universal-accent-color-text-light); display: inline-block; padding: 0 8px; }
+mark { background-color: var(--universal-accent-color-light); color: var(--universal-accent-color-text-light); display: inline; padding: 5px; }
 dfn { font-family: monospace; text-transform: uppercase; }
 var { font-weight: bold; color: var(--universal-accent-color-light); }
 u,
