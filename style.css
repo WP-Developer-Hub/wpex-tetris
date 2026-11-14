@@ -60,7 +60,7 @@ pre, code { font-family: monospace; background: #212121; color: #aaa; padding: 2
 code { border-left: 5px solid var(--universal-accent-color-dark); }
 address { letter-spacing: 1px; }
 dfn,
-mark { background-color: var(--universal-accent-color-light); color: var(--universal-accent-color-text-light); display: inline-block; padding: 0 8px; }
+mark { background-color: var(--universal-accent-color-light); color: var(--universal-accent-color-text-light); display: inline; padding: 5px; }
 dfn { font-family: monospace; text-transform: uppercase; }
 var { font-weight: bold; color: var(--universal-accent-color-light); }
 u,
@@ -76,7 +76,7 @@ html body dialog.showModal,
 html body [popover]:popover-open { border-radius: 2px !important; }
 html body dialog::backdrop { -webkit-backdrop-filter: blur(5px) !important; backdrop-filter: blur(5px) !important; background: rgba(0, 0, 0, 0.5) !important; }
 dialog, [popover] { width: max-content; height: max-content; padding: 15px; border: none; background: #fff; box-shadow: var(--u-box-shadow) }
-dialog[open] { z-index: 99999 !important; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) }
+dialog[open] { z-index: 99999 !important; top: 50%; left: 50%; transform: translate(-50%, -50%) }
 
 .sticky {}
 .gallery-caption {}
