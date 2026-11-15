@@ -62,7 +62,7 @@ address { letter-spacing: 1px; }
 dfn,
 mark { background-color: var(--universal-accent-color-light); color: var(--universal-accent-color-text-light); display: inline; padding: 5px; }
 dfn { font-family: monospace; text-transform: uppercase; }
-var { font-weight: bold; color: var(--universal-accent-color-light); }
+var { font-weight: bold; font-family: monospace; color: var(--universal-accent-color-light); }
 u,
 del,
 ins,
