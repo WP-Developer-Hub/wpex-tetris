@@ -69,6 +69,11 @@ ins,
 strike { text-decoration-color: var(--universal-accent-color); }
 u { text-decoration-style: wavy; }
 
+sub,
+sup { font-size: 0.7rem; line-height: normal; font-weight: bolder; font-family: monospace; text-transform: uppercase; }
+sub { vertical-align: sub; }
+sup { vertical-align: super; }
+
 html body dialog,
 html body [popover],
 html body dialog[open],
