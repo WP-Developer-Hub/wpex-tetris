@@ -20,7 +20,7 @@ function wpex_comments_output($comment, $args, $depth) {
         <article id="comment-<?php echo esc_attr(get_comment_ID()); ?>" class="comment-body clearfix<?php if ($comment->comment_approved == '0') echo esc_attr(' pending-comment'); ?>" aria-label="<?php echo sprintf(/* translators: %s: Comment author name */ esc_attr__('Comment by %s', 'tetris'), esc_html(get_comment_author()));?>">
             <div class="comment-details">
                 <div class="comment-avatar">
-                    <?php echo get_avatar($comment, '50', '', __('Comment Author\'s Avatar', 'tetris'), array('force_display' => true)); ?>
+                    <?php echo wpex_get_avatar($comment, '50', __('Comment Author\'s Avatar', 'tetris')); ?>
                 </div><!-- /comment-avatar -->
                 <div class="comment-author vcard u-grid u-grid-gap-0">
                 <?php printf(/* translators: %s: Comment author name */ '<cite class="author u-wrap-text u-text-bt-both" title="%s">%s</cite>', esc_attr(get_comment_author()), wp_kses_post(get_comment_author_link())); ?>

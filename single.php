@@ -62,7 +62,7 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                     <h4 id="author-title" class="heading widget-title"><?php the_author_posts_link(); ?></h4>
                     <div class="author-inner u-flex u-flex-gap-10">
                         <div id="author-image">
-                           <a href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' )); ?>"><?php echo get_avatar(get_the_author_meta('user_email'), '150', '', __('Post Author\'s Avatar', 'tetris'), array('class' => '', 'force_display' => true)); ?></a>
+                           <a href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' )); ?>"><?php echo wpex_get_avatar(get_the_author_meta('user_email'), '150', __('Post Author\'s Avatar', 'tetris')); ?></a>
                         </div><!-- #author-image -->
                         <div id="author-bio" class="u-block u-block-100 u-wrap-text u-text-bt-both">
                             <?php the_author_meta('description'); ?>

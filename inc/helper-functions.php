@@ -674,7 +674,25 @@ if ( ! function_exists( 'wpex_get_post_author' ) ) {
             $html .= '</li>';
         }
 
-        return wp_kses_post($html);
+        return $html;
+    }
+}
+
+/**
+ * Get a user avatar with accessible text and a title attribute.
+ *
+ * @since 7.1.0
+ *
+ * @param mixed  $user User ID, email, or object.
+ * @param string $size Avatar size.
+ * @param string $acc  Accessible text for the avatar.
+ * @return string Avatar HTML.
+ */
+if ( ! function_exists( 'wpex_get_avatar' ) ) {
+    function wpex_get_avatar($user, $size = '150', $acc = '') {
+        $acc = empty($acc) ? __('User\'s Avatar', 'tetris') : $acc;
+
+        return get_avatar($user, $size, '', esc_attr($acc), ['force_display' => true, 'extra_attr' => sprintf('title="%s"', esc_attr($acc))]);
     }
 }
 
