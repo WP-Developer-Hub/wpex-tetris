@@ -29,7 +29,7 @@ get_header(); ?>
 
 	<div id="blog-wrap" class="u-grid u-grid-col-auto u-grid-gap-10">
 		<?php while ( have_posts() ) : the_post();
-			get_template_part( 'content' );
+			get_template_part( 'content', wpex_get_custom_post_type() );
 		endwhile; ?>
 	</div><!-- #blog-wrap -->
 

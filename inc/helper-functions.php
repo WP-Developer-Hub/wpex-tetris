@@ -715,6 +715,21 @@ if ( ! function_exists( 'wpex_is_post_modified' ) ) {
     }
 }
 
+if ( ! function_exists( 'wpex_get_custom_post_type' ) ) {
+    function wpex_get_custom_post_type() {
+        $post_type = get_post_type();
+        
+        // Exclude standard WordPress post types ('post' and 'page')
+        $standard_types = array('post', 'page', 'attachment');
+        
+        if (empty($post_type) || in_array($post_type, $standard_types, true)) {
+            return '';
+        }
+        
+        return $post_type;
+    }
+}
+
 /**
  * Determines whether the current post supports a specific WordPress feature.
  *
