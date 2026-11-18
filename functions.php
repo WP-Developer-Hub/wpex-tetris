@@ -418,11 +418,10 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
         $trimmed_text = trim(str_replace('&nbsp;', '', strip_tags(strip_shortcodes($text))));
         $is_empty = empty( $trimmed_text );
 
-        $spacer = wpx_spacer('#eee');
-        $output = !post_password_required() && $is_empty ? '' : $spacer;
+        $spacer = !post_password_required() && $is_empty ? '' : wpx_spacer('#eee');
         $classes = !post_password_required() && $is_empty ? 'u-none' : 'u-wrap-text u-trim';
 
-        $output .= '<div class="' . esc_attr($classes) . '" style="--u-line-clamp: ' . intval($length) . '">';
+        $output = '<div class="' . esc_attr($classes) . '" style="--u-line-clamp: ' . intval($length) . ';">';
         if ( ! post_password_required() && ! $is_empty ) {
             $length = apply_filters('wpex_excerpt_length', intval($length * 10));
             $output .= wp_trim_words($trimmed_text, $length);
