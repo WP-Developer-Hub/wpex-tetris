@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             </header>
             <?php echo wpex_excerpt(get_theme_mod('universal_excerpt_length', 20), get_theme_mod('universal_toggle_read_more_link', true)); ?>
         <ul class="entry-meta">
-            <li><?php echo wpex_get_post_date(); ?></li>
+            <?php echo wpex_get_post_date(); ?>
             <?php echo wpex_get_post_author(); ?>
             <?php wpx_comments_popup_link(); ?>
         </ul><!-- /entry-meta -->

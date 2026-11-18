@@ -456,7 +456,7 @@ if ( !function_exists('wpx_comments_popup_link') ) {
 
         // Check if comments are closed and the post type supports comments
         if (wpex_post_type_supports('comments') && !post_password_required()) {
-            echo '<li' . esc_attr($class) . '>';
+            echo '<li' . $class . '>';
             echo '<strong>' . esc_html__('With', 'tetris') . ': </strong>';
             comments_popup_link();
             echo '</li>';
@@ -602,6 +602,8 @@ if ( ! function_exists( 'wpex_get_post_media_placeholder' ) ) {
  */
 if ( !function_exists('wpex_get_post_date') ) {
     function wpex_get_post_date() {
+        $class = is_single() ? ' class="single-post-meta-divider"' : '';
+
         $ago_format = get_theme_mod('universal_toggle_ago_format', 'true');
         $date_style = get_theme_mod('universal_date_display_option', 'date');
         $date_delay = get_theme_mod('universal_auto_toggle_full_date_delay', 30);
@@ -640,14 +642,15 @@ if ( !function_exists('wpex_get_post_date') ) {
         }
 
         $post_date_label = ($show_modified_date && $is_edited ? $post_modified_date_label : $post_date_label);
+        $html = '<li' . $class . '>';
+        $html .= '<strong>' . esc_html($post_date_label) . ':</strong> ';
+        $html .= '<a class="post-date-link u-text-medium" href="' . $post_date_link . '" rel="bookmark" ';
+        $html .= 'aria-label="' . esc_attr($link_aria_prefix . get_the_date('')) . '">';
+        $html .= '<time datetime="' . esc_attr($date_c) . '">' . esc_html($post_date) . '</time>';
+        $html .= '</a>';
+        $html .= '</li>';
 
-        $output = '<strong>' . esc_html($post_date_label) . ':</strong> ';
-        $output .= '<a class="post-date-link u-text-medium" href="' . $post_date_link . '" rel="bookmark" ';
-        $output .= 'aria-label="' . esc_attr($link_aria_prefix . get_the_date('')) . '">';
-        $output .= '<time datetime="' . esc_attr($date_c) . '">' . esc_html($post_date) . '</time>';
-        $output .= '</a>';
-
-        return $output;
+        return $html;
     }
 }
 

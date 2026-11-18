@@ -21,7 +21,7 @@ if ( have_posts()) : while ( have_posts()) : the_post(); ?>
                 <h1 class="post-title u-text-bt-both u-tbe-et"><?php echo wpex_get_title(); ?></h1>
                 <?php echo wpx_spacer(); ?>
                 <ul class="single-post-meta clearfix u-text-bt-both">
-                    <li class="single-post-meta-divider"><?php echo wpex_get_post_date(); ?></li>
+                    <?php echo wpex_get_post_date(); ?>
                     <?php echo wpex_get_post_author(get_the_ID()); ?>
                     <?php if (has_category()) : ?>
                         <li class="single-post-meta-divider">
