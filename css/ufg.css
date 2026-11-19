@@ -422,12 +422,13 @@
 
 /* Text Box Edge Rules*/
 .u-tbe-a { text-box-edge: auto; }
-.u-tbe-ca { text-box-edge: cap alphabetic; }
-.u-tbe-ct { text-box-edge: cap text; }
-.u-tbe-ea { text-box-edge: ex alphabetic; }
-.u-tbe-et { text-box-edge: ex text; }
-.u-tbe-ta { text-box-edge: text alphabetic; }
 .u-tbe-t { text-box-edge: text; }
+.u-tbe-et { text-box-edge: ex text; }
+.u-tbe-ct { text-box-edge: cap text; }
+.u-tbe-tt { text-box-edge: text text; }
+.u-tbe-ea { text-box-edge: ex alphabetic; }
+.u-tbe-ca { text-box-edge: cap alphabetic; }
+.u-tbe-ta { text-box-edge: text alphabetic; }
 
 /* Flex Shrink Rules*/
 .u-flex-no-shrink { flex-shrink: 0; }

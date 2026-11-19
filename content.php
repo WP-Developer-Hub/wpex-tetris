@@ -1,6 +1,6 @@
 <?php
 /**
- * Standard Format
+ * Standard Grid Item
  *
  * @package   Tetris WordPress Theme
  * @author    Alexander Clarke
