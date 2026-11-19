@@ -49,7 +49,7 @@ if(!class_exists("Universal_Meta_Box")) {
          */
         public function render_meta_box_content($post) {
             // Add a nonce field for security.
-            wp_nonce_field('universal_meta_box_nonce', 'universal_meta_box_nonce');
+            wp_nonce_field('save_media_library_meta', 'universal_meta_box_nonce');
             ?>
             <table class="form-table universal-meta-table">
                 <tbody>
@@ -156,7 +156,7 @@ if(!class_exists("Universal_Meta_Box")) {
             // Verify nonce
             $universal_nonce = sanitize_text_field(wp_unslash($_POST['universal_meta_box_nonce']));
 
-            if (!isset($universal_nonce) || !wp_verify_nonce($universal_nonce, 'universal_meta_box_nonce')) {
+            if (!isset($universal_nonce) || !wp_verify_nonce($universal_nonce, 'save_media_library_meta')) {
                 return;
             }
 
