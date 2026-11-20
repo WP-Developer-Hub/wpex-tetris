@@ -531,6 +531,9 @@ if (!function_exists('wpx_post_badge')) {
             default:
                 $label = $is_sticky ? __('Featured', 'tetris') : '' ;
         }
+
+        $label = wp_strip_all_tags(apply_filters('wpx_post_badge', $label, $post_date, $current_date, $post_modfid_date, $number_of_days, $is_sticky, $is_recent, $is_edited));
+
         return !empty($label) ? ' <span class="u-badge ' . esc_attr($classes) . ' u-fs-14 u-ta-c">' . esc_html($label) . '</span>' : '';
     }
 }
