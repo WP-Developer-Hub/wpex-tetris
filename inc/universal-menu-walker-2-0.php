@@ -59,11 +59,7 @@ if (!class_exists('Universal_Menu_Walker_2_0')) {
                 '<a href="%s" id="%s" aria-label="%s" %s %s %s role="button">%s</a>',
                 esc_url($item->url),
                 esc_attr($menu_item_link_id),
-                sprintf(
-                    /* translators: %s: Menu item title */
-                    esc_attr__('Visit %s', 'tetris'),
-                    esc_attr($item->title)
-                ),
+                esc_attr($item->title),
                 $target_attr,
                 $rel_attr,
                 $class_attr,

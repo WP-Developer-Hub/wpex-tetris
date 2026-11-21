@@ -333,7 +333,13 @@ if ( ! function_exists( 'universal_theme_custom_logo' ) ) {
         }
 
         // Init All Logo Attributes & Apply get_custom_logo_image_attributes Filter For Plugin To Use
-        $logo_attr = ['class' => 'custom-logo', 'loading' => 'lazy', 'alt' => esc_attr($blog_name)];
+        $logo_attr = array(
+            'loading' => 'lazy',
+            'decoding' => 'async',
+            'class' => 'custom-logo',
+            'alt' => esc_attr($blog_name)
+        );
+
         $logo_attr = apply_filters('get_custom_logo_image_attributes', $logo_attr, $logo_id, $blog_id);
 
         // Retrive Custom Logo
