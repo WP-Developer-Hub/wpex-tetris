@@ -433,6 +433,9 @@
 /* Flex Shrink Rules*/
 .u-flex-no-shrink { flex-shrink: 0; }
 
+.u-scale-x-inv { transform: scaleX(-1)}
+.u-scale-y-inv { transform: scaleY(-1)}
+
 /*  Details Animrtions Only Works On Chrome ATM */
 @supports (interpolate-size: allow-keywords) {
     @media (prefers-reduced-motion: no-preference) {

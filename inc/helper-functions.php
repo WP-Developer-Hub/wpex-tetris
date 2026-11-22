@@ -459,12 +459,15 @@ if ( ! function_exists( 'universal_gallery_defaults' ) ) {
 if ( !function_exists('wpx_comments_popup_link') ) {
     function wpx_comments_popup_link() {
         $class = is_single() ? ' class="single-post-meta-divider"' : '';
-
         // Check if comments are closed and the post type supports comments
         if (wpex_post_type_supports('comments') && !post_password_required()) {
+            $no = __('0 Comments', 'tetris');
+            $one = __('1 Comment', 'tetris');
+            $more = __('% Comments', 'tetris');
+            $none = __('Comments Disabled', 'tetris');
             echo '<li' . $class . '>';
             echo '<strong>' . esc_html__('With', 'tetris') . ': </strong>';
-            comments_popup_link();
+            comments_popup_link($no, $one, $more, '', $none);
             echo '</li>';
         }
     }
@@ -498,7 +501,7 @@ if ( ! function_exists('wpex_get_post_format_icon_classes') ) {
             case 'chat':
                 return 'posticons dashicons dashicons-format-chat';
             default:
-                return 'posticons dashicons dashicons-format-standard';
+                return 'posticons dashicons dashicons-admin-post';
         }
     }
 }
@@ -516,31 +519,42 @@ if ( ! function_exists('wpex_get_post_format_icon_classes') ) {
  */
 if (!function_exists('wpx_post_badge')) {
     function wpx_post_badge($pos = "br", $is_wide = false) {
+        $style = '';
         $post_date = get_the_date('U');
         $current_date = current_time('timestamp');
         $post_modfid_date = get_the_modified_date('U');
         $date_style = get_theme_mod('universal_date_display_option', 'date') == "date";
-        $classes = $is_wide ? 'u-block u-block-100 u-margin-0' : 'u-badge-' . $pos . ' u-pos-abs';
+        $classes = ($is_wide ? 'u-block u-block-100 u-margin-0' : 'u-badge-' . $pos . ' u-pos-abs');
         $number_of_days = (get_theme_mod('universal_recent_post_keep_badge_for', 7) * DAY_IN_SECONDS);
 
-        $is_sticky = is_sticky();
-        $is_recent = ($current_date - $post_date) < $number_of_days;
+        $is_sticky = (is_sticky() && !is_singular());
+        $is_recent = (($current_date - $post_date) < $number_of_days);
         $is_edited = ($date_style && wpex_is_post_modified() && (($current_date - $post_modfid_date) < $number_of_days));
 
         switch (true) {
             case ($is_recent):
-                $label = $is_sticky ? __('New & Featured', 'tetris') : __('New', 'tetris');
+                $label = __('New', 'tetris');
                 break;
             case ($is_edited):
-                $label = $is_sticky ? __('Edited & Featured', 'tetris') : __('Edited', 'tetris');
+                $label = __('Updated', 'tetris');
                 break;
             default:
-                $label = $is_sticky ? __('Featured', 'tetris') : '' ;
+                $label = '';
         }
 
-        $label = wp_strip_all_tags(apply_filters('wpx_post_badge', $label, $post_date, $current_date, $post_modfid_date, $number_of_days, $is_sticky, $is_recent, $is_edited));
+        $label = wp_strip_all_tags(apply_filters('wpx_post_badge', $label, $post_date, $current_date, $post_modfid_date, $number_of_days, $is_recent, $is_edited));
 
-        return !empty($label) ? ' <span class="u-badge ' . esc_attr($classes) . ' u-fs-14 u-ta-c">' . esc_html($label) . '</span>' : '';
+        if ($is_sticky) {
+            $style = 'style="' . (empty($label) ? 'padding: 5px;' : 'padding-right: 5px;') . '"';
+        }
+
+        $label = sprintf(
+            '%1$s%2$s',
+            esc_html($label),
+            $is_sticky ? '<span class="dashicons dashicons-admin-post u-di-fix u-fs-14 u-media-1-1 u-scale-x-inv" aria-hidden="true"></span>' : ''
+        );
+
+        return !empty($label) ? ' <span class="u-badge ' . esc_attr($classes) . ' u-fs-14 u-flex u-grid-gap-5 u-ai-c u-text-bt-both u-tbe-ta"' . $style . '>' . $label . '</span>' : '';
     }
 }
 
@@ -619,7 +633,11 @@ if ( !function_exists('wpex_get_post_date') ) {
 
         $post_date_label = __('Posted on', 'tetris');
         $post_modified_date_label = __('Updated on', 'tetris');
-        $link_aria_prefix = __('View All Posts Made on', 'tetris'). ' ';
+        $link_aria_label = sprintf(
+            /* translators: %s: Post publication date. */
+            __('View All Posts Made on %s', 'tetris'),
+            get_the_date()
+        );
 
         $date_c = '';
         $post_time = '';
@@ -647,14 +665,18 @@ if ( !function_exists('wpex_get_post_date') ) {
         if ($ago_format && ((current_time('timestamp') - $post_timestamp) < ($date_delay * DAY_IN_SECONDS))) {
             $post_date_label = __('Posted', 'tetris');
             $post_modified_date_label = __('Updated', 'tetris');
-            $post_date = human_time_diff($post_timestamp) . ' ' . __('ago', 'tetris');
+            $post_date = sprintf(
+                /* translators: %s: human-readable time difference */
+                __('%s ago', 'tetris'),
+                human_time_diff($post_timestamp)
+            );
         }
 
         $post_date_label = ($show_modified_date && $is_edited ? $post_modified_date_label : $post_date_label);
         $html = '<li' . $class . '>';
         $html .= '<strong>' . esc_html($post_date_label) . ':</strong> ';
         $html .= '<a class="post-date-link u-text-medium" href="' . $post_date_link . '" rel="bookmark" ';
-        $html .= 'aria-label="' . esc_attr($link_aria_prefix . get_the_date('')) . '">';
+        $html .= 'aria-label="' . esc_attr($link_aria_prefix) . '">';
         $html .= '<time datetime="' . esc_attr($date_c) . '">' . esc_html($post_date) . '</time>';
         $html .= '</a>';
         $html .= '</li>';
