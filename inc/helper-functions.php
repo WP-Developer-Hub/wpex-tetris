@@ -542,7 +542,7 @@ if (!function_exists('wpx_post_badge')) {
                 $label = '';
         }
 
-        $label = wp_strip_all_tags(apply_filters('wpx_post_badge', $label, $post_date, $current_date, $post_modfid_date, $number_of_days, $is_recent, $is_edited));
+        $label = wp_strip_all_tags(apply_filters('wpx_post_badge_text', $label, $post_date, $current_date, $post_modfid_date, $number_of_days, $is_recent, $is_edited));
 
         if ($is_sticky) {
             $style = 'style="' . (empty($label) ? 'padding: 5px;' : 'padding-right: 5px;') . '"';
