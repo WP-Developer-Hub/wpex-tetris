@@ -49,7 +49,7 @@ if(!class_exists("Universal_Meta_Box")) {
          */
         public function render_meta_box_content($post) {
             // Add a nonce field for security.
-            wp_nonce_field('save_media_library_meta', 'universal_meta_box_nonce');
+            wp_nonce_field('universal_meta_box_nonce', 'universal_meta_box_nonce');
             ?>
             <table class="form-table universal-meta-table">
                 <tbody>
@@ -153,12 +153,14 @@ if(!class_exists("Universal_Meta_Box")) {
          * @param int $post_id The ID of the post being saved.
          */
         public function save_meta_box_data($post_id) {
-            // Verify nonce
-            $universal_nonce = sanitize_text_field(wp_unslash($_POST['universal_meta_box_nonce']));
+            if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+            if (!current_user_can('edit_post', $post_id)) return;
 
-            if (!isset($universal_nonce) || !wp_verify_nonce($universal_nonce, 'save_media_library_meta')) {
+            // Verify nonce
+            if (!isset($_POST['universal_meta_box_nonce']) || !wp_verify_nonce(wp_unslash($_POST['universal_meta_box_nonce']), 'universal_meta_box_nonce')) {
                 return;
             }
+
 
             // Save/update 'universal_local_video_attachment_ids'
             $this->save_media_library_meta($post_id, 'video');
