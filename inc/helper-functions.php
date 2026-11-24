@@ -676,7 +676,7 @@ if ( !function_exists('wpex_get_post_date') ) {
         $html = '<li' . $class . '>';
         $html .= '<strong>' . esc_html($post_date_label) . ':</strong> ';
         $html .= '<a class="post-date-link u-text-medium" href="' . $post_date_link . '" rel="bookmark" ';
-        $html .= 'aria-label="' . esc_attr($link_aria_prefix) . '">';
+        $html .= 'aria-label="' . esc_attr($link_aria_label) . '">';
         $html .= '<time datetime="' . esc_attr($date_c) . '">' . esc_html($post_date) . '</time>';
         $html .= '</a>';
         $html .= '</li>';
