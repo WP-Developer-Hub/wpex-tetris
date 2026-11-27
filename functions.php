@@ -414,6 +414,8 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
     function wpex_excerpt( $length = 20, $readmore = false ) {
         global $post;
         // Get excerpt or content
+        $jump_point = '';
+        $post_format = get_post_format($post->ID);
         $text = has_excerpt($post->ID) ? $post->post_excerpt : $post->post_content;
         $trimmed_text = trim(str_replace('&nbsp;', '', strip_tags(strip_shortcodes($text))));
         $is_empty = empty( $trimmed_text );
@@ -431,7 +433,12 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
         $output .= '</div>';
 
         if ( ! post_password_required() && !$is_empty && $readmore ) {
-            $jump_point = strpos($post->post_content, '<!--more-->') !== false ? '#more-' . intval($post->ID) : '#post-entry';
+            if ( empty( $post_format ) ) {
+                $jump_point = (strpos($post->post_content, '<!--more-->') !== false ? '#more-' . intval($post->ID) : '#post-entry');
+            } else {
+                $jump_point = '#single-post-content';
+            }
+
             $readmore_link = '<span class="wpex-readmore"><a href="' . esc_url(get_permalink($post->ID) . $jump_point) . '" title="'. esc_attr__( 'Continue reading', 'tetris' ) .'" rel="bookmark" class="u-block u-block-100 u-ta-c u-link-button u-tt-all-caps u-fs-16" role="button" tabindex="0">'. esc_html__( 'Read more', 'tetris' ) .'</a></span>';
             $output .= $readmore_link;
         }

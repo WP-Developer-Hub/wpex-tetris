@@ -54,8 +54,8 @@ if ( ! function_exists( 'universal_display_media' ) ) {
         
                     $container .= gallery_shortcode($gallery_attr);
                 } else {
+                    $id = 'post-' . $post_format;
                     $is_audio = ($post_format === 'audio');
-                    $id = ($is_audio ? 'post-audio' : 'post-media');
 
                     $class_attr = ((!$is_audio && $item_count > 1) ? ' u-media-16-9' : '');
                     $container .= ('<div id="' . esc_attr($id) . '" class="post-media' . esc_attr($class_attr) . '">');
