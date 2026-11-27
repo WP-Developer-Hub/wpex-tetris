@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) { return; }
 <header class="page-heading clearfix">
     <h1>
     <?php
-        $prefix = __('Posts Made', 'tetris');
+        $prefix = 'Posts Made';
         $current_year = current_time('Y');
         $current_month = current_time('F Y');
         $current_day = current_time('F j, Y');
