@@ -23,8 +23,8 @@ function wpex_comments_output($comment, $args, $depth) {
                     <?php echo wpex_get_avatar($comment, '50', __('Comment Author\'s Avatar', 'tetris')); ?>
                 </div><!-- /comment-avatar -->
                 <div class="comment-author vcard u-grid u-grid-gap-0">
-                <?php printf(/* translators: %s: Comment author name */ '<cite class="author u-wrap-text u-text-bt-both" title="%s">%s</cite>', esc_attr(get_comment_author()), wp_kses_post(get_comment_author_link())); ?>
-                <a href="<?php echo esc_url( get_comment_link( intval($comment->comment_ID) ) ); ?>" class="comment-date"><time datetime="<?php echo esc_attr(get_comment_date( 'c' )); ?>" class="u-text-bt-both"><?php echo esc_html(get_comment_date()); ?></time></a>
+                <?php printf(/* translators: %s: Comment author name */ '<cite class="author u-wrap-text u-text-bt-both" title="%s">%s</cite>', esc_attr(get_comment_author()), get_comment_author_link()); ?>
+                <a href="<?php echo esc_url(get_comment_link(intval($comment->comment_ID))); ?>" class="comment-date" rel="scroll" aria-label="<?php esc_attr_e('click here to scroll comment into view', 'tetris'); ?>"><time datetime="<?php echo esc_attr(get_comment_date( 'c' )); ?>" class="u-text-bt-both"><?php echo esc_html(get_comment_date()); ?></time></a>
                 </div><!-- /comment-meta -->
                 <div class="comment-content u-wrap-text u-text-bt-both">
                     <?php comment_text() ?>
@@ -47,6 +47,7 @@ function wpex_comments_output($comment, $args, $depth) {
 
                         // Prepare URLs for actions
                         $urls = array(
+                            'edit' => get_edit_comment_link($comment->comment_ID, "url"),
                             'spam' => admin_url("comment.php?c=$comment->comment_ID&action=spamcomment&_wpnonce=$spam_nonce#commentlist"),
                             'trash' => admin_url("comment.php?c=$comment->comment_ID&action=trashcomment&_wpnonce=$del_nonce#commentlist")
                         );
@@ -62,26 +63,22 @@ function wpex_comments_output($comment, $args, $depth) {
                         if (current_user_can('edit_comment', $comment->comment_ID)) {
                             // Add edit comment link for the comment poster
                             if ($comment->user_id == $current_user_id) {
-                                $links .= edit_comment_link(__('Edit', 'tetris'), '<span>', '</span>');
+                                $links .= wpex_add_comment_action_link($urls['edit'], __('Edit', 'tetris'), __('Edit this comment', 'tetris'), '');
                             }
 
                             // Add Spam action link
                             if ($comment->user_id != $current_user_id && $post_author) {
-                                $links .= '<span>';
-                                $links .= '<a href="' . esc_url($urls['spam']) . '" class="comment-action-link" onclick="return confirm(\'' . esc_js(__('Are you sure you want to mark this comment as spam?', 'tetris')) . '\');">' . esc_html__('Spam', 'tetris') . '</a>';
-                                $links .= '</span>';
+                                $links .= wpex_add_comment_action_link($urls['spam'], __('Spam', 'tetris'), __('Mark this comment as spam', 'tetris'), __('Are you sure you want to mark this comment as spam?', 'tetris'));
                             }
 
                             // Add Delete action link
                             if ($comment->user_id == $current_user_id || $post_author) {
-                                $links .= '<span>';
-                                $links .= '<a href="' . esc_url($urls['trash']) . '" class="comment-action-link" onclick="return confirm(\'' . esc_js(__('Are you sure you want to permanently delete this comment?', 'tetris')) . '\');">' . esc_html__('Delete', 'tetris') . '</a>';
-                                $links .= '</span>';
+                                $links .= wpex_add_comment_action_link($urls['trash'], __('Delete', 'tetris'), __('Delete this comment', 'tetris'), __('Are you sure you want to permanently delete this comment?', 'tetris'));
                             }
                         }
 
                         // Output links
-                        echo wp_kses_post($links);
+                        echo $links;
                         ?>
                     </div>
                 <?php endif; ?>

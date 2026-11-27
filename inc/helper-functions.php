@@ -731,6 +731,36 @@ if ( ! function_exists( 'wpex_get_avatar' ) ) {
 }
 
 /**
+ * Build specialty comment action links with accessible labels.
+ *
+ * @param array<string, string> $urls Action URLs keyed by action name (e.g. 'trash').
+ * @param string $confirm_text Confirmation prompt text.
+ * @param string $aria_label Accessible aria-label text.
+ * @param string $link_text Visible link text.
+ * @return string Action links HTML.
+ */
+if ( ! function_exists( 'wpex_add_comment_action_link' ) ) {
+    function wpex_add_comment_action_link($url, $link_text = '', $aria_label = '', $confirm_text = '') {
+        $url = esc_url($url);
+        $confirm_attr = '';
+        $aria_attr = '';
+
+        if (!empty($confirm_text)) {
+            $confirm_attr = ' onclick="return confirm(\'' . esc_js( $confirm_text ) . '\');"';
+        }
+
+        if (!empty($aria_label)) {
+            $aria_attr = ' aria-label="' . esc_attr( $aria_label ) . '"';
+        }
+        
+        $links = '<span>';
+        $links .= '<a href="' . $url . '" class="comment-action-link"' . $confirm_attr . $aria_attr . '>' . esc_html($link_text) . '</a>';
+        $links .= '</span>';
+        return $links;
+    }
+}
+
+/**
  * Checks if the post has been edited since it was first published.
  *
  * Compares the original post date with the last modified date (Y-m-d format).
