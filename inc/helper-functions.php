@@ -636,7 +636,7 @@ if ( !function_exists('wpex_get_post_date') ) {
         $link_aria_label = sprintf(
             /* translators: %s: Post publication date. */
             __('View All Posts Made on %s', 'tetris'),
-            get_the_date()
+            get_the_date('m/d/Y')
         );
 
         $date_c = '';
@@ -675,7 +675,7 @@ if ( !function_exists('wpex_get_post_date') ) {
         $post_date_label = ($show_modified_date && $is_edited ? $post_modified_date_label : $post_date_label);
         $html = '<li' . $class . '>';
         $html .= '<strong>' . esc_html($post_date_label) . ':</strong> ';
-        $html .= '<a class="post-date-link u-text-medium" href="' . $post_date_link . '" rel="bookmark" ';
+        $html .= '<a class="post-date-link" href="' . $post_date_link . '" rel="bookmark" ';
         $html .= 'aria-label="' . esc_attr($link_aria_label) . '">';
         $html .= '<time datetime="' . esc_attr($date_c) . '">' . esc_html($post_date) . '</time>';
         $html .= '</a>';
