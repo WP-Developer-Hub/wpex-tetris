@@ -417,17 +417,18 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
         $jump_point = '';
         $post_format = get_post_format($post->ID);
         $text = has_excerpt($post->ID) ? $post->post_excerpt : $post->post_content;
-        $trimmed_text = trim(str_replace('&nbsp;', '', strip_tags(strip_shortcodes($text))));
+        $trimmed_text = trim(str_replace('&nbsp;', '', wp_strip_all_tags(strip_shortcodes($text))));
         $is_empty = empty( $trimmed_text );
         $use_more = (strpos($post->post_content, '<!--more-->') !== false && !has_excerpt($post->ID));
+
+        $length = intval(apply_filters('wpex_excerpt_length', $length));
 
         $spacer = !post_password_required() && $is_empty ? '' : wpx_spacer('#eee');
         $classes = !post_password_required() && $is_empty ? 'u-none' : 'u-wrap-text u-trim';
 
-        $output = '<div class="' . esc_attr($classes) . '" style="--u-line-clamp: ' . intval($length) . ';">';
+        $output = '<div class="' . esc_attr($classes) . '" style="--u-line-clamp: ' . esc_attr($length) . ';">';
         if ( ! post_password_required() && ! $is_empty ) {
-            $length = apply_filters('wpex_excerpt_length', intval($length * 10));
-            $output .= wp_trim_words($trimmed_text, $length);
+            $output .= wp_trim_words($trimmed_text, ($length * 10));
         } else {
             $output .= post_password_required() ? __( 'This content is protected. Log in or enter the password to view the full content.', 'tetris' ) : '';
         }
