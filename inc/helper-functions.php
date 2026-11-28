@@ -51,7 +51,7 @@ if ( ! function_exists( 'universal_display_media' ) ) {
                         'link' => get_theme_mod('universal_gallery_link_type', 'attchments'),
                         'type' => 'slideshow',
                     );
-        
+
                     $container .= gallery_shortcode($gallery_attr);
                 } else {
                     $id = 'post-' . $post_format;
@@ -75,11 +75,13 @@ if ( ! function_exists( 'universal_display_media' ) ) {
                         'images' => true,
                         'artists' => true,
                     );
-        
+
                     $container .= wp_playlist_shortcode($playlist_attr);
                 }
                 $container .= '</div>';
                 $container .= wpx_spacer('', '30');
+            } else {
+                get_template_part('formats/format');
             }
         } else {
             $container .= wpex_get_post_media_placeholder();
@@ -98,13 +100,13 @@ if ( ! function_exists( 'universal_get_copyright_info' ) ) {
     function universal_get_copyright_info() {
         // Get copyright layout
         $message = get_theme_mod('universal_copyright_layout', '[copyright_symbol] [site_name], [started_date][dash][current_date].');
-    
+
         // Get the current date in the format YYYY
         $current_year = date('Y');
-    
+
         // Get the started date if available
         $started_date = date('Y', strtotime(get_theme_mod('universal_footer_start_date', $current_year)));
-    
+
         // Construct site name HTML
         $blog_url = home_url(); // Get the homepage URL
         $site_name = is_multisite()
@@ -113,7 +115,7 @@ if ( ! function_exists( 'universal_get_copyright_info' ) ) {
 
         // Make $site_name a link
         $site_name = '<a class="u-tt-all-caps" href="' . esc_url($blog_url) . '">' . esc_html($site_name) . '</a>';
-    
+
         // Replace placeholders with dynamic content
         $message = str_replace('[copyright_symbol]', '&copy;', $message);
         $message = str_replace('[registered_symbol]', '&reg;', $message);
@@ -128,7 +130,7 @@ if ( ! function_exists( 'universal_get_copyright_info' ) ) {
         } else {
             $message = str_replace(['[started_date]', '[dash]'], [$started_date, '-'], $message);
         }
-        
+
         return rtrim($message);
     }
 }
