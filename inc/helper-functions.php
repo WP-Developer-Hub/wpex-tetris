@@ -746,11 +746,11 @@ if ( ! function_exists( 'wpex_add_comment_action_link' ) ) {
         $aria_attr = '';
 
         if (!empty($confirm_text)) {
-            $confirm_attr = ' onclick="return confirm(\'' . esc_js( $confirm_text ) . '\');"';
+            $confirm_attr = ' onclick="return confirm(\'' . esc_js($confirm_text) . '\');"';
         }
 
         if (!empty($aria_label)) {
-            $aria_attr = ' aria-label="' . esc_attr( $aria_label ) . '"';
+            $aria_attr = ' aria-label="' . esc_attr($aria_label) . '"';
         }
         
         $links = '<span>';

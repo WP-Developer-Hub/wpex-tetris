@@ -419,6 +419,7 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
         $text = has_excerpt($post->ID) ? $post->post_excerpt : $post->post_content;
         $trimmed_text = trim(str_replace('&nbsp;', '', strip_tags(strip_shortcodes($text))));
         $is_empty = empty( $trimmed_text );
+        $use_more = (strpos($post->post_content, '<!--more-->') !== false && !has_excerpt($post->ID));
 
         $spacer = !post_password_required() && $is_empty ? '' : wpx_spacer('#eee');
         $classes = !post_password_required() && $is_empty ? 'u-none' : 'u-wrap-text u-trim';
@@ -434,7 +435,7 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
 
         if ( ! post_password_required() && !$is_empty && $readmore ) {
             if ( empty( $post_format ) ) {
-                $jump_point = (strpos($post->post_content, '<!--more-->') !== false ? '#more-' . intval($post->ID) : '#post-entry');
+                $jump_point = ($use_more ? '#more-' . intval($post->ID) : '#post-entry');
             } else {
                 $jump_point = '#single-post-content';
             }
