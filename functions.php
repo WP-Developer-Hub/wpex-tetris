@@ -433,7 +433,7 @@ if ( ! function_exists( 'wpex_excerpt' ) ) {
         }
         $output .= '</div>';
 
-        if ( ! post_password_required() && !$is_empty && $readmore ) {
+        if ( ! post_password_required() && !$is_empty && apply_filters('wpex_read_more', $readmore) ) {
             if ( empty( $post_format ) ) {
                 $jump_point = ($use_more ? '#more-' . intval($post->ID) : '#post-entry');
             } else {
