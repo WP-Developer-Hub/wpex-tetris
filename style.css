@@ -262,9 +262,7 @@ a:hover { cursor: pointer }
 .page-pagination select { text-align: unset; min-width: 75px; line-height: unset }
 .page-pagination .page-button::before { transition: background 250ms linear, color 250ms linear }
 .page-pagination a:hover,
-.page-pagination span.current { color: var(--universal-accent-color-text); background: var(--universal-accent-color); text-decoration: none; }
-.page-pagination .pagination-links { grid-template-columns: auto auto 1fr }
- 
+.page-pagination span.current { color: var(--universal-accent-color-text); background: var(--universal-accent-color); text-decoration: none; } 
 /* Pages & sidebar widget-title
 ----------------------------------------------------------- */
 .so-panel .widget-title { margin-top: 20px;}
@@ -385,7 +383,7 @@ h3.comments-title { font-size: 1.143em; margin: 20px 0 }
 .children li.depth-9 { margin: 0 0 0px 65px }
 .children li.depth-10 { margin: 0 0 0px 65px }
 .comment-body { margin-bottom: 25px }
-.comment-details { position: relative; margin-left: 90px; background: #f9f9f9; padding: 20px; display: flex; flex-wrap: wrap }
+.comment-details { position: relative; margin-left: 90px; background: #f9f9f9; padding: 20px 20px 10px 20px; display: flex; flex-wrap: wrap }
 .comment-details:after { content: ""; display: block; width: 20px; height: 20px; position: absolute; top: 0; left: -20px; background: url("images/comment-triangle.png") no-repeat }
 .comment-avatar { position: absolute; left: -90px; top: 0; overflow: hidden }
 .comment-avatar img { display: block }
@@ -397,10 +395,9 @@ h3.comments-title { font-size: 1.143em; margin: 20px 0 }
 .comment-content p:last-child { margin: 0 }
 .comment-date { font-size: 0.8em; font-weight: normal; margin-top: 4px; }
 .comment-date a { color: #888 }
-.comment-text {}
-.reply { margin-top: 10px; padding-top: 5px; border-top: solid 1px #eee }
-.reply span:before { content: "\a0|\a0"; color: #888 }
-.reply span:first-child:before { content: "";}
+.comment-actions { margin-top: 10px; padding-top: 5px; border-top: solid 1px #eee }
+.comment-actions span:before { content: "\a0|\a0"; color: #888 }
+.comment-actions span:first-child:before { content: "";}
 .comment-edit-link,
 .comment-reply-link,
 .comment-action-link { font-size: 1em; }
